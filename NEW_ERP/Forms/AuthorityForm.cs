@@ -16,5 +16,12 @@ namespace NEW_ERP.Forms
         {
             InitializeComponent();
         }
+
+        private void AuthorityForm_Load(object sender, EventArgs e)
+        {
+            //ytkjuy
+            //    ijk;LabelEditEventHandler'
+            //    ok;lk. '
+        }
     }
 }

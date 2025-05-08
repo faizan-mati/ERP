@@ -92,6 +92,9 @@
     <Compile Include="GernalClasses\AppConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AuthorityForm.resx">
+      <DependentUpon>AuthorityForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CountryForm.resx">
       <DependentUpon>CountryForm.cs</DependentUpon>
     </EmbeddedResource>

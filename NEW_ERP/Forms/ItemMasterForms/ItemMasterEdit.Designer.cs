@@ -56,6 +56,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.TxtProductDes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtProductDes.Location = new System.Drawing.Point(194, 317);
             this.TxtProductDes.Name = "TxtProductDes";
+            this.TxtProductDes.ReadOnly = true;
             this.TxtProductDes.Size = new System.Drawing.Size(259, 26);
             this.TxtProductDes.TabIndex = 2099;
             // 
@@ -64,6 +65,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.TxtProductShortName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtProductShortName.Location = new System.Drawing.Point(195, 265);
             this.TxtProductShortName.Name = "TxtProductShortName";
+            this.TxtProductShortName.ReadOnly = true;
             this.TxtProductShortName.Size = new System.Drawing.Size(259, 26);
             this.TxtProductShortName.TabIndex = 2097;
             // 
@@ -88,6 +90,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.CloseBtn.TabIndex = 2096;
             this.CloseBtn.Text = "EXIT";
             this.CloseBtn.UseVisualStyleBackColor = true;
+            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // UpdateBtn
             // 
@@ -108,6 +111,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.TxtProductRemarks.Location = new System.Drawing.Point(195, 359);
             this.TxtProductRemarks.Multiline = true;
             this.TxtProductRemarks.Name = "TxtProductRemarks";
+            this.TxtProductRemarks.ReadOnly = true;
             this.TxtProductRemarks.Size = new System.Drawing.Size(259, 79);
             this.TxtProductRemarks.TabIndex = 2093;
             // 
@@ -136,6 +140,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.TxtProductCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtProductCode.Location = new System.Drawing.Point(195, 220);
             this.TxtProductCode.Name = "TxtProductCode";
+            this.TxtProductCode.ReadOnly = true;
             this.TxtProductCode.Size = new System.Drawing.Size(259, 26);
             this.TxtProductCode.TabIndex = 2090;
             // 

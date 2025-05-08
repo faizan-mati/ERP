@@ -173,7 +173,9 @@ namespace NEW_ERP.Forms.ItemMasterForms
 
         }
 
-
-
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

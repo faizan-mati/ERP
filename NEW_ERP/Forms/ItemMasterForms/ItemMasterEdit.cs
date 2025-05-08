@@ -77,6 +77,11 @@ namespace NEW_ERP.Forms.ItemMasterForms
                         TxtProductDes.Text = reader["ProductDescription"].ToString();
                         TxtProductShortName.Text = reader["ProductShortName"].ToString();
                         TxtProductRemarks.Text = reader["Remarks"].ToString();
+
+                        TxtProductCode.ReadOnly = false;
+                        TxtProductDes.ReadOnly = false;
+                        TxtProductShortName.ReadOnly = false;
+                        TxtProductRemarks.ReadOnly = false;
                     }
                     else
                     {
@@ -168,6 +173,9 @@ namespace NEW_ERP.Forms.ItemMasterForms
 
         }
 
-
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

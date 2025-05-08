@@ -19,9 +19,7 @@ namespace NEW_ERP.Forms.CountryForms
 
         private void CountryForm_Load(object sender, EventArgs e)
         {
-            //fgnhgf
-            //    uhkjh
-            //    jlkjl
+
         }
     }
 }

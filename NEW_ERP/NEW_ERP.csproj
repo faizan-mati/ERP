@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{17BBA439-B20C-4B6C-8D04-7F48B1034B31}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NEW_ERP</RootNamespace>
+    <AssemblyName>NEW_ERP</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\AuthorityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorityForm.Designer.cs">
+      <DependentUpon>AuthorityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CityForm.Designer.cs">
+      <DependentUpon>CityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CountryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CountryForm.Designer.cs">
+      <DependentUpon>CountryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemMasterForms\ItemMasterDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemMasterForms\ItemMasterDelete.Designer.cs">
+      <DependentUpon>ItemMasterDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemMasterForms\ItemMasterEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemMasterForms\ItemMasterEdit.Designer.cs">
+      <DependentUpon>ItemMasterEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemMasterForms\ItemMasterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemMasterForms\ItemMasterForm.Designer.cs">
+      <DependentUpon>ItemMasterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemMasterForms\ItemMasterViewAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemMasterForms\ItemMasterViewAll.Designer.cs">
+      <DependentUpon>ItemMasterViewAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GernalClasses\AppConnection.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\CountryForm.resx">
+      <DependentUpon>CountryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ItemMasterForms\ItemMasterDelete.resx">
+      <DependentUpon>ItemMasterDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ItemMasterForms\ItemMasterEdit.resx">
+      <DependentUpon>ItemMasterEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ItemMasterForms\ItemMasterForm.resx">
+      <DependentUpon>ItemMasterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ItemMasterForms\ItemMasterViewAll.resx">
+      <DependentUpon>ItemMasterViewAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

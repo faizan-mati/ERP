@@ -59,10 +59,10 @@
     <Compile Include="Forms\CityForm.Designer.cs">
       <DependentUpon>CityForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CountryForm.cs">
+    <Compile Include="Forms\CountryForms\CountryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CountryForm.Designer.cs">
+    <Compile Include="Forms\CountryForms\CountryForm.Designer.cs">
       <DependentUpon>CountryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ItemMasterForms\ItemMasterDelete.cs">
@@ -95,7 +95,7 @@
     <EmbeddedResource Include="Forms\AuthorityForm.resx">
       <DependentUpon>AuthorityForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CountryForm.resx">
+    <EmbeddedResource Include="Forms\CountryForms\CountryForm.resx">
       <DependentUpon>CountryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ItemMasterForms\ItemMasterDelete.resx">
@@ -132,8 +132,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\CountryForms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

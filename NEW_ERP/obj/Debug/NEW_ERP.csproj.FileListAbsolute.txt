@@ -17,7 +17,6 @@ C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\bin\Debug\NEW_ERP.exe
 C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\bin\Debug\NEW_ERP.pdb
 C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\obj\Debug\NEW_ERP.csproj.AssemblyReference.cache
 C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.AuthorityForm.resources
-C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.CountryForm.resources
 C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.ItemMasterForms.ItemMasterDelete.resources
 C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.ItemMasterForms.ItemMasterEdit.resources
 C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.ItemMaster.ItemMasterForm.resources
@@ -27,3 +26,4 @@ C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\obj\Debug\NEW_ERP.csproj.GenerateRes
 C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\obj\Debug\NEW_ERP.csproj.CoreCompileInputs.cache
 C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\obj\Debug\NEW_ERP.exe
 C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\obj\Debug\NEW_ERP.pdb
+C:\Users\ali\Desktop\New folder\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.CountryForms.CountryForm.resources

@@ -44,7 +44,7 @@ namespace NEW_ERP.Forms.ItemMaster
                         cmd.Parameters.AddWithValue("@ProductCode", TxtProductCode.Text.Trim());
                         cmd.Parameters.AddWithValue("@ProductDescription", TxtProductDes.Text.Trim());
                         cmd.Parameters.AddWithValue("@ProductShortName", TxtProductShortName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@UserCode", "000123"); // yaha user code replace ho jae ga
+                        cmd.Parameters.AddWithValue("@UserCode", "000123"); // yaha user code replace ho jae ga bad ma
                         cmd.Parameters.AddWithValue("@Remarks", TxtProductRemarks.Text.Trim());
 
                         int result = cmd.ExecuteNonQuery();

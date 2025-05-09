@@ -1,5 +1,7 @@
 ﻿using NEW_ERP.Forms;
+using NEW_ERP.Forms.CountryForms;
 using NEW_ERP.Forms.ItemMaster;
+using NEW_ERP.Forms.ItemMasterForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,7 @@ namespace NEW_ERP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ItemMasterForm());
+            Application.Run(new CountryForm());
         }
     }
 }

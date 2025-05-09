@@ -47,6 +47,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\CountryForms\CountryDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CountryForms\CountryDelete.Designer.cs">
+      <DependentUpon>CountryDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CountryForms\CountryEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CountryForms\CountryEdit.Designer.cs">
+      <DependentUpon>CountryEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CountryForms\CountryViewAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CountryForms\CountryViewAll.Designer.cs">
+      <DependentUpon>CountryViewAll.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AuthorityForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +110,15 @@
     <Compile Include="GernalClasses\AppConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\CountryForms\CountryDelete.resx">
+      <DependentUpon>CountryDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CountryForms\CountryEdit.resx">
+      <DependentUpon>CountryEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CountryForms\CountryViewAll.resx">
+      <DependentUpon>CountryViewAll.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorityForm.resx">
       <DependentUpon>AuthorityForm.cs</DependentUpon>
     </EmbeddedResource>

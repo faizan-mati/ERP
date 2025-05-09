@@ -10,27 +10,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NEW_ERP.Forms.ItemMasterForms
+namespace NEW_ERP
 {
-    public partial class ItemMasterViewAll : Form
+    public partial class CountryViewAll : Form
     {
-        public ItemMasterViewAll()
+        public CountryViewAll()
         {
             InitializeComponent();
         }
 
-        //======================================= LOAD FORM =======================================
-
-        private void ItemMasterViewAll_Load(object sender, EventArgs e)
+        private void CountryViewAll_Load(object sender, EventArgs e)
         {
-            LoadItemData();
-            ProductCodeShow();
-            ProductCodeBox.SelectedIndex = -1;
+            LoadCountryData();
+            CountryCodeShow();
+            CountryCodeBox.SelectedIndex = -1;
         }
 
         //======================================= LOAD FORM FUNCTION =======================================
-        
-        private void LoadItemData()
+
+        private void LoadCountryData()
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
@@ -38,15 +36,14 @@ namespace NEW_ERP.Forms.ItemMasterForms
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("sp_GetItemMaster", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    string query = "SELECT * FROM Country ORDER BY SystemDate DESC";
+                    SqlCommand cmd = new SqlCommand(query, conn);
 
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    ItemMasterDataGridView.DataSource = dt;
-
+                    CountryDataGridView.DataSource = dt;
                 }
                 catch (Exception ex)
                 {
@@ -55,14 +52,13 @@ namespace NEW_ERP.Forms.ItemMasterForms
             }
         }
 
+        //======================================= COUNTRY CODE SHOW =======================================
 
-        //======================================= PRODUCT SHORT CODE SHOW =======================================
-
-        protected void ProductCodeShow()
+        protected void CountryCodeShow()
         {
             using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
             {
-                string query = @"Select ProductShortName from ItemMaster";
+                string query = @"select CountryCode from Country";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
@@ -70,14 +66,13 @@ namespace NEW_ERP.Forms.ItemMasterForms
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    ProductCodeBox.DataSource = dt;
-                    ProductCodeBox.DisplayMember = "ProductShortName";
-                    ProductCodeBox.ValueMember = "ProductShortName";
-                    ProductCodeBox.SelectedIndex = 0;
+                    CountryCodeBox.DataSource = dt;
+                    CountryCodeBox.DisplayMember = "CountryCode";
+                    CountryCodeBox.ValueMember = "CountryCode";
+                    CountryCodeBox.SelectedIndex = 0;
                 }
             }
         }
-
 
         //======================================= SEARCH BUTTON  =======================================
 
@@ -87,19 +82,18 @@ namespace NEW_ERP.Forms.ItemMasterForms
             {
                 try
                 {
-                    string selectedCode = ProductCodeBox.SelectedValue.ToString();
+                    string selectedCountryCode = CountryCodeBox.SelectedValue.ToString();
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("sp_SearchItemMaster", conn);
+                    SqlCommand cmd = new SqlCommand("sp_SearchCountryByCode", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@ShortName", selectedCode);
+                    cmd.Parameters.AddWithValue("@CountryCode", selectedCountryCode);
 
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    ItemMasterDataGridView.DataSource = dt;
+                    CountryDataGridView.DataSource = dt; 
                 }
                 catch (Exception ex)
                 {
@@ -107,5 +101,8 @@ namespace NEW_ERP.Forms.ItemMasterForms
                 }
             }
         }
+
+
+
     }
 }

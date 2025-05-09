@@ -117,7 +117,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
                     {
                         conn.Open();
 
-                        SqlCommand cmd = new SqlCommand("Delete_ItemMaster", conn);
+                        SqlCommand cmd = new SqlCommand("sp_DeleteItemMaster", conn);
                         cmd.CommandType = CommandType.StoredProcedure;
 
                         cmd.Parameters.AddWithValue("@ProductCode", ProductCodeBox.SelectedValue.ToString());

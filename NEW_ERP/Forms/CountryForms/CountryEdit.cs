@@ -98,7 +98,6 @@ namespace NEW_ERP.Forms.CountryForms
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-
             if (isValidation())
             {
                 using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -107,11 +106,12 @@ namespace NEW_ERP.Forms.CountryForms
                     {
                         string selectedCode = CountryCodeBox.SelectedValue.ToString();
                         conn.Open();
+
                         SqlCommand cmd = new SqlCommand("sp_UpdateCountry", conn);
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.AddWithValue("@CountryCode1", TxtCountryCode.Text.Trim());
-                        cmd.Parameters.AddWithValue("@CountryCode", selectedCode);
+                        cmd.Parameters.AddWithValue("@CountryCode1", TxtCountryCode.Text.Trim()); 
+                        cmd.Parameters.AddWithValue("@CountryCode", selectedCode);               
                         cmd.Parameters.AddWithValue("@CountryName", TxtCountryName.Text.Trim());
                         cmd.Parameters.AddWithValue("@IsActive", isCheckedcheckbox.Checked);
 
@@ -127,13 +127,21 @@ namespace NEW_ERP.Forms.CountryForms
                             MessageBox.Show("Update failed. Please check if the country code exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    catch (Exception ex)
+                    catch (SqlException ex)
                     {
-                        MessageBox.Show("Update failed:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (ex.Message.Contains("Another record with the same CountryCode already exists"))
+                        {
+                            MessageBox.Show("Update failed: A country with this code already exists.", "Duplicate Code", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Update failed:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
         }
+
 
         //======================================= FOR VALIDATION =======================================
 

@@ -43,17 +43,25 @@ namespace NEW_ERP.Forms.CountryForms
                         {
                             conn.Open();
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show("Data saved successfully.");
+                            MessageBox.Show("Country added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             RestFormControler();
                         }
-                        catch (Exception ex)
+                        catch (SqlException ex)
                         {
-                            MessageBox.Show("Error: " + ex.Message);
+                            if (ex.Message.Contains("Country code already exists"))
+                            {
+                                MessageBox.Show("This Country Code already exists. Please use a different one.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
             }
         }
+
 
 
 

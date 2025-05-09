@@ -133,14 +133,14 @@ namespace NEW_ERP.Forms.ItemMasterForms
                             MessageBox.Show("Update failed. No rows affected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    catch (Exception ex)
+                    catch (SqlException ex)
                     {
                         MessageBox.Show("Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
         }
+
 
         //======================================= FOR VALIDATION =======================================
 
@@ -172,6 +172,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
 
 
         }
+
 
         private void CloseBtn_Click(object sender, EventArgs e)
         {

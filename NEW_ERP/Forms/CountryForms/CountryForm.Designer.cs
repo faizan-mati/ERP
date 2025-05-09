@@ -52,7 +52,7 @@ namespace NEW_ERP.Forms.CountryForms
             // TxtCountryName
             // 
             this.TxtCountryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCountryName.Location = new System.Drawing.Point(211, 198);
+            this.TxtCountryName.Location = new System.Drawing.Point(211, 249);
             this.TxtCountryName.Name = "TxtCountryName";
             this.TxtCountryName.Size = new System.Drawing.Size(259, 26);
             this.TxtCountryName.TabIndex = 2088;
@@ -61,7 +61,7 @@ namespace NEW_ERP.Forms.CountryForms
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(73, 201);
+            this.label6.Location = new System.Drawing.Point(73, 252);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(132, 20);
             this.label6.TabIndex = 2089;
@@ -70,7 +70,7 @@ namespace NEW_ERP.Forms.CountryForms
             // TxtCountryCode
             // 
             this.TxtCountryCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCountryCode.Location = new System.Drawing.Point(211, 251);
+            this.TxtCountryCode.Location = new System.Drawing.Point(211, 197);
             this.TxtCountryCode.Name = "TxtCountryCode";
             this.TxtCountryCode.Size = new System.Drawing.Size(259, 26);
             this.TxtCountryCode.TabIndex = 2086;
@@ -79,7 +79,7 @@ namespace NEW_ERP.Forms.CountryForms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(77, 254);
+            this.label4.Location = new System.Drawing.Point(77, 200);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 20);
             this.label4.TabIndex = 2087;

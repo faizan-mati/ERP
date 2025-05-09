@@ -44,7 +44,7 @@ namespace NEW_ERP.Forms.ItemMaster
                         cmd.Parameters.AddWithValue("@ProductCode", TxtProductCode.Text.Trim());
                         cmd.Parameters.AddWithValue("@ProductDescription", TxtProductDes.Text.Trim());
                         cmd.Parameters.AddWithValue("@ProductShortName", TxtProductShortName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@UserCode", "000123"); // yaha user code replace ho jae ga bad ma
+                        cmd.Parameters.AddWithValue("@UserCode", "000123");
                         cmd.Parameters.AddWithValue("@Remarks", TxtProductRemarks.Text.Trim());
 
                         int result = cmd.ExecuteNonQuery();
@@ -55,15 +55,18 @@ namespace NEW_ERP.Forms.ItemMaster
                             RestFormControler();
                         }
                         else
+                        {
                             MessageBox.Show("Insertion failed.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
-                    catch (Exception ex)
+                    catch (SqlException ex)
                     {
                         MessageBox.Show("Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
+
 
         //======================================= FOR VALIDATION =======================================
 
@@ -90,6 +93,23 @@ namespace NEW_ERP.Forms.ItemMaster
             TxtProductShortName.Clear();
             TxtProductRemarks.Clear();
 
+        }
+
+        //========================================= CHECK IF ALREADY EXIT =================================================
+
+        private bool ProductCodeExists(string productCode)
+        {
+            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                string query = "SELECT COUNT(*) FROM ItemMaster WHERE ProductCode = @ProductCode";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ProductCode", productCode);
+                    conn.Open();
+                    int count = (int)cmd.ExecuteScalar();
+                    return count > 0;
+                }
+            }
         }
 
         //========================================= BUTTONS =================================================

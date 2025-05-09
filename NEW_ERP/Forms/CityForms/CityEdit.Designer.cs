@@ -1,5 +1,5 @@
 ﻿
-namespace NEW_ERP.Forms
+namespace NEW_ERP.Forms.CityForms
 {
     partial class CityEdit
     {

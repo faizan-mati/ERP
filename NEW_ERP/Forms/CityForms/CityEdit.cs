@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NEW_ERP.Forms
+namespace NEW_ERP.Forms.CityForms
 {
     public partial class CityEdit : Form
     {

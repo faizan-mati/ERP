@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\CityForms\CityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CityForms\CityForm.Designer.cs">
+      <DependentUpon>CityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CityForms\CityViewAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CityForms\CityViewAll.Designer.cs">
+      <DependentUpon>CityViewAll.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CountryForms\CountryDelete.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,12 +82,6 @@
     </Compile>
     <Compile Include="Forms\AuthorityForm.Designer.cs">
       <DependentUpon>AuthorityForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\CityForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CityForm.Designer.cs">
-      <DependentUpon>CityForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CountryForms\CountryForm.cs">
       <SubType>Form</SubType>
@@ -110,6 +116,12 @@
     <Compile Include="GernalClasses\AppConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\CityForms\CityForm.resx">
+      <DependentUpon>CityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CityForms\CityViewAll.resx">
+      <DependentUpon>CityViewAll.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CountryForms\CountryDelete.resx">
       <DependentUpon>CountryDelete.cs</DependentUpon>
     </EmbeddedResource>

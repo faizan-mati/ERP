@@ -1,7 +1,7 @@
 ﻿
 namespace NEW_ERP.Forms
 {
-    partial class CityForm
+    partial class CityEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@ namespace NEW_ERP.Forms
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "CityForm";
+            this.Text = "CityEdit";
         }
 
         #endregion

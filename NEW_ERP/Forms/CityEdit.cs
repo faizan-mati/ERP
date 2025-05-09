@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace NEW_ERP.Forms
 {
-    public partial class CityForm : Form
+    public partial class CityEdit : Form
     {
-        public CityForm()
+        public CityEdit()
         {
             InitializeComponent();
         }

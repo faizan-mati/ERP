@@ -1,4 +1,5 @@
 ﻿using NEW_ERP.Forms;
+using NEW_ERP.Forms.AuthorityForm;
 using NEW_ERP.Forms.CityForms;
 using NEW_ERP.Forms.CountryForms;
 using NEW_ERP.Forms.ItemMaster;
@@ -21,7 +22,7 @@ namespace NEW_ERP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CityForm());
+            Application.Run(new CountryForm());
         }
     }
 }

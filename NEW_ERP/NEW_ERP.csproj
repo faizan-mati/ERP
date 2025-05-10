@@ -47,6 +47,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AuthorityForm\AuthorityDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorityForm\AuthorityDelete.Designer.cs">
+      <DependentUpon>AuthorityDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorityForm\AuthorityEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorityForm\AuthorityEdit.Designer.cs">
+      <DependentUpon>AuthorityEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorityForm\AuthorityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorityForm\AuthorityForm.Designer.cs">
+      <DependentUpon>AuthorityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorityForm\AuthorityViewAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorityForm\AuthorityViewAll.Designer.cs">
+      <DependentUpon>AuthorityViewAll.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CityForms\CityForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,12 +100,6 @@
     </Compile>
     <Compile Include="Forms\CountryForms\CountryViewAll.Designer.cs">
       <DependentUpon>CountryViewAll.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\AuthorityForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AuthorityForm.Designer.cs">
-      <DependentUpon>AuthorityForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CountryForms\CountryForm.cs">
       <SubType>Form</SubType>
@@ -116,6 +134,18 @@
     <Compile Include="GernalClasses\AppConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AuthorityForm\AuthorityDelete.resx">
+      <DependentUpon>AuthorityDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorityForm\AuthorityEdit.resx">
+      <DependentUpon>AuthorityEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorityForm\AuthorityForm.resx">
+      <DependentUpon>AuthorityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorityForm\AuthorityViewAll.resx">
+      <DependentUpon>AuthorityViewAll.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CityForms\CityForm.resx">
       <DependentUpon>CityForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CountryForms\CountryViewAll.resx">
       <DependentUpon>CountryViewAll.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AuthorityForm.resx">
-      <DependentUpon>AuthorityForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CountryForms\CountryForm.resx">
       <DependentUpon>CountryForm.cs</DependentUpon>

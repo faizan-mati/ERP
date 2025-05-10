@@ -54,7 +54,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // TxtProductDes
             // 
             this.TxtProductDes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProductDes.Location = new System.Drawing.Point(194, 317);
+            this.TxtProductDes.Location = new System.Drawing.Point(191, 294);
             this.TxtProductDes.Name = "TxtProductDes";
             this.TxtProductDes.ReadOnly = true;
             this.TxtProductDes.Size = new System.Drawing.Size(259, 26);
@@ -63,7 +63,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // TxtProductShortName
             // 
             this.TxtProductShortName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProductShortName.Location = new System.Drawing.Point(195, 265);
+            this.TxtProductShortName.Location = new System.Drawing.Point(192, 242);
             this.TxtProductShortName.Name = "TxtProductShortName";
             this.TxtProductShortName.ReadOnly = true;
             this.TxtProductShortName.Size = new System.Drawing.Size(259, 26);
@@ -73,7 +73,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 268);
+            this.label6.Location = new System.Drawing.Point(3, 245);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(181, 20);
             this.label6.TabIndex = 2098;
@@ -83,7 +83,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // 
             this.CloseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBtn.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.CloseBtn.Location = new System.Drawing.Point(299, 464);
+            this.CloseBtn.Location = new System.Drawing.Point(296, 441);
             this.CloseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(100, 31);
@@ -96,7 +96,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // 
             this.UpdateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateBtn.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.UpdateBtn.Location = new System.Drawing.Point(195, 464);
+            this.UpdateBtn.Location = new System.Drawing.Point(192, 441);
             this.UpdateBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(100, 31);
@@ -108,7 +108,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // TxtProductRemarks
             // 
             this.TxtProductRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProductRemarks.Location = new System.Drawing.Point(195, 359);
+            this.TxtProductRemarks.Location = new System.Drawing.Point(192, 336);
             this.TxtProductRemarks.Multiline = true;
             this.TxtProductRemarks.Name = "TxtProductRemarks";
             this.TxtProductRemarks.ReadOnly = true;
@@ -119,7 +119,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(96, 362);
+            this.label5.Location = new System.Drawing.Point(93, 339);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 20);
             this.label5.TabIndex = 2094;
@@ -129,7 +129,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 319);
+            this.label2.Location = new System.Drawing.Point(8, 296);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(177, 20);
             this.label2.TabIndex = 2092;
@@ -138,7 +138,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // TxtProductCode
             // 
             this.TxtProductCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProductCode.Location = new System.Drawing.Point(195, 220);
+            this.TxtProductCode.Location = new System.Drawing.Point(192, 197);
             this.TxtProductCode.Name = "TxtProductCode";
             this.TxtProductCode.ReadOnly = true;
             this.TxtProductCode.Size = new System.Drawing.Size(259, 26);
@@ -148,7 +148,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(61, 223);
+            this.label4.Location = new System.Drawing.Point(58, 200);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 20);
             this.label4.TabIndex = 2091;
@@ -229,7 +229,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.ProductCodeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ProductCodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProductCodeBox.FormattingEnabled = true;
-            this.ProductCodeBox.Location = new System.Drawing.Point(195, 178);
+            this.ProductCodeBox.Location = new System.Drawing.Point(192, 155);
             this.ProductCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProductCodeBox.Name = "ProductCodeBox";
             this.ProductCodeBox.Size = new System.Drawing.Size(259, 24);
@@ -240,7 +240,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(26, 180);
+            this.label7.Location = new System.Drawing.Point(23, 157);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(165, 20);
             this.label7.TabIndex = 2101;

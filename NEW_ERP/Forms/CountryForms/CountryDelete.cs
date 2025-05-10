@@ -98,47 +98,51 @@ namespace NEW_ERP.Forms.CountryForms
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
 
-            if (CountryCodeBox.SelectedValue == null)
-            {
-                MessageBox.Show("Please select a product code to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result != DialogResult.Yes)
-            {
-                return;
-            }
-
-            if (isValidation())
+            if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
 
-                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+                if (CountryCodeBox.SelectedValue == null)
                 {
-                    try
+                    MessageBox.Show("Please select a product code to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                if (isValidation())
+                {
+
+                    using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                     {
-                        conn.Open();
-
-                        SqlCommand cmd = new SqlCommand("sp_DeleteCountry", conn);
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        cmd.Parameters.AddWithValue("@CountryCode", CountryCodeBox.SelectedValue.ToString());
-
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
+                        try
                         {
-                            MessageBox.Show("Country deleted successfully!", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            RestFormControler();
+                            conn.Open();
+
+                            SqlCommand cmd = new SqlCommand("sp_DeleteCountry", conn);
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.AddWithValue("@CountryCode", CountryCodeBox.SelectedValue.ToString());
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Country deleted successfully!", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                RestFormControler();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Delete failed. No record found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            MessageBox.Show("Delete failed. No record found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

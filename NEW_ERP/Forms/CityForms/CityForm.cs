@@ -130,5 +130,10 @@ namespace NEW_ERP.Forms.CityForms
             CityViewAll NextForm = new CityViewAll();
             NextForm.Show();
         }
+
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

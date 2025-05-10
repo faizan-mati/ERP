@@ -96,47 +96,50 @@ namespace NEW_ERP.Forms.ItemMasterForms
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            if (ProductCodeBox.SelectedValue == null)
+            if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                MessageBox.Show("Please select a product code to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result != DialogResult.Yes)
-            {
-                return;
-            }
-
-            if (isValidation())
-            {
-
-                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+                if (ProductCodeBox.SelectedValue == null)
                 {
-                    try
+                    MessageBox.Show("Please select a product code to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                if (isValidation())
+                {
+
+                    using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                     {
-                        conn.Open();
-
-                        SqlCommand cmd = new SqlCommand("sp_DeleteItemMaster", conn);
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        cmd.Parameters.AddWithValue("@ProductCode", ProductCodeBox.SelectedValue.ToString());
-
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
+                        try
                         {
-                            MessageBox.Show("Item deleted successfully!", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            RestFormControler();
+                            conn.Open();
+
+                            SqlCommand cmd = new SqlCommand("sp_DeleteItemMaster", conn);
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.AddWithValue("@ProductCode", ProductCodeBox.SelectedValue.ToString());
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Item deleted successfully!", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                RestFormControler();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Delete failed. No record found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            MessageBox.Show("Delete failed. No record found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

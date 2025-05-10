@@ -37,6 +37,9 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.LoginUserName = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.AuthorityDataGridView = new System.Windows.Forms.DataGridView();
+            this.AuthorityNameBox = new System.Windows.Forms.ComboBox();
+            this.SearchBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuthorityDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -127,12 +130,50 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.AuthorityDataGridView.Size = new System.Drawing.Size(1007, 457);
             this.AuthorityDataGridView.TabIndex = 2121;
             // 
+            // AuthorityNameBox
+            // 
+            this.AuthorityNameBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.AuthorityNameBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.AuthorityNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AuthorityNameBox.FormattingEnabled = true;
+            this.AuthorityNameBox.Location = new System.Drawing.Point(256, 117);
+            this.AuthorityNameBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.AuthorityNameBox.Name = "AuthorityNameBox";
+            this.AuthorityNameBox.Size = new System.Drawing.Size(155, 24);
+            this.AuthorityNameBox.TabIndex = 2124;
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchBtn.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.SearchBtn.Location = new System.Drawing.Point(418, 112);
+            this.SearchBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(116, 32);
+            this.SearchBtn.TabIndex = 2123;
+            this.SearchBtn.Text = "SEARCH";
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(22, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(227, 20);
+            this.label2.TabIndex = 2122;
+            this.label2.Text = "Search by Authority Name :";
+            // 
             // AuthorityViewAll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1022, 618);
+            this.Controls.Add(this.AuthorityNameBox);
+            this.Controls.Add(this.SearchBtn);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.AuthorityDataGridView);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBox3);
@@ -159,5 +200,8 @@ namespace NEW_ERP.Forms.AuthorityForm
         private System.Windows.Forms.Label LoginUserName;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.DataGridView AuthorityDataGridView;
+        public System.Windows.Forms.ComboBox AuthorityNameBox;
+        public System.Windows.Forms.Button SearchBtn;
+        private System.Windows.Forms.Label label2;
     }
 }

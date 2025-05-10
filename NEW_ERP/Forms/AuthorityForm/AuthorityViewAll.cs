@@ -22,6 +22,31 @@ namespace NEW_ERP.Forms.AuthorityForm
         private void AuthorityViewAll_Load(object sender, EventArgs e)
         {
             LoadCountryData();
+
+            AuthorityCodeShow();
+            AuthorityNameBox.SelectedIndex = -1;
+        }
+
+        //======================================= AUTHORITY CODE SHOW =======================================
+
+        protected void AuthorityCodeShow()
+        {
+            using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                string query = @"select AuthorityName from AuthorityMaster";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    AuthorityNameBox.DataSource = dt;
+                    AuthorityNameBox.DisplayMember = "AuthorityName";
+                    AuthorityNameBox.ValueMember = "AuthorityName";
+                    AuthorityNameBox.SelectedIndex = 0;
+                }
+            }
         }
 
         //======================================= LOAD FORM FUNCTION =======================================
@@ -55,6 +80,32 @@ namespace NEW_ERP.Forms.AuthorityForm
             }
         }
 
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            string AuthorityName = AuthorityNameBox.Text.Trim();
+
+            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                try
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("sp_SearchAuthorityMaster", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@AuthorityName", AuthorityName);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    AuthorityDataGridView.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error retrieving cities:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
 
 

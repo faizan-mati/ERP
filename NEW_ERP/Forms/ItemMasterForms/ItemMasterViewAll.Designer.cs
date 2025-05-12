@@ -52,7 +52,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.SearchBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(116, 32);
-            this.SearchBtn.TabIndex = 2082;
+            this.SearchBtn.TabIndex = 2;
             this.SearchBtn.Text = "SEARCH";
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
@@ -163,7 +163,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.ProductCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProductCodeBox.Name = "ProductCodeBox";
             this.ProductCodeBox.Size = new System.Drawing.Size(155, 24);
-            this.ProductCodeBox.TabIndex = 2101;
+            this.ProductCodeBox.TabIndex = 1;
             // 
             // ItemMasterViewAll
             // 

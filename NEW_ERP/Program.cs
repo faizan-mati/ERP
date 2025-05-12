@@ -22,7 +22,7 @@ namespace NEW_ERP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ItemMasterForm());
+            Application.Run(new CountryForm());
         }
     }
 }

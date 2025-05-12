@@ -58,7 +58,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.TxtProductDes.Name = "TxtProductDes";
             this.TxtProductDes.ReadOnly = true;
             this.TxtProductDes.Size = new System.Drawing.Size(259, 26);
-            this.TxtProductDes.TabIndex = 2099;
+            this.TxtProductDes.TabIndex = 4;
             // 
             // TxtProductShortName
             // 
@@ -67,7 +67,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.TxtProductShortName.Name = "TxtProductShortName";
             this.TxtProductShortName.ReadOnly = true;
             this.TxtProductShortName.Size = new System.Drawing.Size(259, 26);
-            this.TxtProductShortName.TabIndex = 2097;
+            this.TxtProductShortName.TabIndex = 3;
             // 
             // label6
             // 
@@ -87,7 +87,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.CloseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(100, 31);
-            this.CloseBtn.TabIndex = 2096;
+            this.CloseBtn.TabIndex = 7;
             this.CloseBtn.Text = "EXIT";
             this.CloseBtn.UseVisualStyleBackColor = true;
             this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
@@ -100,7 +100,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.UpdateBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(100, 31);
-            this.UpdateBtn.TabIndex = 2095;
+            this.UpdateBtn.TabIndex = 6;
             this.UpdateBtn.Text = "UPDATE";
             this.UpdateBtn.UseVisualStyleBackColor = true;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
@@ -113,7 +113,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.TxtProductRemarks.Name = "TxtProductRemarks";
             this.TxtProductRemarks.ReadOnly = true;
             this.TxtProductRemarks.Size = new System.Drawing.Size(259, 79);
-            this.TxtProductRemarks.TabIndex = 2093;
+            this.TxtProductRemarks.TabIndex = 5;
             // 
             // label5
             // 
@@ -142,7 +142,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.TxtProductCode.Name = "TxtProductCode";
             this.TxtProductCode.ReadOnly = true;
             this.TxtProductCode.Size = new System.Drawing.Size(259, 26);
-            this.TxtProductCode.TabIndex = 2090;
+            this.TxtProductCode.TabIndex = 2;
             // 
             // label4
             // 
@@ -233,7 +233,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.ProductCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProductCodeBox.Name = "ProductCodeBox";
             this.ProductCodeBox.Size = new System.Drawing.Size(259, 24);
-            this.ProductCodeBox.TabIndex = 2100;
+            this.ProductCodeBox.TabIndex = 1;
             this.ProductCodeBox.SelectedIndexChanged += new System.EventHandler(this.ProductCodeBox_SelectedIndexChanged);
             // 
             // label7

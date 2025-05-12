@@ -59,7 +59,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.TxtAuthorityRemarks.Multiline = true;
             this.TxtAuthorityRemarks.Name = "TxtAuthorityRemarks";
             this.TxtAuthorityRemarks.Size = new System.Drawing.Size(259, 79);
-            this.TxtAuthorityRemarks.TabIndex = 2151;
+            this.TxtAuthorityRemarks.TabIndex = 4;
             // 
             // label5
             // 
@@ -77,7 +77,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.TxtAuthorityName.Location = new System.Drawing.Point(203, 187);
             this.TxtAuthorityName.Name = "TxtAuthorityName";
             this.TxtAuthorityName.Size = new System.Drawing.Size(259, 26);
-            this.TxtAuthorityName.TabIndex = 2150;
+            this.TxtAuthorityName.TabIndex = 2;
             // 
             // label2
             // 
@@ -229,7 +229,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.TxtStatusCode.Location = new System.Drawing.Point(203, 230);
             this.TxtStatusCode.Name = "TxtStatusCode";
             this.TxtStatusCode.Size = new System.Drawing.Size(259, 26);
-            this.TxtStatusCode.TabIndex = 2154;
+            this.TxtStatusCode.TabIndex = 3;
             // 
             // label4
             // 
@@ -247,7 +247,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.TxtAuthorityCode.Location = new System.Drawing.Point(203, 144);
             this.TxtAuthorityCode.Name = "TxtAuthorityCode";
             this.TxtAuthorityCode.Size = new System.Drawing.Size(259, 26);
-            this.TxtAuthorityCode.TabIndex = 2156;
+            this.TxtAuthorityCode.TabIndex = 1;
             // 
             // label6
             // 

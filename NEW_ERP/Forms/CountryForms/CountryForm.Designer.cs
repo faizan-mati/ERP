@@ -55,7 +55,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.TxtCountryName.Location = new System.Drawing.Point(211, 249);
             this.TxtCountryName.Name = "TxtCountryName";
             this.TxtCountryName.Size = new System.Drawing.Size(259, 26);
-            this.TxtCountryName.TabIndex = 2088;
+            this.TxtCountryName.TabIndex = 2;
             // 
             // label6
             // 
@@ -73,7 +73,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.TxtCountryCode.Location = new System.Drawing.Point(211, 197);
             this.TxtCountryCode.Name = "TxtCountryCode";
             this.TxtCountryCode.Size = new System.Drawing.Size(259, 26);
-            this.TxtCountryCode.TabIndex = 2086;
+            this.TxtCountryCode.TabIndex = 1;
             // 
             // label4
             // 
@@ -163,7 +163,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.isCheckedcheckbox.Location = new System.Drawing.Point(211, 297);
             this.isCheckedcheckbox.Name = "isCheckedcheckbox";
             this.isCheckedcheckbox.Size = new System.Drawing.Size(86, 20);
-            this.isCheckedcheckbox.TabIndex = 2090;
+            this.isCheckedcheckbox.TabIndex = 3;
             this.isCheckedcheckbox.Text = "Is Active";
             this.isCheckedcheckbox.UseVisualStyleBackColor = true;
             // 
@@ -175,7 +175,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(100, 31);
-            this.DeleteBtn.TabIndex = 2095;
+            this.DeleteBtn.TabIndex = 8;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = true;
             this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
@@ -188,7 +188,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.EditBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(100, 31);
-            this.EditBtn.TabIndex = 2094;
+            this.EditBtn.TabIndex = 7;
             this.EditBtn.Text = "EDIT";
             this.EditBtn.UseVisualStyleBackColor = true;
             this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
@@ -201,7 +201,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.ViewAllBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ViewAllBtn.Name = "ViewAllBtn";
             this.ViewAllBtn.Size = new System.Drawing.Size(100, 31);
-            this.ViewAllBtn.TabIndex = 2093;
+            this.ViewAllBtn.TabIndex = 6;
             this.ViewAllBtn.Text = "VIEW ALL";
             this.ViewAllBtn.UseVisualStyleBackColor = true;
             this.ViewAllBtn.Click += new System.EventHandler(this.ViewAllBtn_Click);
@@ -214,7 +214,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.CloseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(100, 31);
-            this.CloseBtn.TabIndex = 2092;
+            this.CloseBtn.TabIndex = 5;
             this.CloseBtn.Text = "EXIT";
             this.CloseBtn.UseVisualStyleBackColor = true;
             this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
@@ -227,7 +227,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.SubmitBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.Size = new System.Drawing.Size(100, 31);
-            this.SubmitBtn.TabIndex = 2091;
+            this.SubmitBtn.TabIndex = 4;
             this.SubmitBtn.Text = "SUBMIT";
             this.SubmitBtn.UseVisualStyleBackColor = true;
             this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);

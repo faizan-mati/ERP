@@ -61,7 +61,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.AuthorityCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.AuthorityCodeBox.Name = "AuthorityCodeBox";
             this.AuthorityCodeBox.Size = new System.Drawing.Size(259, 24);
-            this.AuthorityCodeBox.TabIndex = 2118;
+            this.AuthorityCodeBox.TabIndex = 1;
             this.AuthorityCodeBox.SelectedIndexChanged += new System.EventHandler(this.AuthorityCodeBox_SelectedIndexChanged);
             // 
             // TxtAuthorityStatusCode
@@ -71,7 +71,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.TxtAuthorityStatusCode.Name = "TxtAuthorityStatusCode";
             this.TxtAuthorityStatusCode.ReadOnly = true;
             this.TxtAuthorityStatusCode.Size = new System.Drawing.Size(259, 26);
-            this.TxtAuthorityStatusCode.TabIndex = 2115;
+            this.TxtAuthorityStatusCode.TabIndex = 4;
             // 
             // CloseBtn
             // 
@@ -81,7 +81,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.CloseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(100, 31);
-            this.CloseBtn.TabIndex = 2114;
+            this.CloseBtn.TabIndex = 7;
             this.CloseBtn.Text = "EXIT";
             this.CloseBtn.UseVisualStyleBackColor = true;
             // 
@@ -93,7 +93,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.UpdateBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(100, 31);
-            this.UpdateBtn.TabIndex = 2113;
+            this.UpdateBtn.TabIndex = 6;
             this.UpdateBtn.Text = "UPDATE";
             this.UpdateBtn.UseVisualStyleBackColor = true;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
@@ -106,7 +106,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.TxtAuthorityRemarks.Name = "TxtAuthorityRemarks";
             this.TxtAuthorityRemarks.ReadOnly = true;
             this.TxtAuthorityRemarks.Size = new System.Drawing.Size(259, 79);
-            this.TxtAuthorityRemarks.TabIndex = 2111;
+            this.TxtAuthorityRemarks.TabIndex = 5;
             // 
             // TxtAuthorityName
             // 
@@ -115,7 +115,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.TxtAuthorityName.Name = "TxtAuthorityName";
             this.TxtAuthorityName.ReadOnly = true;
             this.TxtAuthorityName.Size = new System.Drawing.Size(259, 26);
-            this.TxtAuthorityName.TabIndex = 2108;
+            this.TxtAuthorityName.TabIndex = 3;
             // 
             // label12
             // 
@@ -233,7 +233,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.TxtAuthorityCode.Name = "TxtAuthorityCode";
             this.TxtAuthorityCode.ReadOnly = true;
             this.TxtAuthorityCode.Size = new System.Drawing.Size(259, 26);
-            this.TxtAuthorityCode.TabIndex = 2160;
+            this.TxtAuthorityCode.TabIndex = 2;
             // 
             // label7
             // 

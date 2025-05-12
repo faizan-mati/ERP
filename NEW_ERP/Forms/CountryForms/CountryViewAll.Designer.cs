@@ -121,7 +121,7 @@ namespace NEW_ERP
             this.SearchBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(116, 32);
-            this.SearchBtn.TabIndex = 2091;
+            this.SearchBtn.TabIndex = 2;
             this.SearchBtn.Text = "SEARCH";
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
@@ -163,7 +163,7 @@ namespace NEW_ERP
             this.CountryCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CountryCodeBox.Name = "CountryCodeBox";
             this.CountryCodeBox.Size = new System.Drawing.Size(155, 24);
-            this.CountryCodeBox.TabIndex = 2102;
+            this.CountryCodeBox.TabIndex = 1;
             // 
             // CountryViewAll
             // 

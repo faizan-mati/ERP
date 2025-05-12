@@ -56,7 +56,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(100, 31);
-            this.DeleteBtn.TabIndex = 2151;
+            this.DeleteBtn.TabIndex = 5;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = true;
             this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
@@ -69,7 +69,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.CloseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(100, 31);
-            this.CloseBtn.TabIndex = 2150;
+            this.CloseBtn.TabIndex = 6;
             this.CloseBtn.Text = "EXIT";
             this.CloseBtn.UseVisualStyleBackColor = true;
             this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
@@ -83,7 +83,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.isCheckedcheckbox.Location = new System.Drawing.Point(189, 356);
             this.isCheckedcheckbox.Name = "isCheckedcheckbox";
             this.isCheckedcheckbox.Size = new System.Drawing.Size(86, 20);
-            this.isCheckedcheckbox.TabIndex = 2149;
+            this.isCheckedcheckbox.TabIndex = 4;
             this.isCheckedcheckbox.Text = "Is Active";
             this.isCheckedcheckbox.UseVisualStyleBackColor = true;
             // 
@@ -117,7 +117,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.CountryCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CountryCodeBox.Name = "CountryCodeBox";
             this.CountryCodeBox.Size = new System.Drawing.Size(259, 24);
-            this.CountryCodeBox.TabIndex = 2146;
+            this.CountryCodeBox.TabIndex = 1;
             this.CountryCodeBox.SelectedIndexChanged += new System.EventHandler(this.CountryCodeBox_SelectedIndexChanged);
             // 
             // TxtCountryName
@@ -127,7 +127,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.TxtCountryName.Name = "TxtCountryName";
             this.TxtCountryName.ReadOnly = true;
             this.TxtCountryName.Size = new System.Drawing.Size(259, 26);
-            this.TxtCountryName.TabIndex = 2144;
+            this.TxtCountryName.TabIndex = 3;
             // 
             // label6
             // 
@@ -146,7 +146,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.TxtCountryCode.Name = "TxtCountryCode";
             this.TxtCountryCode.ReadOnly = true;
             this.TxtCountryCode.Size = new System.Drawing.Size(259, 26);
-            this.TxtCountryCode.TabIndex = 2143;
+            this.TxtCountryCode.TabIndex = 2;
             // 
             // label12
             // 

@@ -140,7 +140,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.AuthorityNameBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.AuthorityNameBox.Name = "AuthorityNameBox";
             this.AuthorityNameBox.Size = new System.Drawing.Size(155, 24);
-            this.AuthorityNameBox.TabIndex = 2124;
+            this.AuthorityNameBox.TabIndex = 1;
             // 
             // SearchBtn
             // 
@@ -150,7 +150,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.SearchBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(116, 32);
-            this.SearchBtn.TabIndex = 2123;
+            this.SearchBtn.TabIndex = 2;
             this.SearchBtn.Text = "SEARCH";
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);

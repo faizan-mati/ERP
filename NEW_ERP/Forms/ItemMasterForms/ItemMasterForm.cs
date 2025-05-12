@@ -119,5 +119,7 @@ namespace NEW_ERP.Forms.ItemMaster
             ItemMasterDelete NextForm = new ItemMasterDelete();
             NextForm.Show();
         }
+
+
     }
 }

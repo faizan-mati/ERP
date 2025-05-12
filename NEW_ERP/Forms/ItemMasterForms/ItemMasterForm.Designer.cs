@@ -97,7 +97,7 @@ namespace NEW_ERP.Forms.ItemMaster
             this.TxtProductDes.Location = new System.Drawing.Point(200, 250);
             this.TxtProductDes.Name = "TxtProductDes";
             this.TxtProductDes.Size = new System.Drawing.Size(259, 26);
-            this.TxtProductDes.TabIndex = 2080;
+            this.TxtProductDes.TabIndex = 3;
             // 
             // TxtProductShortName
             // 
@@ -105,7 +105,7 @@ namespace NEW_ERP.Forms.ItemMaster
             this.TxtProductShortName.Location = new System.Drawing.Point(201, 198);
             this.TxtProductShortName.Name = "TxtProductShortName";
             this.TxtProductShortName.Size = new System.Drawing.Size(259, 26);
-            this.TxtProductShortName.TabIndex = 2078;
+            this.TxtProductShortName.TabIndex = 2;
             // 
             // label6
             // 
@@ -150,7 +150,7 @@ namespace NEW_ERP.Forms.ItemMaster
             this.TxtProductRemarks.Multiline = true;
             this.TxtProductRemarks.Name = "TxtProductRemarks";
             this.TxtProductRemarks.Size = new System.Drawing.Size(259, 79);
-            this.TxtProductRemarks.TabIndex = 2074;
+            this.TxtProductRemarks.TabIndex = 4;
             // 
             // label5
             // 
@@ -178,7 +178,7 @@ namespace NEW_ERP.Forms.ItemMaster
             this.TxtProductCode.Location = new System.Drawing.Point(201, 153);
             this.TxtProductCode.Name = "TxtProductCode";
             this.TxtProductCode.Size = new System.Drawing.Size(259, 26);
-            this.TxtProductCode.TabIndex = 2071;
+            this.TxtProductCode.TabIndex = 1;
             // 
             // label4
             // 

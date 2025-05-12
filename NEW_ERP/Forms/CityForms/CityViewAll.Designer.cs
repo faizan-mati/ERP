@@ -54,7 +54,7 @@ namespace NEW_ERP.Forms.CityForms
             this.CityNameBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CityNameBox.Name = "CityNameBox";
             this.CityNameBox.Size = new System.Drawing.Size(155, 24);
-            this.CityNameBox.TabIndex = 2111;
+            this.CityNameBox.TabIndex = 1;
             // 
             // label12
             // 
@@ -133,7 +133,7 @@ namespace NEW_ERP.Forms.CityForms
             this.SearchBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(116, 32);
-            this.SearchBtn.TabIndex = 2104;
+            this.SearchBtn.TabIndex = 2;
             this.SearchBtn.Text = "SEARCH";
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);

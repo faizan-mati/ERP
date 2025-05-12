@@ -83,7 +83,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(910, 27);
+            this.pictureBox3.Location = new System.Drawing.Point(547, 27);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(100, 100);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -132,7 +132,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.menuStrip1.BackColor = System.Drawing.Color.DarkMagenta;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1022, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(659, 24);
             this.menuStrip1.TabIndex = 2083;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -150,7 +150,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.ItemMasterDataGridView.Name = "ItemMasterDataGridView";
             this.ItemMasterDataGridView.ReadOnly = true;
             this.ItemMasterDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ItemMasterDataGridView.Size = new System.Drawing.Size(1007, 446);
+            this.ItemMasterDataGridView.Size = new System.Drawing.Size(644, 335);
             this.ItemMasterDataGridView.TabIndex = 2089;
             // 
             // ProductCodeBox
@@ -170,7 +170,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1022, 618);
+            this.ClientSize = new System.Drawing.Size(659, 507);
             this.Controls.Add(this.ProductCodeBox);
             this.Controls.Add(this.ItemMasterDataGridView);
             this.Controls.Add(this.label12);

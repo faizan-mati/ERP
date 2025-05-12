@@ -72,7 +72,7 @@ namespace NEW_ERP.Forms.CityForms
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(911, 30);
+            this.pictureBox3.Location = new System.Drawing.Point(548, 30);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(100, 100);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -98,11 +98,11 @@ namespace NEW_ERP.Forms.CityForms
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.label3.Location = new System.Drawing.Point(88, 52);
+            this.label3.Location = new System.Drawing.Point(126, 53);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(316, 33);
+            this.label3.Size = new System.Drawing.Size(235, 33);
             this.label3.TabIndex = 2107;
-            this.label3.Text = "COUNTRY VIEW ALL";
+            this.label3.Text = "CITY VIEW ALL";
             // 
             // LoginUserName
             // 
@@ -121,7 +121,7 @@ namespace NEW_ERP.Forms.CityForms
             this.menuStrip1.BackColor = System.Drawing.Color.DarkMagenta;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1022, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(659, 24);
             this.menuStrip1.TabIndex = 2105;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -162,7 +162,7 @@ namespace NEW_ERP.Forms.CityForms
             this.CityDataGridView.Name = "CityDataGridView";
             this.CityDataGridView.ReadOnly = true;
             this.CityDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CityDataGridView.Size = new System.Drawing.Size(1007, 446);
+            this.CityDataGridView.Size = new System.Drawing.Size(644, 335);
             this.CityDataGridView.TabIndex = 2112;
             // 
             // CityViewAll
@@ -170,7 +170,7 @@ namespace NEW_ERP.Forms.CityForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1022, 618);
+            this.ClientSize = new System.Drawing.Size(659, 507);
             this.Controls.Add(this.CityDataGridView);
             this.Controls.Add(this.CityNameBox);
             this.Controls.Add(this.label12);

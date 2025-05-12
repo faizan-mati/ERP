@@ -95,23 +95,6 @@ namespace NEW_ERP.Forms.ItemMaster
 
         }
 
-        //========================================= CHECK IF ALREADY EXIT =================================================
-
-        private bool ProductCodeExists(string productCode)
-        {
-            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
-            {
-                string query = "SELECT COUNT(*) FROM ItemMaster WHERE ProductCode = @ProductCode";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@ProductCode", productCode);
-                    conn.Open();
-                    int count = (int)cmd.ExecuteScalar();
-                    return count > 0;
-                }
-            }
-        }
-
         //========================================= BUTTONS =================================================
 
         private void CloseBtn_Click(object sender, EventArgs e)

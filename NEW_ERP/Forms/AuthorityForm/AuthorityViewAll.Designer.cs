@@ -60,7 +60,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(923, 30);
+            this.pictureBox3.Location = new System.Drawing.Point(560, 30);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(100, 100);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -109,7 +109,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.menuStrip1.BackColor = System.Drawing.Color.DarkMagenta;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1022, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(659, 24);
             this.menuStrip1.TabIndex = 2114;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -127,7 +127,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.AuthorityDataGridView.Name = "AuthorityDataGridView";
             this.AuthorityDataGridView.ReadOnly = true;
             this.AuthorityDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AuthorityDataGridView.Size = new System.Drawing.Size(1007, 457);
+            this.AuthorityDataGridView.Size = new System.Drawing.Size(644, 346);
             this.AuthorityDataGridView.TabIndex = 2121;
             // 
             // AuthorityNameBox
@@ -170,7 +170,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1022, 618);
+            this.ClientSize = new System.Drawing.Size(659, 507);
             this.Controls.Add(this.AuthorityNameBox);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.label2);

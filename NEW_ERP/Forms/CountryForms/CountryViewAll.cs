@@ -82,18 +82,26 @@ namespace NEW_ERP
             {
                 try
                 {
-                    string selectedCountryCode = CountryCodeBox.SelectedValue.ToString();
-                    conn.Open();
+                    if (CountryCodeBox.SelectedValue != null)
+                    {
+                        string selectedCountryCode = CountryCodeBox.SelectedValue.ToString();
+                        conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("sp_SearchCountryByCode", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@CountryCode", selectedCountryCode);
+                        SqlCommand cmd = new SqlCommand("sp_SearchCountryByCode", conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@CountryCode", selectedCountryCode);
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
 
-                    CountryDataGridView.DataSource = dt; 
+                        CountryDataGridView.DataSource = dt;
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Select any value");
+                    }
                 }
                 catch (Exception ex)
                 {

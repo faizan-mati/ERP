@@ -24,23 +24,6 @@ namespace NEW_ERP.Forms.ItemMaster
         private void ItemMasterForm_Load(object sender, EventArgs e)
         {
 
-            //Uplift the Muslim community educationally and socially.
-            //Promote modern education, especially English and science.
-            //Remove misunderstandings between Muslims and the British.
-            //Politically awaken the Muslims of India.
-
-
-            //Established Muhammadan Anglo - Oriental College(1875) in Aligarh(later became Aligarh Muslim University).
-            //Wrote articles/ books encouraging Muslims to get modern education.
-            //Advised Muslims not to join Congress in early years, as it was Hindu-dominated.
-
-
-            //It laid the foundation for Muslim nationalism.
-            //Helped Muslims regain confidence and identity.
-            //Paved the way for the Pakistan Movement.
-
-
-
         }
 
         //========================================= SUBMIT BUTTON =================================================

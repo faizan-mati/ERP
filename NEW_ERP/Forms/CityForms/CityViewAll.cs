@@ -92,12 +92,14 @@ namespace NEW_ERP.Forms.CityForms
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            int selectedCountryId = Convert.ToInt32(CityNameBox.SelectedValue);
 
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
                 try
                 {
+                    if (CityNameBox.SelectedValue != null)
+                    {
+                        int selectedCountryId = Convert.ToInt32(CityNameBox.SelectedValue);
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand("sp_GetCitiesByCountry", conn);
@@ -109,6 +111,12 @@ namespace NEW_ERP.Forms.CityForms
                     adapter.Fill(dt);
 
                     CityDataGridView.DataSource = dt;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Select any value");
+                    }
                 }
                 catch (Exception ex)
                 {

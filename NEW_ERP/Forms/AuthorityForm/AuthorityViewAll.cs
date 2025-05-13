@@ -82,12 +82,14 @@ namespace NEW_ERP.Forms.AuthorityForm
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            string AuthorityName = AuthorityNameBox.Text.Trim();
 
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
                 try
                 {
+                    if (AuthorityNameBox.SelectedValue != null)
+                    {
+                        string AuthorityName = AuthorityNameBox.Text.Trim();
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand("sp_SearchAuthorityMaster", conn);
@@ -99,6 +101,11 @@ namespace NEW_ERP.Forms.AuthorityForm
                     adapter.Fill(dt);
 
                     AuthorityDataGridView.DataSource = dt;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Select any value");
+                    }
                 }
                 catch (Exception ex)
                 {

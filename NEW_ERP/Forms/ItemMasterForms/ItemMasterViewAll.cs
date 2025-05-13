@@ -87,19 +87,27 @@ namespace NEW_ERP.Forms.ItemMasterForms
             {
                 try
                 {
-                    string selectedCode = ProductCodeBox.SelectedValue.ToString();
-                    conn.Open();
+                    if (ProductCodeBox.SelectedValue != null)
+                    {
 
-                    SqlCommand cmd = new SqlCommand("sp_SearchItemMaster", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                        string selectedCode = ProductCodeBox.SelectedValue.ToString();
+                        conn.Open();
 
-                    cmd.Parameters.AddWithValue("@ShortName", selectedCode);
+                        SqlCommand cmd = new SqlCommand("sp_SearchItemMaster", conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+                        cmd.Parameters.AddWithValue("@ShortName", selectedCode);
 
-                    ItemMasterDataGridView.DataSource = dt;
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        ItemMasterDataGridView.DataSource = dt;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Select any value");
+                    }
                 }
                 catch (Exception ex)
                 {

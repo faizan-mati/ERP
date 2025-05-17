@@ -159,10 +159,10 @@ namespace NEW_ERP.Forms.CountryForms
             this.isCheckedcheckbox.AutoSize = true;
             this.isCheckedcheckbox.Checked = true;
             this.isCheckedcheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.isCheckedcheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.isCheckedcheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.isCheckedcheckbox.Location = new System.Drawing.Point(211, 297);
             this.isCheckedcheckbox.Name = "isCheckedcheckbox";
-            this.isCheckedcheckbox.Size = new System.Drawing.Size(86, 20);
+            this.isCheckedcheckbox.Size = new System.Drawing.Size(107, 28);
             this.isCheckedcheckbox.TabIndex = 3;
             this.isCheckedcheckbox.Text = "Is Active";
             this.isCheckedcheckbox.UseVisualStyleBackColor = true;

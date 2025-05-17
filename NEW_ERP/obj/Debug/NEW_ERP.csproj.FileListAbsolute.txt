@@ -50,3 +50,4 @@ C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.AuthorityFo
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.AuthorityForm.AuthorityViewAll.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.AuthorityForm.AuthorityEdit.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.AuthorityForm.AuthorityDelete.resources
+C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.CustomerMaster.CustomerForm.resources

@@ -96,6 +96,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.CloseBtn.TabIndex = 2153;
             this.CloseBtn.Text = "EXIT";
             this.CloseBtn.UseVisualStyleBackColor = true;
+            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // label2
             // 

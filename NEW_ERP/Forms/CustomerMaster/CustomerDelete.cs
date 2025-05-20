@@ -240,6 +240,9 @@ namespace NEW_ERP.Forms.CustomerMaster
             isCheckedcheckbox.Checked = false;
         }
 
-
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

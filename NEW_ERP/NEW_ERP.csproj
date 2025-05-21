@@ -155,6 +155,24 @@
     <Compile Include="Forms\ItemMasterForms\ItemMasterViewAll.Designer.cs">
       <DependentUpon>ItemMasterViewAll.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SupplierType\SupplierTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SupplierType\SupplierTypeForm.Designer.cs">
+      <DependentUpon>SupplierTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SupplierType\SupplyTypeEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SupplierType\SupplyTypeEdit.Designer.cs">
+      <DependentUpon>SupplyTypeEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SupplierType\SupplyTypeViewAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SupplierType\SupplyTypeViewAll.Designer.cs">
+      <DependentUpon>SupplyTypeViewAll.cs</DependentUpon>
+    </Compile>
     <Compile Include="GernalClasses\AppConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -211,6 +229,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ItemMasterForms\ItemMasterViewAll.resx">
       <DependentUpon>ItemMasterViewAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SupplierType\SupplierTypeForm.resx">
+      <DependentUpon>SupplierTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SupplierType\SupplyTypeEdit.resx">
+      <DependentUpon>SupplyTypeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SupplierType\SupplyTypeViewAll.resx">
+      <DependentUpon>SupplyTypeViewAll.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

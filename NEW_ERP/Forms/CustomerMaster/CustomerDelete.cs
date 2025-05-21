@@ -244,5 +244,7 @@ namespace NEW_ERP.Forms.CustomerMaster
         {
             this.Close();
         }
+
+
     }
 }

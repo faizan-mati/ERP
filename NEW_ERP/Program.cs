@@ -5,6 +5,7 @@ using NEW_ERP.Forms.CountryForms;
 using NEW_ERP.Forms.CustomerMaster;
 using NEW_ERP.Forms.ItemMaster;
 using NEW_ERP.Forms.ItemMasterForms;
+using NEW_ERP.Forms.SupplierType;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace NEW_ERP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CustomerForm());
+            Application.Run(new SupplierTypeForm());
         }
     }
 }

@@ -63,6 +63,7 @@ namespace NEW_ERP.Forms.SupplierType
             this.DeleteBtn.TabIndex = 2102;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // EditBtn
             // 

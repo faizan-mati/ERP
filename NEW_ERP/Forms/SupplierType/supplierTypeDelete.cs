@@ -12,19 +12,17 @@ using System.Windows.Forms;
 
 namespace NEW_ERP.Forms.SupplierType
 {
-    public partial class SupplyTypeEdit : Form
+    public partial class supplierTypeDelete : Form
     {
-        public SupplyTypeEdit()
+        public supplierTypeDelete()
         {
             InitializeComponent();
         }
 
-        private void SupplyTypeEdit_Load(object sender, EventArgs e)
+        private void supplierTypeDelete_Load(object sender, EventArgs e)
         {
             SupplierCodeShow();
-            SatutsCodeShow();
         }
-
 
         //======================================= SUPPLIER CODE SHOW =======================================
 
@@ -47,29 +45,6 @@ namespace NEW_ERP.Forms.SupplierType
                 }
             }
         }
-
-
-        protected void SatutsCodeShow()
-        {
-            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
-            {
-                string query = @"SELECT DISTINCT StatusCode FROM SupplierTypeStatus;";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
-                    SatusCodeBox.DataSource = dt;
-                    SatusCodeBox.DisplayMember = "StatusCode";
-                    SatusCodeBox.ValueMember = "StatusCode";
-                    SatusCodeBox.SelectedIndex = -1;
-                }
-            }
-        }
-
-
 
         //======================================= SUPPLIER BOX CHANGE =======================================
 
@@ -107,13 +82,7 @@ namespace NEW_ERP.Forms.SupplierType
                         txtSupplierCode.Text = reader["SupplierTypeCode"].ToString();
                         txtSupplierDes.Text = reader["Description"].ToString();
                         txtSupplierRemarks.Text = reader["Remarks"].ToString();
-                        SatusCodeBox.SelectedValue = reader["StatusCode"].ToString();
-
-                        txtSupplierCode.ReadOnly = false;
-                        txtSupplierDes.ReadOnly = false;
-                        txtSupplierRemarks.ReadOnly = false;
-
-                        SatusCodeBox.Enabled = true;
+                        SatusCodeBox.Text = reader["StatusCode"].ToString();
 
                     }
                     else
@@ -126,56 +95,55 @@ namespace NEW_ERP.Forms.SupplierType
             }
         }
 
-        //======================================= UPDATE BUTTON =======================================
 
+        //======================================= DELETE BUTTON =======================================
 
-        private void UpdateBtn_Click(object sender, EventArgs e)
+        private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            if (SupplierCodeBox.SelectedValue == null)
+            if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                MessageBox.Show("Please select a Supplier Code code to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (isValidation())
-            {
-                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+                if (SupplierCodeBox.SelectedValue == null)
                 {
-                    try
+                    MessageBox.Show("Please select a product code to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (isValidation())
+                {
+
+                    using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                     {
-                        string selectedCode = SatusCodeBox.SelectedValue.ToString();
-                        string selectedSupplierCode = SupplierCodeBox.SelectedValue.ToString();
-
-                        conn.Open();
-
-                        SqlCommand cmd = new SqlCommand("sp_UpdateSupplierType", conn);
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        cmd.Parameters.AddWithValue("@SupplierTypeCode1", txtSupplierCode.Text.Trim());
-                        cmd.Parameters.AddWithValue("@SupplierTypeCode", selectedSupplierCode);
-                        cmd.Parameters.AddWithValue("@Description", txtSupplierDes.Text.Trim());
-                        cmd.Parameters.AddWithValue("@StatusCode", selectedCode);
-                        cmd.Parameters.AddWithValue("@Remarks", txtSupplierRemarks.Text.Trim());
-
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
+                        try
                         {
-                            MessageBox.Show("Supplu updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            conn.Open();
+
+                            SqlCommand cmd = new SqlCommand("sp_DeleteSupplierType", conn);
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.AddWithValue("@SupplierTypeCode", SupplierCodeBox.SelectedValue.ToString());
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
                             RestFormControler();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Item deleted successfully!", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                              
+                            }
+                            else
+                            {
+                                MessageBox.Show("Delete failed. No record found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            MessageBox.Show("Supplu failed. No rows affected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show("Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
-
 
 
         //======================================= FOR VALIDATION =======================================

@@ -131,7 +131,10 @@ namespace NEW_ERP.Forms.SupplierType
             NextForm.Show();
         }
 
-
-
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            supplierTypeDelete NextForm = new supplierTypeDelete();
+            NextForm.Show();
+        }
     }
 }

@@ -22,12 +22,12 @@ namespace NEW_ERP.Forms.SupplierType
         private void SupplyTypeViewAll_Load(object sender, EventArgs e)
         {
             SatutsCodeShow();
-            LoadCountryData();
+            LoadSupplierData();
         }
 
         //======================================= LOAD FORM FUNCTION =======================================
 
-        private void LoadCountryData()
+        private void LoadSupplierData()
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
@@ -52,7 +52,7 @@ namespace NEW_ERP.Forms.SupplierType
         }
 
 
-        //======================================= COUNTRY NAME SHOW =======================================
+        //======================================= STATUS CODE SHOW =======================================
 
         protected void SatutsCodeShow()
         {

@@ -446,6 +446,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             // 
             this.CustomerTypeBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CustomerTypeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CustomerTypeBox.Enabled = false;
             this.CustomerTypeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CustomerTypeBox.FormattingEnabled = true;
             this.CustomerTypeBox.Location = new System.Drawing.Point(157, 214);
@@ -458,6 +459,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             // 
             this.CityBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CityBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CityBox.Enabled = false;
             this.CityBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CityBox.FormattingEnabled = true;
             this.CityBox.Location = new System.Drawing.Point(531, 215);
@@ -470,6 +472,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             // 
             this.CountryBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CountryBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CountryBox.Enabled = false;
             this.CountryBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CountryBox.FormattingEnabled = true;
             this.CountryBox.Location = new System.Drawing.Point(531, 165);

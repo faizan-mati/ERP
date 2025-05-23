@@ -33,7 +33,7 @@ namespace NEW_ERP.Forms.SupplierMaster
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
-                string query = @"SELECT StatusCode, StatusDescription FROM SupplierTypeStatus";
+                string query = @"SELECT StatusCode, StatusDescription FROM Status";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {

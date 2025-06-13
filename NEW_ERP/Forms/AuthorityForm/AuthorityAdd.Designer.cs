@@ -1,7 +1,7 @@
 ﻿
 namespace NEW_ERP.Forms.AuthorityForm
 {
-    partial class AuthorityForm
+    partial class AuthorityAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,11 @@ namespace NEW_ERP.Forms.AuthorityForm
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorityForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorityAdd));
+            this.TxtAuthorityCode = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TxtStatusCode = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.TxtAuthorityRemarks = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.TxtAuthorityName = new System.Windows.Forms.TextBox();
@@ -45,59 +49,91 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label3 = new System.Windows.Forms.Label();
             this.LoginUserName = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.TxtStatusCode = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.TxtAuthorityCode = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
+            // 
+            // TxtAuthorityCode
+            // 
+            this.TxtAuthorityCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtAuthorityCode.Location = new System.Drawing.Point(208, 143);
+            this.TxtAuthorityCode.Name = "TxtAuthorityCode";
+            this.TxtAuthorityCode.Size = new System.Drawing.Size(259, 26);
+            this.TxtAuthorityCode.TabIndex = 2156;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(65, 146);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(138, 20);
+            this.label6.TabIndex = 2174;
+            this.label6.Text = "Authority Code :";
+            // 
+            // TxtStatusCode
+            // 
+            this.TxtStatusCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtStatusCode.Location = new System.Drawing.Point(208, 229);
+            this.TxtStatusCode.Name = "TxtStatusCode";
+            this.TxtStatusCode.Size = new System.Drawing.Size(259, 26);
+            this.TxtStatusCode.TabIndex = 2158;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(83, 232);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(119, 20);
+            this.label4.TabIndex = 2173;
+            this.label4.Text = "Status Code :";
             // 
             // TxtAuthorityRemarks
             // 
             this.TxtAuthorityRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtAuthorityRemarks.Location = new System.Drawing.Point(203, 275);
+            this.TxtAuthorityRemarks.Location = new System.Drawing.Point(208, 274);
             this.TxtAuthorityRemarks.Multiline = true;
             this.TxtAuthorityRemarks.Name = "TxtAuthorityRemarks";
             this.TxtAuthorityRemarks.Size = new System.Drawing.Size(259, 79);
-            this.TxtAuthorityRemarks.TabIndex = 4;
+            this.TxtAuthorityRemarks.TabIndex = 2159;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(104, 278);
+            this.label5.Location = new System.Drawing.Point(109, 277);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 20);
-            this.label5.TabIndex = 2152;
+            this.label5.TabIndex = 2172;
             this.label5.Text = "Remarks : ";
             // 
             // TxtAuthorityName
             // 
             this.TxtAuthorityName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtAuthorityName.Location = new System.Drawing.Point(203, 187);
+            this.TxtAuthorityName.Location = new System.Drawing.Point(208, 186);
             this.TxtAuthorityName.Name = "TxtAuthorityName";
             this.TxtAuthorityName.Size = new System.Drawing.Size(259, 26);
-            this.TxtAuthorityName.TabIndex = 2;
+            this.TxtAuthorityName.TabIndex = 2157;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(55, 188);
+            this.label2.Location = new System.Drawing.Point(60, 187);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 20);
-            this.label2.TabIndex = 2149;
+            this.label2.TabIndex = 2171;
             this.label2.Text = "Authority Name :";
             // 
             // DeleteBtn
             // 
             this.DeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteBtn.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.DeleteBtn.Location = new System.Drawing.Point(412, 431);
+            this.DeleteBtn.Location = new System.Drawing.Point(417, 430);
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(100, 31);
-            this.DeleteBtn.TabIndex = 2148;
+            this.DeleteBtn.TabIndex = 2170;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = true;
             this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
@@ -106,11 +142,11 @@ namespace NEW_ERP.Forms.AuthorityForm
             // 
             this.EditBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditBtn.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.EditBtn.Location = new System.Drawing.Point(306, 431);
+            this.EditBtn.Location = new System.Drawing.Point(311, 430);
             this.EditBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(100, 31);
-            this.EditBtn.TabIndex = 2147;
+            this.EditBtn.TabIndex = 2169;
             this.EditBtn.Text = "EDIT";
             this.EditBtn.UseVisualStyleBackColor = true;
             this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
@@ -119,11 +155,11 @@ namespace NEW_ERP.Forms.AuthorityForm
             // 
             this.ViewAllBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewAllBtn.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.ViewAllBtn.Location = new System.Drawing.Point(202, 431);
+            this.ViewAllBtn.Location = new System.Drawing.Point(207, 430);
             this.ViewAllBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ViewAllBtn.Name = "ViewAllBtn";
             this.ViewAllBtn.Size = new System.Drawing.Size(100, 31);
-            this.ViewAllBtn.TabIndex = 2146;
+            this.ViewAllBtn.TabIndex = 2168;
             this.ViewAllBtn.Text = "VIEW ALL";
             this.ViewAllBtn.UseVisualStyleBackColor = true;
             this.ViewAllBtn.Click += new System.EventHandler(this.ViewAllBtn_Click);
@@ -132,11 +168,11 @@ namespace NEW_ERP.Forms.AuthorityForm
             // 
             this.CloseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBtn.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.CloseBtn.Location = new System.Drawing.Point(306, 394);
+            this.CloseBtn.Location = new System.Drawing.Point(311, 393);
             this.CloseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(100, 31);
-            this.CloseBtn.TabIndex = 2145;
+            this.CloseBtn.TabIndex = 2167;
             this.CloseBtn.Text = "EXIT";
             this.CloseBtn.UseVisualStyleBackColor = true;
             this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
@@ -145,11 +181,11 @@ namespace NEW_ERP.Forms.AuthorityForm
             // 
             this.SubmitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitBtn.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.SubmitBtn.Location = new System.Drawing.Point(202, 394);
+            this.SubmitBtn.Location = new System.Drawing.Point(207, 393);
             this.SubmitBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.Size = new System.Drawing.Size(100, 31);
-            this.SubmitBtn.TabIndex = 2144;
+            this.SubmitBtn.TabIndex = 2166;
             this.SubmitBtn.Text = "SUBMIT";
             this.SubmitBtn.UseVisualStyleBackColor = true;
             this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
@@ -160,21 +196,21 @@ namespace NEW_ERP.Forms.AuthorityForm
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(119, 36);
+            this.label12.Location = new System.Drawing.Point(124, 35);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(254, 16);
-            this.label12.TabIndex = 2143;
+            this.label12.TabIndex = 2165;
             this.label12.Text = "AL-AMEERA  APPAREL  PVT.  LTD.";
             // 
             // pictureBox3
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(524, 36);
+            this.pictureBox3.Location = new System.Drawing.Point(529, 35);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(100, 100);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 2142;
+            this.pictureBox3.TabIndex = 2164;
             this.pictureBox3.TabStop = false;
             // 
             // label1
@@ -183,10 +219,10 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label1.BackColor = System.Drawing.Color.DarkMagenta;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(-1, 4);
+            this.label1.Location = new System.Drawing.Point(4, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(538, 20);
-            this.label1.TabIndex = 2141;
+            this.label1.TabIndex = 2163;
             this.label1.Text = "Welcome to the ERP system! Your efficiency powers our success. ";
             // 
             // label3
@@ -196,10 +232,10 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.label3.Location = new System.Drawing.Point(95, 52);
+            this.label3.Location = new System.Drawing.Point(100, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(292, 33);
-            this.label3.TabIndex = 2140;
+            this.label3.TabIndex = 2162;
             this.label3.Text = "AUTHORITY FORM";
             // 
             // LoginUserName
@@ -208,10 +244,10 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.LoginUserName.BackColor = System.Drawing.Color.DarkMagenta;
             this.LoginUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginUserName.ForeColor = System.Drawing.Color.White;
-            this.LoginUserName.Location = new System.Drawing.Point(533, 4);
+            this.LoginUserName.Location = new System.Drawing.Point(538, 3);
             this.LoginUserName.Name = "LoginUserName";
             this.LoginUserName.Size = new System.Drawing.Size(98, 20);
-            this.LoginUserName.TabIndex = 2139;
+            this.LoginUserName.TabIndex = 2161;
             this.LoginUserName.Text = "User Name";
             // 
             // menuStrip1
@@ -220,46 +256,10 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(659, 24);
-            this.menuStrip1.TabIndex = 2138;
+            this.menuStrip1.TabIndex = 2160;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // TxtStatusCode
-            // 
-            this.TxtStatusCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtStatusCode.Location = new System.Drawing.Point(203, 230);
-            this.TxtStatusCode.Name = "TxtStatusCode";
-            this.TxtStatusCode.Size = new System.Drawing.Size(259, 26);
-            this.TxtStatusCode.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(78, 233);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 20);
-            this.label4.TabIndex = 2153;
-            this.label4.Text = "Status Code :";
-            // 
-            // TxtAuthorityCode
-            // 
-            this.TxtAuthorityCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtAuthorityCode.Location = new System.Drawing.Point(203, 144);
-            this.TxtAuthorityCode.Name = "TxtAuthorityCode";
-            this.TxtAuthorityCode.Size = new System.Drawing.Size(259, 26);
-            this.TxtAuthorityCode.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(60, 147);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(138, 20);
-            this.label6.TabIndex = 2155;
-            this.label6.Text = "Authority Code :";
-            // 
-            // AuthorityForm
+            // AuthorityAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -284,9 +284,9 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.Controls.Add(this.label3);
             this.Controls.Add(this.LoginUserName);
             this.Controls.Add(this.menuStrip1);
-            this.Name = "AuthorityForm";
+            this.Name = "AuthorityAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AuthorityForm";
+            this.Text = "AuthorityAdd";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -295,6 +295,10 @@ namespace NEW_ERP.Forms.AuthorityForm
 
         #endregion
 
+        private System.Windows.Forms.TextBox TxtAuthorityCode;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox TxtStatusCode;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TxtAuthorityRemarks;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxtAuthorityName;
@@ -310,9 +314,5 @@ namespace NEW_ERP.Forms.AuthorityForm
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label LoginUserName;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.TextBox TxtStatusCode;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TxtAuthorityCode;
-        private System.Windows.Forms.Label label6;
     }
 }

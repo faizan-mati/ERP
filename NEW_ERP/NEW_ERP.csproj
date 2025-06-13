@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AuthorityForm\AuthorityAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorityForm\AuthorityAdd.Designer.cs">
+      <DependentUpon>AuthorityAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AuthorityForm\AuthorityDelete.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,12 +64,6 @@
     </Compile>
     <Compile Include="Forms\AuthorityForm\AuthorityEdit.Designer.cs">
       <DependentUpon>AuthorityEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\AuthorityForm\AuthorityForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AuthorityForm\AuthorityForm.Designer.cs">
-      <DependentUpon>AuthorityForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AuthorityForm\AuthorityViewAll.cs">
       <SubType>Form</SubType>
@@ -130,6 +130,12 @@
     </Compile>
     <Compile Include="Forms\CustomerMaster\CustomerViewAll.Designer.cs">
       <DependentUpon>CustomerViewAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dashboard\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dashboard\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ItemMasterForms\ItemMasterDelete.cs">
       <SubType>Form</SubType>
@@ -206,14 +212,14 @@
     <Compile Include="GernalClasses\AppConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AuthorityForm\AuthorityAdd.resx">
+      <DependentUpon>AuthorityAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorityForm\AuthorityDelete.resx">
       <DependentUpon>AuthorityDelete.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorityForm\AuthorityEdit.resx">
       <DependentUpon>AuthorityEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AuthorityForm\AuthorityForm.resx">
-      <DependentUpon>AuthorityForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorityForm\AuthorityViewAll.resx">
       <DependentUpon>AuthorityViewAll.cs</DependentUpon>
@@ -247,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerMaster\CustomerViewAll.resx">
       <DependentUpon>CustomerViewAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dashboard\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ItemMasterForms\ItemMasterDelete.resx">
       <DependentUpon>ItemMasterDelete.cs</DependentUpon>

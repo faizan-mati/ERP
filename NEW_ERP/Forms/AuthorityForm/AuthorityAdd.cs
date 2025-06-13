@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace NEW_ERP.Forms.AuthorityForm
 {
-    public partial class AuthorityForm : Form
+    public partial class AuthorityAdd : Form
     {
-        public AuthorityForm()
+        public AuthorityAdd()
         {
             InitializeComponent();
         }
@@ -81,6 +81,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             TxtAuthorityRemarks.Clear();
 
         }
+
 
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {

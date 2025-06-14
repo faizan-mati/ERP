@@ -102,6 +102,8 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
+        //=================================== SUBMIT BUTTON =======================================
+
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
             if (isValidation())
@@ -166,7 +168,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        //======================================= FOR VALIDATION =======================================
+        //======================================= FORM VALIDATION =======================================
 
         private bool isValidation()
         {

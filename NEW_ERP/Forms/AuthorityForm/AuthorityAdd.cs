@@ -82,6 +82,7 @@ namespace NEW_ERP.Forms.AuthorityForm
 
         }
 
+        //========================================== BUTTONS =======================================
 
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {

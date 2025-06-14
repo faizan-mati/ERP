@@ -137,7 +137,7 @@ namespace NEW_ERP.Forms.Dashboard
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(126, 882);
+            this.menuStrip1.Size = new System.Drawing.Size(93, 882);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -176,6 +176,7 @@ namespace NEW_ERP.Forms.Dashboard
             // 
             // panel3
             // 
+            this.panel3.AutoScroll = true;
             this.panel3.Location = new System.Drawing.Point(215, 62);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1176, 870);
@@ -183,6 +184,7 @@ namespace NEW_ERP.Forms.Dashboard
             // 
             // panel4
             // 
+            this.panel4.AutoScroll = true;
             this.panel4.Location = new System.Drawing.Point(234, 68);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1130, 851);
@@ -192,6 +194,7 @@ namespace NEW_ERP.Forms.Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1376, 944);
             this.Controls.Add(this.panel2);

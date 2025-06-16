@@ -65,10 +65,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.LoginUserName = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,28 +134,34 @@ namespace NEW_ERP.Forms.CustomerMaster
             // 
             // CloseBtn
             // 
+            this.CloseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.CloseBtn.FlatAppearance.BorderSize = 0;
+            this.CloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CloseBtn.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.CloseBtn.ForeColor = System.Drawing.Color.White;
             this.CloseBtn.Location = new System.Drawing.Point(255, 545);
             this.CloseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(100, 31);
             this.CloseBtn.TabIndex = 2169;
             this.CloseBtn.Text = "EXIT";
-            this.CloseBtn.UseVisualStyleBackColor = true;
+            this.CloseBtn.UseVisualStyleBackColor = false;
             this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // UpdateBtn
             // 
+            this.UpdateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.UpdateBtn.FlatAppearance.BorderSize = 0;
+            this.UpdateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateBtn.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.UpdateBtn.ForeColor = System.Drawing.Color.White;
             this.UpdateBtn.Location = new System.Drawing.Point(151, 545);
             this.UpdateBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(100, 31);
             this.UpdateBtn.TabIndex = 2168;
             this.UpdateBtn.Text = "UPDATE";
-            this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.UseVisualStyleBackColor = false;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // isCheckedcheckbox
@@ -427,26 +430,14 @@ namespace NEW_ERP.Forms.CustomerMaster
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(823, 38);
+            this.pictureBox3.Location = new System.Drawing.Point(823, 12);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(100, 100);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 2177;
             this.pictureBox3.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.DarkMagenta;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(538, 20);
-            this.label1.TabIndex = 2176;
-            this.label1.Text = "Welcome to the ERP system! Your efficiency powers our success. ";
             // 
             // label3
             // 
@@ -461,32 +452,11 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.label3.TabIndex = 2175;
             this.label3.Text = "CUSTOMER MASTER EDIT";
             // 
-            // LoginUserName
-            // 
-            this.LoginUserName.AutoSize = true;
-            this.LoginUserName.BackColor = System.Drawing.Color.DarkMagenta;
-            this.LoginUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginUserName.ForeColor = System.Drawing.Color.White;
-            this.LoginUserName.Location = new System.Drawing.Point(546, 2);
-            this.LoginUserName.Name = "LoginUserName";
-            this.LoginUserName.Size = new System.Drawing.Size(98, 20);
-            this.LoginUserName.TabIndex = 2174;
-            this.LoginUserName.Text = "User Name";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.Color.DarkMagenta;
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(935, 24);
-            this.menuStrip1.TabIndex = 2173;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // CustomerEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(935, 626);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CustomerCodeBox);
@@ -523,10 +493,8 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.LoginUserName);
-            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CustomerEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerEdit";
@@ -574,9 +542,6 @@ namespace NEW_ERP.Forms.CustomerMaster
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label LoginUserName;
-        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

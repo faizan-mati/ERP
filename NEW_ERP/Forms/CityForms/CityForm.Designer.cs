@@ -40,10 +40,7 @@ namespace NEW_ERP.Forms.CityForms
             this.label6 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.LoginUserName = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.label2 = new System.Windows.Forms.Label();
             this.CountryCodeBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -51,65 +48,80 @@ namespace NEW_ERP.Forms.CityForms
             // 
             // DeleteBtn
             // 
+            this.DeleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.DeleteBtn.FlatAppearance.BorderSize = 0;
+            this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteBtn.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.DeleteBtn.ForeColor = System.Drawing.Color.White;
             this.DeleteBtn.Location = new System.Drawing.Point(418, 407);
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(100, 31);
             this.DeleteBtn.TabIndex = 8;
             this.DeleteBtn.Text = "DELETE";
-            this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.UseVisualStyleBackColor = false;
             // 
             // EditBtn
             // 
+            this.EditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.EditBtn.FlatAppearance.BorderSize = 0;
+            this.EditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditBtn.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.EditBtn.ForeColor = System.Drawing.Color.White;
             this.EditBtn.Location = new System.Drawing.Point(312, 407);
             this.EditBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(100, 31);
             this.EditBtn.TabIndex = 7;
             this.EditBtn.Text = "EDIT";
-            this.EditBtn.UseVisualStyleBackColor = true;
+            this.EditBtn.UseVisualStyleBackColor = false;
             // 
             // ViewAllBtn
             // 
+            this.ViewAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.ViewAllBtn.FlatAppearance.BorderSize = 0;
+            this.ViewAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ViewAllBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewAllBtn.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.ViewAllBtn.ForeColor = System.Drawing.Color.White;
             this.ViewAllBtn.Location = new System.Drawing.Point(208, 407);
             this.ViewAllBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ViewAllBtn.Name = "ViewAllBtn";
             this.ViewAllBtn.Size = new System.Drawing.Size(100, 31);
             this.ViewAllBtn.TabIndex = 6;
             this.ViewAllBtn.Text = "VIEW ALL";
-            this.ViewAllBtn.UseVisualStyleBackColor = true;
+            this.ViewAllBtn.UseVisualStyleBackColor = false;
             this.ViewAllBtn.Click += new System.EventHandler(this.ViewAllBtn_Click);
             // 
             // CloseBtn
             // 
+            this.CloseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.CloseBtn.FlatAppearance.BorderSize = 0;
+            this.CloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CloseBtn.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.CloseBtn.ForeColor = System.Drawing.Color.White;
             this.CloseBtn.Location = new System.Drawing.Point(312, 370);
             this.CloseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(100, 31);
             this.CloseBtn.TabIndex = 5;
             this.CloseBtn.Text = "EXIT";
-            this.CloseBtn.UseVisualStyleBackColor = true;
+            this.CloseBtn.UseVisualStyleBackColor = false;
             this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // SubmitBtn
             // 
+            this.SubmitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.SubmitBtn.FlatAppearance.BorderSize = 0;
+            this.SubmitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubmitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SubmitBtn.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.SubmitBtn.ForeColor = System.Drawing.Color.White;
             this.SubmitBtn.Location = new System.Drawing.Point(208, 370);
             this.SubmitBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.Size = new System.Drawing.Size(100, 31);
             this.SubmitBtn.TabIndex = 4;
             this.SubmitBtn.Text = "SUBMIT";
-            this.SubmitBtn.UseVisualStyleBackColor = true;
+            this.SubmitBtn.UseVisualStyleBackColor = false;
             this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
             // 
             // isCheckedcheckbox
@@ -137,6 +149,7 @@ namespace NEW_ERP.Forms.CityForms
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.label6.Location = new System.Drawing.Point(102, 224);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 20);
@@ -149,6 +162,7 @@ namespace NEW_ERP.Forms.CityForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.label12.Location = new System.Drawing.Point(124, 34);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(254, 16);
@@ -157,7 +171,7 @@ namespace NEW_ERP.Forms.CityForms
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(529, 34);
             this.pictureBox3.Name = "pictureBox3";
@@ -166,56 +180,24 @@ namespace NEW_ERP.Forms.CityForms
             this.pictureBox3.TabIndex = 2100;
             this.pictureBox3.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.DarkMagenta;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(4, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(538, 20);
-            this.label1.TabIndex = 2099;
-            this.label1.Text = "Welcome to the ERP system! Your efficiency powers our success. ";
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.label3.Location = new System.Drawing.Point(144, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(185, 33);
             this.label3.TabIndex = 2098;
             this.label3.Text = "CITY FORM";
             // 
-            // LoginUserName
-            // 
-            this.LoginUserName.AutoSize = true;
-            this.LoginUserName.BackColor = System.Drawing.Color.DarkMagenta;
-            this.LoginUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginUserName.ForeColor = System.Drawing.Color.White;
-            this.LoginUserName.Location = new System.Drawing.Point(538, 2);
-            this.LoginUserName.Name = "LoginUserName";
-            this.LoginUserName.Size = new System.Drawing.Size(98, 20);
-            this.LoginUserName.TabIndex = 2097;
-            this.LoginUserName.Text = "User Name";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.Color.DarkMagenta;
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(659, 24);
-            this.menuStrip1.TabIndex = 2096;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.label2.Location = new System.Drawing.Point(70, 175);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(132, 20);
@@ -238,7 +220,7 @@ namespace NEW_ERP.Forms.CityForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(659, 507);
             this.Controls.Add(this.CountryCodeBox);
             this.Controls.Add(this.label2);
@@ -252,10 +234,9 @@ namespace NEW_ERP.Forms.CityForms
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.LoginUserName);
-            this.Controls.Add(this.menuStrip1);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CityForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CityForm";
@@ -278,10 +259,7 @@ namespace NEW_ERP.Forms.CityForms
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label LoginUserName;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.ComboBox CountryCodeBox;
     }

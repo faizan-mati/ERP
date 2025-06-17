@@ -52,7 +52,7 @@ namespace NEW_ERP.Forms.Dashboard
 
         bool menuExpand = false;
 
-        int maxHeight = 290;
+        int maxHeight = 300;
         int minHeight = 46;
 
         private void menuTransition_Tick(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace NEW_ERP.Forms.Dashboard
             if (menuExpand)
             {
                 // Collapse
-                StepUpMenuContainer.Height -= 290;
+                StepUpMenuContainer.Height -= 300;
                 if (StepUpMenuContainer.Height <= minHeight)
                 {
                     menuTransition.Stop();
@@ -70,7 +70,7 @@ namespace NEW_ERP.Forms.Dashboard
             else
             {
                 // Expand
-                StepUpMenuContainer.Height += 290;
+                StepUpMenuContainer.Height += 300;
                 if (StepUpMenuContainer.Height >= maxHeight)
                 {
                     menuTransition.Stop();
@@ -122,6 +122,11 @@ namespace NEW_ERP.Forms.Dashboard
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ReportBtn_Click(object sender, EventArgs e)
         {
 
         }

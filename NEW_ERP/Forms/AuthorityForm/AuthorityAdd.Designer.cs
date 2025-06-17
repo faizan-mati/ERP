@@ -42,17 +42,18 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.EditBtn = new System.Windows.Forms.Button();
             this.ViewAllBtn = new System.Windows.Forms.Button();
             this.CloseBtn = new System.Windows.Forms.Button();
-            this.SubmitBtn = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.BtnGroupBox = new System.Windows.Forms.GroupBox();
+            this.SubmitBtn = new System.Windows.Forms.Button();
+            this.FormGroupBox = new System.Windows.Forms.GroupBox();
+            this.BtnGroupBox.SuspendLayout();
+            this.FormGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // TxtAuthorityCode
             // 
             this.TxtAuthorityCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtAuthorityCode.Location = new System.Drawing.Point(208, 143);
+            this.TxtAuthorityCode.Location = new System.Drawing.Point(163, 89);
             this.TxtAuthorityCode.Name = "TxtAuthorityCode";
             this.TxtAuthorityCode.Size = new System.Drawing.Size(259, 26);
             this.TxtAuthorityCode.TabIndex = 2156;
@@ -62,7 +63,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label6.Location = new System.Drawing.Point(65, 146);
+            this.label6.Location = new System.Drawing.Point(20, 92);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(138, 20);
             this.label6.TabIndex = 2174;
@@ -71,7 +72,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             // TxtStatusCode
             // 
             this.TxtStatusCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtStatusCode.Location = new System.Drawing.Point(208, 229);
+            this.TxtStatusCode.Location = new System.Drawing.Point(163, 175);
             this.TxtStatusCode.Name = "TxtStatusCode";
             this.TxtStatusCode.Size = new System.Drawing.Size(259, 26);
             this.TxtStatusCode.TabIndex = 2158;
@@ -81,7 +82,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label4.Location = new System.Drawing.Point(83, 232);
+            this.label4.Location = new System.Drawing.Point(38, 178);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 20);
             this.label4.TabIndex = 2173;
@@ -90,7 +91,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             // TxtAuthorityRemarks
             // 
             this.TxtAuthorityRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtAuthorityRemarks.Location = new System.Drawing.Point(208, 274);
+            this.TxtAuthorityRemarks.Location = new System.Drawing.Point(163, 220);
             this.TxtAuthorityRemarks.Multiline = true;
             this.TxtAuthorityRemarks.Name = "TxtAuthorityRemarks";
             this.TxtAuthorityRemarks.Size = new System.Drawing.Size(259, 79);
@@ -101,7 +102,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label5.Location = new System.Drawing.Point(109, 277);
+            this.label5.Location = new System.Drawing.Point(64, 223);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 20);
             this.label5.TabIndex = 2172;
@@ -110,7 +111,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             // TxtAuthorityName
             // 
             this.TxtAuthorityName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtAuthorityName.Location = new System.Drawing.Point(208, 186);
+            this.TxtAuthorityName.Location = new System.Drawing.Point(163, 132);
             this.TxtAuthorityName.Name = "TxtAuthorityName";
             this.TxtAuthorityName.Size = new System.Drawing.Size(259, 26);
             this.TxtAuthorityName.TabIndex = 2157;
@@ -120,7 +121,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label2.Location = new System.Drawing.Point(60, 187);
+            this.label2.Location = new System.Drawing.Point(15, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 20);
             this.label2.TabIndex = 2171;
@@ -133,10 +134,12 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteBtn.ForeColor = System.Drawing.Color.White;
-            this.DeleteBtn.Location = new System.Drawing.Point(417, 430);
+            this.DeleteBtn.Image = ((System.Drawing.Image)(resources.GetObject("DeleteBtn.Image")));
+            this.DeleteBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DeleteBtn.Location = new System.Drawing.Point(482, 19);
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(100, 31);
+            this.DeleteBtn.Size = new System.Drawing.Size(126, 31);
             this.DeleteBtn.TabIndex = 2170;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = false;
@@ -149,7 +152,9 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.EditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditBtn.ForeColor = System.Drawing.Color.White;
-            this.EditBtn.Location = new System.Drawing.Point(311, 430);
+            this.EditBtn.Image = ((System.Drawing.Image)(resources.GetObject("EditBtn.Image")));
+            this.EditBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EditBtn.Location = new System.Drawing.Point(377, 19);
             this.EditBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(100, 31);
@@ -165,10 +170,12 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.ViewAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ViewAllBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewAllBtn.ForeColor = System.Drawing.Color.White;
-            this.ViewAllBtn.Location = new System.Drawing.Point(207, 430);
+            this.ViewAllBtn.Image = ((System.Drawing.Image)(resources.GetObject("ViewAllBtn.Image")));
+            this.ViewAllBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ViewAllBtn.Location = new System.Drawing.Point(240, 19);
             this.ViewAllBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ViewAllBtn.Name = "ViewAllBtn";
-            this.ViewAllBtn.Size = new System.Drawing.Size(100, 31);
+            this.ViewAllBtn.Size = new System.Drawing.Size(131, 31);
             this.ViewAllBtn.TabIndex = 2168;
             this.ViewAllBtn.Text = "VIEW ALL";
             this.ViewAllBtn.UseVisualStyleBackColor = false;
@@ -181,7 +188,9 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.CloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBtn.ForeColor = System.Drawing.Color.White;
-            this.CloseBtn.Location = new System.Drawing.Point(311, 393);
+            this.CloseBtn.Image = ((System.Drawing.Image)(resources.GetObject("CloseBtn.Image")));
+            this.CloseBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CloseBtn.Location = new System.Drawing.Point(136, 19);
             this.CloseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(100, 31);
@@ -190,46 +199,6 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.CloseBtn.UseVisualStyleBackColor = false;
             this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
-            // SubmitBtn
-            // 
-            this.SubmitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.SubmitBtn.FlatAppearance.BorderSize = 0;
-            this.SubmitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubmitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SubmitBtn.ForeColor = System.Drawing.Color.White;
-            this.SubmitBtn.Location = new System.Drawing.Point(207, 393);
-            this.SubmitBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.SubmitBtn.Name = "SubmitBtn";
-            this.SubmitBtn.Size = new System.Drawing.Size(100, 31);
-            this.SubmitBtn.TabIndex = 2166;
-            this.SubmitBtn.Text = "SUBMIT";
-            this.SubmitBtn.UseVisualStyleBackColor = false;
-            this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label12.Location = new System.Drawing.Point(124, 35);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(254, 16);
-            this.label12.TabIndex = 2165;
-            this.label12.Text = "AL-AMEERA  APPAREL  PVT.  LTD.";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(529, 35);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 2164;
-            this.pictureBox3.TabStop = false;
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -237,41 +206,78 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.label3.Location = new System.Drawing.Point(100, 51);
+            this.label3.Location = new System.Drawing.Point(18, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(292, 33);
             this.label3.TabIndex = 2162;
             this.label3.Text = "AUTHORITY FORM";
+            // 
+            // BtnGroupBox
+            // 
+            this.BtnGroupBox.Controls.Add(this.ViewAllBtn);
+            this.BtnGroupBox.Controls.Add(this.SubmitBtn);
+            this.BtnGroupBox.Controls.Add(this.CloseBtn);
+            this.BtnGroupBox.Controls.Add(this.EditBtn);
+            this.BtnGroupBox.Controls.Add(this.DeleteBtn);
+            this.BtnGroupBox.Location = new System.Drawing.Point(8, 10);
+            this.BtnGroupBox.Name = "BtnGroupBox";
+            this.BtnGroupBox.Size = new System.Drawing.Size(625, 58);
+            this.BtnGroupBox.TabIndex = 2175;
+            this.BtnGroupBox.TabStop = false;
+            this.BtnGroupBox.Text = "BUTTONS";
+            // 
+            // SubmitBtn
+            // 
+            this.SubmitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.SubmitBtn.FlatAppearance.BorderSize = 0;
+            this.SubmitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SubmitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitBtn.ForeColor = System.Drawing.Color.White;
+            this.SubmitBtn.Image = ((System.Drawing.Image)(resources.GetObject("SubmitBtn.Image")));
+            this.SubmitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SubmitBtn.Location = new System.Drawing.Point(9, 19);
+            this.SubmitBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.SubmitBtn.Name = "SubmitBtn";
+            this.SubmitBtn.Size = new System.Drawing.Size(122, 31);
+            this.SubmitBtn.TabIndex = 2166;
+            this.SubmitBtn.Text = "SUBMIT";
+            this.SubmitBtn.UseVisualStyleBackColor = false;
+            this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
+            // 
+            // FormGroupBox
+            // 
+            this.FormGroupBox.Controls.Add(this.label3);
+            this.FormGroupBox.Controls.Add(this.TxtAuthorityCode);
+            this.FormGroupBox.Controls.Add(this.label2);
+            this.FormGroupBox.Controls.Add(this.label6);
+            this.FormGroupBox.Controls.Add(this.TxtAuthorityName);
+            this.FormGroupBox.Controls.Add(this.TxtStatusCode);
+            this.FormGroupBox.Controls.Add(this.label5);
+            this.FormGroupBox.Controls.Add(this.label4);
+            this.FormGroupBox.Controls.Add(this.TxtAuthorityRemarks);
+            this.FormGroupBox.Location = new System.Drawing.Point(8, 84);
+            this.FormGroupBox.Name = "FormGroupBox";
+            this.FormGroupBox.Size = new System.Drawing.Size(461, 329);
+            this.FormGroupBox.TabIndex = 2176;
+            this.FormGroupBox.TabStop = false;
+            this.FormGroupBox.Text = "FORM INPUTS";
             // 
             // AuthorityAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(659, 507);
-            this.Controls.Add(this.TxtAuthorityCode);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.TxtStatusCode);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.TxtAuthorityRemarks);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.TxtAuthorityName);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.DeleteBtn);
-            this.Controls.Add(this.EditBtn);
-            this.Controls.Add(this.ViewAllBtn);
-            this.Controls.Add(this.CloseBtn);
-            this.Controls.Add(this.SubmitBtn);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(670, 507);
+            this.Controls.Add(this.BtnGroupBox);
+            this.Controls.Add(this.FormGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AuthorityAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AuthorityAdd";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.BtnGroupBox.ResumeLayout(false);
+            this.FormGroupBox.ResumeLayout(false);
+            this.FormGroupBox.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -290,8 +296,8 @@ namespace NEW_ERP.Forms.AuthorityForm
         public System.Windows.Forms.Button ViewAllBtn;
         public System.Windows.Forms.Button CloseBtn;
         public System.Windows.Forms.Button SubmitBtn;
-        private System.Windows.Forms.Label label12;
-        public System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox BtnGroupBox;
+        private System.Windows.Forms.GroupBox FormGroupBox;
     }
 }

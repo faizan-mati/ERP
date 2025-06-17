@@ -31,13 +31,10 @@ namespace NEW_ERP.Forms.CityForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CityViewAll));
             this.CityNameBox = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.CityDataGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CityDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,35 +44,11 @@ namespace NEW_ERP.Forms.CityForms
             this.CityNameBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CityNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CityNameBox.FormattingEnabled = true;
-            this.CityNameBox.Location = new System.Drawing.Point(228, 110);
+            this.CityNameBox.Location = new System.Drawing.Point(190, 114);
             this.CityNameBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CityNameBox.Name = "CityNameBox";
             this.CityNameBox.Size = new System.Drawing.Size(155, 24);
             this.CityNameBox.TabIndex = 1;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label12.Location = new System.Drawing.Point(120, 36);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(254, 16);
-            this.label12.TabIndex = 2110;
-            this.label12.Text = "AL-AMEERA  APPAREL  PVT.  LTD.";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(548, 30);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 2109;
-            this.pictureBox3.TabStop = false;
             // 
             // label3
             // 
@@ -84,7 +57,7 @@ namespace NEW_ERP.Forms.CityForms
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.label3.Location = new System.Drawing.Point(126, 53);
+            this.label3.Location = new System.Drawing.Point(12, 57);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(235, 33);
             this.label3.TabIndex = 2107;
@@ -97,10 +70,12 @@ namespace NEW_ERP.Forms.CityForms
             this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBtn.ForeColor = System.Drawing.Color.White;
-            this.SearchBtn.Location = new System.Drawing.Point(390, 105);
+            this.SearchBtn.Image = ((System.Drawing.Image)(resources.GetObject("SearchBtn.Image")));
+            this.SearchBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SearchBtn.Location = new System.Drawing.Point(352, 109);
             this.SearchBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(116, 32);
+            this.SearchBtn.Size = new System.Drawing.Size(129, 32);
             this.SearchBtn.TabIndex = 2;
             this.SearchBtn.Text = "SEARCH";
             this.SearchBtn.UseVisualStyleBackColor = false;
@@ -111,7 +86,7 @@ namespace NEW_ERP.Forms.CityForms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label2.Location = new System.Drawing.Point(55, 111);
+            this.label2.Location = new System.Drawing.Point(17, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(166, 20);
             this.label2.TabIndex = 2103;
@@ -142,17 +117,13 @@ namespace NEW_ERP.Forms.CityForms
             this.ClientSize = new System.Drawing.Size(659, 507);
             this.Controls.Add(this.CityDataGridView);
             this.Controls.Add(this.CityNameBox);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.label2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CityViewAll";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CityViewAll";
             this.Load += new System.EventHandler(this.CityViewAll_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CityDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -162,8 +133,6 @@ namespace NEW_ERP.Forms.CityForms
         #endregion
 
         public System.Windows.Forms.ComboBox CityNameBox;
-        private System.Windows.Forms.Label label12;
-        public System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Label label2;

@@ -63,3 +63,6 @@ C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierMas
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierMaster.SupplierViewAll.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.AuthorityForm.AuthorityAdd.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.Dashboard.MainDashboard.resources
+C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Template.AddFormTemplate.resources
+C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Template.DeleteFormTemplate.resources
+C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Template.EditFormTemplate.resources

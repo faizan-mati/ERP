@@ -94,11 +94,11 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.label3.Location = new System.Drawing.Point(1, 31);
+            this.label3.Location = new System.Drawing.Point(303, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(423, 33);
+            this.label3.Size = new System.Drawing.Size(314, 25);
             this.label3.TabIndex = 2076;
             this.label3.Text = "CUSTOMER MASTER FORM";
             // 

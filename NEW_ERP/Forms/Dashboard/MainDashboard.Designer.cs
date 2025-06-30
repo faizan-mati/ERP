@@ -35,31 +35,32 @@ namespace NEW_ERP.Forms.Dashboard
             this.label2 = new System.Windows.Forms.Label();
             this.LoginUserName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.StepUpMenuContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.SetUpBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.AuthorityBtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.CountryBtn = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.CityBtn = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.CustomerBtn = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.SupplierMasterBtn = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.SuppliertypeBtn = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.ItemBtn = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.ReportBtn = new System.Windows.Forms.Button();
             this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.ChlidPanel = new System.Windows.Forms.Panel();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.SetUpBtn = new System.Windows.Forms.Button();
-            this.AuthorityBtn = new System.Windows.Forms.Button();
-            this.CountryBtn = new System.Windows.Forms.Button();
-            this.CityBtn = new System.Windows.Forms.Button();
-            this.CustomerBtn = new System.Windows.Forms.Button();
-            this.SupplierMasterBtn = new System.Windows.Forms.Button();
-            this.SuppliertypeBtn = new System.Windows.Forms.Button();
-            this.ItemBtn = new System.Windows.Forms.Button();
-            this.ReportBtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.StepUpMenuContainer.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -72,7 +73,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel10.SuspendLayout();
             this.panel5.SuspendLayout();
             this.MainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -85,7 +85,7 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1376, 45);
+            this.panel1.Size = new System.Drawing.Size(1425, 45);
             this.panel1.TabIndex = 0;
             // 
             // label2
@@ -123,8 +123,19 @@ namespace NEW_ERP.Forms.Dashboard
             this.label1.TabIndex = 3;
             this.label1.Text = "MENU";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(10, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 39);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(36)))), ((int)(((byte)(48)))));
             this.flowLayoutPanel1.Controls.Add(this.StepUpMenuContainer);
             this.flowLayoutPanel1.Controls.Add(this.panel5);
@@ -163,6 +174,25 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel4.Size = new System.Drawing.Size(250, 36);
             this.panel4.TabIndex = 4;
             // 
+            // SetUpBtn
+            // 
+            this.SetUpBtn.AutoSize = true;
+            this.SetUpBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.SetUpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SetUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SetUpBtn.ForeColor = System.Drawing.Color.White;
+            this.SetUpBtn.Image = ((System.Drawing.Image)(resources.GetObject("SetUpBtn.Image")));
+            this.SetUpBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SetUpBtn.Location = new System.Drawing.Point(-2, 0);
+            this.SetUpBtn.Name = "SetUpBtn";
+            this.SetUpBtn.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.SetUpBtn.Size = new System.Drawing.Size(252, 39);
+            this.SetUpBtn.TabIndex = 3;
+            this.SetUpBtn.Text = "     Set Up Form";
+            this.SetUpBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SetUpBtn.UseVisualStyleBackColor = false;
+            this.SetUpBtn.Click += new System.EventHandler(this.SetUpBtn_Click_1);
+            // 
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -173,6 +203,25 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(250, 36);
             this.panel2.TabIndex = 5;
+            // 
+            // AuthorityBtn
+            // 
+            this.AuthorityBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AuthorityBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.AuthorityBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AuthorityBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AuthorityBtn.ForeColor = System.Drawing.Color.White;
+            this.AuthorityBtn.Image = ((System.Drawing.Image)(resources.GetObject("AuthorityBtn.Image")));
+            this.AuthorityBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AuthorityBtn.Location = new System.Drawing.Point(-2, -3);
+            this.AuthorityBtn.Name = "AuthorityBtn";
+            this.AuthorityBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.AuthorityBtn.Size = new System.Drawing.Size(252, 39);
+            this.AuthorityBtn.TabIndex = 3;
+            this.AuthorityBtn.Text = "     Authority Form";
+            this.AuthorityBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AuthorityBtn.UseVisualStyleBackColor = false;
+            this.AuthorityBtn.Click += new System.EventHandler(this.AuthorityBtn_Click);
             // 
             // panel3
             // 
@@ -185,6 +234,25 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel3.Size = new System.Drawing.Size(250, 36);
             this.panel3.TabIndex = 6;
             // 
+            // CountryBtn
+            // 
+            this.CountryBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CountryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.CountryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CountryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CountryBtn.ForeColor = System.Drawing.Color.White;
+            this.CountryBtn.Image = ((System.Drawing.Image)(resources.GetObject("CountryBtn.Image")));
+            this.CountryBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CountryBtn.Location = new System.Drawing.Point(-2, -3);
+            this.CountryBtn.Name = "CountryBtn";
+            this.CountryBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.CountryBtn.Size = new System.Drawing.Size(252, 42);
+            this.CountryBtn.TabIndex = 3;
+            this.CountryBtn.Text = "     Country Form";
+            this.CountryBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CountryBtn.UseVisualStyleBackColor = false;
+            this.CountryBtn.Click += new System.EventHandler(this.CountryBtn_Click);
+            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
@@ -194,6 +262,24 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(250, 36);
             this.panel6.TabIndex = 9;
+            // 
+            // CityBtn
+            // 
+            this.CityBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.CityBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CityBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CityBtn.ForeColor = System.Drawing.Color.White;
+            this.CityBtn.Image = ((System.Drawing.Image)(resources.GetObject("CityBtn.Image")));
+            this.CityBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CityBtn.Location = new System.Drawing.Point(-2, 0);
+            this.CityBtn.Name = "CityBtn";
+            this.CityBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.CityBtn.Size = new System.Drawing.Size(252, 36);
+            this.CityBtn.TabIndex = 3;
+            this.CityBtn.Text = "     City Form";
+            this.CityBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CityBtn.UseVisualStyleBackColor = false;
+            this.CityBtn.Click += new System.EventHandler(this.CityBtn_Click);
             // 
             // panel7
             // 
@@ -205,6 +291,24 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel7.Size = new System.Drawing.Size(250, 36);
             this.panel7.TabIndex = 9;
             // 
+            // CustomerBtn
+            // 
+            this.CustomerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.CustomerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CustomerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CustomerBtn.ForeColor = System.Drawing.Color.White;
+            this.CustomerBtn.Image = ((System.Drawing.Image)(resources.GetObject("CustomerBtn.Image")));
+            this.CustomerBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CustomerBtn.Location = new System.Drawing.Point(-2, 0);
+            this.CustomerBtn.Name = "CustomerBtn";
+            this.CustomerBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.CustomerBtn.Size = new System.Drawing.Size(252, 36);
+            this.CustomerBtn.TabIndex = 3;
+            this.CustomerBtn.Text = "     Customer Form";
+            this.CustomerBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CustomerBtn.UseVisualStyleBackColor = false;
+            this.CustomerBtn.Click += new System.EventHandler(this.CustomerBtn_Click);
+            // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
@@ -215,6 +319,24 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel8.Size = new System.Drawing.Size(250, 36);
             this.panel8.TabIndex = 9;
             // 
+            // SupplierMasterBtn
+            // 
+            this.SupplierMasterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.SupplierMasterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SupplierMasterBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SupplierMasterBtn.ForeColor = System.Drawing.Color.White;
+            this.SupplierMasterBtn.Image = ((System.Drawing.Image)(resources.GetObject("SupplierMasterBtn.Image")));
+            this.SupplierMasterBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SupplierMasterBtn.Location = new System.Drawing.Point(-2, 0);
+            this.SupplierMasterBtn.Name = "SupplierMasterBtn";
+            this.SupplierMasterBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.SupplierMasterBtn.Size = new System.Drawing.Size(252, 36);
+            this.SupplierMasterBtn.TabIndex = 3;
+            this.SupplierMasterBtn.Text = "     Supplier Master Form";
+            this.SupplierMasterBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SupplierMasterBtn.UseVisualStyleBackColor = false;
+            this.SupplierMasterBtn.Click += new System.EventHandler(this.SupplierMasterBtn_Click);
+            // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
@@ -224,6 +346,24 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(250, 36);
             this.panel9.TabIndex = 9;
+            // 
+            // SuppliertypeBtn
+            // 
+            this.SuppliertypeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.SuppliertypeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SuppliertypeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SuppliertypeBtn.ForeColor = System.Drawing.Color.White;
+            this.SuppliertypeBtn.Image = ((System.Drawing.Image)(resources.GetObject("SuppliertypeBtn.Image")));
+            this.SuppliertypeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SuppliertypeBtn.Location = new System.Drawing.Point(-2, 0);
+            this.SuppliertypeBtn.Name = "SuppliertypeBtn";
+            this.SuppliertypeBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.SuppliertypeBtn.Size = new System.Drawing.Size(252, 36);
+            this.SuppliertypeBtn.TabIndex = 3;
+            this.SuppliertypeBtn.Text = "     Supplier Type Form";
+            this.SuppliertypeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SuppliertypeBtn.UseVisualStyleBackColor = false;
+            this.SuppliertypeBtn.Click += new System.EventHandler(this.SuppliertypeBtn_Click);
             // 
             // panel10
             // 
@@ -236,6 +376,25 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel10.Size = new System.Drawing.Size(250, 36);
             this.panel10.TabIndex = 9;
             // 
+            // ItemBtn
+            // 
+            this.ItemBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ItemBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.ItemBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ItemBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemBtn.ForeColor = System.Drawing.Color.White;
+            this.ItemBtn.Image = ((System.Drawing.Image)(resources.GetObject("ItemBtn.Image")));
+            this.ItemBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ItemBtn.Location = new System.Drawing.Point(-2, 0);
+            this.ItemBtn.Name = "ItemBtn";
+            this.ItemBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.ItemBtn.Size = new System.Drawing.Size(252, 36);
+            this.ItemBtn.TabIndex = 3;
+            this.ItemBtn.Text = "     Item Form";
+            this.ItemBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ItemBtn.UseVisualStyleBackColor = false;
+            this.ItemBtn.Click += new System.EventHandler(this.ItemBtn_Click);
+            // 
             // panel5
             // 
             this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -247,6 +406,25 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(250, 36);
             this.panel5.TabIndex = 7;
+            // 
+            // ReportBtn
+            // 
+            this.ReportBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ReportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.ReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ReportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportBtn.ForeColor = System.Drawing.Color.White;
+            this.ReportBtn.Image = ((System.Drawing.Image)(resources.GetObject("ReportBtn.Image")));
+            this.ReportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ReportBtn.Location = new System.Drawing.Point(-2, 0);
+            this.ReportBtn.Name = "ReportBtn";
+            this.ReportBtn.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.ReportBtn.Size = new System.Drawing.Size(252, 36);
+            this.ReportBtn.TabIndex = 3;
+            this.ReportBtn.Text = "     Report";
+            this.ReportBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ReportBtn.UseVisualStyleBackColor = false;
+            this.ReportBtn.Click += new System.EventHandler(this.ReportBtn_Click);
             // 
             // menuTransition
             // 
@@ -270,200 +448,28 @@ namespace NEW_ERP.Forms.Dashboard
             this.MainPanel.Size = new System.Drawing.Size(1152, 870);
             this.MainPanel.TabIndex = 15;
             // 
-            // SetUpBtn
-            // 
-            this.SetUpBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.SetUpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SetUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SetUpBtn.ForeColor = System.Drawing.Color.White;
-            this.SetUpBtn.Image = ((System.Drawing.Image)(resources.GetObject("SetUpBtn.Image")));
-            this.SetUpBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SetUpBtn.Location = new System.Drawing.Point(-2, 0);
-            this.SetUpBtn.Name = "SetUpBtn";
-            this.SetUpBtn.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.SetUpBtn.Size = new System.Drawing.Size(252, 39);
-            this.SetUpBtn.TabIndex = 3;
-            this.SetUpBtn.Text = "     Set Up Form";
-            this.SetUpBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SetUpBtn.UseVisualStyleBackColor = false;
-            this.SetUpBtn.Click += new System.EventHandler(this.SetUpBtn_Click_1);
-            // 
-            // AuthorityBtn
-            // 
-            this.AuthorityBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.AuthorityBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.AuthorityBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.AuthorityBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AuthorityBtn.ForeColor = System.Drawing.Color.White;
-            this.AuthorityBtn.Image = ((System.Drawing.Image)(resources.GetObject("AuthorityBtn.Image")));
-            this.AuthorityBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AuthorityBtn.Location = new System.Drawing.Point(-2, -3);
-            this.AuthorityBtn.Name = "AuthorityBtn";
-            this.AuthorityBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.AuthorityBtn.Size = new System.Drawing.Size(252, 39);
-            this.AuthorityBtn.TabIndex = 3;
-            this.AuthorityBtn.Text = "     Authority Form";
-            this.AuthorityBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AuthorityBtn.UseVisualStyleBackColor = false;
-            this.AuthorityBtn.Click += new System.EventHandler(this.AuthorityBtn_Click);
-            // 
-            // CountryBtn
-            // 
-            this.CountryBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CountryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.CountryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CountryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CountryBtn.ForeColor = System.Drawing.Color.White;
-            this.CountryBtn.Image = ((System.Drawing.Image)(resources.GetObject("CountryBtn.Image")));
-            this.CountryBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CountryBtn.Location = new System.Drawing.Point(-2, -3);
-            this.CountryBtn.Name = "CountryBtn";
-            this.CountryBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.CountryBtn.Size = new System.Drawing.Size(252, 42);
-            this.CountryBtn.TabIndex = 3;
-            this.CountryBtn.Text = "     Country Form";
-            this.CountryBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CountryBtn.UseVisualStyleBackColor = false;
-            this.CountryBtn.Click += new System.EventHandler(this.CountryBtn_Click);
-            // 
-            // CityBtn
-            // 
-            this.CityBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.CityBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CityBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CityBtn.ForeColor = System.Drawing.Color.White;
-            this.CityBtn.Image = ((System.Drawing.Image)(resources.GetObject("CityBtn.Image")));
-            this.CityBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CityBtn.Location = new System.Drawing.Point(-2, 0);
-            this.CityBtn.Name = "CityBtn";
-            this.CityBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.CityBtn.Size = new System.Drawing.Size(252, 36);
-            this.CityBtn.TabIndex = 3;
-            this.CityBtn.Text = "     City Form";
-            this.CityBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CityBtn.UseVisualStyleBackColor = false;
-            this.CityBtn.Click += new System.EventHandler(this.CityBtn_Click);
-            // 
-            // CustomerBtn
-            // 
-            this.CustomerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.CustomerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CustomerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CustomerBtn.ForeColor = System.Drawing.Color.White;
-            this.CustomerBtn.Image = ((System.Drawing.Image)(resources.GetObject("CustomerBtn.Image")));
-            this.CustomerBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CustomerBtn.Location = new System.Drawing.Point(-2, 0);
-            this.CustomerBtn.Name = "CustomerBtn";
-            this.CustomerBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.CustomerBtn.Size = new System.Drawing.Size(252, 36);
-            this.CustomerBtn.TabIndex = 3;
-            this.CustomerBtn.Text = "     Customer Form";
-            this.CustomerBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CustomerBtn.UseVisualStyleBackColor = false;
-            this.CustomerBtn.Click += new System.EventHandler(this.CustomerBtn_Click);
-            // 
-            // SupplierMasterBtn
-            // 
-            this.SupplierMasterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.SupplierMasterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SupplierMasterBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SupplierMasterBtn.ForeColor = System.Drawing.Color.White;
-            this.SupplierMasterBtn.Image = ((System.Drawing.Image)(resources.GetObject("SupplierMasterBtn.Image")));
-            this.SupplierMasterBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SupplierMasterBtn.Location = new System.Drawing.Point(-2, 0);
-            this.SupplierMasterBtn.Name = "SupplierMasterBtn";
-            this.SupplierMasterBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.SupplierMasterBtn.Size = new System.Drawing.Size(252, 36);
-            this.SupplierMasterBtn.TabIndex = 3;
-            this.SupplierMasterBtn.Text = "     Supplier Master Form";
-            this.SupplierMasterBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SupplierMasterBtn.UseVisualStyleBackColor = false;
-            this.SupplierMasterBtn.Click += new System.EventHandler(this.SupplierMasterBtn_Click);
-            // 
-            // SuppliertypeBtn
-            // 
-            this.SuppliertypeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.SuppliertypeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SuppliertypeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SuppliertypeBtn.ForeColor = System.Drawing.Color.White;
-            this.SuppliertypeBtn.Image = ((System.Drawing.Image)(resources.GetObject("SuppliertypeBtn.Image")));
-            this.SuppliertypeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SuppliertypeBtn.Location = new System.Drawing.Point(-2, 0);
-            this.SuppliertypeBtn.Name = "SuppliertypeBtn";
-            this.SuppliertypeBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.SuppliertypeBtn.Size = new System.Drawing.Size(252, 36);
-            this.SuppliertypeBtn.TabIndex = 3;
-            this.SuppliertypeBtn.Text = "     Supplier Type Form";
-            this.SuppliertypeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SuppliertypeBtn.UseVisualStyleBackColor = false;
-            this.SuppliertypeBtn.Click += new System.EventHandler(this.SuppliertypeBtn_Click);
-            // 
-            // ItemBtn
-            // 
-            this.ItemBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ItemBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.ItemBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ItemBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemBtn.ForeColor = System.Drawing.Color.White;
-            this.ItemBtn.Image = ((System.Drawing.Image)(resources.GetObject("ItemBtn.Image")));
-            this.ItemBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ItemBtn.Location = new System.Drawing.Point(-2, 0);
-            this.ItemBtn.Name = "ItemBtn";
-            this.ItemBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.ItemBtn.Size = new System.Drawing.Size(252, 36);
-            this.ItemBtn.TabIndex = 3;
-            this.ItemBtn.Text = "     Item Form";
-            this.ItemBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ItemBtn.UseVisualStyleBackColor = false;
-            this.ItemBtn.Click += new System.EventHandler(this.ItemBtn_Click);
-            // 
-            // ReportBtn
-            // 
-            this.ReportBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ReportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.ReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ReportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReportBtn.ForeColor = System.Drawing.Color.White;
-            this.ReportBtn.Image = ((System.Drawing.Image)(resources.GetObject("ReportBtn.Image")));
-            this.ReportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReportBtn.Location = new System.Drawing.Point(-2, 0);
-            this.ReportBtn.Name = "ReportBtn";
-            this.ReportBtn.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.ReportBtn.Size = new System.Drawing.Size(252, 36);
-            this.ReportBtn.TabIndex = 3;
-            this.ReportBtn.Text = "     Report";
-            this.ReportBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReportBtn.UseVisualStyleBackColor = false;
-            this.ReportBtn.Click += new System.EventHandler(this.ReportBtn_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 39);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1376, 944);
+            this.ClientSize = new System.Drawing.Size(1425, 944);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Name = "MainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
-            this.Text = "MainDashboard";
+            this.Text = "ERP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainDashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.StepUpMenuContainer.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -473,7 +479,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel10.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

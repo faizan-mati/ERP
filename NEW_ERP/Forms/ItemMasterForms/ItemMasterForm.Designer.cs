@@ -43,10 +43,11 @@ namespace NEW_ERP.Forms.ItemMaster
             this.label2 = new System.Windows.Forms.Label();
             this.TxtProductCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.BtnGroupBox = new System.Windows.Forms.GroupBox();
+            this.FormGroupBox = new System.Windows.Forms.GroupBox();
+            this.BtnGroupBox.SuspendLayout();
+            this.FormGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // DeleteBtn
@@ -56,10 +57,12 @@ namespace NEW_ERP.Forms.ItemMaster
             this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteBtn.ForeColor = System.Drawing.Color.White;
-            this.DeleteBtn.Location = new System.Drawing.Point(411, 430);
+            this.DeleteBtn.Image = ((System.Drawing.Image)(resources.GetObject("DeleteBtn.Image")));
+            this.DeleteBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DeleteBtn.Location = new System.Drawing.Point(492, 19);
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(100, 31);
+            this.DeleteBtn.Size = new System.Drawing.Size(124, 31);
             this.DeleteBtn.TabIndex = 2083;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = false;
@@ -72,10 +75,12 @@ namespace NEW_ERP.Forms.ItemMaster
             this.EditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditBtn.ForeColor = System.Drawing.Color.White;
-            this.EditBtn.Location = new System.Drawing.Point(305, 430);
+            this.EditBtn.Image = ((System.Drawing.Image)(resources.GetObject("EditBtn.Image")));
+            this.EditBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EditBtn.Location = new System.Drawing.Point(381, 19);
             this.EditBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.EditBtn.Name = "EditBtn";
-            this.EditBtn.Size = new System.Drawing.Size(100, 31);
+            this.EditBtn.Size = new System.Drawing.Size(103, 31);
             this.EditBtn.TabIndex = 2082;
             this.EditBtn.Text = "EDIT";
             this.EditBtn.UseVisualStyleBackColor = false;
@@ -88,10 +93,12 @@ namespace NEW_ERP.Forms.ItemMaster
             this.ViewAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ViewAllBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewAllBtn.ForeColor = System.Drawing.Color.White;
-            this.ViewAllBtn.Location = new System.Drawing.Point(201, 430);
+            this.ViewAllBtn.Image = ((System.Drawing.Image)(resources.GetObject("ViewAllBtn.Image")));
+            this.ViewAllBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ViewAllBtn.Location = new System.Drawing.Point(244, 19);
             this.ViewAllBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ViewAllBtn.Name = "ViewAllBtn";
-            this.ViewAllBtn.Size = new System.Drawing.Size(100, 31);
+            this.ViewAllBtn.Size = new System.Drawing.Size(129, 31);
             this.ViewAllBtn.TabIndex = 2081;
             this.ViewAllBtn.Text = "VIEW ALL";
             this.ViewAllBtn.UseVisualStyleBackColor = false;
@@ -100,7 +107,7 @@ namespace NEW_ERP.Forms.ItemMaster
             // TxtProductDes
             // 
             this.TxtProductDes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProductDes.Location = new System.Drawing.Point(200, 250);
+            this.TxtProductDes.Location = new System.Drawing.Point(211, 265);
             this.TxtProductDes.Name = "TxtProductDes";
             this.TxtProductDes.Size = new System.Drawing.Size(259, 26);
             this.TxtProductDes.TabIndex = 3;
@@ -108,7 +115,7 @@ namespace NEW_ERP.Forms.ItemMaster
             // TxtProductShortName
             // 
             this.TxtProductShortName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProductShortName.Location = new System.Drawing.Point(201, 198);
+            this.TxtProductShortName.Location = new System.Drawing.Point(212, 213);
             this.TxtProductShortName.Name = "TxtProductShortName";
             this.TxtProductShortName.Size = new System.Drawing.Size(259, 26);
             this.TxtProductShortName.TabIndex = 2;
@@ -118,7 +125,7 @@ namespace NEW_ERP.Forms.ItemMaster
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label6.Location = new System.Drawing.Point(12, 201);
+            this.label6.Location = new System.Drawing.Point(23, 216);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(181, 20);
             this.label6.TabIndex = 2079;
@@ -131,7 +138,9 @@ namespace NEW_ERP.Forms.ItemMaster
             this.CloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseBtn.ForeColor = System.Drawing.Color.White;
-            this.CloseBtn.Location = new System.Drawing.Point(303, 393);
+            this.CloseBtn.Image = ((System.Drawing.Image)(resources.GetObject("CloseBtn.Image")));
+            this.CloseBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CloseBtn.Location = new System.Drawing.Point(136, 19);
             this.CloseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(100, 31);
@@ -147,10 +156,12 @@ namespace NEW_ERP.Forms.ItemMaster
             this.SubmitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubmitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitBtn.ForeColor = System.Drawing.Color.White;
-            this.SubmitBtn.Location = new System.Drawing.Point(199, 393);
+            this.SubmitBtn.Image = ((System.Drawing.Image)(resources.GetObject("SubmitBtn.Image")));
+            this.SubmitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SubmitBtn.Location = new System.Drawing.Point(9, 19);
             this.SubmitBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SubmitBtn.Name = "SubmitBtn";
-            this.SubmitBtn.Size = new System.Drawing.Size(100, 31);
+            this.SubmitBtn.Size = new System.Drawing.Size(122, 31);
             this.SubmitBtn.TabIndex = 2076;
             this.SubmitBtn.Text = "SUBMIT";
             this.SubmitBtn.UseVisualStyleBackColor = false;
@@ -159,7 +170,7 @@ namespace NEW_ERP.Forms.ItemMaster
             // TxtProductRemarks
             // 
             this.TxtProductRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProductRemarks.Location = new System.Drawing.Point(201, 292);
+            this.TxtProductRemarks.Location = new System.Drawing.Point(212, 307);
             this.TxtProductRemarks.Multiline = true;
             this.TxtProductRemarks.Name = "TxtProductRemarks";
             this.TxtProductRemarks.Size = new System.Drawing.Size(259, 79);
@@ -170,7 +181,7 @@ namespace NEW_ERP.Forms.ItemMaster
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label5.Location = new System.Drawing.Point(102, 295);
+            this.label5.Location = new System.Drawing.Point(113, 310);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 20);
             this.label5.TabIndex = 2075;
@@ -181,7 +192,7 @@ namespace NEW_ERP.Forms.ItemMaster
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label2.Location = new System.Drawing.Point(17, 252);
+            this.label2.Location = new System.Drawing.Point(28, 267);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(177, 20);
             this.label2.TabIndex = 2073;
@@ -190,7 +201,7 @@ namespace NEW_ERP.Forms.ItemMaster
             // TxtProductCode
             // 
             this.TxtProductCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProductCode.Location = new System.Drawing.Point(201, 153);
+            this.TxtProductCode.Location = new System.Drawing.Point(212, 168);
             this.TxtProductCode.Name = "TxtProductCode";
             this.TxtProductCode.Size = new System.Drawing.Size(259, 26);
             this.TxtProductCode.TabIndex = 1;
@@ -200,48 +211,48 @@ namespace NEW_ERP.Forms.ItemMaster
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label4.Location = new System.Drawing.Point(67, 156);
+            this.label4.Location = new System.Drawing.Point(78, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 20);
             this.label4.TabIndex = 2072;
             this.label4.Text = "Product Code :";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label12.Location = new System.Drawing.Point(126, 35);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(254, 16);
-            this.label12.TabIndex = 2070;
-            this.label12.Text = "AL-AMEERA  APPAREL  PVT.  LTD.";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(547, 12);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 2069;
-            this.pictureBox3.TabStop = false;
             // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.label3.Location = new System.Drawing.Point(94, 51);
+            this.label3.Location = new System.Drawing.Point(115, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(322, 33);
+            this.label3.Size = new System.Drawing.Size(240, 25);
             this.label3.TabIndex = 2067;
             this.label3.Text = "ITEM MASTER FORM";
+            // 
+            // BtnGroupBox
+            // 
+            this.BtnGroupBox.Controls.Add(this.ViewAllBtn);
+            this.BtnGroupBox.Controls.Add(this.DeleteBtn);
+            this.BtnGroupBox.Controls.Add(this.SubmitBtn);
+            this.BtnGroupBox.Controls.Add(this.EditBtn);
+            this.BtnGroupBox.Controls.Add(this.CloseBtn);
+            this.BtnGroupBox.Location = new System.Drawing.Point(12, 12);
+            this.BtnGroupBox.Name = "BtnGroupBox";
+            this.BtnGroupBox.Size = new System.Drawing.Size(625, 58);
+            this.BtnGroupBox.TabIndex = 2176;
+            this.BtnGroupBox.TabStop = false;
+            this.BtnGroupBox.Text = "BUTTONS";
+            // 
+            // FormGroupBox
+            // 
+            this.FormGroupBox.Controls.Add(this.label3);
+            this.FormGroupBox.Location = new System.Drawing.Point(12, 89);
+            this.FormGroupBox.Name = "FormGroupBox";
+            this.FormGroupBox.Size = new System.Drawing.Size(484, 314);
+            this.FormGroupBox.TabIndex = 2181;
+            this.FormGroupBox.TabStop = false;
+            this.FormGroupBox.Text = "FORM INPUTS";
             // 
             // ItemMasterForm
             // 
@@ -249,28 +260,24 @@ namespace NEW_ERP.Forms.ItemMaster
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(659, 507);
-            this.Controls.Add(this.DeleteBtn);
-            this.Controls.Add(this.EditBtn);
-            this.Controls.Add(this.ViewAllBtn);
+            this.Controls.Add(this.BtnGroupBox);
             this.Controls.Add(this.TxtProductDes);
             this.Controls.Add(this.TxtProductShortName);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.CloseBtn);
-            this.Controls.Add(this.SubmitBtn);
             this.Controls.Add(this.TxtProductRemarks);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TxtProductCode);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.FormGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ItemMasterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ItemMasterForm";
             this.Load += new System.EventHandler(this.ItemMasterForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.BtnGroupBox.ResumeLayout(false);
+            this.FormGroupBox.ResumeLayout(false);
+            this.FormGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,8 +298,8 @@ namespace NEW_ERP.Forms.ItemMaster
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtProductCode;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label12;
-        public System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox BtnGroupBox;
+        private System.Windows.Forms.GroupBox FormGroupBox;
     }
 }

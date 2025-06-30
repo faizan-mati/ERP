@@ -129,11 +129,11 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.label3.Location = new System.Drawing.Point(37, 105);
+            this.label3.Location = new System.Drawing.Point(77, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(371, 33);
+            this.label3.Size = new System.Drawing.Size(273, 25);
             this.label3.TabIndex = 2104;
             this.label3.Text = "AUTHORITY EIDT FORM";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -215,6 +215,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             // 
             this.FormGroupBox.Controls.Add(this.TxtAuthorityRemarks);
             this.FormGroupBox.Controls.Add(this.label5);
+            this.FormGroupBox.Controls.Add(this.label3);
             this.FormGroupBox.Location = new System.Drawing.Point(21, 76);
             this.FormGroupBox.Name = "FormGroupBox";
             this.FormGroupBox.Size = new System.Drawing.Size(461, 365);
@@ -238,7 +239,6 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.Controls.Add(this.CloseBtn);
             this.Controls.Add(this.UpdateBtn);
             this.Controls.Add(this.TxtAuthorityName);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.BtnGroupBox);
             this.Controls.Add(this.FormGroupBox);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));

@@ -66,6 +66,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.label3 = new System.Windows.Forms.Label();
             this.FormGroupBox = new System.Windows.Forms.GroupBox();
             this.BtnGroupBox = new System.Windows.Forms.GroupBox();
+            this.FormGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -439,17 +440,18 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.label3.Location = new System.Drawing.Point(25, 102);
+            this.label3.Location = new System.Drawing.Point(305, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(403, 33);
+            this.label3.Size = new System.Drawing.Size(299, 25);
             this.label3.TabIndex = 2175;
             this.label3.Text = "CUSTOMER MASTER EDIT";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // FormGroupBox
             // 
+            this.FormGroupBox.Controls.Add(this.label3);
             this.FormGroupBox.Location = new System.Drawing.Point(12, 85);
             this.FormGroupBox.Name = "FormGroupBox";
             this.FormGroupBox.Size = new System.Drawing.Size(863, 503);
@@ -505,7 +507,6 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCustomerCode);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.FormGroupBox);
             this.Controls.Add(this.BtnGroupBox);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
@@ -513,6 +514,8 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerEdit";
             this.Load += new System.EventHandler(this.CustomerEdit_Load);
+            this.FormGroupBox.ResumeLayout(false);
+            this.FormGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

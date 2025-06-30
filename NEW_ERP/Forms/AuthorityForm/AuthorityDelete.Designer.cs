@@ -160,11 +160,11 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.label3.Location = new System.Drawing.Point(30, 98);
+            this.label3.Location = new System.Drawing.Point(38, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(419, 33);
+            this.label3.Size = new System.Drawing.Size(310, 25);
             this.label3.TabIndex = 2164;
             this.label3.Text = "AUTHORITY DELETE FORM";
             // 
@@ -217,6 +217,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             // 
             this.FormGroupBox.Controls.Add(this.label1);
             this.FormGroupBox.Controls.Add(this.TxtAuthorityRemarks);
+            this.FormGroupBox.Controls.Add(this.label3);
             this.FormGroupBox.Location = new System.Drawing.Point(12, 76);
             this.FormGroupBox.Name = "FormGroupBox";
             this.FormGroupBox.Size = new System.Drawing.Size(461, 365);
@@ -251,7 +252,6 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.Controls.Add(this.AuthorityCodeBox);
             this.Controls.Add(this.TxtAuthorityStatusCode);
             this.Controls.Add(this.TxtAuthorityName);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.BtnGroupBox);
             this.Controls.Add(this.FormGroupBox);
             this.Name = "AuthorityDelete";

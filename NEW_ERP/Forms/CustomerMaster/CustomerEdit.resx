@@ -120,23 +120,22 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="CloseBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAADESURBVEhL7ZXRDsIgDEX5CY37RPe5+rDPwVPTJsRCKEPe
-        dpJmjN7eu2xE08UwOecnddfbMDIjs3pbB8FOCW8qHCJanRF23fbQvFGvryzng9q01QTN78xDW3UQhEPo
-        jZkbCLsh7J0zNxhohrCeMzcYdCHUf8wNDMoTItdyPXycq2BUPrUw/+QlmNUCukc4BEbrXhEG7oNS7sOr
-        fAwGm6eF9VwIA01zg71zIQi75ga9sRAEYXMDTTyE5tqfawHBuj+cC09KH6qAHN42AkLfAAAAAElFTkSu
-        QmCC
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAAMRJREFUSEvtldEOwiAMRfkJjftE97n6sM/BU9MmxEIoQ952kmaM3t67bETTxTA5
+        5yd119swMiOzelsHwU4JbyocIlqdEXbd9tC8Ua+vLOeD2rTVBM3vzENbdRCEQ+iNmRsIuyHsnTM3GGiG
+        sJ4zNxh0IdR/zA0MyhMi13I9fJyrYFQ+tTD/5CWY1QK6RzgERuteEQbug1Luw6t8DAabp4X1XAgDTXOD
+        vXMhCLvmBr2xEARhcwNNPITm2p9rAcG6P5wLT0ofqoAc3jYCQt8AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="UpdateBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAEmSURBVEhLzZTBTcNAFERNcqAFCI2QM6SKRCg0QRIErUS0
-        gwQlpAQkrlww73sHw/euF8wGwZPm4D/zZyVb3upfUNf1DHWZyS6HsuvQ6djIHg7LU3Qo3aIn1MVm5r3n
-        plrPY0H0ip7RDn2FZSxrO/lDCIzQPfopj2ikuhjMyyZWxlJ1MZjbkIl4QVdoIq00S7FVXQzmGN01Mc9K
-        kRabBcthu2NF0hBYNFHPsewWZkfBcixk90NoHrKOiewWZifBcsxlpyEw5BWtg+XIvyLM3Ee2d178kZch
-        U8SF6mIwD1DJj/aA+n80g0DJVXGqmjwEP192N6jvsjNv2GWXguUN6rKW/T20VOvRwfg8uI4z2Q55cY/m
-        yQOGoJo/PGBfqPYDzfeGan+bqnoDJF1pTIvVxBsAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAASZJREFUSEvNlMFNw0AURE1yoAUIjZAzpIpEKDRBEgStRLSDBCWkBCSuXDDvewfD
+        964XzAbBk+bgP/NnJVve6l9Q1/UMdZnJLoey69Dp2MgeDstTdCjdoifUxWbmveemWs9jQfSKntEOfYVl
+        LGs7+UMIjNA9+imPaKS6GMzLJlbGUnUxmNuQiXhBV2girTRLsVVdDOYY3TUxz0qRFpsFy2G7Y0XSEFg0
+        Uc+x7BZmR8FyLGT3Q2geso6J7BZmJ8FyzGWnITDkFa2D5ci/IszcR7Z3XvyRlyFTxIXqYjAPUMmP9oD6
+        fzSDQMlVcaqaPAQ/X3Y3qO+yM2/YZZeC5Q3qspb9PbRU69HB+Dy4jjPZDnlxj+bJA4agmj88YF+o9gPN
+        94Zqf5uqegMkXWlMi9XEGwAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>

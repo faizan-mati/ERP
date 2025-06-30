@@ -130,5 +130,12 @@ namespace NEW_ERP.Forms.Dashboard
         {
 
         }
+
+        private void MainDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
+

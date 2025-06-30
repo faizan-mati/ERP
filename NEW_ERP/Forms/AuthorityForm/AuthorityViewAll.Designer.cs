@@ -43,11 +43,11 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.label3.Location = new System.Drawing.Point(20, 30);
+            this.label3.Location = new System.Drawing.Point(152, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(342, 33);
+            this.label3.Size = new System.Drawing.Size(254, 25);
             this.label3.TabIndex = 2116;
             this.label3.Text = "AUTHORITY VIEW ALL";
             // 
@@ -103,7 +103,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label2.Location = new System.Drawing.Point(5, 112);
+            this.label2.Location = new System.Drawing.Point(5, 111);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(227, 20);
             this.label2.TabIndex = 2122;

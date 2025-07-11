@@ -106,5 +106,10 @@ namespace NEW_ERP.Forms.AuthorityForm
             AuthorityDelete NextForm = new AuthorityDelete();
             NextForm.Show();
         }
+
+        private void AuthorityAdd_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -274,6 +274,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.Name = "AuthorityAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AuthorityAdd";
+            this.Load += new System.EventHandler(this.AuthorityAdd_Load);
             this.BtnGroupBox.ResumeLayout(false);
             this.FormGroupBox.ResumeLayout(false);
             this.FormGroupBox.PerformLayout();

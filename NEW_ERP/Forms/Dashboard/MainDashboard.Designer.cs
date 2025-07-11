@@ -35,32 +35,45 @@ namespace NEW_ERP.Forms.Dashboard
             this.label2 = new System.Windows.Forms.Label();
             this.LoginUserName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.StepUpMenuContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.SetUpBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.AuthorityBtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.CountryBtn = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.CityBtn = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.CustomerBtn = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.SupplierMasterBtn = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.SuppliertypeBtn = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.ItemBtn = new System.Windows.Forms.Button();
+            this.SaleOrderMenuContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.ReportBtn = new System.Windows.Forms.Button();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.BomMenuContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.ChlidPanel = new System.Windows.Forms.Panel();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.saleOrderTransition = new System.Windows.Forms.Timer(this.components);
+            this.BomTransition = new System.Windows.Forms.Timer(this.components);
+            this.SetUpBtn = new System.Windows.Forms.Button();
+            this.AuthorityBtn = new System.Windows.Forms.Button();
+            this.CountryBtn = new System.Windows.Forms.Button();
+            this.CityBtn = new System.Windows.Forms.Button();
+            this.CustomerBtn = new System.Windows.Forms.Button();
+            this.SupplierMasterBtn = new System.Windows.Forms.Button();
+            this.SuppliertypeBtn = new System.Windows.Forms.Button();
+            this.ItemBtn = new System.Windows.Forms.Button();
+            this.SaleOrderFormBtn = new System.Windows.Forms.Button();
+            this.SaleOrderBtn = new System.Windows.Forms.Button();
+            this.BomMenuBtn = new System.Windows.Forms.Button();
+            this.BOMBtn = new System.Windows.Forms.Button();
+            this.BomDetailBtn = new System.Windows.Forms.Button();
+            this.ReportBtn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.StepUpMenuContainer.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -71,8 +84,16 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.SaleOrderMenuContainer.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.BomMenuContainer.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.MainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -85,7 +106,7 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1425, 45);
+            this.panel1.Size = new System.Drawing.Size(1595, 45);
             this.panel1.TabIndex = 0;
             // 
             // label2
@@ -123,26 +144,18 @@ namespace NEW_ERP.Forms.Dashboard
             this.label1.TabIndex = 3;
             this.label1.Text = "MENU";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 39);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(36)))), ((int)(((byte)(48)))));
             this.flowLayoutPanel1.Controls.Add(this.StepUpMenuContainer);
-            this.flowLayoutPanel1.Controls.Add(this.panel5);
+            this.flowLayoutPanel1.Controls.Add(this.SaleOrderMenuContainer);
+            this.flowLayoutPanel1.Controls.Add(this.BomMenuContainer);
+            this.flowLayoutPanel1.Controls.Add(this.panel11);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 45);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(265, 899);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(265, 1016);
             this.flowLayoutPanel1.TabIndex = 1;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -161,7 +174,7 @@ namespace NEW_ERP.Forms.Dashboard
             this.StepUpMenuContainer.Location = new System.Drawing.Point(0, 0);
             this.StepUpMenuContainer.Margin = new System.Windows.Forms.Padding(0);
             this.StepUpMenuContainer.Name = "StepUpMenuContainer";
-            this.StepUpMenuContainer.Size = new System.Drawing.Size(265, 41);
+            this.StepUpMenuContainer.Size = new System.Drawing.Size(265, 43);
             this.StepUpMenuContainer.TabIndex = 8;
             // 
             // panel4
@@ -173,6 +186,203 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(250, 36);
             this.panel4.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel2.Controls.Add(this.AuthorityBtn);
+            this.panel2.Location = new System.Drawing.Point(7, 45);
+            this.panel2.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(250, 36);
+            this.panel2.TabIndex = 5;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel3.Controls.Add(this.CountryBtn);
+            this.panel3.Location = new System.Drawing.Point(7, 87);
+            this.panel3.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(250, 36);
+            this.panel3.TabIndex = 6;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel6.Controls.Add(this.CityBtn);
+            this.panel6.Location = new System.Drawing.Point(7, 129);
+            this.panel6.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(250, 36);
+            this.panel6.TabIndex = 9;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel7.Controls.Add(this.CustomerBtn);
+            this.panel7.Location = new System.Drawing.Point(7, 171);
+            this.panel7.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(250, 36);
+            this.panel7.TabIndex = 9;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel8.Controls.Add(this.SupplierMasterBtn);
+            this.panel8.Location = new System.Drawing.Point(7, 213);
+            this.panel8.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(250, 36);
+            this.panel8.TabIndex = 9;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel9.Controls.Add(this.SuppliertypeBtn);
+            this.panel9.Location = new System.Drawing.Point(7, 255);
+            this.panel9.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(250, 36);
+            this.panel9.TabIndex = 9;
+            // 
+            // panel10
+            // 
+            this.panel10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel10.Controls.Add(this.ItemBtn);
+            this.panel10.Location = new System.Drawing.Point(7, 297);
+            this.panel10.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(250, 36);
+            this.panel10.TabIndex = 9;
+            // 
+            // SaleOrderMenuContainer
+            // 
+            this.SaleOrderMenuContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(36)))), ((int)(((byte)(48)))));
+            this.SaleOrderMenuContainer.Controls.Add(this.panel5);
+            this.SaleOrderMenuContainer.Controls.Add(this.panel12);
+            this.SaleOrderMenuContainer.ForeColor = System.Drawing.Color.White;
+            this.SaleOrderMenuContainer.Location = new System.Drawing.Point(0, 43);
+            this.SaleOrderMenuContainer.Margin = new System.Windows.Forms.Padding(0);
+            this.SaleOrderMenuContainer.Name = "SaleOrderMenuContainer";
+            this.SaleOrderMenuContainer.Size = new System.Drawing.Size(265, 41);
+            this.SaleOrderMenuContainer.TabIndex = 10;
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel5.Controls.Add(this.SaleOrderFormBtn);
+            this.panel5.ForeColor = System.Drawing.Color.White;
+            this.panel5.Location = new System.Drawing.Point(7, 3);
+            this.panel5.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(250, 36);
+            this.panel5.TabIndex = 7;
+            // 
+            // panel12
+            // 
+            this.panel12.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel12.Controls.Add(this.SaleOrderBtn);
+            this.panel12.Location = new System.Drawing.Point(7, 45);
+            this.panel12.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(250, 36);
+            this.panel12.TabIndex = 7;
+            // 
+            // BomMenuContainer
+            // 
+            this.BomMenuContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(36)))), ((int)(((byte)(48)))));
+            this.BomMenuContainer.Controls.Add(this.panel14);
+            this.BomMenuContainer.Controls.Add(this.panel15);
+            this.BomMenuContainer.Controls.Add(this.panel13);
+            this.BomMenuContainer.ForeColor = System.Drawing.Color.White;
+            this.BomMenuContainer.Location = new System.Drawing.Point(0, 84);
+            this.BomMenuContainer.Margin = new System.Windows.Forms.Padding(0);
+            this.BomMenuContainer.Name = "BomMenuContainer";
+            this.BomMenuContainer.Size = new System.Drawing.Size(265, 42);
+            this.BomMenuContainer.TabIndex = 11;
+            // 
+            // panel14
+            // 
+            this.panel14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel14.Controls.Add(this.BomMenuBtn);
+            this.panel14.ForeColor = System.Drawing.Color.White;
+            this.panel14.Location = new System.Drawing.Point(7, 3);
+            this.panel14.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(250, 36);
+            this.panel14.TabIndex = 7;
+            // 
+            // panel15
+            // 
+            this.panel15.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel15.Controls.Add(this.BOMBtn);
+            this.panel15.Location = new System.Drawing.Point(7, 45);
+            this.panel15.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(250, 36);
+            this.panel15.TabIndex = 7;
+            // 
+            // panel13
+            // 
+            this.panel13.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel13.Controls.Add(this.BomDetailBtn);
+            this.panel13.Location = new System.Drawing.Point(7, 87);
+            this.panel13.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(250, 36);
+            this.panel13.TabIndex = 8;
+            // 
+            // panel11
+            // 
+            this.panel11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel11.Controls.Add(this.ReportBtn);
+            this.panel11.ForeColor = System.Drawing.Color.White;
+            this.panel11.Location = new System.Drawing.Point(7, 129);
+            this.panel11.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(250, 36);
+            this.panel11.TabIndex = 8;
+            // 
+            // menuTransition
+            // 
+            this.menuTransition.Tick += new System.EventHandler(this.menuTransition_Tick);
+            // 
+            // ChlidPanel
+            // 
+            this.ChlidPanel.AutoScroll = true;
+            this.ChlidPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.ChlidPanel.Location = new System.Drawing.Point(3, 0);
+            this.ChlidPanel.Name = "ChlidPanel";
+            this.ChlidPanel.Size = new System.Drawing.Size(1276, 908);
+            this.ChlidPanel.TabIndex = 16;
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.AutoScroll = true;
+            this.MainPanel.Controls.Add(this.ChlidPanel);
+            this.MainPanel.Location = new System.Drawing.Point(268, 45);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(1301, 927);
+            this.MainPanel.TabIndex = 15;
+            // 
+            // saleOrderTransition
+            // 
+            this.saleOrderTransition.Tick += new System.EventHandler(this.saleOrderTransition_Tick);
+            // 
+            // BomTransition
+            // 
+            this.BomTransition.Tick += new System.EventHandler(this.BomTransition_Tick);
             // 
             // SetUpBtn
             // 
@@ -193,17 +403,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.SetUpBtn.UseVisualStyleBackColor = false;
             this.SetUpBtn.Click += new System.EventHandler(this.SetUpBtn_Click_1);
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.panel2.Controls.Add(this.AuthorityBtn);
-            this.panel2.Location = new System.Drawing.Point(7, 45);
-            this.panel2.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 36);
-            this.panel2.TabIndex = 5;
-            // 
             // AuthorityBtn
             // 
             this.AuthorityBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -222,17 +421,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.AuthorityBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.AuthorityBtn.UseVisualStyleBackColor = false;
             this.AuthorityBtn.Click += new System.EventHandler(this.AuthorityBtn_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.panel3.Controls.Add(this.CountryBtn);
-            this.panel3.Location = new System.Drawing.Point(7, 87);
-            this.panel3.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(250, 36);
-            this.panel3.TabIndex = 6;
             // 
             // CountryBtn
             // 
@@ -253,16 +441,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.CountryBtn.UseVisualStyleBackColor = false;
             this.CountryBtn.Click += new System.EventHandler(this.CountryBtn_Click);
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.panel6.Controls.Add(this.CityBtn);
-            this.panel6.Location = new System.Drawing.Point(7, 129);
-            this.panel6.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(250, 36);
-            this.panel6.TabIndex = 9;
-            // 
             // CityBtn
             // 
             this.CityBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
@@ -280,16 +458,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.CityBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CityBtn.UseVisualStyleBackColor = false;
             this.CityBtn.Click += new System.EventHandler(this.CityBtn_Click);
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.panel7.Controls.Add(this.CustomerBtn);
-            this.panel7.Location = new System.Drawing.Point(7, 171);
-            this.panel7.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(250, 36);
-            this.panel7.TabIndex = 9;
             // 
             // CustomerBtn
             // 
@@ -309,16 +477,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.CustomerBtn.UseVisualStyleBackColor = false;
             this.CustomerBtn.Click += new System.EventHandler(this.CustomerBtn_Click);
             // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.panel8.Controls.Add(this.SupplierMasterBtn);
-            this.panel8.Location = new System.Drawing.Point(7, 213);
-            this.panel8.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(250, 36);
-            this.panel8.TabIndex = 9;
-            // 
             // SupplierMasterBtn
             // 
             this.SupplierMasterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
@@ -337,16 +495,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.SupplierMasterBtn.UseVisualStyleBackColor = false;
             this.SupplierMasterBtn.Click += new System.EventHandler(this.SupplierMasterBtn_Click);
             // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.panel9.Controls.Add(this.SuppliertypeBtn);
-            this.panel9.Location = new System.Drawing.Point(7, 255);
-            this.panel9.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(250, 36);
-            this.panel9.TabIndex = 9;
-            // 
             // SuppliertypeBtn
             // 
             this.SuppliertypeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
@@ -364,17 +512,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.SuppliertypeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SuppliertypeBtn.UseVisualStyleBackColor = false;
             this.SuppliertypeBtn.Click += new System.EventHandler(this.SuppliertypeBtn_Click);
-            // 
-            // panel10
-            // 
-            this.panel10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.panel10.Controls.Add(this.ItemBtn);
-            this.panel10.Location = new System.Drawing.Point(7, 297);
-            this.panel10.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(250, 36);
-            this.panel10.TabIndex = 9;
             // 
             // ItemBtn
             // 
@@ -395,17 +532,100 @@ namespace NEW_ERP.Forms.Dashboard
             this.ItemBtn.UseVisualStyleBackColor = false;
             this.ItemBtn.Click += new System.EventHandler(this.ItemBtn_Click);
             // 
-            // panel5
+            // SaleOrderFormBtn
             // 
-            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.panel5.Controls.Add(this.ReportBtn);
-            this.panel5.ForeColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(7, 44);
-            this.panel5.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(250, 36);
-            this.panel5.TabIndex = 7;
+            this.SaleOrderFormBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SaleOrderFormBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.SaleOrderFormBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SaleOrderFormBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaleOrderFormBtn.ForeColor = System.Drawing.Color.White;
+            this.SaleOrderFormBtn.Image = ((System.Drawing.Image)(resources.GetObject("SaleOrderFormBtn.Image")));
+            this.SaleOrderFormBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SaleOrderFormBtn.Location = new System.Drawing.Point(-2, 0);
+            this.SaleOrderFormBtn.Name = "SaleOrderFormBtn";
+            this.SaleOrderFormBtn.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.SaleOrderFormBtn.Size = new System.Drawing.Size(252, 36);
+            this.SaleOrderFormBtn.TabIndex = 3;
+            this.SaleOrderFormBtn.Text = "     Sale Order";
+            this.SaleOrderFormBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SaleOrderFormBtn.UseVisualStyleBackColor = false;
+            this.SaleOrderFormBtn.Click += new System.EventHandler(this.SaleOrderFormBtn_Click);
+            // 
+            // SaleOrderBtn
+            // 
+            this.SaleOrderBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.SaleOrderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.SaleOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SaleOrderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaleOrderBtn.ForeColor = System.Drawing.Color.White;
+            this.SaleOrderBtn.Image = ((System.Drawing.Image)(resources.GetObject("SaleOrderBtn.Image")));
+            this.SaleOrderBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SaleOrderBtn.Location = new System.Drawing.Point(-2, -3);
+            this.SaleOrderBtn.Name = "SaleOrderBtn";
+            this.SaleOrderBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.SaleOrderBtn.Size = new System.Drawing.Size(252, 39);
+            this.SaleOrderBtn.TabIndex = 6;
+            this.SaleOrderBtn.Text = "     Sale Order Form";
+            this.SaleOrderBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SaleOrderBtn.UseVisualStyleBackColor = false;
+            this.SaleOrderBtn.Click += new System.EventHandler(this.SaleOrderBtn_Click);
+            // 
+            // BomMenuBtn
+            // 
+            this.BomMenuBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BomMenuBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.BomMenuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BomMenuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BomMenuBtn.ForeColor = System.Drawing.Color.White;
+            this.BomMenuBtn.Image = ((System.Drawing.Image)(resources.GetObject("BomMenuBtn.Image")));
+            this.BomMenuBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BomMenuBtn.Location = new System.Drawing.Point(-2, 0);
+            this.BomMenuBtn.Name = "BomMenuBtn";
+            this.BomMenuBtn.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.BomMenuBtn.Size = new System.Drawing.Size(252, 36);
+            this.BomMenuBtn.TabIndex = 3;
+            this.BomMenuBtn.Text = "     BOM";
+            this.BomMenuBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BomMenuBtn.UseVisualStyleBackColor = false;
+            this.BomMenuBtn.Click += new System.EventHandler(this.BomMenuBtn_Click);
+            // 
+            // BOMBtn
+            // 
+            this.BOMBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.BOMBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.BOMBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BOMBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BOMBtn.ForeColor = System.Drawing.Color.White;
+            this.BOMBtn.Image = ((System.Drawing.Image)(resources.GetObject("BOMBtn.Image")));
+            this.BOMBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BOMBtn.Location = new System.Drawing.Point(-2, 0);
+            this.BOMBtn.Name = "BOMBtn";
+            this.BOMBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.BOMBtn.Size = new System.Drawing.Size(252, 39);
+            this.BOMBtn.TabIndex = 11;
+            this.BOMBtn.Text = "     BOM Master";
+            this.BOMBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BOMBtn.UseVisualStyleBackColor = false;
+            this.BOMBtn.Click += new System.EventHandler(this.BOMBtn_Click);
+            // 
+            // BomDetailBtn
+            // 
+            this.BomDetailBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.BomDetailBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.BomDetailBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BomDetailBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BomDetailBtn.ForeColor = System.Drawing.Color.White;
+            this.BomDetailBtn.Image = ((System.Drawing.Image)(resources.GetObject("BomDetailBtn.Image")));
+            this.BomDetailBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BomDetailBtn.Location = new System.Drawing.Point(0, 0);
+            this.BomDetailBtn.Name = "BomDetailBtn";
+            this.BomDetailBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.BomDetailBtn.Size = new System.Drawing.Size(252, 39);
+            this.BomDetailBtn.TabIndex = 12;
+            this.BomDetailBtn.Text = "     BOM Detail";
+            this.BomDetailBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BomDetailBtn.UseVisualStyleBackColor = false;
+            this.BomDetailBtn.Click += new System.EventHandler(this.BomDetailBtn_Click);
             // 
             // ReportBtn
             // 
@@ -426,27 +646,15 @@ namespace NEW_ERP.Forms.Dashboard
             this.ReportBtn.UseVisualStyleBackColor = false;
             this.ReportBtn.Click += new System.EventHandler(this.ReportBtn_Click);
             // 
-            // menuTransition
+            // pictureBox1
             // 
-            this.menuTransition.Tick += new System.EventHandler(this.menuTransition_Tick);
-            // 
-            // ChlidPanel
-            // 
-            this.ChlidPanel.AutoScroll = true;
-            this.ChlidPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ChlidPanel.Location = new System.Drawing.Point(3, 0);
-            this.ChlidPanel.Name = "ChlidPanel";
-            this.ChlidPanel.Size = new System.Drawing.Size(1127, 851);
-            this.ChlidPanel.TabIndex = 16;
-            // 
-            // MainPanel
-            // 
-            this.MainPanel.AutoScroll = true;
-            this.MainPanel.Controls.Add(this.ChlidPanel);
-            this.MainPanel.Location = new System.Drawing.Point(268, 45);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1152, 870);
-            this.MainPanel.TabIndex = 15;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(10, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 39);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // MainDashboard
             // 
@@ -454,7 +662,7 @@ namespace NEW_ERP.Forms.Dashboard
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1425, 944);
+            this.ClientSize = new System.Drawing.Size(1595, 1061);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
@@ -465,7 +673,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.Load += new System.EventHandler(this.MainDashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.StepUpMenuContainer.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -477,8 +684,16 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
+            this.SaleOrderMenuContainer.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.BomMenuContainer.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -497,7 +712,6 @@ namespace NEW_ERP.Forms.Dashboard
         private System.Windows.Forms.Button CountryBtn;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button ReportBtn;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.FlowLayoutPanel StepUpMenuContainer;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button CityBtn;
@@ -513,5 +727,20 @@ namespace NEW_ERP.Forms.Dashboard
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LoginUserName;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Timer saleOrderTransition;
+        private System.Windows.Forms.Button BOMBtn;
+        private System.Windows.Forms.FlowLayoutPanel SaleOrderMenuContainer;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button SaleOrderFormBtn;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Button SaleOrderBtn;
+        private System.Windows.Forms.FlowLayoutPanel BomMenuContainer;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Button BomMenuBtn;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Button BomDetailBtn;
+        private System.Windows.Forms.Timer BomTransition;
     }
 }

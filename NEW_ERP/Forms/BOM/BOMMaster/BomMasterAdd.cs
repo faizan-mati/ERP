@@ -1,4 +1,5 @@
-﻿using NEW_ERP.GernalClasses;
+﻿using NEW_ERP.Forms.BOM.BOMMaster;
+using NEW_ERP.GernalClasses;
 using NEW_ERP.Template;
 using System;
 using System.Collections.Generic;
@@ -172,6 +173,16 @@ namespace NEW_ERP.Forms.BOMMaster
             this.Close();
         }
 
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            BomMasterEdit NextForm = new BomMasterEdit();
+            NextForm.Show();
+        }
 
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            BomMasterDelete NextForm = new BomMasterDelete();
+            NextForm.Show();
+        }
     }
 }

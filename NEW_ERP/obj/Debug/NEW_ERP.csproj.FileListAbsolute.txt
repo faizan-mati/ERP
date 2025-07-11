@@ -69,3 +69,5 @@ C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Template.EditForm
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SaleOrder.SaleOrderAdd.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.BOMMaster.BomMasterAdd.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.BOM.BOMDetail.BomDetailAdd.resources
+C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.BOM.BOMMaster.BomMasterEdit.resources
+C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.BOM.BOMMaster.BomMasterDelete.resources

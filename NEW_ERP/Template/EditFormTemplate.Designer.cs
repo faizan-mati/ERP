@@ -88,6 +88,7 @@ namespace NEW_ERP.Template
             this.Controls.Add(this.UpdateBtn);
             this.Controls.Add(this.BtnGroupBox);
             this.Name = "EditFormTemplate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditFormTemplate";
             this.ResumeLayout(false);
 

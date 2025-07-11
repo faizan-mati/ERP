@@ -88,6 +88,7 @@ namespace NEW_ERP.Template
             this.Controls.Add(this.CloseBtn);
             this.Controls.Add(this.BtnGroupBox);
             this.Name = "DeleteFormTemplate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeleteFormTemplate";
             this.ResumeLayout(false);
 

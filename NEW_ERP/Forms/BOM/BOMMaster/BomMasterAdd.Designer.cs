@@ -43,10 +43,12 @@ namespace NEW_ERP.Forms.BOMMaster
             // DeleteBtn
             // 
             this.DeleteBtn.FlatAppearance.BorderSize = 0;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // EditBtn
             // 
             this.EditBtn.FlatAppearance.BorderSize = 0;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // ViewAllBtn
             // 

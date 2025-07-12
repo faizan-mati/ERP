@@ -24,7 +24,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             LoadCountryData();
 
             AuthorityCodeShow();
-            AuthorityNameBox.SelectedIndex = -1;
+
         }
 
         //======================================= AUTHORITY CODE SHOW =======================================
@@ -44,7 +44,7 @@ namespace NEW_ERP.Forms.AuthorityForm
                     AuthorityNameBox.DataSource = dt;
                     AuthorityNameBox.DisplayMember = "AuthorityName";
                     AuthorityNameBox.ValueMember = "AuthorityName";
-                    AuthorityNameBox.SelectedIndex = 0;
+                    AuthorityNameBox.SelectedIndex = -1;
                 }
             }
         }

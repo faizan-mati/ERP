@@ -184,5 +184,11 @@ namespace NEW_ERP.Forms.BOMMaster
             BomMasterDelete NextForm = new BomMasterDelete();
             NextForm.Show();
         }
+
+        private void ViewAllBtn_Click(object sender, EventArgs e)
+        {
+            BomMasterViewAll NextForm = new BomMasterViewAll();
+            NextForm.Show();
+        }
     }
 }

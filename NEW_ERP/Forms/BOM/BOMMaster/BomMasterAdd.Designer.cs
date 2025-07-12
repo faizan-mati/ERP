@@ -53,6 +53,7 @@ namespace NEW_ERP.Forms.BOMMaster
             // ViewAllBtn
             // 
             this.ViewAllBtn.FlatAppearance.BorderSize = 0;
+            this.ViewAllBtn.Click += new System.EventHandler(this.ViewAllBtn_Click);
             // 
             // CloseBtn
             // 

@@ -51,14 +51,17 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             // DeleteBtn
             // 
             this.DeleteBtn.FlatAppearance.BorderSize = 0;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // EditBtn
             // 
             this.EditBtn.FlatAppearance.BorderSize = 0;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // ViewAllBtn
             // 
             this.ViewAllBtn.FlatAppearance.BorderSize = 0;
+            this.ViewAllBtn.Click += new System.EventHandler(this.ViewAllBtn_Click);
             // 
             // CloseBtn
             // 

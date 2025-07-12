@@ -70,6 +70,7 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
             this.txtVersionNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVersionNo.Location = new System.Drawing.Point(157, 223);
             this.txtVersionNo.Name = "txtVersionNo";
+            this.txtVersionNo.ReadOnly = true;
             this.txtVersionNo.Size = new System.Drawing.Size(203, 26);
             this.txtVersionNo.TabIndex = 2178;
             // 
@@ -77,6 +78,7 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
             // 
             this.SaleOrderBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.SaleOrderBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.SaleOrderBox.Enabled = false;
             this.SaleOrderBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaleOrderBox.FormattingEnabled = true;
             this.SaleOrderBox.Location = new System.Drawing.Point(157, 136);
@@ -90,6 +92,7 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
             // 
             this.ProductBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ProductBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ProductBox.Enabled = false;
             this.ProductBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProductBox.FormattingEnabled = true;
             this.ProductBox.Location = new System.Drawing.Point(157, 181);

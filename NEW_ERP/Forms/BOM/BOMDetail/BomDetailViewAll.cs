@@ -10,38 +10,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NEW_ERP.Forms.BOM.BOMMaster
+namespace NEW_ERP.Forms.BOM.BOMDetail
 {
-    public partial class BomMasterViewAll : Form
+    public partial class BomDetailViewAll : Form
     {
-        public BomMasterViewAll()
+        public BomDetailViewAll()
         {
             InitializeComponent();
         }
 
-        private void BomMasterViewAll_Load(object sender, EventArgs e)
+        private void BomDetailViewAll_Load(object sender, EventArgs e)
         {
-            BomMasterIdShow();
+            BomDtailIdShow();
             LoadBomData();
         }
 
         //======================================= BOM MASTER ID COMBO =======================================
 
-        public void BomMasterIdShow()
+        public void BomDtailIdShow()
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
-                string query = @"SELECT BOMID FROM BOMMaster";
+                string query = @"SELECT BOMDetailID FROM BOMDetails";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    BomMasterIdBox.DataSource = dt;
-                    BomMasterIdBox.DisplayMember = "BOMID";
-                    BomMasterIdBox.ValueMember = "BOMID";
-                    BomMasterIdBox.SelectedIndex = -1;
+                    BomDetailIdBox.DataSource = dt;
+                    BomDetailIdBox.DisplayMember = "BOMDetailID";
+                    BomDetailIdBox.ValueMember = "BOMDetailID";
+                    BomDetailIdBox.SelectedIndex = -1;
                 }
             }
         }
@@ -56,17 +56,8 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
                 {
                     conn.Open();
 
-                    string query = @"
-                SELECT  bm.BOMID,
-    i.ProductDescription, 
-	so.SaleOrderNo,
-    bm.VersionNo,
-    bm.CreatedBy,
-    bm.CreatedDate
-FROM BOMMaster bm
-inner join ItemMaster as i  on i.ProductCode = bm.ProductID
-inner join SaleOrderMaster as so on so.SaleOrderID =  bm.SaleOrderID
-ORDER BY BOMID DESC";
+                    string query = @"SELECT BOMDetailID, BOMID, ItemName, ItemType, Unit, ConsumptionPerPiece, WastagePercent,
+TotalRequirement, Remarks  FROM BOMDetails ORDER BY BOMID DESC";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -74,7 +65,7 @@ ORDER BY BOMID DESC";
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    BomDataGridView.DataSource = dt;
+                    BomDetailDataGridView.DataSource = dt;
                 }
                 catch (Exception ex)
                 {
@@ -91,14 +82,13 @@ ORDER BY BOMID DESC";
             {
                 try
                 {
-                    if (BomMasterIdBox.SelectedValue != null)
+                    if (BomDetailIdBox.SelectedValue != null && BomDetailIdBox.SelectedValue is int)
                     {
-                        string BomMasterId = BomMasterIdBox.SelectedValue.ToString();
+                        int BomDetailId = Convert.ToInt32(BomDetailIdBox.SelectedValue);
 
-                        conn.Open();
-                        SqlCommand cmd = new SqlCommand("sp_SearchBOMMaster", conn); 
+                        SqlCommand cmd = new SqlCommand("sp_SearchBOMDetail", conn);
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@BomMasterId", BomMasterId);
+                        cmd.Parameters.AddWithValue("@BomDetailId", BomDetailId);
 
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -106,16 +96,17 @@ ORDER BY BOMID DESC";
 
                         if (dt.Rows.Count > 0)
                         {
-                            BomDataGridView.DataSource = dt;
+                            BomDetailDataGridView.DataSource = dt;
                         }
                         else
                         {
                             MessageBox.Show("No records found.");
+                            BomDetailDataGridView.DataSource = null;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Please select a BOM Master ID.");
+                        MessageBox.Show("Please select a BOM Detail ID.");
                     }
                 }
                 catch (Exception ex)
@@ -124,7 +115,6 @@ ORDER BY BOMID DESC";
                 }
             }
         }
-
 
 
 

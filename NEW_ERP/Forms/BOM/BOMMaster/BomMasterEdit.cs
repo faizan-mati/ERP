@@ -148,6 +148,11 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
 
                         LoadProducts(saleOrderId);
                         ProductBox.SelectedValue = productId;
+
+                        SaleOrderBox.Enabled = true;
+                        ProductBox.Enabled = true;
+                        txtVersionNo.ReadOnly = false;
+
                     }
                     else
                     {

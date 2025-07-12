@@ -25,7 +25,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             BomId();
         }
 
-        //======================================= LOAD SALE ORDER ID =======================================
+        //======================================= LOAD BOM MASTER ID =======================================
 
         protected void BomId()
         {
@@ -142,6 +142,22 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             this.Close();
         }
 
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            BomDetailEdit nextForm = new BomDetailEdit();
+            nextForm.Show();
+        }
 
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            BomDetailDelete nextForm = new BomDetailDelete();
+            nextForm.Show();
+        }
+
+        private void ViewAllBtn_Click(object sender, EventArgs e)
+        {
+            BomDetailViewAll nextForm = new BomDetailViewAll();
+            nextForm.Show();
+        }
     }
 }

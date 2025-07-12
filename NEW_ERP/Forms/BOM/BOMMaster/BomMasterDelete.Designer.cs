@@ -50,6 +50,7 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
             // CloseBtn
             // 
             this.CloseBtn.FlatAppearance.BorderSize = 0;
+            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // BomMasterIdBox
             // 

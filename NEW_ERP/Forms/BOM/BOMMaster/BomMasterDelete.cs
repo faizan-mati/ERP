@@ -220,7 +220,9 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
 
         }
 
-
-
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

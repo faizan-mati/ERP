@@ -113,7 +113,7 @@ namespace NEW_ERP.Forms.BOMMaster
                             cmd.Parameters.AddWithValue("@SaleOrderId", Convert.ToInt32(SelectedSaleOrderId));
                             cmd.Parameters.AddWithValue("@ProductId", Convert.ToInt32(SelectedProductId));
                             cmd.Parameters.AddWithValue("@VersionNo", txtVersionNo.Text.Trim());
-                            cmd.Parameters.AddWithValue("@CreatedBy", Environment.UserName);
+                            cmd.Parameters.AddWithValue("@CreatedBy", "admin");
 
                             conn.Open(); 
 

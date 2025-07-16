@@ -140,7 +140,7 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
                         txtVersionNo.Text = reader["VersionNo"].ToString();
 
                         int saleOrderId = Convert.ToInt32(reader["SaleOrderID"]);
-                        int productId = Convert.ToInt32(reader["ProductID"]);
+                        string productId = Convert.ToString(reader["ProductID"]);
 
                         LoadSaleOrders();
 

@@ -1,41 +1,63 @@
 ﻿using NEW_ERP.GernalClasses;
 using NEW_ERP.Template;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NEW_ERP.Forms.SaleOrder
 {
+    /// <summary>
+    /// Sale Order Add Form - Handles creation of new sale orders with fabric details and color/size specifications
+    /// </summary>
     public partial class SaleOrderAdd : AddFormTemplate
     {
+        #region Private Fields
+
+        // Dropdown loading state flags
+        private bool isCustomerLoaded = false;
+        private bool isProductLoaded = false;
+        private bool isCategoryLoaded = false;
+        private bool isShipModeLoaded = false;
+        private bool isEmblishmenLoaded = false;
+        private bool isPackingTypeLoaded = false;
+        private bool isFoldTypeLoaded = false;
+        private bool isSaleTypeLoaded = false;
+        private bool isAgentLoaded = false;
+        private bool isToleranceLoaded = false;
+
+        #endregion
+
+        #region Constructor & Form Load
+    
         public SaleOrderAdd()
         {
             InitializeComponent();
         }
 
-        // ========================== FORM LOAD ==========================
         private void SaleOrderAdd_Load(object sender, EventArgs e)
         {
             FabricDataGridShow();
             ColorSizeDataGridShow();
         }
 
-        // ========================== FABRIC GRID SETUP ==========================
+        #endregion
+
+        #region DataGrid Setup Methods
+
+        // =========================================== Configures the Fabric DataGrid with columns and event handlers
+
         public void FabricDataGridShow()
         {
             FabricDataGrid.Columns.Clear();
 
+            // Add fabric combo box column
             var fabricColumn = new DataGridViewComboBoxColumn
             {
                 HeaderText = "FABRIC",
-                Name = "FABRIC"
+                Name = "FABRIC",
+                Width = 250
             };
 
             FabricDataGrid.Columns.Add(fabricColumn);
@@ -47,15 +69,57 @@ namespace NEW_ERP.Forms.SaleOrder
             FabricDataGrid.Columns.Add("SHIRNK", "SHIRNK");
             FabricDataGrid.Columns.Add("STITCH LENGTH", "STITCH LENGTH");
 
+            // Set grid styling
             FabricDataGrid.DefaultCellStyle.Font = new Font("Arial", 11);
             FabricDataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
-
-            FabricDataGrid.Columns[0].Width = 250;
             FabricDataGrid.Columns[1].Width = 150;
 
+            // Attach event handlers
             FabricDataGrid.EditingControlShowing += FabricDataGrid_EditingControlShowing;
             FabricDataGrid.CellClick += FabricDataGrid_CellClick;
         }
+
+        // ===========================================  Configures the Color/Size DataGrid with columns and event handlers
+
+        public void ColorSizeDataGridShow()
+        {
+            ColorSizeDataGrid.Columns.Clear();
+
+            // Add color and size combo box columns
+            var colorColumn = new DataGridViewComboBoxColumn
+            {
+                HeaderText = "COLOR",
+                Name = "COLOR",
+                Width = 250
+            };
+
+            var sizeColumn = new DataGridViewComboBoxColumn
+            {
+                HeaderText = "SIZE",
+                Name = "SIZE",
+                Width = 150
+            };
+
+            ColorSizeDataGrid.Columns.Add(colorColumn);
+            ColorSizeDataGrid.Columns.Add(sizeColumn);
+            ColorSizeDataGrid.Columns.Add("QUANTITY", "QUANTITY");
+            ColorSizeDataGrid.Columns.Add("UNIT PRICE", "UNIT PRICE");
+            ColorSizeDataGrid.Columns.Add("TOAL PRICE", "TOAL PRICE");
+
+            // Set grid styling
+            ColorSizeDataGrid.DefaultCellStyle.Font = new Font("Arial", 11);
+            ColorSizeDataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
+
+            // Attach event handlers
+            ColorSizeDataGrid.EditingControlShowing += ColorSizeDataGrid_EditingControlShowing;
+            ColorSizeDataGrid.CellClick += ColorSizeDataGrid_CellClick;
+        }
+
+        #endregion
+
+        #region DataGrid Event Handlers
+
+        // ===========================================  Handles editing control showing event for Fabric DataGrid
 
         private void FabricDataGrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -66,6 +130,8 @@ namespace NEW_ERP.Forms.SaleOrder
                 comboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
             }
         }
+
+        // ===========================================  Handles cell click event for Fabric DataGrid - loads fabric data when needed
 
         private void FabricDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -81,38 +147,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        // ========================== COLOR + SIZE GRID SETUP ==========================
-        public void ColorSizeDataGridShow()
-        {
-            ColorSizeDataGrid.Columns.Clear();
-
-            var colorColumn = new DataGridViewComboBoxColumn
-            {
-                HeaderText = "COLOR",
-                Name = "COLOR"
-            };
-
-            var sizeColumn = new DataGridViewComboBoxColumn
-            {
-                HeaderText = "SIZE",
-                Name = "SIZE"
-            };
-
-            ColorSizeDataGrid.Columns.Add(colorColumn);
-            ColorSizeDataGrid.Columns.Add(sizeColumn);
-            ColorSizeDataGrid.Columns.Add("QUANTITY", "QUANTITY");
-            ColorSizeDataGrid.Columns.Add("UNIT PRICE", "UNIT PRICE");
-            ColorSizeDataGrid.Columns.Add("TOAL PRICE", "TOAL PRICE");
-
-            ColorSizeDataGrid.DefaultCellStyle.Font = new Font("Arial", 11);
-            ColorSizeDataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
-
-            ColorSizeDataGrid.Columns[0].Width = 250;
-            ColorSizeDataGrid.Columns[1].Width = 150;
-
-            ColorSizeDataGrid.EditingControlShowing += ColorSizeDataGrid_EditingControlShowing;
-            ColorSizeDataGrid.CellClick += ColorSizeDataGrid_CellClick;
-        }
+        // ===========================================  Handles editing control showing event for Color/Size DataGrid
 
         private void ColorSizeDataGrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -125,34 +160,37 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
+        // ===========================================  Handles cell click event for Color/Size DataGrid - loads color/size data when needed
+  
         private void ColorSizeDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                if (e.ColumnIndex == 0) // COLOR
+                var comboCol = ColorSizeDataGrid.Columns[e.ColumnIndex] as DataGridViewComboBoxColumn;
+                if (comboCol != null && comboCol.DataSource == null)
                 {
-                    var comboCol = ColorSizeDataGrid.Columns[e.ColumnIndex] as DataGridViewComboBoxColumn;
-                    if (comboCol != null && comboCol.DataSource == null)
+                    switch (e.ColumnIndex)
                     {
-                        comboCol.DataSource = GetColorNames();
-                        comboCol.DisplayMember = "ColorName";
-                        comboCol.ValueMember = "ColorID";
-                    }
-                }
-                else if (e.ColumnIndex == 1) // SIZE
-                {
-                    var comboCol = ColorSizeDataGrid.Columns[e.ColumnIndex] as DataGridViewComboBoxColumn;
-                    if (comboCol != null && comboCol.DataSource == null)
-                    {
-                        comboCol.DataSource = GetSizeNames();
-                        comboCol.DisplayMember = "SizeName";
-                        comboCol.ValueMember = "SizeID";
+                        case 0: // COLOR
+                            comboCol.DataSource = GetColorNames();
+                            comboCol.DisplayMember = "ColorName";
+                            comboCol.ValueMember = "ColorID";
+                            break;
+                        case 1: // SIZE
+                            comboCol.DataSource = GetSizeNames();
+                            comboCol.DisplayMember = "SizeName";
+                            comboCol.ValueMember = "SizeID";
+                            break;
                     }
                 }
             }
         }
 
-        // ========================== LOAD FABRIC / COLOR / SIZE ==========================
+        #endregion
+
+        #region Data Loading Methods
+
+        // =========================================== Retrieves fabric names from the database
 
         private DataTable GetFabricNames()
         {
@@ -170,6 +208,8 @@ namespace NEW_ERP.Forms.SaleOrder
             return dt;
         }
 
+        // ===========================================  Retrieves color names from the database
+
         private DataTable GetColorNames()
         {
             DataTable dt = new DataTable();
@@ -185,6 +225,8 @@ namespace NEW_ERP.Forms.SaleOrder
             }
             return dt;
         }
+
+        // ===========================================  Retrieves size names from the database
 
         private DataTable GetSizeNames()
         {
@@ -202,8 +244,11 @@ namespace NEW_ERP.Forms.SaleOrder
             return dt;
         }
 
+        #endregion
 
-        //======================================= LOAD DROP DOWN SHOW ALL =======================================
+        #region ComboBox Dropdown Event Handlers
+
+        // ===========================================  Generic method to load dropdown data
 
         private void LoadDropdown(ComboBox box, ref bool isLoaded, string query, string displayMember, string valueMember)
         {
@@ -224,17 +269,12 @@ namespace NEW_ERP.Forms.SaleOrder
 
                     isLoaded = true;
 
-                    this.BeginInvoke((Action)(() =>
-                    {
-                        box.DroppedDown = true;
-                    }));
+                    this.BeginInvoke((Action)(() => { box.DroppedDown = true; }));
                 }
             }
         }
 
-        //======================================= CUSTOMER NAME SHOW =======================================
-
-        private bool isCustomerLoaded = false;
+        // ===========================================  Loads customer data on dropdown
 
         private void CustomerBox_DropDown(object sender, EventArgs e)
         {
@@ -243,9 +283,7 @@ namespace NEW_ERP.Forms.SaleOrder
                 "CustomerName", "CustomerID");
         }
 
-        //======================================= PRODUCT NAME SHOW =======================================
-
-        private bool isProductLoaded = false;
+        // ===========================================  Loads product data on dropdown
 
         private void ProductBox_DropDown(object sender, EventArgs e)
         {
@@ -254,189 +292,190 @@ namespace NEW_ERP.Forms.SaleOrder
                 "ProductShortName", "ProductCode");
         }
 
-        //======================================= CATEGORY NAME SHOW =======================================
-
-        private bool isCategoryLoaded = false;
+        // ===========================================  Loads category data on dropdown
 
         private void CategoryBox_DropDown(object sender, EventArgs e)
         {
             LoadDropdown(CategoryBox, ref isCategoryLoaded,
-               "select CategoryID, CategoryName from CategoryMaster",
+               "SELECT CategoryID, CategoryName FROM CategoryMaster",
                "CategoryName", "CategoryID");
         }
 
-        //======================================= SHIP MODE NAME SHOW =======================================
-
-        private bool isShipModeLoaded = false;
+        // ===========================================  Loads ship mode data on dropdown
 
         private void ShipModeBox_DropDown(object sender, EventArgs e)
         {
             LoadDropdown(ShipModeBox, ref isShipModeLoaded,
-               "select ShipModeID, ShipModeName from ShipmentModeMaster",
+               "SELECT ShipModeID, ShipModeName FROM ShipmentModeMaster",
                "ShipModeName", "ShipModeID");
         }
 
-        //======================================= EMBELISHMENT NAME SHOW =======================================
-      
-        private bool isEmblishmenLoaded = false;
+        // ===========================================  Loads embellishment data on dropdown
 
         private void EmbelishmentBox_DropDown(object sender, EventArgs e)
         {
             LoadDropdown(EmbelishmentBox, ref isEmblishmenLoaded,
-              "select EmbellishmentID, EmbellishmentName from EmbellishmentMaster",
+              "SELECT EmbellishmentID, EmbellishmentName FROM EmbellishmentMaster",
               "EmbellishmentName", "EmbellishmentID");
         }
 
-        //======================================= PACKING TYPE  NAME SHOW =======================================
+        // ===========================================  Loads packing type data on dropdown
 
-        private bool isPackingTypeLoaded = false;
-
-        private void PackingTypeBox_DragDrop(object sender, DragEventArgs e)
+        private void PackingTypeBox_DropDown(object sender, EventArgs e)
         {
             LoadDropdown(PackingTypeBox, ref isPackingTypeLoaded,
-               "select PackingTypeID, PackingType from PackingTypeMaster",
+               "SELECT PackingTypeID, PackingType FROM PackingTypeMaster",
                "PackingType", "PackingTypeID");
         }
 
-        //======================================= FOLD TYPE  NAME SHOW =======================================
-
-        private bool isFoldTypeLoaded = false;
+        // =========================================== Loads fold type data on dropdown
 
         private void FoldTypeBox_DropDown(object sender, EventArgs e)
         {
             LoadDropdown(FoldTypeBox, ref isFoldTypeLoaded,
-               "select FoldTypeID, FoldTypeName from FoldTypeMaster",
+               "SELECT FoldTypeID, FoldTypeName FROM FoldTypeMaster",
                "FoldTypeName", "FoldTypeID");
         }
 
-        //======================================= SALE TYPE  NAME SHOW =======================================
-
-        private bool isSaleTypeLoaded = false;
+        // =========================================== Loads sale type data on dropdown
 
         private void SaleTypeBox_DropDown(object sender, EventArgs e)
         {
             LoadDropdown(SaleTypeBox, ref isSaleTypeLoaded,
-               "select SaleTypeID, SaleType from SaleTypeMaster",
+               "SELECT SaleTypeID, SaleType FROM SaleTypeMaster",
                "SaleType", "SaleTypeID");
         }
 
-        //======================================= AGENT NAME SHOW =======================================
-
-        private bool isAgentLoaded = false;
+        // =========================================== Loads agent data on dropdown
 
         private void AgentBox_DropDown(object sender, EventArgs e)
         {
             LoadDropdown(AgentBox, ref isAgentLoaded,
-               "select AgentID, AgentName from AgentMaster",
+               "SELECT AgentID, AgentName FROM AgentMaster",
                "AgentName", "AgentID");
         }
-       
-        //======================================= TOLERANCE NAME SHOW =======================================
 
-        private bool isToleranceLoaded = false;
-
+        // ===========================================  Loads tolerance data on dropdown
+     
         private void ToleranceBox_DropDown(object sender, EventArgs e)
         {
             LoadDropdown(ToleranceBox, ref isToleranceLoaded,
-                 "select ToleranceID, TolerancePercent  from ToleranceMaster",
+                 "SELECT ToleranceID, TolerancePercent FROM ToleranceMaster",
                  "TolerancePercent", "ToleranceID");
         }
 
+        #endregion
 
-        //======================================= SUBMIT BUTTON =======================================
+        #region Utility Methods
 
-        private void SubmitBtn_Click(object sender, EventArgs e)
+        // ===========================================  Returns ComboBox selected value or DBNull if no selection
+       
+        private object GetNullableValue(ComboBox comboBox)
         {
-            if (validation())
-            {
-                SaleOrderMaster();
-                SaleOrderDetail();
-                SaleOrderFabric();
+            return comboBox.SelectedItem != null ? comboBox.SelectedValue : DBNull.Value;
+        }
 
-                RestFormControler();
+        // ===========================================  Returns TextBox value with optional type conversion or DBNull if empty
+   
+        private object GetNullableText(TextBox textBox, bool convertToInt = false, bool convertToDecimal = false)
+        {
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+                return DBNull.Value;
+
+            try
+            {
+                if (convertToInt)
+                    return Convert.ToInt32(textBox.Text);
+                if (convertToDecimal)
+                    return Convert.ToDecimal(textBox.Text);
+                return textBox.Text.Trim();
+            }
+            catch
+            {
+                return DBNull.Value;
             }
         }
 
-        //======================================= SALE ORDER MASTER =======================================
-
-        public void SaleOrderMaster()
+        // ===========================================  Returns DataGrid cell value with optional type conversion or DBNull if empty
+      
+        private object GetCellValue(DataGridViewRow row, string columnName, bool isDecimal = false)
         {
+            var val = row.Cells[columnName].Value;
+            if (val == null || string.IsNullOrWhiteSpace(val.ToString()))
+                return DBNull.Value;
+
+            try
+            {
+                return isDecimal ? Convert.ToDecimal(val) : Convert.ToInt32(val);
+            }
+            catch
+            {
+                return DBNull.Value;
+            }
+        }
+
+        #endregion
+
+        #region Data Insertion Methods
+
+        // ===========================================  Inserts sale order master record and returns the new Sale Order ID
+      
+        public int InsertSaleOrderMaster()
+        {
+            int newSaleOrderId = 0;
+
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
-                try
+                using (SqlCommand cmd = new SqlCommand("sp_InsertSaleOrderMaster", conn))
                 {
-                    string SelectedCustomerId = CustomerBox.SelectedValue.ToString();
-                    string SelectedProductId = ProductBox.SelectedValue.ToString();
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                    string SelectedCategoryId = CategoryBox.SelectedValue.ToString();
-                    string SelectedSaleTypeId = SaleTypeBox.SelectedValue.ToString();
+                    // Add parameters
+                    cmd.Parameters.AddWithValue("@SaleOrderNo", txtSaleOrder.Text.Trim());
+                    cmd.Parameters.AddWithValue("@CustomerID", GetNullableValue(CustomerBox));
+                    cmd.Parameters.AddWithValue("@ProductID", GetNullableValue(ProductBox));
+                    cmd.Parameters.AddWithValue("@Style", GetNullableText(txtStyle));
+                    cmd.Parameters.AddWithValue("@CategoryID", GetNullableValue(CategoryBox));
+                    cmd.Parameters.AddWithValue("@Range", GetNullableText(txtRange));
+                    cmd.Parameters.AddWithValue("@SaleTypeID", GetNullableValue(SaleTypeBox));
+                    cmd.Parameters.AddWithValue("@AgentID", GetNullableValue(AgentBox));
+                    cmd.Parameters.AddWithValue("@ShipModeID", GetNullableValue(ShipModeBox));
+                    cmd.Parameters.AddWithValue("@OrderDate", OrderDateTimePicker.Value.Date);
+                    cmd.Parameters.AddWithValue("@ExFactoryDate", ExFactoryDateTimePicker.Value.Date);
+                    cmd.Parameters.AddWithValue("@ETADate", ETADateTimePicker.Value.Date);
+                    cmd.Parameters.AddWithValue("@EmbellishmentID", GetNullableValue(EmbelishmentBox));
+                    cmd.Parameters.AddWithValue("@PackingTypeID", GetNullableValue(PackingTypeBox));
+                    cmd.Parameters.AddWithValue("@FoldTypeID", GetNullableValue(FoldTypeBox));
+                    cmd.Parameters.AddWithValue("@FactoryPrice", GetNullableText(txtFactoryPrice, convertToInt: true));
+                    cmd.Parameters.AddWithValue("@Commission", GetNullableText(txtCommission, convertToInt: true));
+                    cmd.Parameters.AddWithValue("@Total", GetNullableText(txtTotal, convertToInt: true));
+                    cmd.Parameters.AddWithValue("@CustomerTolerance", GetNullableValue(ToleranceBox));
+                    cmd.Parameters.AddWithValue("@Plan", txtPlan.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Po", txtPoNo.Text.Trim());
+                    cmd.Parameters.AddWithValue("@CtnQty", txtCtnQty.Text.Trim());
+                    cmd.Parameters.AddWithValue("@UserCode", "USR");
+                    cmd.Parameters.AddWithValue("@StatusCode", "ACT");
+                    cmd.Parameters.AddWithValue("@SystemDate", DateTime.Now);
 
-                    string SelectedAgentId = AgentBox.SelectedValue.ToString();
-                    string SelectedShipModeId = ShipModeBox.SelectedValue.ToString();
-
-                    string SelectedEmbelishmentId = EmbelishmentBox.SelectedValue.ToString();
-                    string SelectedPackingTypeId = PackingTypeBox.SelectedValue.ToString();
-
-                    string SelectedFoldTypeId = FoldTypeBox.SelectedValue.ToString();
-                    string SelectedToleranceId = ToleranceBox.SelectedValue.ToString();
-
-                    using (SqlCommand cmd = new SqlCommand("", conn))
+                    // Output parameter for new ID
+                    SqlParameter outputIdParam = new SqlParameter("@SaleOrderID", SqlDbType.Int)
                     {
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputIdParam);
 
-                        cmd.Parameters.AddWithValue("@CustomerId", Convert.ToInt32(SelectedCustomerId));
-                        cmd.Parameters.AddWithValue("@ProductId", Convert.ToInt32(SelectedProductId));
-
-                        cmd.Parameters.AddWithValue("@CategoryId", Convert.ToInt32(SelectedCategoryId));
-                        cmd.Parameters.AddWithValue("@SaleTypeId", Convert.ToInt32(SelectedSaleTypeId));
-
-                        cmd.Parameters.AddWithValue("@AgentId", Convert.ToInt32(SelectedAgentId));
-                        cmd.Parameters.AddWithValue("@ShipModeId", Convert.ToInt32(SelectedShipModeId));
-
-                        cmd.Parameters.AddWithValue("@EmbelishmentId", Convert.ToInt32(SelectedEmbelishmentId));
-                        cmd.Parameters.AddWithValue("@PackingTypeId", Convert.ToInt32(SelectedPackingTypeId));
-
-                        cmd.Parameters.AddWithValue("@FoldTypeId", Convert.ToInt32(SelectedFoldTypeId));
-                        cmd.Parameters.AddWithValue("@ToleranceId", Convert.ToInt32(SelectedToleranceId));
-
-                        cmd.Parameters.AddWithValue("@SaleOrder", txtSaleOrder.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Style", txtStyle.Text.Trim());
-
-                        cmd.Parameters.AddWithValue("@Range", txtRange.Text.Trim());
-                        cmd.Parameters.AddWithValue("@FactoryPrice", txtFactoryPrice.Text.Trim());
-
-                        cmd.Parameters.AddWithValue("@Commission", txtCommission.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Total", txtTotal.Text.Trim());
-
-                        cmd.Parameters.AddWithValue("@OrderDateTime", OrderDateTimePicker.Value);
-                        cmd.Parameters.AddWithValue("@ExFactoryDateTime", ExFactoryDateTimePicker.Value);
-                        cmd.Parameters.AddWithValue("@ETADateTime", ETADateTimePicker.Value);
-
-                        conn.Open();
-
-                        int result = cmd.ExecuteNonQuery();
-
-                        if (result > 0)
-                        {
-                            MessageBox.Show("Sale Order inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                           
-                        }
-                        else
-                        {
-                            MessageBox.Show("Sale Order Insertion failed.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    newSaleOrderId = Convert.ToInt32(outputIdParam.Value);
                 }
             }
+
+            return newSaleOrderId;
         }
 
-        //======================================= SALE ORDER DETAIL =======================================
-
-        public void SaleOrderDetail()
+        // ===========================================  Inserts sale order detail records from ColorSizeDataGrid
+      
+        public void SaleOrderDetail(int saleOrderId)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
@@ -447,44 +486,40 @@ namespace NEW_ERP.Forms.SaleOrder
                     {
                         foreach (DataGridViewRow row in ColorSizeDataGrid.Rows)
                         {
-                            if (row.IsNewRow) continue;
-                            if (row.Cells["COLOR"].Value == null) continue;
+                            if (row.IsNewRow || row.Cells["COLOR"].Value == null) continue;
 
-                            using (SqlCommand cmd = new SqlCommand("", conn, tran)) 
+                            using (SqlCommand cmd = new SqlCommand("sp_InsertSaleOrderDetail", conn, tran))
                             {
                                 cmd.CommandType = CommandType.StoredProcedure;
 
-                                int ColorId = Convert.ToInt32(row.Cells["COLOR"].Value);
-                                int SizeId = Convert.ToInt32(row.Cells["SIZE"].Value);
-                                int Quantity = Convert.ToInt32(row.Cells["QUANTITY"].Value);
-                                decimal UnitPrice = Convert.ToDecimal(row.Cells["UNIT PRICE"].Value); 
-                                decimal TotalPrice = Convert.ToDecimal(row.Cells["TOAL PRICE"].Value);
-
-                                cmd.Parameters.Add("@ColorId", SqlDbType.Int).Value = ColorId;
-                                cmd.Parameters.Add("@SizeId", SqlDbType.Int).Value = SizeId;
-                                cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = Quantity;
-                                cmd.Parameters.Add("@UnitPrice", SqlDbType.Decimal).Value = UnitPrice;
-                                cmd.Parameters.Add("@TotalPrice", SqlDbType.Decimal).Value = TotalPrice;
+                                cmd.Parameters.AddWithValue("@SaleOrderID", saleOrderId);
+                                cmd.Parameters.AddWithValue("@ProductID", GetNullableValue(ProductBox));
+                                cmd.Parameters.AddWithValue("@ColorID", GetCellValue(row, "COLOR"));
+                                cmd.Parameters.AddWithValue("@SizeID", GetCellValue(row, "SIZE"));
+                                cmd.Parameters.AddWithValue("@Quantity", GetCellValue(row, "QUANTITY"));
+                                cmd.Parameters.AddWithValue("@UnitPrice", GetCellValue(row, "UNIT PRICE", true));
+                                cmd.Parameters.AddWithValue("@TotalPrice", GetCellValue(row, "TOAL PRICE", true));
+                                cmd.Parameters.AddWithValue("@UserCode", "USR");
+                                cmd.Parameters.AddWithValue("@StatusCode", "ACT");
+                                cmd.Parameters.AddWithValue("@SystemDate", DateTime.Now);
 
                                 cmd.ExecuteNonQuery();
                             }
                         }
-
                         tran.Commit();
-                        MessageBox.Show("Sale order details saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
                         tran.Rollback();
-                        MessageBox.Show("Failed to save sale order details:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("SaleOrderDetail Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
 
-        //======================================= SALE ORDER FABRIC =======================================
-
-        public void SaleOrderFabric()
+        // ===========================================  Inserts sale order fabric records from FabricDataGrid
+       
+        public void SaleOrderFabric(int saleOrderId)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
@@ -495,86 +530,108 @@ namespace NEW_ERP.Forms.SaleOrder
                     {
                         foreach (DataGridViewRow row in FabricDataGrid.Rows)
                         {
-                            if (row.IsNewRow) continue;
-                            if (row.Cells["FABRIC"].Value == null) continue;
+                            if (row.IsNewRow || row.Cells["FABRIC"].Value == null) continue;
 
-                            using (SqlCommand cmd = new SqlCommand("", conn, tran))
+                            using (SqlCommand cmd = new SqlCommand("sp_InsertSaleOrderFabric", conn, tran))
                             {
                                 cmd.CommandType = CommandType.StoredProcedure;
 
-                                // Read and convert values
-                                int fabricId = Convert.ToInt32(row.Cells["FABRIC"].Value);
-                                string type = Convert.ToString(row.Cells["TYPE"].Value ?? "");
-                                int gsm = Convert.ToInt32(row.Cells["GSM"].Value ?? "0");
-                                decimal width = Convert.ToDecimal(row.Cells["WIDTH"].Value ?? "0");
-                                decimal dia = Convert.ToDecimal(row.Cells["DIA"].Value ?? "0");
-                                string gauge = Convert.ToString(row.Cells["GAUGE"].Value ?? "");
-                                int shirnk = Convert.ToInt32(row.Cells["SHIRNK"].Value ?? "0");
-                                string stitchLength = Convert.ToString(row.Cells["STITCH LENGTH"].Value ?? "");
-
-                                // Add parameters with correct SqlDbType
-                                cmd.Parameters.Add("@FabricId", SqlDbType.Int).Value = fabricId;
-                                cmd.Parameters.Add("@Type", SqlDbType.VarChar, 50).Value = type;
-                                cmd.Parameters.Add("@GSM", SqlDbType.Int).Value = gsm;
-                                cmd.Parameters.Add("@Width", SqlDbType.Decimal).Value = width;
-                                cmd.Parameters.Add("@DIA", SqlDbType.Decimal).Value = dia;
-                                cmd.Parameters.Add("@Gauge", SqlDbType.VarChar, 20).Value = gauge;
-                                cmd.Parameters.Add("@Shirnk", SqlDbType.Int).Value = shirnk;
-                                cmd.Parameters.Add("@StitchLength", SqlDbType.VarChar, 50).Value = stitchLength;
+                                cmd.Parameters.AddWithValue("@SaleOrderID", saleOrderId);
+                                cmd.Parameters.AddWithValue("@FabricID", GetCellValue(row, "FABRIC"));
+                                cmd.Parameters.AddWithValue("@Type", row.Cells["TYPE"].Value?.ToString() ?? "");
+                                cmd.Parameters.AddWithValue("@GSM", GetCellValue(row, "GSM"));
+                                cmd.Parameters.AddWithValue("@Width", GetCellValue(row, "WIDTH", true));
+                                cmd.Parameters.AddWithValue("@Dia", GetCellValue(row, "DIA", true));
+                                cmd.Parameters.AddWithValue("@Gauge", row.Cells["GAUGE"].Value?.ToString() ?? "");
+                                cmd.Parameters.AddWithValue("@ShrinkPercent", GetCellValue(row, "SHIRNK", true));
+                                cmd.Parameters.AddWithValue("@StitchLength", row.Cells["STITCH LENGTH"].Value?.ToString() ?? "");
+                                cmd.Parameters.AddWithValue("@UserCode", "USR");
+                                cmd.Parameters.AddWithValue("@StatusCode", "ACT");
+                                cmd.Parameters.AddWithValue("@SystemDate", DateTime.Now);
 
                                 cmd.ExecuteNonQuery();
                             }
                         }
-
                         tran.Commit();
-                        MessageBox.Show("Fabric sale order saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
                         tran.Rollback();
-                        MessageBox.Show("Failed to save fabric sale order:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("SaleOrderFabric Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
 
-        //======================================= FOR VALIDATION =======================================
+        #endregion
 
+        #region Validation Methods
+
+        // ===========================================  Validates all required fields before saving
+    
         public bool validation()
         {
+            // Check required text fields
             if (string.IsNullOrWhiteSpace(txtSaleOrder.Text) ||
-                CustomerBox.SelectedIndex == -1 || ShipModeBox.SelectedIndex == -1 ||
-                ProductBox.SelectedIndex == -1 || CategoryBox.SelectedIndex == -1 ||
-
-                  (FabricDataGrid.Rows.Count > 0 &&
-                 (FabricDataGrid.Rows[0].Cells["FABRIC"].Value == null ||
-                  string.IsNullOrWhiteSpace(FabricDataGrid.Rows[0].Cells["FABRIC"].Value.ToString()))) ||
-
-                (ColorSizeDataGrid.Rows.Count > 0 &&
-                 (ColorSizeDataGrid.Rows[0].Cells["COLOR"].Value == null || ColorSizeDataGrid.Rows[1].Cells["SIZE"].Value == null ||
-                  string.IsNullOrWhiteSpace(ColorSizeDataGrid.Rows[0].Cells["COLOR"].Value.ToString())))
-
-                )
+                string.IsNullOrWhiteSpace(txtPoNo.Text) ||
+                string.IsNullOrWhiteSpace(txtPlan.Text))
             {
-                MessageBox.Show("Please Fill All the Fields", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please fill all required fields", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+            // Check required combo boxes
+            if (CustomerBox.SelectedIndex == -1 ||
+                ShipModeBox.SelectedIndex == -1 ||
+                ProductBox.SelectedIndex == -1 ||
+                CategoryBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select all required dropdown values", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // Check fabric grid has data
+            if (FabricDataGrid.Rows.Count == 0 ||
+                FabricDataGrid.Rows[0].Cells["FABRIC"].Value == null ||
+                string.IsNullOrWhiteSpace(FabricDataGrid.Rows[0].Cells["FABRIC"].Value.ToString()))
+            {
+                MessageBox.Show("Please add at least one fabric entry", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // Check color/size grid has data
+            if (ColorSizeDataGrid.Rows.Count == 0 ||
+                ColorSizeDataGrid.Rows[0].Cells["COLOR"].Value == null ||
+                ColorSizeDataGrid.Rows[0].Cells["SIZE"].Value == null ||
+                string.IsNullOrWhiteSpace(ColorSizeDataGrid.Rows[0].Cells["COLOR"].Value.ToString()))
+            {
+                MessageBox.Show("Please add at least one color/size entry", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return true;
         }
 
-        //======================================= REST FORM =======================================
+        #endregion
 
+        #region Form Control Methods
+
+        // =========================================== Resets all form controls to default state
+       
         public void RestFormControler()
         {
-            // Clear TextBoxes
+            // Clear text boxes
             txtSaleOrder.Clear();
             txtStyle.Clear();
             txtRange.Clear();
             txtFactoryPrice.Clear();
             txtCommission.Clear();
             txtTotal.Clear();
+            txtPoNo.Clear();
+            txtPlan.Clear();
+            txtCtnQty.Clear();
 
-            // Reset ComboBoxes
+            // Reset combo boxes
             CustomerBox.SelectedIndex = -1;
             ProductBox.SelectedIndex = -1;
             CategoryBox.SelectedIndex = -1;
@@ -586,17 +643,71 @@ namespace NEW_ERP.Forms.SaleOrder
             FoldTypeBox.SelectedIndex = -1;
             ToleranceBox.SelectedIndex = -1;
 
-            // Reset DateTimePickers
+            // Reset date time pickers
             OrderDateTimePicker.Value = DateTime.Now;
             ExFactoryDateTimePicker.Value = DateTime.Now;
             ETADateTimePicker.Value = DateTime.Now;
 
-            // Clear DataGridViews
+            // Clear data grids
             FabricDataGrid.Rows.Clear();
             ColorSizeDataGrid.Rows.Clear();
+
+            // Reset loading flags
+            isCustomerLoaded = false;
+            isProductLoaded = false;
+            isCategoryLoaded = false;
+            isShipModeLoaded = false;
+            isEmblishmenLoaded = false;
+            isPackingTypeLoaded = false;
+            isFoldTypeLoaded = false;
+            isSaleTypeLoaded = false;
+            isAgentLoaded = false;
+            isToleranceLoaded = false;
         }
 
+        #endregion
 
+        #region Button Event Handlers
+
+        // ===========================================  Handles submit button click - validates and saves the sale order
+      
+        private void SubmitBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validation())
+                {
+                    int saleOrderId = InsertSaleOrderMaster();
+
+                    if (saleOrderId > 0)
+                    {
+                        SaleOrderDetail(saleOrderId);
+                        SaleOrderFabric(saleOrderId);
+                        MessageBox.Show("Sale order saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RestFormControler();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unexpected error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ===========================================  Handles close button click - closes the form
+      
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // ===========================================  Handles edit button click - opens the edit form
+     
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            SaleOrderEdit editForm = new SaleOrderEdit();
+            editForm.Show();
+        }
 
 
         private void txtCustomerCode_TextChanged(object sender, EventArgs e)
@@ -614,10 +725,16 @@ namespace NEW_ERP.Forms.SaleOrder
 
         }
 
-        private void CloseBtn_Click(object sender, EventArgs e)
+        private void PackingTypeBox_DragDrop(object sender, DragEventArgs e)
         {
-            this.Close();
+
         }
 
+        #endregion
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

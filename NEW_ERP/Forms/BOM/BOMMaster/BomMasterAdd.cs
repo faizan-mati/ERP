@@ -23,14 +23,21 @@ namespace NEW_ERP.Forms.BOMMaster
 
         private void BomMasterAdd_Load(object sender, EventArgs e)
         {
+         
+
+          
+        }
+
+        //======================================= LOAD SALE ORDER ID =======================================
+
+        private void SaleOrderBox_DropDown(object sender, EventArgs e)
+        {
             SaleOderId();
 
             // Clear ProductBox on load
             ProductBox.DataSource = null;
             ProductBox.Items.Clear();
         }
-
-        //======================================= LOAD SALE ORDER ID =======================================
 
         protected void SaleOderId()
         {
@@ -111,9 +118,9 @@ namespace NEW_ERP.Forms.BOMMaster
                             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                             cmd.Parameters.AddWithValue("@SaleOrderId", Convert.ToInt32(SelectedSaleOrderId));
-                            cmd.Parameters.AddWithValue("@ProductId", Convert.ToInt32(SelectedProductId));
+                            cmd.Parameters.AddWithValue("@ProductId", Convert.ToString(SelectedProductId));
                             cmd.Parameters.AddWithValue("@VersionNo", txtVersionNo.Text.Trim());
-                            cmd.Parameters.AddWithValue("@CreatedBy", "admin");
+                            cmd.Parameters.AddWithValue("@CreatedBy", "Admin");
 
                             conn.Open(); 
 
@@ -190,5 +197,7 @@ namespace NEW_ERP.Forms.BOMMaster
             BomMasterViewAll NextForm = new BomMasterViewAll();
             NextForm.Show();
         }
+
+    
     }
 }

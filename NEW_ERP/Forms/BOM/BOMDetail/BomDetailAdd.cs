@@ -22,12 +22,12 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
 
         private void BomDetailAdd_Load(object sender, EventArgs e)
         {
-            BomId();
+           
         }
 
         //======================================= LOAD BOM MASTER ID =======================================
 
-        protected void BomId()
+        private void BomIdBox_DropDown(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
@@ -46,7 +46,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
                 }
             }
         }
-
+ 
         //======================================= SUBMIT BUTTON =======================================
 
         private void SubmitBtn_Click(object sender, EventArgs e)
@@ -59,33 +59,40 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
                     {
                         string selectedBomId = BomIdBox.SelectedValue.ToString();
 
-                        using (SqlCommand cmd = new SqlCommand("sp_InsertBOMDetail", conn)) 
+                        using (SqlCommand cmd = new SqlCommand("sp_InsertBOMDetail", conn))
                         {
                             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
+                            // Basic BOM info
                             cmd.Parameters.AddWithValue("@BOMID", Convert.ToInt32(selectedBomId));
                             cmd.Parameters.AddWithValue("@ItemName", txtItemName.Text.Trim());
                             cmd.Parameters.AddWithValue("@ItemType", txtItemType.Text.Trim());
                             cmd.Parameters.AddWithValue("@Unit", txtUnit.Text.Trim());
 
-                            // Safely parse numeric inputs
+                            // Safe decimal parsing
                             decimal conPerPc = decimal.TryParse(txtConPerPc.Text.Trim(), out var val1) ? val1 : 0;
                             decimal wastagePercent = decimal.TryParse(txtWastagePercent.Text.Trim(), out var val2) ? val2 : 0;
-
 
                             cmd.Parameters.AddWithValue("@ConsumptionPerPiece", conPerPc);
                             cmd.Parameters.AddWithValue("@WastagePercent", wastagePercent);
 
+                            // Remarks
                             string remarks = string.IsNullOrWhiteSpace(txtRemarks.Text) ? null : txtRemarks.Text.Trim();
                             cmd.Parameters.AddWithValue("@Remarks", (object)remarks ?? DBNull.Value);
 
-                            conn.Open();
+                            // IsActive & StatusCode
+                            bool isActive = isCheckedcheckbox.Checked;      
+                            string statusCode = isActive ? "ACT" : "INA";
 
+                            cmd.Parameters.AddWithValue("@UserCode", "ADM");   
+                            cmd.Parameters.AddWithValue("@StatusCode", statusCode);
+
+                            conn.Open();
                             int result = cmd.ExecuteNonQuery();
 
                             if (result > 0)
                             {
-                                MessageBox.Show("BOM inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("BOM detail inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 RestFormControler();
                             }
                             else
@@ -103,11 +110,13 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
         }
 
 
+
+
         //======================================= FOR VALIDATION =======================================
 
         public bool validation()
         {
-            if(BomIdBox.SelectedIndex == 1 ||
+            if(BomIdBox.SelectedIndex == -1 ||
                 string.IsNullOrEmpty(txtItemName.Text) ||
                 string.IsNullOrEmpty(txtItemType.Text) ||
                 string.IsNullOrEmpty(txtUnit.Text) ||
@@ -159,5 +168,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             BomDetailViewAll nextForm = new BomDetailViewAll();
             nextForm.Show();
         }
+
+       
     }
 }

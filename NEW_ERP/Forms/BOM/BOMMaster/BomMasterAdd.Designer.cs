@@ -96,6 +96,7 @@ namespace NEW_ERP.Forms.BOMMaster
             this.SaleOrderBox.Name = "SaleOrderBox";
             this.SaleOrderBox.Size = new System.Drawing.Size(203, 24);
             this.SaleOrderBox.TabIndex = 2172;
+            this.SaleOrderBox.DropDown += new System.EventHandler(this.SaleOrderBox_DropDown);
             this.SaleOrderBox.SelectedIndexChanged += new System.EventHandler(this.SaleOrderBox_SelectedIndexChanged);
             // 
             // label17

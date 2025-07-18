@@ -57,7 +57,8 @@ namespace NEW_ERP.Forms.SaleOrder
             {
                 HeaderText = "FABRIC",
                 Name = "FABRIC",
-                Width = 250
+                Width = 250,
+                FlatStyle = FlatStyle.Flat
             };
 
             FabricDataGrid.Columns.Add(fabricColumn);
@@ -90,14 +91,16 @@ namespace NEW_ERP.Forms.SaleOrder
             {
                 HeaderText = "COLOR",
                 Name = "COLOR",
-                Width = 250
+                Width = 250,
+                FlatStyle = FlatStyle.Flat
             };
 
             var sizeColumn = new DataGridViewComboBoxColumn
             {
                 HeaderText = "SIZE",
                 Name = "SIZE",
-                Width = 150
+                Width = 150,
+                FlatStyle = FlatStyle.Flat
             };
 
             ColorSizeDataGrid.Columns.Add(colorColumn);

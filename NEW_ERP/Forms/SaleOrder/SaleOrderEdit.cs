@@ -3,6 +3,8 @@ using NEW_ERP.Template;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace NEW_ERP.Forms.SaleOrder
@@ -84,9 +86,14 @@ namespace NEW_ERP.Forms.SaleOrder
             if (SaleOrderIdBox.SelectedValue == null || SaleOrderIdBox.SelectedValue is DataRowView)
                 return;
 
-            ShowSaleOrder();
-        }
+            FabricDataGridShow();
+            ColorSizeDataGridShow();
 
+
+            ShowSaleOrder();
+            ShowSaleOrderFabric();
+            ShowSaleOrderDetail();
+        }
 
         //======================================= SHOW SALE ORDER MASTER DATA =======================================
         private void ShowSaleOrder()
@@ -155,8 +162,315 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
+        // ========================== LOAD FABRIC DATA INTO GRID ==========================
+     
+        private void ShowSaleOrderFabric()
+        {
+            if (SaleOrderIdBox.SelectedValue == null || SaleOrderIdBox.SelectedValue is DataRowView)
+                return;
+
+            using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                int selectedSaleOrderId = Convert.ToInt32(SaleOrderIdBox.SelectedValue);
+
+                string query = @"SELECT [FabricID], [Type], [GSM], [Width], [Dia], [Gauge], 
+                         [ShrinkPercent], [StitchLength] 
+                         FROM [SaleOrderFabric] 
+                         WHERE [SaleOrderID] = @SaleOrder";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@SaleOrder", selectedSaleOrderId);
+                    con.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        FabricDataGrid.Rows.Clear();
+                        DataTable fabricList = GetFabricNames();
+
+                        while (reader.Read())
+                        {
+                            int fabricId = Convert.ToInt32(reader["FabricID"]);
+
+                            // Validate fabric exists in combo source
+                            if (!fabricList.AsEnumerable().Any(row => row.Field<int>("FabricID") == fabricId))
+                                continue; // Skip invalid
+
+                            FabricDataGrid.Rows.Add(
+                                fabricId,                            // ComboBox (FABRIC)
+                                fabricId,                            // OLD FABRIC
+                                reader["Type"].ToString(),
+                                reader["GSM"].ToString(),
+                                reader["Width"].ToString(),
+                                reader["Dia"].ToString(),
+                                reader["Gauge"].ToString(),
+                                reader["ShrinkPercent"].ToString(),
+                                reader["StitchLength"].ToString()
+                            );
+                        }
+                    }
+                }
+            }
+        }
+
+
+        // =========================================== Configures the Fabric DataGrid with columns and event handlers
+
+        public void FabricDataGridShow()
+        {
+            FabricDataGrid.Columns.Clear();
+
+            // Load fabric list before adding rows
+            DataTable fabricList = GetFabricNames();
+
+            var fabricColumn = new DataGridViewComboBoxColumn
+            {
+                HeaderText = "FABRIC",
+                Name = "FABRIC",
+                Width = 220,
+                DataSource = fabricList,
+                DisplayMember = "FabricName",
+                ValueMember = "FabricID",
+                FlatStyle = FlatStyle.Flat
+            };
+
+            FabricDataGrid.Columns.Add(fabricColumn);
+
+            int oldFabricColumnIndex = FabricDataGrid.Columns.Add("OLD FABRIC", "OLD FABRIC");
+            FabricDataGrid.Columns[oldFabricColumnIndex].Visible = false;
+
+            FabricDataGrid.Columns.Add("TYPE", "TYPE");
+            FabricDataGrid.Columns.Add("GSM", "GSM");
+            FabricDataGrid.Columns.Add("WIDTH", "WIDTH");
+            FabricDataGrid.Columns.Add("DIA", "DIA");
+            FabricDataGrid.Columns.Add("GAUGE", "GAUGE");
+            FabricDataGrid.Columns.Add("SHIRNK", "SHIRNK");
+            FabricDataGrid.Columns.Add("STITCH LENGTH", "STITCH LENGTH");
+
+            // Grid styling
+            FabricDataGrid.DefaultCellStyle.Font = new Font("Arial", 11);
+            FabricDataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
+
+            // Events
+            FabricDataGrid.EditingControlShowing += FabricDataGrid_EditingControlShowing;
+            FabricDataGrid.DataError += FabricDataGrid_DataError;
+        }
+
+        // ========================== DATA ERROR HANDLER ==========================
+        private void FabricDataGrid_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
+            MessageBox.Show("Invalid fabric value. Please select from the dropdown.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        // ===========================================  Handles editing control showing event for Fabric DataGrid
+
+        private void FabricDataGrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (FabricDataGrid.CurrentCell.ColumnIndex == 0 && e.Control is ComboBox comboBox)
+            {
+                comboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                comboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            }
+        }
+
+
+        // ===========================================  Handles cell click event for Fabric DataGrid - loads fabric data when needed
+
+        private void FabricDataGrid_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            {
+                var comboCol = FabricDataGrid.Columns[e.ColumnIndex] as DataGridViewComboBoxColumn;
+                if (comboCol != null && comboCol.DataSource == null)
+                {
+                    comboCol.DataSource = GetFabricNames();
+                    comboCol.DisplayMember = "FabricName";
+                    comboCol.ValueMember = "FabricID";
+                }
+            }
+        }
+
+        // =========================================== Retrieves fabric names from the database
+
+        private DataTable GetFabricNames()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                string query = "SELECT FabricID, FabricName FROM FabricMaster";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    con.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
+        // ===========================================  Configures the Color/Size DataGrid with columns and event handlers
+
+        private void ShowSaleOrderDetail()
+        {
+            if (SaleOrderIdBox.SelectedValue == null || SaleOrderIdBox.SelectedValue is DataRowView)
+                return;
+
+            using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                int selectedSaleOrderId = Convert.ToInt32(SaleOrderIdBox.SelectedValue);
+                string query = @"SELECT [ColorID], [SizeID], [Quantity], [UnitPrice], [TotalPrice] 
+                         FROM [dbo].[SaleOrderDetails] 
+                         WHERE [SaleOrderID] = @SaleOrder";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@SaleOrder", selectedSaleOrderId);
+                    con.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        ColorSizeDataGrid.Rows.Clear();
+                        while (reader.Read())
+                        {
+                            ColorSizeDataGrid.Rows.Add(
+                                reader["ColorID"],   // COLOR combo (ValueMember)
+                                reader["SizeID"],    // SIZE combo (ValueMember)
+                                reader["ColorID"],   // OLD COLOR (Hidden)
+                                reader["SizeID"],    // OLD SIZE (Hidden)
+                                reader["Quantity"],
+                                reader["UnitPrice"],
+                                reader["TotalPrice"]
+                            );
+                        }
+                    }
+                }
+            }
+        }
+
+        // ========================== INITIALIZE DATAGRIDVIEW ==========================
+        public void ColorSizeDataGridShow()
+        {
+            ColorSizeDataGrid.Columns.Clear();
+
+            var colorColumn = new DataGridViewComboBoxColumn
+            {
+                HeaderText = "COLOR",
+                Name = "COLOR",
+                Width = 250,
+                DataSource = GetColorNames(),
+                DisplayMember = "ColorName",
+                ValueMember = "ColorID",
+                FlatStyle = FlatStyle.Flat
+            };
+
+            var sizeColumn = new DataGridViewComboBoxColumn
+            {
+                HeaderText = "SIZE",
+                Name = "SIZE",
+                Width = 150,
+                DataSource = GetSizeNames(),
+                DisplayMember = "SizeName",
+                ValueMember = "SizeID",
+                FlatStyle = FlatStyle.Flat
+            };
+
+            ColorSizeDataGrid.Columns.Add(colorColumn);
+            ColorSizeDataGrid.Columns.Add(sizeColumn);
+
+            // Hidden Columns
+            var oldColorCol = new DataGridViewTextBoxColumn { Name = "OLD COLOR", Visible = false };
+            var oldSizeCol = new DataGridViewTextBoxColumn { Name = "OLD SIZE", Visible = false };
+            ColorSizeDataGrid.Columns.Add(oldColorCol);
+            ColorSizeDataGrid.Columns.Add(oldSizeCol);
+
+            ColorSizeDataGrid.Columns.Add("QUANTITY", "QUANTITY");
+            ColorSizeDataGrid.Columns.Add("UNIT PRICE", "UNIT PRICE");
+            ColorSizeDataGrid.Columns.Add("TOTAL PRICE", "TOTAL PRICE");
+
+            ColorSizeDataGrid.DefaultCellStyle.Font = new Font("Arial", 11);
+            ColorSizeDataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
+
+            ColorSizeDataGrid.EditingControlShowing -= ColorSizeDataGrid_EditingControlShowing;
+            ColorSizeDataGrid.EditingControlShowing += ColorSizeDataGrid_EditingControlShowing;
+
+            ColorSizeDataGrid.CellClick -= ColorSizeDataGrid_CellClick;
+            ColorSizeDataGrid.CellClick += ColorSizeDataGrid_CellClick;
+        }
+
+        // ========================== ENABLE AUTOCOMPLETE ON EDIT ==========================
+        private void ColorSizeDataGrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if ((ColorSizeDataGrid.CurrentCell.ColumnIndex == 0 || ColorSizeDataGrid.CurrentCell.ColumnIndex == 1)
+                && e.Control is ComboBox comboBox)
+            {
+                comboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                comboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            }
+        }
+
+        // ========================== LOAD COLOR/SIZE COMBO ON CLICK ==========================
+        private void ColorSizeDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var comboCol = ColorSizeDataGrid.Columns[e.ColumnIndex] as DataGridViewComboBoxColumn;
+                if (comboCol != null && comboCol.DataSource == null)
+                {
+                    switch (e.ColumnIndex)
+                    {
+                        case 0: // COLOR
+                            comboCol.DataSource = GetColorNames();
+                            comboCol.DisplayMember = "ColorName";
+                            comboCol.ValueMember = "ColorID";
+                            break;
+                        case 1: // SIZE
+                            comboCol.DataSource = GetSizeNames();
+                            comboCol.DisplayMember = "SizeName";
+                            comboCol.ValueMember = "SizeID";
+                            break;
+                    }
+                }
+            }
+        }
+
+        // ========================== GET COLOR LIST FROM DB ==========================
+        private DataTable GetColorNames()
+        {
+            using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                string query = "SELECT ColorID, ColorName FROM ColorMaster ORDER BY ColorName";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    con.Open();
+                    DataTable dt = new DataTable();
+                    new SqlDataAdapter(cmd).Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        // ========================== GET SIZE LIST FROM DB ==========================
+        private DataTable GetSizeNames()
+        {
+            using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                string query = "SELECT SizeID, SizeName FROM SizeMaster ORDER BY SizeName";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    con.Open();
+                    DataTable dt = new DataTable();
+                    new SqlDataAdapter(cmd).Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+
         //======================================= LOAD ALL DROPDOWNS =======================================
-    
+
         private bool isCustomerLoaded = false;
         private bool isProductLoaded = false;
         private bool isCategoryLoaded = false;
@@ -182,6 +496,11 @@ namespace NEW_ERP.Forms.SaleOrder
         private void CustomerBox_DropDown_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
       

@@ -76,3 +76,4 @@ C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.BOM.BOMDeta
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.BOM.BOMDetail.BomDetailDelete.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.BOM.BOMDetail.BomDetailViewAll.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SaleOrder.SaleOrderEdit.resources
+C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SaleOrder.SaleOrderViewAll.resources

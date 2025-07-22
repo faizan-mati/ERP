@@ -209,7 +209,7 @@ namespace NEW_ERP.Forms.Dashboard
 
         private void SaleOrderBtn_Click(object sender, EventArgs e)
         {
-            loadform(new SaleOrderAdd());
+            loadform(new SaleOrderAdd(0, false));
         }
 
         private void BOMBtn_Click(object sender, EventArgs e)

@@ -335,10 +335,10 @@ namespace NEW_ERP.Forms.SaleOrder
                         while (reader.Read())
                         {
                             ColorSizeDataGrid.Rows.Add(
-                                reader["ColorID"],   // COLOR combo (ValueMember)
-                                reader["SizeID"],    // SIZE combo (ValueMember)
-                                reader["ColorID"],   // OLD COLOR (Hidden)
-                                reader["SizeID"],    // OLD SIZE (Hidden)
+                                reader["ColorID"],  
+                                reader["SizeID"],    
+                                reader["ColorID"],   
+                                reader["SizeID"],    
                                 reader["Quantity"],
                                 reader["UnitPrice"],
                                 reader["TotalPrice"]

@@ -23,7 +23,6 @@ namespace NEW_ERP.Forms.CityForms
         {
             LoadCountryData();
             CountryCodeShow();
-            CityNameBox.SelectedIndex = -1;
         }
 
         //======================================= LOAD FORM FUNCTION =======================================
@@ -82,7 +81,7 @@ namespace NEW_ERP.Forms.CityForms
                     CityNameBox.DataSource = dt;
                     CityNameBox.DisplayMember = "CountryName";  
                     CityNameBox.ValueMember = "CountryID";    
-                    CityNameBox.SelectedIndex = 0;
+                    CityNameBox.SelectedIndex = -1;
                 }
             }
         }

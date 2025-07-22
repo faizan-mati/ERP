@@ -86,6 +86,7 @@ namespace NEW_ERP.Forms.SaleOrder
             // DeleteBtn
             // 
             this.DeleteBtn.FlatAppearance.BorderSize = 0;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // EditBtn
             // 
@@ -95,6 +96,7 @@ namespace NEW_ERP.Forms.SaleOrder
             // ViewAllBtn
             // 
             this.ViewAllBtn.FlatAppearance.BorderSize = 0;
+            this.ViewAllBtn.Click += new System.EventHandler(this.ViewAllBtn_Click);
             // 
             // CloseBtn
             // 

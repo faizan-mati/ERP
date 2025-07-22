@@ -146,6 +146,7 @@ namespace NEW_ERP.Template
             this.Controls.Add(this.BtnGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddFormTemplate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddFormTemplate";
             this.ResumeLayout(false);
 

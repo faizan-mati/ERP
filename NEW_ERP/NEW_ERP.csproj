@@ -215,12 +215,6 @@
     <Compile Include="Forms\SaleOrder\SaleOrderAdd.Designer.cs">
       <DependentUpon>SaleOrderAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SaleOrder\SaleOrderEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SaleOrder\SaleOrderEdit.Designer.cs">
-      <DependentUpon>SaleOrderEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\SaleOrder\SaleOrderViewAll.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -379,9 +373,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SaleOrder\SaleOrderAdd.resx">
       <DependentUpon>SaleOrderAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SaleOrder\SaleOrderEdit.resx">
-      <DependentUpon>SaleOrderEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SaleOrder\SaleOrderViewAll.resx">
       <DependentUpon>SaleOrderViewAll.cs</DependentUpon>

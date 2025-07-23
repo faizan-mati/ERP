@@ -270,6 +270,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.txtSaleOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSaleOrder.Location = new System.Drawing.Point(164, 112);
             this.txtSaleOrder.Name = "txtSaleOrder";
+            this.txtSaleOrder.ReadOnly = true;
             this.txtSaleOrder.Size = new System.Drawing.Size(203, 26);
             this.txtSaleOrder.TabIndex = 2126;
             this.txtSaleOrder.TextChanged += new System.EventHandler(this.txtCustomerCode_TextChanged);

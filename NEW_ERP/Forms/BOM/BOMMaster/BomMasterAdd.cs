@@ -23,9 +23,7 @@ namespace NEW_ERP.Forms.BOMMaster
 
         private void BomMasterAdd_Load(object sender, EventArgs e)
         {
-         
 
-          
         }
 
         //======================================= LOAD SALE ORDER ID =======================================

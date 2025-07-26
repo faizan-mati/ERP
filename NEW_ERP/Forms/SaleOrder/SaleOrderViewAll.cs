@@ -233,8 +233,6 @@ namespace NEW_ERP.Forms.SaleOrder
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
 
-            // Log the error if needed
-            // Logger.LogError(ex, message);
         }
 
         #endregion

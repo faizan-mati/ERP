@@ -214,7 +214,7 @@ namespace NEW_ERP.Forms.Dashboard
 
         private void BOMBtn_Click(object sender, EventArgs e)
         {
-            loadform(new BomMasterAdd());
+            loadform(new BomMasterAdd(0, false));
         }
 
         private void BomDetailBtn_Click(object sender, EventArgs e)

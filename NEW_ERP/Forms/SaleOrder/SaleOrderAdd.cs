@@ -12,6 +12,9 @@ namespace NEW_ERP.Forms.SaleOrder
     {
         #region Private Fields and Properties
         private bool isCustomerLoaded = false;
+        private bool isRangeLoaded = false;
+        private bool isCTNTypeLoaded = false;
+        private bool isUnitNameLoaded = false;
         private bool isProductLoaded = false;
         private bool isCategoryLoaded = false;
         private bool isShipModeLoaded = false;
@@ -81,6 +84,9 @@ namespace NEW_ERP.Forms.SaleOrder
         /// </summary>
         private void AttachDropdownEvents()
         {
+            UnitNameBox.DropDown += (s, e) => LoadUnitNameDropdown();
+            RangeBox.DropDown += (s, e) => LoadRangeDropdown();
+            CTNTypeBox.DropDown += (s, e) => LoadCTNTypeDropdown();
             CustomerBox.DropDown += (s, e) => LoadCustomerDropdown();
             ProductBox.DropDown += (s, e) => LoadProductDropdown();
             CategoryBox.DropDown += (s, e) => LoadCategoryDropdown();
@@ -371,10 +377,10 @@ namespace NEW_ERP.Forms.SaleOrder
             {
                 using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
                 using (SqlCommand cmd = new SqlCommand(@"
-                    SELECT [CustomerID], [ProductID], [Style], [CategoryID], [Range], [SaleTypeID], [AgentID], 
+                    SELECT [unitNameID], [CustomerID], [ProductID], [Style], [CategoryID], [RangeID], [SaleTypeID], [AgentID], 
                            [ShipModeID], [OrderDate], [ExFactoryDate], [ETADate], [EmbellishmentID], 
                            [PackingTypeID], [FoldTypeID], [FactoryPrice], [Commission], [Total], 
-                           [CustomerTolerance], [SaleOrderNo], [PoNo], [SaleOrderPlan], [CtnQty]
+                           [CustomerTolerance], [SaleOrderNo], [PoNo], [SaleOrderPlan], [CTNTypeID], [CtnQty]
                     FROM [SaleOrderMaster]
                     WHERE [SaleOrderID] = @SaleOrderId AND StatusCode = 'ACT'", con))
                 {
@@ -385,6 +391,9 @@ namespace NEW_ERP.Forms.SaleOrder
                         if (reader.Read())
                         {
                             LoadSelectedItemOnly(CustomerBox, "SELECT CustomerID, CustomerName FROM CustomerMaster WHERE CustomerID = @ID", "CustomerName", "CustomerID", reader["CustomerID"]);
+                            LoadSelectedItemOnly(UnitNameBox, "SELECT UnitNameID, UnitName FROM UnitNameMaster WHERE UnitNameID = @ID", "UnitName", "UnitNameID", reader["UnitNameID"]);
+                            LoadSelectedItemOnly(RangeBox, "SELECT RangeID, RangeName FROM RangeMaster WHERE RangeID = @ID", "RangeName", "RangeID", reader["RangeID"]);
+                            LoadSelectedItemOnly(CTNTypeBox, "SELECT CTNTypeID, CTNTypeName FROM CTNTypeMaster WHERE CTNTypeID = @ID", "CTNTypeName", "CTNTypeID", reader["CTNTypeID"]);
                             LoadSelectedItemOnly(ProductBox, "SELECT ProductCode, ProductShortName FROM ItemMaster WHERE ProductCode = @ID", "ProductShortName", "ProductCode", reader["ProductID"]);
                             LoadSelectedItemOnly(CategoryBox, "SELECT CategoryID, CategoryName FROM CategoryMaster WHERE CategoryID = @ID", "CategoryName", "CategoryID", reader["CategoryID"]);
                             LoadSelectedItemOnly(SaleTypeBox, "SELECT SaleTypeID, SaleType FROM SaleTypeMaster WHERE SaleTypeID = @ID", "SaleType", "SaleTypeID", reader["SaleTypeID"]);
@@ -396,7 +405,6 @@ namespace NEW_ERP.Forms.SaleOrder
                             LoadSelectedItemOnly(ToleranceBox, "SELECT ToleranceID, TolerancePercent FROM ToleranceMaster WHERE ToleranceID = @ID", "TolerancePercent", "ToleranceID", reader["CustomerTolerance"]);
 
                             txtStyle.Text = reader["Style"].ToString();
-                            txtRange.Text = reader["Range"].ToString();
                             txtPoNo.Text = reader["PoNo"].ToString();
                             txtPlan.Text = reader["SaleOrderPlan"].ToString();
                             txtCtnQty.Text = reader["CtnQty"].ToString();
@@ -599,6 +607,9 @@ namespace NEW_ERP.Forms.SaleOrder
         }
 
         /* One-line wrappers for each dropdown */
+        private void LoadUnitNameDropdown() => LoadDropdown(UnitNameBox, ref isUnitNameLoaded, "select UnitName, UnitNameID from UnitNameMaster", "UnitName", "UnitNameID");
+        private void LoadCTNTypeDropdown() => LoadDropdown(CTNTypeBox, ref isCTNTypeLoaded, "select CTNTypeName, CTNTypeID from CTNTypeMaster", "CTNTypeName", "CTNTypeID");
+        private void LoadRangeDropdown() => LoadDropdown(RangeBox, ref isRangeLoaded, "select RangeName, RangeID from RangeMaster", "RangeName", "RangeID");
         private void LoadCustomerDropdown() => LoadDropdown(CustomerBox, ref isCustomerLoaded, "SELECT CustomerID, CustomerName FROM CustomerMaster", "CustomerName", "CustomerID");
         private void LoadProductDropdown() => LoadDropdown(ProductBox, ref isProductLoaded, "SELECT ProductCode, ProductShortName FROM ItemMaster", "ProductShortName", "ProductCode");
         private void LoadCategoryDropdown() => LoadDropdown(CategoryBox, ref isCategoryLoaded, "SELECT CategoryID, CategoryName FROM CategoryMaster", "CategoryName", "CategoryID");
@@ -651,11 +662,13 @@ namespace NEW_ERP.Forms.SaleOrder
         /// </summary>
         private void SetFormEditable(bool enable)
         {
+            UnitNameBox.Enabled = enable;
             CustomerBox.Enabled = enable;
+            RangeBox.Enabled = enable;
+            CTNTypeBox.Enabled = enable;
             ProductBox.Enabled = enable;
             txtStyle.ReadOnly = !enable;
             CategoryBox.Enabled = enable;
-            txtRange.ReadOnly = !enable;
             SaleTypeBox.Enabled = enable;
             AgentBox.Enabled = enable;
             ShipModeBox.Enabled = enable;
@@ -688,7 +701,8 @@ namespace NEW_ERP.Forms.SaleOrder
                 return false;
             }
 
-            if (CustomerBox.SelectedIndex == -1 ||
+            if (UnitNameBox.SelectedIndex == -1 ||
+                CustomerBox.SelectedIndex == -1 ||
                 ShipModeBox.SelectedIndex == -1 ||
                 ProductBox.SelectedIndex == -1 ||
                 CategoryBox.SelectedIndex == -1)
@@ -724,7 +738,6 @@ namespace NEW_ERP.Forms.SaleOrder
         {
             ShowNextSaleOrderId();
             txtStyle.Clear();
-            txtRange.Clear();
             txtFactoryPrice.Clear();
             txtCommission.Clear();
             txtTotal.Clear();
@@ -732,7 +745,10 @@ namespace NEW_ERP.Forms.SaleOrder
             txtPlan.Clear();
             txtCtnQty.Clear();
 
+            UnitNameBox.SelectedIndex = -1;
             CustomerBox.SelectedIndex = -1;
+            RangeBox.SelectedIndex = -1;
+            CTNTypeBox.SelectedIndex = -1;
             ProductBox.SelectedIndex = -1;
             CategoryBox.SelectedIndex = -1;
             SaleTypeBox.SelectedIndex = -1;
@@ -750,7 +766,10 @@ namespace NEW_ERP.Forms.SaleOrder
             FabricDataGrid.Rows.Clear();
             ColorSizeDataGrid.Rows.Clear();
 
+            isUnitNameLoaded = false;
             isCustomerLoaded = false;
+            isCTNTypeLoaded = false;
+            isRangeLoaded = false;
             isProductLoaded = false;
             isCategoryLoaded = false;
             isShipModeLoaded = false;
@@ -780,10 +799,12 @@ namespace NEW_ERP.Forms.SaleOrder
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@SaleOrderNo", txtSaleOrder.Text.Trim());
                         cmd.Parameters.AddWithValue("@CustomerID", GetNullableValue(CustomerBox));
+                        cmd.Parameters.AddWithValue("@RangeID", GetNullableValue(RangeBox));
+                        cmd.Parameters.AddWithValue("@UnitNameID", GetNullableValue(UnitNameBox));
+                        cmd.Parameters.AddWithValue("@CTNTypeID", GetNullableValue(CTNTypeBox));
                         cmd.Parameters.AddWithValue("@ProductID", GetNullableValue(ProductBox));
                         cmd.Parameters.AddWithValue("@Style", GetNullableText(txtStyle));
                         cmd.Parameters.AddWithValue("@CategoryID", GetNullableValue(CategoryBox));
-                        cmd.Parameters.AddWithValue("@Range", GetNullableText(txtRange));
                         cmd.Parameters.AddWithValue("@SaleTypeID", GetNullableValue(SaleTypeBox));
                         cmd.Parameters.AddWithValue("@AgentID", GetNullableValue(AgentBox));
                         cmd.Parameters.AddWithValue("@ShipModeID", GetNullableValue(ShipModeBox));
@@ -928,10 +949,12 @@ namespace NEW_ERP.Forms.SaleOrder
                         cmd.Parameters.AddWithValue("@SaleOrderID", saleOrderId);
                         cmd.Parameters.AddWithValue("@SaleOrderNo", txtSaleOrder.Text.Trim());
                         cmd.Parameters.AddWithValue("@CustomerID", GetNullableValue(CustomerBox));
+                        cmd.Parameters.AddWithValue("@RangeID", GetNullableValue(RangeBox));
+                        cmd.Parameters.AddWithValue("@CTNTypeID", GetNullableValue(CTNTypeBox));
+                        cmd.Parameters.AddWithValue("@UnitNameID", GetNullableValue(UnitNameBox));
                         cmd.Parameters.AddWithValue("@ProductID", GetNullableValue(ProductBox));
                         cmd.Parameters.AddWithValue("@Style", GetNullableText(txtStyle));
                         cmd.Parameters.AddWithValue("@CategoryID", GetNullableValue(CategoryBox));
-                        cmd.Parameters.AddWithValue("@Range", GetNullableText(txtRange));
                         cmd.Parameters.AddWithValue("@SaleTypeID", GetNullableValue(SaleTypeBox));
                         cmd.Parameters.AddWithValue("@AgentID", GetNullableValue(AgentBox));
                         cmd.Parameters.AddWithValue("@ShipModeID", GetNullableValue(ShipModeBox));
@@ -1282,5 +1305,7 @@ namespace NEW_ERP.Forms.SaleOrder
         private void AgentBox_DropDown(object sender, EventArgs e) { }
         private void ToleranceBox_DropDown(object sender, EventArgs e) { }
         #endregion
+  
+    
     }
 }

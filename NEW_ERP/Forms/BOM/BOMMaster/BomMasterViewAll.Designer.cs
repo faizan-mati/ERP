@@ -108,6 +108,7 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
             this.BomDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BomDataGridView.Size = new System.Drawing.Size(779, 427);
             this.BomDataGridView.TabIndex = 2126;
+            this.BomDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BomDataGridView_CellDoubleClick);
             // 
             // BomMasterViewAll
             // 

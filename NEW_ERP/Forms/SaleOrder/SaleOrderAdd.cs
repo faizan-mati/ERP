@@ -31,9 +31,6 @@ namespace NEW_ERP.Forms.SaleOrder
         #endregion
 
         #region Constructor and Form Events
-        /// <summary>
-        /// Constructor – receives SO-ID (0=new) and flag indicating if opened from View-All screen.
-        /// </summary>
         public SaleOrderAdd(int saleOrderId, bool isFromViewAll)
         {
             InitializeComponent();

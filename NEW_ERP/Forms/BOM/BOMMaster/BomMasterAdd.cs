@@ -16,11 +16,7 @@ namespace NEW_ERP.Forms.BOMMaster
         #endregion
 
         #region Constructor
-        /// <summary>
-        /// Initializes a new instance of the BomMasterAdd form
-        /// </summary>
-        /// <param name="bomMasterId">The ID of the BOM to edit/view</param>
-        /// <param name="isFromViewAll">Flag indicating if coming from View All screen</param>
+
         public BomMasterAdd(int bomMasterId, bool isFromViewAll)
         {
             InitializeComponent();
@@ -32,37 +28,52 @@ namespace NEW_ERP.Forms.BOMMaster
         #region Event Handlers
 
         /// <summary>
-        /// Handles the form load event
+        /// Handles the form load event. Loads initial data and sets appropriate form mode.
         /// </summary>
         private void BomMasterAdd_Load(object sender, EventArgs e)
         {
-            LoadSaleOrders();
+            try
+            {
+                LoadSaleOrders();
 
-            if (_isFromViewAll && _bomMasterId > 0)
-            {
-                LoadBOMData();
-                SetViewMode();
+                if (_isFromViewAll && _bomMasterId > 0)
+                {
+                    LoadBOMData();
+                    SetViewMode();
+                }
+                else
+                {
+                    SetAddMode();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                SetAddMode();
+                ShowError("Failed to initialize form", ex);
+                Close();
             }
         }
 
         /// <summary>
-        /// Handles the Sale Order dropdown selection change event
+        /// Handles the Sale Order dropdown selection change event. Loads products for selected order.
         /// </summary>
         private void SaleOrderBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (SaleOrderBox.SelectedValue != null &&
-                int.TryParse(SaleOrderBox.SelectedValue.ToString(), out int saleOrderId))
+            try
             {
-                LoadProducts(saleOrderId);
+                if (SaleOrderBox.SelectedValue != null &&
+                    int.TryParse(SaleOrderBox.SelectedValue.ToString(), out int saleOrderId))
+                {
+                    LoadProducts(saleOrderId);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError("Failed to load products for selected sale order", ex);
             }
         }
 
         /// <summary>
-        /// Handles the Sale Order dropdown opening event
+        /// Handles the Sale Order dropdown opening event. Clears product selection for new entries.
         /// </summary>
         private void SaleOrderBox_DropDown(object sender, EventArgs e)
         {
@@ -74,53 +85,81 @@ namespace NEW_ERP.Forms.BOMMaster
         }
 
         /// <summary>
-        /// Handles the Submit button click event
+        /// Handles the Submit button click event for new BOM records.
         /// </summary>
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
-            if (ValidateInput())
+            try
             {
-                InsertBOMRecord();
+                if (ValidateInput())
+                {
+                    InsertBOMRecord();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError("Failed to submit BOM record", ex);
             }
         }
 
         /// <summary>
-        /// Handles the Edit/Save button click event
+        /// Handles the Edit/Save button click event for existing BOM records.
         /// </summary>
         private void EditBtn_Click(object sender, EventArgs e)
         {
-            if (EditBtn.Text == "Edit")
+            try
             {
-                SetEditMode();
+                if (EditBtn.Text == "Edit")
+                {
+                    SetEditMode();
+                }
+                else if (EditBtn.Text == "Save" && ValidateInput())
+                {
+                    UpdateBOMRecord();
+                }
             }
-            else if (EditBtn.Text == "Save" && ValidateInput())
+            catch (Exception ex)
             {
-                UpdateBOMRecord();
+                ShowError("Failed to process edit/save operation", ex);
             }
         }
 
         /// <summary>
-        /// Handles the Delete button click event
+        /// Handles the Delete button click event for existing BOM records.
         /// </summary>
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            if (ConfirmDelete())
+            try
             {
-                DeleteBOMRecord();
+                if (ConfirmDelete())
+                {
+                    DeleteBOMRecord();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError("Failed to delete BOM record", ex);
             }
         }
 
         /// <summary>
-        /// Handles the View All button click event
+        /// Handles the View All button click event to return to the BOM master list.
         /// </summary>
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {
-            Close();
-            new BomMasterViewAll().Show();
+            try
+            {
+                Close();
+                new BomMasterViewAll().Show();
+            }
+            catch (Exception ex)
+            {
+                ShowError("Failed to open BOM master view", ex);
+            }
         }
 
         /// <summary>
-        /// Handles the Close button click event
+        /// Handles the Close button click event to close the form.
         /// </summary>
         private void CloseBtn_Click(object sender, EventArgs e)
         {
@@ -133,6 +172,7 @@ namespace NEW_ERP.Forms.BOMMaster
         /// <summary>
         /// Loads all active sale orders into the dropdown
         /// </summary>
+
         private void LoadSaleOrders()
         {
             try
@@ -153,17 +193,27 @@ namespace NEW_ERP.Forms.BOMMaster
                     SaleOrderBox.SelectedIndex = -1;
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                throw new Exception("Database error while loading sale orders", sqlEx);
+            }
             catch (Exception ex)
             {
-                ShowError("Error loading Sale Orders", ex);
+                throw new Exception("Failed to load sale orders", ex);
             }
         }
 
         /// <summary>
         /// Loads BOM data for editing/viewing
         /// </summary>
+
         private void LoadBOMData()
         {
+            if (_bomMasterId <= 0)
+            {
+                throw new ArgumentException("Invalid BOM ID");
+            }
+
             try
             {
                 const string query = @"SELECT bm.SaleOrderID, bm.ProductID, bm.VersionNo
@@ -189,21 +239,34 @@ namespace NEW_ERP.Forms.BOMMaster
                             ProductBox.SelectedValue = productId;
                             txtVersionNo.Text = versionNo;
                         }
+                        else
+                        {
+                            throw new Exception($"BOM record with ID {_bomMasterId} not found");
+                        }
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                throw new Exception("Database error while loading BOM data", sqlEx);
+            }
             catch (Exception ex)
             {
-                ShowError("Error loading BOM data", ex);
+                throw new Exception("Failed to load BOM data", ex);
             }
         }
 
         /// <summary>
         /// Loads products for the selected sale order
         /// </summary>
-        /// <param name="saleOrderId">The ID of the selected sale order</param>
+
         private void LoadProducts(int saleOrderId)
         {
+            if (saleOrderId <= 0)
+            {
+                throw new ArgumentException("Invalid Sale Order ID");
+            }
+
             try
             {
                 const string query = @"SELECT i.ProductCode, i.ProductDescription
@@ -220,17 +283,28 @@ namespace NEW_ERP.Forms.BOMMaster
                     var dt = new DataTable();
                     adapter.Fill(dt);
 
+                    if (dt.Rows.Count == 0)
+                    {
+                        throw new Exception($"No products found for Sale Order ID {saleOrderId}");
+                    }
+
                     ProductBox.DataSource = dt;
                     ProductBox.DisplayMember = "ProductDescription";
                     ProductBox.ValueMember = "ProductCode";
 
                     if (!_isFromViewAll)
+                    {
                         ProductBox.SelectedIndex = -1;
+                    }
                 }
+            }
+            catch (SqlException sqlEx)
+            {
+                throw new Exception("Database error while loading products", sqlEx);
             }
             catch (Exception ex)
             {
-                ShowError("Error loading Products", ex);
+                throw new Exception("Failed to load products", ex);
             }
         }
         #endregion
@@ -238,16 +312,14 @@ namespace NEW_ERP.Forms.BOMMaster
         #region Form Mode Methods
 
         /// <summary>
-        /// Sets the form to Add mode (enables editing controls)
+        /// Sets the form to Add mode (enables editing controls for new records)
         /// </summary>
         private void SetAddMode()
         {
-            // Enable controls
             SaleOrderBox.Enabled = true;
             ProductBox.Enabled = true;
             txtVersionNo.Enabled = true;
 
-            // Configure buttons
             SubmitBtn.Visible = true;
             SubmitBtn.Text = "Submit";
             EditBtn.Enabled = false;
@@ -257,16 +329,14 @@ namespace NEW_ERP.Forms.BOMMaster
         }
 
         /// <summary>
-        /// Sets the form to View mode (disables editing controls)
+        /// Sets the form to View mode (disables editing controls for viewing records)
         /// </summary>
         private void SetViewMode()
         {
-            // Disable controls
             SaleOrderBox.Enabled = false;
             ProductBox.Enabled = false;
             txtVersionNo.Enabled = false;
 
-            // Configure buttons
             SubmitBtn.Enabled = false;
             EditBtn.Enabled = true;
             EditBtn.Text = "Edit";
@@ -276,16 +346,14 @@ namespace NEW_ERP.Forms.BOMMaster
         }
 
         /// <summary>
-        /// Sets the form to Edit mode (enables editing controls)
+        /// Sets the form to Edit mode (enables editing controls for existing records)
         /// </summary>
         private void SetEditMode()
         {
-            // Enable controls
             SaleOrderBox.Enabled = true;
             ProductBox.Enabled = true;
             txtVersionNo.Enabled = true;
 
-            // Configure buttons
             SubmitBtn.Enabled = false;
             EditBtn.Enabled = true;
             EditBtn.Text = "Save";
@@ -302,6 +370,12 @@ namespace NEW_ERP.Forms.BOMMaster
         /// </summary>
         private void InsertBOMRecord()
         {
+            if (SaleOrderBox.SelectedValue == null || ProductBox.SelectedValue == null)
+            {
+                ShowValidationError("Please select both Sale Order and Product");
+                return;
+            }
+
             try
             {
                 using (var conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -325,21 +399,32 @@ namespace NEW_ERP.Forms.BOMMaster
                     }
                     else
                     {
-                        ShowWarning("Insertion failed.");
+                        ShowWarning("No records were affected by the insert operation");
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                throw new Exception("Database error while inserting BOM record", sqlEx);
+            }
             catch (Exception ex)
             {
-                ShowError("Error inserting BOM", ex);
+                throw new Exception("Failed to insert BOM record", ex);
             }
         }
 
         /// <summary>
         /// Updates an existing BOM record in the database
         /// </summary>
+
         private void UpdateBOMRecord()
         {
+            if (SaleOrderBox.SelectedValue == null || ProductBox.SelectedValue == null)
+            {
+                ShowValidationError("Please select both Sale Order and Product");
+                return;
+            }
+
             try
             {
                 using (var conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -362,19 +447,24 @@ namespace NEW_ERP.Forms.BOMMaster
                     }
                     else
                     {
-                        ShowWarning("Update failed.");
+                        ShowWarning("No records were affected by the update operation");
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                throw new Exception("Database error while updating BOM record", sqlEx);
+            }
             catch (Exception ex)
             {
-                ShowError("Error updating BOM", ex);
+                throw new Exception("Failed to update BOM record", ex);
             }
         }
 
         /// <summary>
         /// Deletes a BOM record from the database
         /// </summary>
+
         private void DeleteBOMRecord()
         {
             try
@@ -395,13 +485,17 @@ namespace NEW_ERP.Forms.BOMMaster
                     }
                     else
                     {
-                        ShowWarning("Delete failed.");
+                        ShowWarning("No records were affected by the delete operation");
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                throw new Exception("Database error while deleting BOM record", sqlEx);
+            }
             catch (Exception ex)
             {
-                ShowError("Error deleting BOM", ex);
+                throw new Exception("Failed to delete BOM record", ex);
             }
         }
         #endregion
@@ -409,25 +503,37 @@ namespace NEW_ERP.Forms.BOMMaster
         #region Helper Methods
 
         /// <summary>
-        /// Validates the form input
+        /// Validates the form input before submission
         /// </summary>
-        /// <returns>True if input is valid, otherwise false</returns>
         private bool ValidateInput()
         {
-            if (string.IsNullOrWhiteSpace(txtVersionNo.Text) ||
-                SaleOrderBox.SelectedIndex == -1 ||
-                ProductBox.SelectedIndex == -1)
+            if (string.IsNullOrWhiteSpace(txtVersionNo.Text))
             {
-                ShowValidationError("Please fill all the fields");
+                ShowValidationError("Version number is required");
+                txtVersionNo.Focus();
                 return false;
             }
+
+            if (SaleOrderBox.SelectedIndex == -1)
+            {
+                ShowValidationError("Please select a Sale Order");
+                SaleOrderBox.Focus();
+                return false;
+            }
+
+            if (ProductBox.SelectedIndex == -1)
+            {
+                ShowValidationError("Please select a Product");
+                ProductBox.Focus();
+                return false;
+            }
+
             return true;
         }
 
         /// <summary>
         /// Shows a confirmation dialog for deletion
         /// </summary>
-        /// <returns>True if user confirms deletion, otherwise false</returns>
         private bool ConfirmDelete()
         {
             return MessageBox.Show(
@@ -448,41 +554,24 @@ namespace NEW_ERP.Forms.BOMMaster
             ProductBox.Items.Clear();
         }
 
-        /// <summary>
-        /// Shows an error message
-        /// </summary>
-        /// <param name="message">The main error message</param>
-        /// <param name="ex">The exception that occurred</param>
         private void ShowError(string message, Exception ex)
         {
             MessageBox.Show($"{message}: {ex.Message}", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        /// <summary>
-        /// Shows a success message
-        /// </summary>
-        /// <param name="message">The success message to display</param>
         private void ShowSuccess(string message)
         {
             MessageBox.Show(message, "Success",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        /// <summary>
-        /// Shows a warning message
-        /// </summary>
-        /// <param name="message">The warning message to display</param>
         private void ShowWarning(string message)
         {
             MessageBox.Show(message, "Warning",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        /// <summary>
-        /// Shows a validation error message
-        /// </summary>
-        /// <param name="message">The validation message to display</param>
         private void ShowValidationError(string message)
         {
             MessageBox.Show(message, "Validation Error",

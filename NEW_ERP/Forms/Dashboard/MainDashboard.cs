@@ -9,13 +9,6 @@ using NEW_ERP.Forms.SaleOrder;
 using NEW_ERP.Forms.SupplierMaster;
 using NEW_ERP.Forms.SupplierType;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NEW_ERP.Forms.Dashboard
@@ -219,7 +212,7 @@ namespace NEW_ERP.Forms.Dashboard
 
         private void BomDetailBtn_Click(object sender, EventArgs e)
         {
-            loadform(new BomDetailAdd());
+            loadform(new BomDetailAdd(0, false));
         }
 
 
@@ -244,7 +237,10 @@ namespace NEW_ERP.Forms.Dashboard
 
         }
 
-     
+        private void ChlidPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

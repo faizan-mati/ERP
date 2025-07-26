@@ -43,7 +43,6 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.FormGroupBox = new System.Windows.Forms.GroupBox();
-            this.isCheckedcheckbox = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.FormGroupBox.SuspendLayout();
@@ -208,7 +207,6 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             // 
             // FormGroupBox
             // 
-            this.FormGroupBox.Controls.Add(this.isCheckedcheckbox);
             this.FormGroupBox.Controls.Add(this.label8);
             this.FormGroupBox.Controls.Add(this.txtRemarks);
             this.FormGroupBox.Controls.Add(this.BomIdBox);
@@ -225,30 +223,17 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             this.FormGroupBox.Controls.Add(this.label2);
             this.FormGroupBox.Location = new System.Drawing.Point(16, 84);
             this.FormGroupBox.Name = "FormGroupBox";
-            this.FormGroupBox.Size = new System.Drawing.Size(764, 398);
+            this.FormGroupBox.Size = new System.Drawing.Size(764, 341);
             this.FormGroupBox.TabIndex = 2196;
             this.FormGroupBox.TabStop = false;
             this.FormGroupBox.Text = " FORM INPUTS ";
-            // 
-            // isCheckedcheckbox
-            // 
-            this.isCheckedcheckbox.AutoSize = true;
-            this.isCheckedcheckbox.Checked = true;
-            this.isCheckedcheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.isCheckedcheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isCheckedcheckbox.Location = new System.Drawing.Point(121, 222);
-            this.isCheckedcheckbox.Name = "isCheckedcheckbox";
-            this.isCheckedcheckbox.Size = new System.Drawing.Size(121, 29);
-            this.isCheckedcheckbox.TabIndex = 2197;
-            this.isCheckedcheckbox.Text = "Is Active";
-            this.isCheckedcheckbox.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label8.Location = new System.Drawing.Point(17, 273);
+            this.label8.Location = new System.Drawing.Point(17, 236);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 20);
             this.label8.TabIndex = 2196;
@@ -257,7 +242,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             // txtRemarks
             // 
             this.txtRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRemarks.Location = new System.Drawing.Point(121, 270);
+            this.txtRemarks.Location = new System.Drawing.Point(121, 233);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(622, 75);
@@ -305,6 +290,5 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
         private System.Windows.Forms.GroupBox FormGroupBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtRemarks;
-        private System.Windows.Forms.CheckBox isCheckedcheckbox;
     }
 }

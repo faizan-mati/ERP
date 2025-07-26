@@ -54,6 +54,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             this.BomDetailDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BomDetailDataGridView.Size = new System.Drawing.Size(786, 435);
             this.BomDetailDataGridView.TabIndex = 2131;
+            this.BomDetailDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BomDetailDataGridView_CellDoubleClick);
             // 
             // BomDetailIdBox
             // 

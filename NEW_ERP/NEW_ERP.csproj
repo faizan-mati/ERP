@@ -77,18 +77,6 @@
     <Compile Include="Forms\BOM\BOMDetail\BomDetailAdd.Designer.cs">
       <DependentUpon>BomDetailAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BOM\BOMDetail\BomDetailDelete.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\BOM\BOMDetail\BomDetailDelete.Designer.cs">
-      <DependentUpon>BomDetailDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\BOM\BOMDetail\BomDetailEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\BOM\BOMDetail\BomDetailEdit.Designer.cs">
-      <DependentUpon>BomDetailEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\BOM\BOMDetail\BomDetailViewAll.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,18 +88,6 @@
     </Compile>
     <Compile Include="Forms\BOM\BOMMaster\BomMasterAdd.Designer.cs">
       <DependentUpon>BomMasterAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\BOM\BOMMaster\BomMasterDelete.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\BOM\BOMMaster\BomMasterDelete.Designer.cs">
-      <DependentUpon>BomMasterDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\BOM\BOMMaster\BomMasterEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\BOM\BOMMaster\BomMasterEdit.Designer.cs">
-      <DependentUpon>BomMasterEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BOM\BOMMaster\BomMasterViewAll.cs">
       <SubType>Form</SubType>
@@ -305,23 +281,11 @@
     <EmbeddedResource Include="Forms\BOM\BOMDetail\BomDetailAdd.resx">
       <DependentUpon>BomDetailAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BOM\BOMDetail\BomDetailDelete.resx">
-      <DependentUpon>BomDetailDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BOM\BOMDetail\BomDetailEdit.resx">
-      <DependentUpon>BomDetailEdit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BOM\BOMDetail\BomDetailViewAll.resx">
       <DependentUpon>BomDetailViewAll.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BOM\BOMMaster\BomMasterAdd.resx">
       <DependentUpon>BomMasterAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BOM\BOMMaster\BomMasterDelete.resx">
-      <DependentUpon>BomMasterDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BOM\BOMMaster\BomMasterEdit.resx">
-      <DependentUpon>BomMasterEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BOM\BOMMaster\BomMasterViewAll.resx">
       <DependentUpon>BomMasterViewAll.cs</DependentUpon>

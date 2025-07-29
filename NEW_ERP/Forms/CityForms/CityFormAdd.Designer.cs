@@ -1,7 +1,7 @@
 ﻿
 namespace NEW_ERP.Forms.CityForms
 {
-    partial class CityForm
+    partial class CityFormAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace NEW_ERP.Forms.CityForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CityForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CityFormAdd));
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
             this.ViewAllBtn = new System.Windows.Forms.Button();
@@ -62,6 +62,7 @@ namespace NEW_ERP.Forms.CityForms
             this.DeleteBtn.TabIndex = 8;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // EditBtn
             // 
@@ -79,6 +80,7 @@ namespace NEW_ERP.Forms.CityForms
             this.EditBtn.TabIndex = 7;
             this.EditBtn.Text = "EDIT";
             this.EditBtn.UseVisualStyleBackColor = false;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // ViewAllBtn
             // 
@@ -221,7 +223,7 @@ namespace NEW_ERP.Forms.CityForms
             this.FormGroupBox.TabStop = false;
             this.FormGroupBox.Text = "FORM INPUTS";
             // 
-            // CityForm
+            // CityFormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -241,7 +243,7 @@ namespace NEW_ERP.Forms.CityForms
             this.Controls.Add(this.FormGroupBox);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "CityForm";
+            this.Name = "CityFormAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CityForm";
             this.Load += new System.EventHandler(this.CityForm_Load);

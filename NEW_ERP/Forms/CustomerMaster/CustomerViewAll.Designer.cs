@@ -96,6 +96,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.CustomerDataGridView.Name = "CustomerDataGridView";
             this.CustomerDataGridView.Size = new System.Drawing.Size(923, 445);
             this.CustomerDataGridView.TabIndex = 2156;
+            this.CustomerDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerDataGridView_CellDoubleClick);
             // 
             // CustomerViewAll
             // 

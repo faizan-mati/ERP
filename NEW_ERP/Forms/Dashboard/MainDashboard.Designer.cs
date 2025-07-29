@@ -73,6 +73,12 @@ namespace NEW_ERP.Forms.Dashboard
             this.MainPanel = new System.Windows.Forms.Panel();
             this.saleOrderTransition = new System.Windows.Forms.Timer(this.components);
             this.BomTransition = new System.Windows.Forms.Timer(this.components);
+            this.YarnMenuContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.YarnMenuBtn = new System.Windows.Forms.Button();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.YarnBtn = new System.Windows.Forms.Button();
+            this.YarnTransition = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -94,6 +100,9 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel13.SuspendLayout();
             this.panel11.SuspendLayout();
             this.MainPanel.SuspendLayout();
+            this.YarnMenuContainer.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -161,6 +170,7 @@ namespace NEW_ERP.Forms.Dashboard
             this.flowLayoutPanel1.Controls.Add(this.StepUpMenuContainer);
             this.flowLayoutPanel1.Controls.Add(this.SaleOrderMenuContainer);
             this.flowLayoutPanel1.Controls.Add(this.BomMenuContainer);
+            this.flowLayoutPanel1.Controls.Add(this.YarnMenuContainer);
             this.flowLayoutPanel1.Controls.Add(this.panel11);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 45);
@@ -601,7 +611,7 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
             this.panel11.Controls.Add(this.ReportBtn);
             this.panel11.ForeColor = System.Drawing.Color.White;
-            this.panel11.Location = new System.Drawing.Point(7, 129);
+            this.panel11.Location = new System.Drawing.Point(7, 171);
             this.panel11.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(250, 36);
@@ -657,6 +667,83 @@ namespace NEW_ERP.Forms.Dashboard
             // 
             this.BomTransition.Tick += new System.EventHandler(this.BomTransition_Tick);
             // 
+            // YarnMenuContainer
+            // 
+            this.YarnMenuContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(36)))), ((int)(((byte)(48)))));
+            this.YarnMenuContainer.Controls.Add(this.panel17);
+            this.YarnMenuContainer.Controls.Add(this.panel18);
+            this.YarnMenuContainer.ForeColor = System.Drawing.Color.White;
+            this.YarnMenuContainer.Location = new System.Drawing.Point(0, 126);
+            this.YarnMenuContainer.Margin = new System.Windows.Forms.Padding(0);
+            this.YarnMenuContainer.Name = "YarnMenuContainer";
+            this.YarnMenuContainer.Size = new System.Drawing.Size(265, 42);
+            this.YarnMenuContainer.TabIndex = 12;
+            // 
+            // panel17
+            // 
+            this.panel17.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel17.Controls.Add(this.YarnMenuBtn);
+            this.panel17.ForeColor = System.Drawing.Color.White;
+            this.panel17.Location = new System.Drawing.Point(7, 3);
+            this.panel17.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(250, 36);
+            this.panel17.TabIndex = 7;
+            // 
+            // YarnMenuBtn
+            // 
+            this.YarnMenuBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.YarnMenuBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.YarnMenuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.YarnMenuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YarnMenuBtn.ForeColor = System.Drawing.Color.White;
+            this.YarnMenuBtn.Image = ((System.Drawing.Image)(resources.GetObject("YarnMenuBtn.Image")));
+            this.YarnMenuBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.YarnMenuBtn.Location = new System.Drawing.Point(-2, 0);
+            this.YarnMenuBtn.Name = "YarnMenuBtn";
+            this.YarnMenuBtn.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.YarnMenuBtn.Size = new System.Drawing.Size(252, 36);
+            this.YarnMenuBtn.TabIndex = 3;
+            this.YarnMenuBtn.Text = "     Yarn";
+            this.YarnMenuBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.YarnMenuBtn.UseVisualStyleBackColor = false;
+            this.YarnMenuBtn.Click += new System.EventHandler(this.YarnMenuBtn_Click);
+            // 
+            // panel18
+            // 
+            this.panel18.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel18.Controls.Add(this.YarnBtn);
+            this.panel18.Location = new System.Drawing.Point(7, 45);
+            this.panel18.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(250, 36);
+            this.panel18.TabIndex = 7;
+            // 
+            // YarnBtn
+            // 
+            this.YarnBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.YarnBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.YarnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.YarnBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YarnBtn.ForeColor = System.Drawing.Color.White;
+            this.YarnBtn.Image = ((System.Drawing.Image)(resources.GetObject("YarnBtn.Image")));
+            this.YarnBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.YarnBtn.Location = new System.Drawing.Point(-2, 0);
+            this.YarnBtn.Name = "YarnBtn";
+            this.YarnBtn.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.YarnBtn.Size = new System.Drawing.Size(252, 39);
+            this.YarnBtn.TabIndex = 11;
+            this.YarnBtn.Text = "     Yarn Demand";
+            this.YarnBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.YarnBtn.UseVisualStyleBackColor = false;
+            this.YarnBtn.Click += new System.EventHandler(this.YarnBtn_Click);
+            // 
+            // YarnTransition
+            // 
+            this.YarnTransition.Tick += new System.EventHandler(this.YarnTransition_Tick);
+            // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -695,6 +782,9 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel13.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
+            this.YarnMenuContainer.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -743,5 +833,11 @@ namespace NEW_ERP.Forms.Dashboard
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Button BomDetailBtn;
         private System.Windows.Forms.Timer BomTransition;
+        private System.Windows.Forms.FlowLayoutPanel YarnMenuContainer;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Button YarnMenuBtn;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Button YarnBtn;
+        private System.Windows.Forms.Timer YarnTransition;
     }
 }

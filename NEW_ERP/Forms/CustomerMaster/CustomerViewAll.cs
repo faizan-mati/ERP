@@ -34,7 +34,28 @@ namespace NEW_ERP.Forms.CustomerMaster
                 {
                     conn.Open();
 
-                    string query = "SELECT * FROM CustomerMaster ORDER BY CreatedDate DESC";
+                    string query = @"SELECT[CustomerID]
+      ,[CustomerCode]
+      ,[CustomerName]
+      ,[ContactPerson]
+      ,[MobileNo]
+      ,[WhatsAppNo]
+      ,[Email]
+      ,[Address]
+      ,[City]
+      ,[State]
+      ,[Country]
+      ,[ZipCode]
+      ,[CustomerTypeID]
+      ,[GSTNo]
+      ,[NTN]
+      ,[CreditLimit]
+      ,[IsActive]
+      ,[CreatedDate]
+      ,[CreatedBy]
+      ,[UpdatedDate]
+      ,[UpdatedBy]
+      ,[StatusCode] FROM CustomerMaster ORDER BY CreatedDate DESC";
                     SqlCommand cmd = new SqlCommand(query, conn);
 
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -83,5 +104,57 @@ namespace NEW_ERP.Forms.CustomerMaster
         {
 
         }
+
+        private void CustomerDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex < 0) return;
+
+                var selectedRow = CustomerDataGridView.Rows[e.RowIndex];
+                var value = selectedRow.Cells["CustomerID"].Value;
+
+                if (value == null || !int.TryParse(value.ToString(), out int customerID))
+                {
+                    MessageBox.Show("Invalid Country ID selected.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                OpenCountryForEditing(customerID);
+            }
+            catch (Exception ex)
+            {
+                ShowError("Error handling grid double click", ex);
+            }
+        }
+
+
+        private void OpenCountryForEditing(int customerID)
+        {
+            try
+            {
+                this.Close();
+                using (var CustomerFormAdd = new CustomerFormAdd(customerID, true))
+                {
+                    CustomerFormAdd.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError("Error opening country for editing", ex);
+                throw;
+            }
+        }
+
+
+        private void ShowError(string context, Exception ex)
+        {
+            MessageBox.Show($"{context}:\n{ex.Message}", "Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+
+
     }
 }

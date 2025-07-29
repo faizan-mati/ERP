@@ -53,18 +53,6 @@
     <Compile Include="Forms\AuthorityForm\AuthorityAdd.Designer.cs">
       <DependentUpon>AuthorityAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AuthorityForm\AuthorityDelete.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AuthorityForm\AuthorityDelete.Designer.cs">
-      <DependentUpon>AuthorityDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\AuthorityForm\AuthorityEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AuthorityForm\AuthorityEdit.Designer.cs">
-      <DependentUpon>AuthorityEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\AuthorityForm\AuthorityViewAll.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,11 +83,11 @@
     <Compile Include="Forms\BOM\BOMMaster\BomMasterViewAll.Designer.cs">
       <DependentUpon>BomMasterViewAll.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CityForms\CityForm.cs">
+    <Compile Include="Forms\CityForms\CityFormAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CityForms\CityForm.Designer.cs">
-      <DependentUpon>CityForm.cs</DependentUpon>
+    <Compile Include="Forms\CityForms\CityFormAdd.Designer.cs">
+      <DependentUpon>CityFormAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CityForms\CityViewAll.cs">
       <SubType>Form</SubType>
@@ -107,29 +95,17 @@
     <Compile Include="Forms\CityForms\CityViewAll.Designer.cs">
       <DependentUpon>CityViewAll.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CountryForms\CountryDelete.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CountryForms\CountryDelete.Designer.cs">
-      <DependentUpon>CountryDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\CountryForms\CountryEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CountryForms\CountryEdit.Designer.cs">
-      <DependentUpon>CountryEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\CountryForms\CountryViewAll.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CountryForms\CountryViewAll.Designer.cs">
       <DependentUpon>CountryViewAll.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CountryForms\CountryForm.cs">
+    <Compile Include="Forms\CountryForms\CountryFormAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CountryForms\CountryForm.Designer.cs">
-      <DependentUpon>CountryForm.cs</DependentUpon>
+    <Compile Include="Forms\CountryForms\CountryFormAdd.Designer.cs">
+      <DependentUpon>CountryFormAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CustomerMaster\CustomerDelete.cs">
       <SubType>Form</SubType>
@@ -143,11 +119,11 @@
     <Compile Include="Forms\CustomerMaster\CustomerEdit.Designer.cs">
       <DependentUpon>CustomerEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CustomerMaster\CustomerForm.cs">
+    <Compile Include="Forms\CustomerMaster\CustomerFormAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CustomerMaster\CustomerForm.Designer.cs">
-      <DependentUpon>CustomerForm.cs</DependentUpon>
+    <Compile Include="Forms\CustomerMaster\CustomerFormAdd.Designer.cs">
+      <DependentUpon>CustomerFormAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CustomerMaster\CustomerViewAll.cs">
       <SubType>Form</SubType>
@@ -245,6 +221,12 @@
     <Compile Include="Forms\SupplierType\SupplyTypeViewAll.Designer.cs">
       <DependentUpon>SupplyTypeViewAll.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\YarnDemand\YarnDemandAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\YarnDemand\YarnDemandAdd.Designer.cs">
+      <DependentUpon>YarnDemandAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="GernalClasses\AppConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -269,12 +251,6 @@
     <EmbeddedResource Include="Forms\AuthorityForm\AuthorityAdd.resx">
       <DependentUpon>AuthorityAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AuthorityForm\AuthorityDelete.resx">
-      <DependentUpon>AuthorityDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AuthorityForm\AuthorityEdit.resx">
-      <DependentUpon>AuthorityEdit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorityForm\AuthorityViewAll.resx">
       <DependentUpon>AuthorityViewAll.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,23 +266,17 @@
     <EmbeddedResource Include="Forms\BOM\BOMMaster\BomMasterViewAll.resx">
       <DependentUpon>BomMasterViewAll.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CityForms\CityForm.resx">
-      <DependentUpon>CityForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CityForms\CityFormAdd.resx">
+      <DependentUpon>CityFormAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CityForms\CityViewAll.resx">
       <DependentUpon>CityViewAll.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CountryForms\CountryDelete.resx">
-      <DependentUpon>CountryDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CountryForms\CountryEdit.resx">
-      <DependentUpon>CountryEdit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CountryForms\CountryViewAll.resx">
       <DependentUpon>CountryViewAll.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CountryForms\CountryForm.resx">
-      <DependentUpon>CountryForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CountryForms\CountryFormAdd.resx">
+      <DependentUpon>CountryFormAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerMaster\CustomerDelete.resx">
       <DependentUpon>CustomerDelete.cs</DependentUpon>
@@ -314,8 +284,8 @@
     <EmbeddedResource Include="Forms\CustomerMaster\CustomerEdit.resx">
       <DependentUpon>CustomerEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomerMaster\CustomerForm.resx">
-      <DependentUpon>CustomerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CustomerMaster\CustomerFormAdd.resx">
+      <DependentUpon>CustomerFormAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerMaster\CustomerViewAll.resx">
       <DependentUpon>CustomerViewAll.cs</DependentUpon>
@@ -364,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SupplierType\SupplyTypeViewAll.resx">
       <DependentUpon>SupplyTypeViewAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\YarnDemand\YarnDemandAdd.resx">
+      <DependentUpon>YarnDemandAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -8,6 +8,7 @@ using NEW_ERP.Forms.ItemMaster;
 using NEW_ERP.Forms.SaleOrder;
 using NEW_ERP.Forms.SupplierMaster;
 using NEW_ERP.Forms.SupplierType;
+using NEW_ERP.Forms.YarnDemand;
 using System;
 using System.Windows.Forms;
 
@@ -142,7 +143,41 @@ namespace NEW_ERP.Forms.Dashboard
             }
         }
 
+        //============================ YARN MENU ===========================================
 
+        bool YarnMenuExpend = false;
+
+        int YarnMaxHeight = 85;
+        int YarnMinHeight = 40;
+
+        private void YarnTransition_Tick(object sender, EventArgs e)
+        {
+            if (YarnMenuExpend)
+            {
+                // Collapse
+                YarnMenuContainer.Height -= 85;
+                if (YarnMenuContainer.Height <= YarnMinHeight)
+                {
+                    YarnMenuContainer.Height = YarnMinHeight;
+                    YarnTransition.Stop();
+                    YarnMenuExpend = false;
+                }
+            }
+            else
+            {
+                // Expand
+                YarnMenuContainer.Height += 85;
+                if (YarnMenuContainer.Height >= YarnMaxHeight)
+                {
+                    YarnMenuContainer.Height = YarnMaxHeight;
+                    YarnTransition.Stop();
+                    YarnMenuExpend = true;
+                }
+            }
+        }
+
+
+        //============================ BUTTON CLICK DROP DOWN ===========================================
 
         private void SetUpBtn_Click_1(object sender, EventArgs e)
         {
@@ -157,8 +192,10 @@ namespace NEW_ERP.Forms.Dashboard
         {
             BomTransition.Start();
         }
-    
-
+        private void YarnMenuBtn_Click(object sender, EventArgs e)
+        {
+            YarnTransition.Start();
+        }
 
 
 
@@ -167,22 +204,22 @@ namespace NEW_ERP.Forms.Dashboard
 
         private void AuthorityBtn_Click(object sender, EventArgs e)
         {
-            loadform(new AuthorityAdd());
+            loadform(new AuthorityAdd(0, false));
         }
 
         private void CountryBtn_Click(object sender, EventArgs e)
         {
-            loadform(new CountryForm());
+            loadform(new CountryFormAdd(0, false));
         }
 
         private void CityBtn_Click(object sender, EventArgs e)
         {
-            loadform(new CityForm());
+            loadform(new CityFormAdd(0, false));
         }
 
         private void CustomerBtn_Click(object sender, EventArgs e)
         {
-            loadform(new CustomerForm());
+            loadform(new CustomerFormAdd(0, false));
         }
 
         private void SupplierMasterBtn_Click(object sender, EventArgs e)
@@ -215,6 +252,10 @@ namespace NEW_ERP.Forms.Dashboard
             loadform(new BomDetailAdd(0, false));
         }
 
+        private void YarnBtn_Click(object sender, EventArgs e)
+        {
+            loadform(new YarnDemandAdd());
+        }
 
 
 
@@ -241,6 +282,8 @@ namespace NEW_ERP.Forms.Dashboard
         {
 
         }
+
+       
     }
 }
 

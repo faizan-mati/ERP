@@ -94,8 +94,9 @@ namespace NEW_ERP
             this.CountryDataGridView.Name = "CountryDataGridView";
             this.CountryDataGridView.ReadOnly = true;
             this.CountryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CountryDataGridView.Size = new System.Drawing.Size(644, 346);
+            this.CountryDataGridView.Size = new System.Drawing.Size(792, 429);
             this.CountryDataGridView.TabIndex = 2098;
+            this.CountryDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CountryDataGridView_CellDoubleClick);
             // 
             // CountryCodeBox
             // 
@@ -114,7 +115,7 @@ namespace NEW_ERP
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(659, 507);
+            this.ClientSize = new System.Drawing.Size(807, 590);
             this.Controls.Add(this.CountryCodeBox);
             this.Controls.Add(this.CountryDataGridView);
             this.Controls.Add(this.label3);

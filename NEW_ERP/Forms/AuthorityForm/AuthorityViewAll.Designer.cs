@@ -65,8 +65,9 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.AuthorityDataGridView.Name = "AuthorityDataGridView";
             this.AuthorityDataGridView.ReadOnly = true;
             this.AuthorityDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AuthorityDataGridView.Size = new System.Drawing.Size(644, 346);
+            this.AuthorityDataGridView.Size = new System.Drawing.Size(807, 429);
             this.AuthorityDataGridView.TabIndex = 2121;
+            this.AuthorityDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AuthorityDataGridView_CellDoubleClick);
             // 
             // AuthorityNameBox
             // 
@@ -114,7 +115,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(659, 507);
+            this.ClientSize = new System.Drawing.Size(822, 590);
             this.Controls.Add(this.AuthorityNameBox);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.label2);

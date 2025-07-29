@@ -106,15 +106,16 @@ namespace NEW_ERP.Forms.CityForms
             this.CityDataGridView.Name = "CityDataGridView";
             this.CityDataGridView.ReadOnly = true;
             this.CityDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CityDataGridView.Size = new System.Drawing.Size(644, 335);
+            this.CityDataGridView.Size = new System.Drawing.Size(825, 449);
             this.CityDataGridView.TabIndex = 2112;
+            this.CityDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CityDataGridView_CellDoubleClick);
             // 
             // CityViewAll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(659, 507);
+            this.ClientSize = new System.Drawing.Size(840, 621);
             this.Controls.Add(this.CityDataGridView);
             this.Controls.Add(this.CityNameBox);
             this.Controls.Add(this.label3);

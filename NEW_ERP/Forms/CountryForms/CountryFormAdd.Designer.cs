@@ -1,7 +1,7 @@
 ﻿
 namespace NEW_ERP.Forms.CountryForms
 {
-    partial class CountryForm
+    partial class CountryFormAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace NEW_ERP.Forms.CountryForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CountryForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CountryFormAdd));
             this.TxtCountryName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.TxtCountryCode = new System.Windows.Forms.TextBox();

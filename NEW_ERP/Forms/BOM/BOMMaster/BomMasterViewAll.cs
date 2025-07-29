@@ -9,9 +9,6 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
 {
     public partial class BomMasterViewAll : Form
     {
-        /// <summary>
-        /// Initializes a new instance of the BomMasterViewAll form
-        /// </summary>
         public BomMasterViewAll()
         {
             InitializeComponent();
@@ -19,11 +16,6 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
 
         #region Form Events
 
-        /// <summary>
-        /// Handles the form load event to initialize data
-        /// </summary>
-        /// <param name="sender">The source of the event</param>
-        /// <param name="e">The event arguments</param>
         private void BomMasterViewAll_Load(object sender, EventArgs e)
         {
             LoadBomMasterIds();
@@ -104,8 +96,6 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
         /// <summary>
         /// Handles the search button click event to filter BOM data
         /// </summary>
-        /// <param name="sender">The source of the event</param>
-        /// <param name="e">The event arguments</param>
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             if (BomMasterIdBox.SelectedValue == null)
@@ -124,8 +114,6 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
         /// <summary>
         /// Handles the double-click event on a grid view row to open the BOM for editing
         /// </summary>
-        /// <param name="sender">The source of the event</param>
-        /// <param name="e">The event arguments containing row and column information</param>
         private void BomDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -149,7 +137,6 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
         /// <summary>
         /// Searches for a specific BOM Master record using the stored procedure
         /// </summary>
-        /// <param name="bomMasterId">The BOM Master ID to search for</param>
         private void SearchBomMaster(string bomMasterId)
         {
             try
@@ -184,7 +171,6 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
         /// <summary>
         /// Opens the BomMasterAdd form in edit mode for the specified BOM Master ID
         /// </summary>
-        /// <param name="bomMasterId">The BOM Master ID to edit</param>
         private void OpenBomMasterForEditing(int bomMasterId)
         {
             try
@@ -204,15 +190,10 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
         /// <summary>
         /// Handles errors consistently throughout the application
         /// </summary>
-        /// <param name="contextMessage">Descriptive message about where the error occurred</param>
-        /// <param name="ex">The exception that was thrown</param>
         private void HandleError(string contextMessage, Exception ex)
         {
             MessageBox.Show($"{contextMessage}:\n{ex.Message}", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            // Uncomment if you have logging set up
-            // Logger.LogError(ex, contextMessage);
         }
         #endregion
     }

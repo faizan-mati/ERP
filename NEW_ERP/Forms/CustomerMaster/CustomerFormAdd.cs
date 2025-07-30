@@ -19,15 +19,11 @@ namespace NEW_ERP.Forms.CustomerMaster
         private readonly int _customerId;
         private readonly bool _isFromViewAll;
         private bool _isEditMode = false;
-        private bool _isEditing = false; // Tracks if we're in editing state after Edit button click
+        private bool _isEditing = false;
         #endregion
 
         #region Constructor
-        /// <summary>
-        /// Initializes a new instance of the CustomerFormAdd class
-        /// </summary>
-        /// <param name="customerId">ID of the customer to edit (0 for new customer)</param>
-        /// <param name="isFromViewAll">Flag indicating if form was opened from View All screen</param>
+
         public CustomerFormAdd(int customerId, bool isFromViewAll)
         {
             InitializeComponent();
@@ -37,16 +33,12 @@ namespace NEW_ERP.Forms.CustomerMaster
         #endregion
 
         #region Form Events
-        /// <summary>
-        /// Form load event handler
-        /// </summary>
+
         private void CustomerForm_Load(object sender, EventArgs e)
         {
-            // Initialize dropdown data
             LoadCustomerTypes();
             LoadCountries();
 
-            // Set form mode based on parameters
             if (_isFromViewAll && _customerId > 0)
             {
                 SetEditMode();
@@ -71,10 +63,8 @@ namespace NEW_ERP.Forms.CustomerMaster
             _isEditMode = false;
             _isEditing = false;
 
-            // Enable all form controls
             EnableFormControls(true);
 
-            // Configure buttons
             SubmitBtn.Enabled = true;
             SubmitBtn.Text = "Submit";
             EditBtn.Enabled = false;
@@ -93,10 +83,8 @@ namespace NEW_ERP.Forms.CustomerMaster
             _isEditMode = true;
             _isEditing = false;
 
-            // Disable all form controls initially (readonly mode)
             EnableFormControls(false);
 
-            // Configure buttons
             SubmitBtn.Enabled = false;
             SubmitBtn.Text = "Submit";
             EditBtn.Enabled = true;
@@ -108,10 +96,8 @@ namespace NEW_ERP.Forms.CustomerMaster
         /// <summary>
         /// Enables or disables form controls based on current mode
         /// </summary>
-        /// <param name="enabled">True to enable controls, false to disable</param>
         private void EnableFormControls(bool enabled)
         {
-            // Text boxes
             txtCustomerCode.ReadOnly = !enabled;
             txtCustomerName.ReadOnly = !enabled;
             txtContactPerson.ReadOnly = !enabled;
@@ -124,12 +110,10 @@ namespace NEW_ERP.Forms.CustomerMaster
             txtGSTNo.ReadOnly = !enabled;
             txtNTN.ReadOnly = !enabled;
 
-            // Dropdown boxes
             CustomerTypeBox.Enabled = enabled;
             CountryBox.Enabled = enabled;
             CityBox.Enabled = enabled;
 
-            // Checkbox
             isCheckedcheckbox.Enabled = enabled;
         }
         #endregion
@@ -200,7 +184,6 @@ namespace NEW_ERP.Forms.CustomerMaster
         /// <summary>
         /// Loads active cities for the selected country into CityBox dropdown
         /// </summary>
-        /// <param name="countryId">ID of the selected country</param>
         private void LoadCities(int countryId)
         {
             try
@@ -234,7 +217,6 @@ namespace NEW_ERP.Forms.CustomerMaster
         /// <summary>
         /// Loads customer data for the specified customer ID into form controls
         /// </summary>
-        /// <param name="customerId">ID of the customer to load</param>
         private void LoadCustomerData(int customerId)
         {
             try
@@ -256,7 +238,6 @@ namespace NEW_ERP.Forms.CustomerMaster
                         {
                             if (reader.Read())
                             {
-                                // Fill text boxes
                                 txtCustomerCode.Text = reader["CustomerCode"].ToString();
                                 txtCustomerName.Text = reader["CustomerName"].ToString();
                                 txtContactPerson.Text = reader["ContactPerson"].ToString();
@@ -269,10 +250,8 @@ namespace NEW_ERP.Forms.CustomerMaster
                                 txtGSTNo.Text = reader["GSTNo"].ToString();
                                 txtNTN.Text = reader["NTN"].ToString();
 
-                                // Set checkbox
                                 isCheckedcheckbox.Checked = Convert.ToBoolean(reader["IsActive"]);
 
-                                // Set dropdown selections
                                 CustomerTypeBox.SelectedValue = reader["CustomerTypeID"];
                                 CountryBox.Text = reader["Country"].ToString();
                                 CityBox.Text = reader["City"].ToString();
@@ -318,7 +297,6 @@ namespace NEW_ERP.Forms.CustomerMaster
             if (!IsValidationPassed())
                 return;
 
-            // Only allow insert operations through submit button
             if (!_isEditMode)
             {
                 InsertCustomer();
@@ -332,7 +310,6 @@ namespace NEW_ERP.Forms.CustomerMaster
         {
             if (!_isEditing)
             {
-                // First click - enable editing
                 EnableFormControls(true);
                 _isEditing = true;
                 SubmitBtn.Enabled = false;
@@ -341,15 +318,13 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
             else
             {
-                // Second click - perform update if validation passes
                 if (IsValidationPassed())
                 {
                     UpdateCustomer();
                 }
 
-                // Reset to view mode
                 SetEditMode();
-                LoadCustomerData(_customerId); // Reload data to ensure consistency
+                LoadCustomerData(_customerId); 
             }
         }
 
@@ -404,7 +379,6 @@ namespace NEW_ERP.Forms.CustomerMaster
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        // Add parameters
                         cmd.Parameters.AddWithValue("@CustomerCode", txtCustomerCode.Text.Trim());
                         cmd.Parameters.AddWithValue("@CustomerName", txtCustomerName.Text.Trim());
                         cmd.Parameters.AddWithValue("@ContactPerson", txtContactPerson.Text.Trim());
@@ -461,7 +435,6 @@ namespace NEW_ERP.Forms.CustomerMaster
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        // Add parameters
                         cmd.Parameters.AddWithValue("@CustomerID", _customerId);
                         cmd.Parameters.AddWithValue("@CustomerCode", txtCustomerCode.Text.Trim());
                         cmd.Parameters.AddWithValue("@CustomerName", txtCustomerName.Text.Trim());
@@ -549,10 +522,8 @@ namespace NEW_ERP.Forms.CustomerMaster
         /// <summary>
         /// Validates all form inputs before submission
         /// </summary>
-        /// <returns>True if validation passes, false otherwise</returns>
         private bool IsValidationPassed()
         {
-            // Required field validations
             if (string.IsNullOrWhiteSpace(txtCustomerCode.Text))
             {
                 MessageBox.Show("Please enter a Customer Code.", "Validation Error",
@@ -569,7 +540,6 @@ namespace NEW_ERP.Forms.CustomerMaster
                 return false;
             }
 
-            // Email validation (if provided)
             if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !IsValidEmail(txtEmail.Text))
             {
                 MessageBox.Show("Please enter a valid email address.", "Validation Error",
@@ -578,7 +548,6 @@ namespace NEW_ERP.Forms.CustomerMaster
                 return false;
             }
 
-            // GST No validation
             if (string.IsNullOrWhiteSpace(txtGSTNo.Text))
             {
                 MessageBox.Show("Please enter GST No.", "Validation Error",
@@ -587,7 +556,6 @@ namespace NEW_ERP.Forms.CustomerMaster
                 return false;
             }
 
-            // NTN validation
             if (string.IsNullOrWhiteSpace(txtNTN.Text))
             {
                 MessageBox.Show("Please enter NTN.", "Validation Error",
@@ -596,7 +564,6 @@ namespace NEW_ERP.Forms.CustomerMaster
                 return false;
             }
 
-            // Dropdown validations
             if (CustomerTypeBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a Customer Type.", "Validation Error",
@@ -621,7 +588,6 @@ namespace NEW_ERP.Forms.CustomerMaster
                 return false;
             }
 
-            // Duplicate checks (only for insert mode or when values changed in edit mode)
             if (!_isEditMode || _customerId == 0)
             {
                 if (IsCustomerCodeExists(txtCustomerCode.Text.Trim()))
@@ -655,8 +621,6 @@ namespace NEW_ERP.Forms.CustomerMaster
         /// <summary>
         /// Validates email format using regex
         /// </summary>
-        /// <param name="email">Email address to validate</param>
-        /// <returns>True if email is valid, false otherwise</returns>
         private bool IsValidEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -677,8 +641,6 @@ namespace NEW_ERP.Forms.CustomerMaster
         /// <summary>
         /// Checks if customer code already exists in the database
         /// </summary>
-        /// <param name="customerCode">Customer code to check</param>
-        /// <returns>True if exists, false otherwise</returns>
         private bool IsCustomerCodeExists(string customerCode)
         {
             try
@@ -718,8 +680,6 @@ namespace NEW_ERP.Forms.CustomerMaster
         /// <summary>
         /// Checks if GST No already exists in the database
         /// </summary>
-        /// <param name="gstNo">GST number to check</param>
-        /// <returns>True if exists, false otherwise</returns>
         private bool IsGSTNoExists(string gstNo)
         {
             try
@@ -759,8 +719,6 @@ namespace NEW_ERP.Forms.CustomerMaster
         /// <summary>
         /// Checks if NTN already exists in the database
         /// </summary>
-        /// <param name="ntn">NTN to check</param>
-        /// <returns>True if exists, false otherwise</returns>
         private bool IsNTNExists(string ntn)
         {
             try
@@ -804,7 +762,6 @@ namespace NEW_ERP.Forms.CustomerMaster
         /// </summary>
         private void ResetFormControls()
         {
-            // Clear text boxes
             txtCustomerCode.Clear();
             txtCustomerName.Clear();
             txtContactPerson.Clear();
@@ -817,21 +774,13 @@ namespace NEW_ERP.Forms.CustomerMaster
             txtGSTNo.Clear();
             txtNTN.Clear();
 
-            // Reset dropdowns
             CustomerTypeBox.SelectedIndex = -1;
             CountryBox.SelectedIndex = -1;
             CityBox.DataSource = null;
 
-            // Reset checkbox
             isCheckedcheckbox.Checked = false;
         }
         #endregion
 
-        #region Unused Event Handlers
-        private void label14_Click(object sender, EventArgs e)
-        {
-            // Empty event handler - can be removed if not needed
-        }
-        #endregion
     }
 }

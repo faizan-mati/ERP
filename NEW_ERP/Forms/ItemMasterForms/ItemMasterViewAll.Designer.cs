@@ -94,8 +94,9 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.ItemMasterDataGridView.Name = "ItemMasterDataGridView";
             this.ItemMasterDataGridView.ReadOnly = true;
             this.ItemMasterDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ItemMasterDataGridView.Size = new System.Drawing.Size(644, 335);
+            this.ItemMasterDataGridView.Size = new System.Drawing.Size(805, 431);
             this.ItemMasterDataGridView.TabIndex = 2089;
+            this.ItemMasterDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemMasterDataGridView_CellDoubleClick);
             // 
             // ProductCodeBox
             // 
@@ -114,7 +115,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(659, 507);
+            this.ClientSize = new System.Drawing.Size(820, 603);
             this.Controls.Add(this.ProductCodeBox);
             this.Controls.Add(this.ItemMasterDataGridView);
             this.Controls.Add(this.label3);

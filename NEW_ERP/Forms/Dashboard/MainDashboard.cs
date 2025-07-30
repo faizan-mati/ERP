@@ -234,7 +234,7 @@ namespace NEW_ERP.Forms.Dashboard
 
         private void ItemBtn_Click(object sender, EventArgs e)
         {
-            loadform(new ItemMasterForm());
+            loadform(new ItemMasterForm("", false));
         }
 
         private void SaleOrderBtn_Click(object sender, EventArgs e)

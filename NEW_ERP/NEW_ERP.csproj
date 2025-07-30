@@ -107,18 +107,6 @@
     <Compile Include="Forms\CountryForms\CountryFormAdd.Designer.cs">
       <DependentUpon>CountryFormAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CustomerMaster\CustomerDelete.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CustomerMaster\CustomerDelete.Designer.cs">
-      <DependentUpon>CustomerDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\CustomerMaster\CustomerEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CustomerMaster\CustomerEdit.Designer.cs">
-      <DependentUpon>CustomerEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\CustomerMaster\CustomerFormAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,12 +265,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CountryForms\CountryFormAdd.resx">
       <DependentUpon>CountryFormAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomerMaster\CustomerDelete.resx">
-      <DependentUpon>CustomerDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomerMaster\CustomerEdit.resx">
-      <DependentUpon>CustomerEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerMaster\CustomerFormAdd.resx">
       <DependentUpon>CustomerFormAdd.cs</DependentUpon>

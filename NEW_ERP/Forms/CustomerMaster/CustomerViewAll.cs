@@ -14,17 +14,13 @@ namespace NEW_ERP.Forms.CustomerMaster
 {
     public partial class CustomerViewAll : Form
     {
-        /// <summary>
-        /// Initializes a new instance of the CustomerViewAll form
-        /// </summary>
+
         public CustomerViewAll()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Form load event handler - Loads customer data when form opens
-        /// </summary>
+
         private void CustomerViewAll_Load(object sender, EventArgs e)
         {
             LoadCustomerData();
@@ -32,9 +28,6 @@ namespace NEW_ERP.Forms.CustomerMaster
 
         #region Data Loading Functions
 
-        /// <summary>
-        /// Loads all customer data from the database and binds it to the DataGridView
-        /// </summary>
         private void LoadCustomerData()
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -129,13 +122,11 @@ namespace NEW_ERP.Forms.CustomerMaster
         {
             try
             {
-                // Ignore header clicks
                 if (e.RowIndex < 0) return;
 
                 var selectedRow = CustomerDataGridView.Rows[e.RowIndex];
                 var value = selectedRow.Cells["CustomerID"].Value;
 
-                // Validate the CustomerID
                 if (value == null || !int.TryParse(value.ToString(), out int customerID))
                 {
                     MessageBox.Show("Invalid Country ID selected.",
@@ -160,7 +151,6 @@ namespace NEW_ERP.Forms.CustomerMaster
         /// <summary>
         /// Opens the CustomerFormAdd form in edit mode for the specified customer
         /// </summary>
-        /// <param name="customerID">ID of the customer to edit</param>
         private void OpenCustomerForEditing(int customerID)
         {
             try
@@ -181,8 +171,6 @@ namespace NEW_ERP.Forms.CustomerMaster
         /// <summary>
         /// Displays an error message to the user
         /// </summary>
-        /// <param name="context">Context of the error</param>
-        /// <param name="ex">Exception object</param>
         private void ShowError(string context, Exception ex)
         {
             MessageBox.Show($"{context}:\n{ex.Message}",
@@ -193,10 +181,5 @@ namespace NEW_ERP.Forms.CustomerMaster
 
         #endregion
 
-        // Unused event handlers (auto-generated)
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            // Intentionally left blank
-        }
     }
 }

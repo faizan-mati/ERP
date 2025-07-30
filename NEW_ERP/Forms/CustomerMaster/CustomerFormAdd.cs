@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,10 +18,16 @@ namespace NEW_ERP.Forms.CustomerMaster
         #region Private Fields
         private readonly int _customerId;
         private readonly bool _isFromViewAll;
-        private bool _isEditMode = false; // Track if form is in edit mode
+        private bool _isEditMode = false;
+        private bool _isEditing = false; // Tracks if we're in editing state after Edit button click
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Initializes a new instance of the CustomerFormAdd class
+        /// </summary>
+        /// <param name="customerId">ID of the customer to edit (0 for new customer)</param>
+        /// <param name="isFromViewAll">Flag indicating if form was opened from View All screen</param>
         public CustomerFormAdd(int customerId, bool isFromViewAll)
         {
             InitializeComponent();
@@ -29,97 +36,93 @@ namespace NEW_ERP.Forms.CustomerMaster
         }
         #endregion
 
-        #region Form Load Event
+        #region Form Events
+        /// <summary>
+        /// Form load event handler
+        /// </summary>
         private void CustomerForm_Load(object sender, EventArgs e)
         {
-            // Load dropdown data
+            // Initialize dropdown data
             LoadCustomerTypes();
             LoadCountries();
 
-            // Configure form based on mode
-            ConfigureFormMode();
-
-            // If editing existing customer, load data
-            if (_customerId > 0)
+            // Set form mode based on parameters
+            if (_isFromViewAll && _customerId > 0)
             {
-                LoadCustomerData();
+                SetEditMode();
+                LoadCustomerData(_customerId);
+            }
+            else
+            {
+                SetInsertMode();
             }
         }
         #endregion
 
-        #region Form Configuration Methods
+        #region Form Mode Management
         /// <summary>
-        /// Configure form controls based on whether it's add or edit mode
+        /// Sets the form to insert mode (new customer)
+        /// - All fields enabled
+        /// - Submit button enabled
+        /// - Edit/Delete buttons disabled
         /// </summary>
-        private void ConfigureFormMode()
+        private void SetInsertMode()
         {
-            if (_customerId == 0 && !_isFromViewAll)
-            {
-                // Add new customer mode
-                SetFormForAddMode();
-            }
-            else if (_customerId > 0 && _isFromViewAll)
-            {
-                // View/Edit existing customer mode
-                SetFormForViewMode();
-            }
-        }
+            _isEditMode = false;
+            _isEditing = false;
 
-        /// <summary>
-        /// Set form for adding new customer
-        /// </summary>
-        private void SetFormForAddMode()
-        {
+            // Enable all form controls
+            EnableFormControls(true);
+
+            // Configure buttons
             SubmitBtn.Enabled = true;
             SubmitBtn.Text = "Submit";
             EditBtn.Enabled = false;
             DeleteBtn.Enabled = false;
-            SetFormControlsEnabled(true);
+            ViewAllBtn.Enabled = true;
         }
 
         /// <summary>
-        /// Set form for viewing existing customer (read-only)
+        /// Sets the form to edit mode (existing customer)
+        /// - All fields readonly initially
+        /// - Submit button disabled
+        /// - Edit/Delete buttons enabled
         /// </summary>
-        private void SetFormForViewMode()
+        private void SetEditMode()
         {
+            _isEditMode = true;
+            _isEditing = false;
+
+            // Disable all form controls initially (readonly mode)
+            EnableFormControls(false);
+
+            // Configure buttons
             SubmitBtn.Enabled = false;
+            SubmitBtn.Text = "Submit";
             EditBtn.Enabled = true;
             EditBtn.Text = "Edit";
             DeleteBtn.Enabled = true;
-            SetFormControlsEnabled(false);
-            _isEditMode = false;
+            ViewAllBtn.Enabled = true;
         }
 
         /// <summary>
-        /// Set form for editing existing customer
-        /// </summary>
-        private void SetFormForEditMode()
-        {
-            SubmitBtn.Enabled = false;
-            EditBtn.Text = "Save";
-            DeleteBtn.Enabled = false;
-            SetFormControlsEnabled(true);
-            _isEditMode = true;
-        }
-
-        /// <summary>
-        /// Enable or disable form controls
+        /// Enables or disables form controls based on current mode
         /// </summary>
         /// <param name="enabled">True to enable controls, false to disable</param>
-        private void SetFormControlsEnabled(bool enabled)
+        private void EnableFormControls(bool enabled)
         {
             // Text boxes
-            txtCustomerCode.Enabled = enabled;
-            txtCustomerName.Enabled = enabled;
-            txtContactPerson.Enabled = enabled;
-            txtMobileNo.Enabled = enabled;
-            txtEmail.Enabled = enabled;
-            txtWhatsapp.Enabled = enabled;
-            txtState.Enabled = enabled;
-            txtZipCode.Enabled = enabled;
-            txtAddress.Enabled = enabled;
-            txtGSTNo.Enabled = enabled;
-            txtNTN.Enabled = enabled;
+            txtCustomerCode.ReadOnly = !enabled;
+            txtCustomerName.ReadOnly = !enabled;
+            txtContactPerson.ReadOnly = !enabled;
+            txtMobileNo.ReadOnly = !enabled;
+            txtEmail.ReadOnly = !enabled;
+            txtWhatsapp.ReadOnly = !enabled;
+            txtState.ReadOnly = !enabled;
+            txtZipCode.ReadOnly = !enabled;
+            txtAddress.ReadOnly = !enabled;
+            txtGSTNo.ReadOnly = !enabled;
+            txtNTN.ReadOnly = !enabled;
 
             // Dropdown boxes
             CustomerTypeBox.Enabled = enabled;
@@ -133,131 +136,168 @@ namespace NEW_ERP.Forms.CustomerMaster
 
         #region Data Loading Methods
         /// <summary>
-        /// Load customer types into dropdown
+        /// Loads customer types from database into CustomerTypeBox dropdown
         /// </summary>
         private void LoadCustomerTypes()
         {
-            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+            try
             {
-                string query = @"SELECT CustomertypeId, CustomerTypeName FROM CustomerTypeMaster";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+                    string query = "SELECT CustomertypeId, CustomerTypeName FROM CustomerTypeMaster";
 
-                    CustomerTypeBox.DataSource = dt;
-                    CustomerTypeBox.DisplayMember = "CustomerTypeName";
-                    CustomerTypeBox.ValueMember = "CustomertypeId";
-                    CustomerTypeBox.SelectedIndex = -1;
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        CustomerTypeBox.DataSource = dt;
+                        CustomerTypeBox.DisplayMember = "CustomerTypeName";
+                        CustomerTypeBox.ValueMember = "CustomertypeId";
+                        CustomerTypeBox.SelectedIndex = -1;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading customer types: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Load countries into dropdown
+        /// Loads active countries from database into CountryBox dropdown
         /// </summary>
         private void LoadCountries()
         {
-            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+            try
             {
-                string query = @"SELECT CountryID, CountryName FROM Country";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+                    string query = "SELECT CountryID, CountryName FROM Country WHERE StatusCode = 'ACT'";
 
-                    CountryBox.DataSource = dt;
-                    CountryBox.DisplayMember = "CountryName";
-                    CountryBox.ValueMember = "CountryID";
-                    CountryBox.SelectedIndex = -1;
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        CountryBox.DataSource = dt;
+                        CountryBox.DisplayMember = "CountryName";
+                        CountryBox.ValueMember = "CountryID";
+                        CountryBox.SelectedIndex = -1;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading countries: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Load cities based on selected country
+        /// Loads active cities for the selected country into CityBox dropdown
         /// </summary>
-        /// <param name="countryId">Selected country ID</param>
+        /// <param name="countryId">ID of the selected country</param>
         private void LoadCities(int countryId)
         {
-            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+            try
             {
-                string query = @"SELECT CityID, CityName FROM City WHERE CountryID = @CountryID";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    cmd.Parameters.AddWithValue("@CountryID", countryId);
+                    string query = "SELECT CityID, CityName FROM City WHERE CountryID = @CountryID AND StatusCode = 'ACT'";
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@CountryID", countryId);
 
-                    CityBox.DataSource = dt;
-                    CityBox.DisplayMember = "CityName";
-                    CityBox.ValueMember = "CityID";
-                    CityBox.SelectedIndex = -1;
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        CityBox.DataSource = dt;
+                        CityBox.DisplayMember = "CityName";
+                        CityBox.ValueMember = "CityID";
+                        CityBox.SelectedIndex = -1;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading cities: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Load existing customer data for editing
+        /// Loads customer data for the specified customer ID into form controls
         /// </summary>
-        private void LoadCustomerData()
+        /// <param name="customerId">ID of the customer to load</param>
+        private void LoadCustomerData(int customerId)
         {
-            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+            try
             {
-                string query = @"SELECT c.CustomerCode, c.CustomerName, c.ContactPerson, c.MobileNo, 
-                                       c.Email, c.WhatsAppNo, c.State, c.ZipCode, c.Address, 
-                                       c.GSTNo, c.NTN, c.IsActive, c.CustomerTypeId, c.Country, c.City
-                                FROM CustomerMaster c 
-                                WHERE c.CustomerId = @CustomerId";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    cmd.Parameters.AddWithValue("@CustomerId", _customerId);
+                    string query = @"SELECT CustomerCode, CustomerName, ContactPerson, MobileNo, Email, 
+                                   WhatsAppNo, State, ZipCode, Address, GSTNo, NTN, IsActive, 
+                                   CustomerTypeID, Country, City, CreditLimit
+                                   FROM CustomerMaster 
+                                   WHERE CustomerID = @CustomerID AND StatusCode = 'ACT'";
 
-                    conn.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        if (reader.Read())
+                        cmd.Parameters.AddWithValue("@CustomerID", customerId);
+                        conn.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            // Populate form controls with data
-                            txtCustomerCode.Text = reader["CustomerCode"].ToString();
-                            txtCustomerName.Text = reader["CustomerName"].ToString();
-                            txtContactPerson.Text = reader["ContactPerson"].ToString();
-                            txtMobileNo.Text = reader["MobileNo"].ToString();
-                            txtEmail.Text = reader["Email"].ToString();
-                            txtWhatsapp.Text = reader["WhatsAppNo"].ToString();
-                            txtState.Text = reader["State"].ToString();
-                            txtZipCode.Text = reader["ZipCode"].ToString();
-                            txtAddress.Text = reader["Address"].ToString();
-                            txtGSTNo.Text = reader["GSTNo"].ToString();
-                            txtNTN.Text = reader["NTN"].ToString();
-                            isCheckedcheckbox.Checked = Convert.ToBoolean(reader["IsActive"]);
+                            if (reader.Read())
+                            {
+                                // Fill text boxes
+                                txtCustomerCode.Text = reader["CustomerCode"].ToString();
+                                txtCustomerName.Text = reader["CustomerName"].ToString();
+                                txtContactPerson.Text = reader["ContactPerson"].ToString();
+                                txtMobileNo.Text = reader["MobileNo"].ToString();
+                                txtEmail.Text = reader["Email"].ToString();
+                                txtWhatsapp.Text = reader["WhatsAppNo"].ToString();
+                                txtState.Text = reader["State"].ToString();
+                                txtZipCode.Text = reader["ZipCode"].ToString();
+                                txtAddress.Text = reader["Address"].ToString();
+                                txtGSTNo.Text = reader["GSTNo"].ToString();
+                                txtNTN.Text = reader["NTN"].ToString();
 
-                            // Set dropdown selections
-                            CustomerTypeBox.SelectedValue = reader["CustomerTypeId"];
-                            CountryBox.SelectedValue = reader["Country"];
+                                // Set checkbox
+                                isCheckedcheckbox.Checked = Convert.ToBoolean(reader["IsActive"]);
 
-                            // Load cities for selected country and set city
-                            int countryId = Convert.ToInt32(reader["Country"]);
-                            LoadCities(countryId);
-                            CityBox.SelectedValue = reader["City"];
+                                // Set dropdown selections
+                                CustomerTypeBox.SelectedValue = reader["CustomerTypeID"];
+                                CountryBox.Text = reader["Country"].ToString();
+                                CityBox.Text = reader["City"].ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Customer not found.", "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                this.Close();
+                            }
                         }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading customer data: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 
-        #region Event Handlers
+        #region Control Event Handlers
         /// <summary>
-        /// Handle country selection change to load cities
+        /// Handles country selection change to load corresponding cities
         /// </summary>
         private void CountryBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -271,38 +311,50 @@ namespace NEW_ERP.Forms.CustomerMaster
         }
 
         /// <summary>
-        /// Handle submit button click for inserting new customer
+        /// Handles submit button click for new customer creation
         /// </summary>
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
-            if (IsValidationPassed())
+            if (!IsValidationPassed())
+                return;
+
+            // Only allow insert operations through submit button
+            if (!_isEditMode)
             {
                 InsertCustomer();
             }
         }
 
         /// <summary>
-        /// Handle edit button click - toggle between edit and save modes
+        /// Handles edit button click - toggles between edit and save modes
         /// </summary>
         private void EditBtn_Click(object sender, EventArgs e)
         {
-            if (!_isEditMode)
+            if (!_isEditing)
             {
-                // Switch to edit mode
-                SetFormForEditMode();
+                // First click - enable editing
+                EnableFormControls(true);
+                _isEditing = true;
+                SubmitBtn.Enabled = false;
+                EditBtn.Text = "Save";
+                DeleteBtn.Enabled = false;
             }
             else
             {
-                // Save changes
+                // Second click - perform update if validation passes
                 if (IsValidationPassed())
                 {
                     UpdateCustomer();
                 }
+
+                // Reset to view mode
+                SetEditMode();
+                LoadCustomerData(_customerId); // Reload data to ensure consistency
             }
         }
 
         /// <summary>
-        /// Handle delete button click
+        /// Handles delete button click - performs soft delete of customer
         /// </summary>
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
@@ -319,35 +371,35 @@ namespace NEW_ERP.Forms.CustomerMaster
         }
 
         /// <summary>
-        /// Handle close button click
+        /// Handles view all button click - returns to customer list view
+        /// </summary>
+        private void ViewAllBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            CustomerViewAll viewAllForm = new CustomerViewAll();
+            viewAllForm.Show();
+        }
+
+        /// <summary>
+        /// Handles close button click - closes the form
         /// </summary>
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        /// <summary>
-        /// Handle view all button click
-        /// </summary>
-        private void ViewAllBtn_Click(object sender, EventArgs e)
-        {
-            CustomerViewAll NextForm = new CustomerViewAll();
-            NextForm.Show();
-        }
         #endregion
 
         #region Database Operations
         /// <summary>
-        /// Insert new customer record
+        /// Inserts a new customer record into the database
         /// </summary>
         private void InsertCustomer()
         {
-            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+            try
             {
-                try
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
                     conn.Open();
-
                     using (SqlCommand cmd = new SqlCommand("sp_InsertCustomerMaster", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -357,21 +409,20 @@ namespace NEW_ERP.Forms.CustomerMaster
                         cmd.Parameters.AddWithValue("@CustomerName", txtCustomerName.Text.Trim());
                         cmd.Parameters.AddWithValue("@ContactPerson", txtContactPerson.Text.Trim());
                         cmd.Parameters.AddWithValue("@MobileNo", txtMobileNo.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
                         cmd.Parameters.AddWithValue("@WhatsAppNo", txtWhatsapp.Text.Trim());
-                        cmd.Parameters.AddWithValue("@State", txtState.Text.Trim());
-                        cmd.Parameters.AddWithValue("@ZipCode", txtZipCode.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
                         cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
+                        cmd.Parameters.AddWithValue("@City", CityBox.Text.Trim());
+                        cmd.Parameters.AddWithValue("@State", txtState.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Country", CountryBox.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ZipCode", txtZipCode.Text.Trim());
+                        cmd.Parameters.AddWithValue("@CustomerTypeID", Convert.ToInt32(CustomerTypeBox.SelectedValue));
                         cmd.Parameters.AddWithValue("@GSTNo", txtGSTNo.Text.Trim());
                         cmd.Parameters.AddWithValue("@NTN", txtNTN.Text.Trim());
-                        cmd.Parameters.AddWithValue("@IsActive", isCheckedcheckbox.Checked);
-                        cmd.Parameters.AddWithValue("@CustomerTypeId", Convert.ToInt32(CustomerTypeBox.SelectedValue));
-                        cmd.Parameters.AddWithValue("@Country", Convert.ToInt32(CountryBox.SelectedValue));
-                        cmd.Parameters.AddWithValue("@City", Convert.ToInt32(CityBox.SelectedValue));
                         cmd.Parameters.AddWithValue("@CreditLimit", 0);
-                        cmd.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
-                        cmd.Parameters.AddWithValue("@CreatedBy", "Admin");
+                        cmd.Parameters.AddWithValue("@IsActive", isCheckedcheckbox.Checked);
                         cmd.Parameters.AddWithValue("@StatusCode", "ACT");
+                        cmd.Parameters.AddWithValue("@CreatedBy", "Admin");
 
                         int result = cmd.ExecuteNonQuery();
 
@@ -383,44 +434,53 @@ namespace NEW_ERP.Forms.CustomerMaster
                         }
                         else
                         {
-                            MessageBox.Show("Insertion failed.", "Warning",
+                            MessageBox.Show("Customer insertion failed.", "Warning",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Database Error:\n" + ex.Message, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error:\n" + ex.Message, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Update existing customer record
+        /// Updates an existing customer record in the database
         /// </summary>
         private void UpdateCustomer()
         {
-            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+            try
             {
-                try
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
                     conn.Open();
-
                     using (SqlCommand cmd = new SqlCommand("sp_UpdateCustomer", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        // Add customer ID parameter for update
-                        cmd.Parameters.AddWithValue("@CustomerId", _customerId);
-
-                        // Add other parameters
-                        AddCustomerParameters(cmd);
+                        // Add parameters
+                        cmd.Parameters.AddWithValue("@CustomerID", _customerId);
+                        cmd.Parameters.AddWithValue("@CustomerCode", txtCustomerCode.Text.Trim());
+                        cmd.Parameters.AddWithValue("@CustomerName", txtCustomerName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ContactPerson", txtContactPerson.Text.Trim());
+                        cmd.Parameters.AddWithValue("@MobileNo", txtMobileNo.Text.Trim());
+                        cmd.Parameters.AddWithValue("@WhatsAppNo", txtWhatsapp.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
+                        cmd.Parameters.AddWithValue("@City", CityBox.Text.Trim());
+                        cmd.Parameters.AddWithValue("@State", txtState.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Country", CountryBox.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ZipCode", txtZipCode.Text.Trim());
+                        cmd.Parameters.AddWithValue("@CustomerTypeID", Convert.ToInt32(CustomerTypeBox.SelectedValue));
+                        cmd.Parameters.AddWithValue("@GSTNo", txtGSTNo.Text.Trim());
+                        cmd.Parameters.AddWithValue("@NTN", txtNTN.Text.Trim());
+                        cmd.Parameters.AddWithValue("@CreditLimit", 0);
+                        cmd.Parameters.AddWithValue("@IsActive", isCheckedcheckbox.Checked);
+                        cmd.Parameters.AddWithValue("@StatusCode", "ACT");
+                        cmd.Parameters.AddWithValue("@Updatedby", "Admin");
 
                         int result = cmd.ExecuteNonQuery();
 
@@ -428,45 +488,38 @@ namespace NEW_ERP.Forms.CustomerMaster
                         {
                             MessageBox.Show("Customer updated successfully!", "Success",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            // Switch back to view mode
-                            SetFormForViewMode();
+                            SetEditMode();
                         }
                         else
                         {
-                            MessageBox.Show("Update failed.", "Warning",
+                            MessageBox.Show("Customer update failed.", "Warning",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Database Error:\n" + ex.Message, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error:\n" + ex.Message, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Delete customer record
+        /// Performs a soft delete of the customer record
         /// </summary>
         private void DeleteCustomer()
         {
-            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+            try
             {
-                try
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
                     conn.Open();
-
                     using (SqlCommand cmd = new SqlCommand("sp_DeleteCustomer", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@CustomerId", _customerId);
+                        cmd.Parameters.AddWithValue("@CustomerID", _customerId);
+                        cmd.Parameters.AddWithValue("@UpdatedBy", "Admin");
 
                         int result = cmd.ExecuteNonQuery();
 
@@ -474,81 +527,280 @@ namespace NEW_ERP.Forms.CustomerMaster
                         {
                             MessageBox.Show("Customer deleted successfully!", "Success",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            this.Close(); // Close form after successful deletion
+                            this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Deletion failed.", "Warning",
+                            MessageBox.Show("Customer deletion failed.", "Warning",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Database Error:\n" + ex.Message, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error:\n" + ex.Message, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-        }
-
-        /// <summary>
-        /// Add common parameters for insert and update operations
-        /// </summary>
-        /// <param name="cmd">SQL command object</param>
-        private void AddCustomerParameters(SqlCommand cmd)
-        {
-            cmd.Parameters.AddWithValue("@CustomerCode", txtCustomerCode.Text.Trim());
-            cmd.Parameters.AddWithValue("@CustomerName", txtCustomerName.Text.Trim());
-            cmd.Parameters.AddWithValue("@ContactPerson", txtContactPerson.Text.Trim());
-            cmd.Parameters.AddWithValue("@MobileNo", txtMobileNo.Text.Trim());
-            cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
-            cmd.Parameters.AddWithValue("@WhatsAppNo", txtWhatsapp.Text.Trim());
-            cmd.Parameters.AddWithValue("@State", txtState.Text.Trim());
-            cmd.Parameters.AddWithValue("@ZipCode", txtZipCode.Text.Trim());
-            cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
-            cmd.Parameters.AddWithValue("@GSTNo", txtGSTNo.Text.Trim());
-            cmd.Parameters.AddWithValue("@NTN", txtNTN.Text.Trim());
-            cmd.Parameters.AddWithValue("@IsActive", isCheckedcheckbox.Checked);
-            cmd.Parameters.AddWithValue("@CustomerTypeId", Convert.ToInt32(CustomerTypeBox.SelectedValue));
-            cmd.Parameters.AddWithValue("@Country", Convert.ToInt32(CountryBox.SelectedValue));
-            cmd.Parameters.AddWithValue("@City", Convert.ToInt32(CityBox.SelectedValue));
-            cmd.Parameters.AddWithValue("@CreditLimit", 0);
-            cmd.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
-            cmd.Parameters.AddWithValue("@CreatedBy", "Admin");
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 
-        #region Validation and Utility Methods
+        #region Validation Methods
         /// <summary>
-        /// Validate form inputs
+        /// Validates all form inputs before submission
         /// </summary>
         /// <returns>True if validation passes, false otherwise</returns>
         private bool IsValidationPassed()
         {
-            if (string.IsNullOrWhiteSpace(txtCustomerCode.Text) ||
-                string.IsNullOrWhiteSpace(txtCustomerName.Text) ||
-                string.IsNullOrWhiteSpace(txtNTN.Text) ||
-                string.IsNullOrWhiteSpace(txtGSTNo.Text) ||
-                CustomerTypeBox.SelectedIndex == -1 ||
-                CountryBox.SelectedIndex == -1 ||
-                CityBox.SelectedIndex == -1)
+            // Required field validations
+            if (string.IsNullOrWhiteSpace(txtCustomerCode.Text))
             {
-                MessageBox.Show("Please fill in all required fields.", "Validation Error",
+                MessageBox.Show("Please enter a Customer Code.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCustomerCode.Focus();
                 return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCustomerName.Text))
+            {
+                MessageBox.Show("Please enter a Customer Name.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCustomerName.Focus();
+                return false;
+            }
+
+            // Email validation (if provided)
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !IsValidEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Please enter a valid email address.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                return false;
+            }
+
+            // GST No validation
+            if (string.IsNullOrWhiteSpace(txtGSTNo.Text))
+            {
+                MessageBox.Show("Please enter GST No.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtGSTNo.Focus();
+                return false;
+            }
+
+            // NTN validation
+            if (string.IsNullOrWhiteSpace(txtNTN.Text))
+            {
+                MessageBox.Show("Please enter NTN.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNTN.Focus();
+                return false;
+            }
+
+            // Dropdown validations
+            if (CustomerTypeBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Customer Type.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomerTypeBox.Focus();
+                return false;
+            }
+
+            if (CountryBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Country.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CountryBox.Focus();
+                return false;
+            }
+
+            if (CityBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a City.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CityBox.Focus();
+                return false;
+            }
+
+            // Duplicate checks (only for insert mode or when values changed in edit mode)
+            if (!_isEditMode || _customerId == 0)
+            {
+                if (IsCustomerCodeExists(txtCustomerCode.Text.Trim()))
+                {
+                    MessageBox.Show("Customer Code already exists. Please enter a unique code.",
+                        "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCustomerCode.Focus();
+                    return false;
+                }
+
+                if (IsGSTNoExists(txtGSTNo.Text.Trim()))
+                {
+                    MessageBox.Show("GST No. already exists. Please enter a unique GST No.",
+                        "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtGSTNo.Focus();
+                    return false;
+                }
+
+                if (IsNTNExists(txtNTN.Text.Trim()))
+                {
+                    MessageBox.Show("NTN already exists. Please enter a unique NTN.",
+                        "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtNTN.Focus();
+                    return false;
+                }
             }
 
             return true;
         }
 
         /// <summary>
-        /// Reset all form controls to default state
+        /// Validates email format using regex
+        /// </summary>
+        /// <param name="email">Email address to validate</param>
+        /// <returns>True if email is valid, false otherwise</returns>
+        private bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][_\w]*[0-9a-z]*\.)+[a-z0-9]{2,20}))$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Checks if customer code already exists in the database
+        /// </summary>
+        /// <param name="customerCode">Customer code to check</param>
+        /// <returns>True if exists, false otherwise</returns>
+        private bool IsCustomerCodeExists(string customerCode)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+                {
+                    string query = "SELECT COUNT(1) FROM CustomerMaster WHERE CustomerCode = @CustomerCode AND StatusCode = 'ACT'";
+
+                    if (_isEditMode && _customerId > 0)
+                    {
+                        query += " AND CustomerID != @CustomerID";
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@CustomerCode", customerCode);
+
+                        if (_isEditMode && _customerId > 0)
+                        {
+                            cmd.Parameters.AddWithValue("@CustomerID", _customerId);
+                        }
+
+                        conn.Open();
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking customer code: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Checks if GST No already exists in the database
+        /// </summary>
+        /// <param name="gstNo">GST number to check</param>
+        /// <returns>True if exists, false otherwise</returns>
+        private bool IsGSTNoExists(string gstNo)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+                {
+                    string query = "SELECT COUNT(1) FROM CustomerMaster WHERE GSTNo = @GSTNo AND StatusCode = 'ACT'";
+
+                    if (_isEditMode && _customerId > 0)
+                    {
+                        query += " AND CustomerID != @CustomerID";
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@GSTNo", gstNo);
+
+                        if (_isEditMode && _customerId > 0)
+                        {
+                            cmd.Parameters.AddWithValue("@CustomerID", _customerId);
+                        }
+
+                        conn.Open();
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking GST No: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Checks if NTN already exists in the database
+        /// </summary>
+        /// <param name="ntn">NTN to check</param>
+        /// <returns>True if exists, false otherwise</returns>
+        private bool IsNTNExists(string ntn)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+                {
+                    string query = "SELECT COUNT(1) FROM CustomerMaster WHERE NTN = @NTN AND StatusCode = 'ACT'";
+
+                    if (_isEditMode && _customerId > 0)
+                    {
+                        query += " AND CustomerID != @CustomerID";
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@NTN", ntn);
+
+                        if (_isEditMode && _customerId > 0)
+                        {
+                            cmd.Parameters.AddWithValue("@CustomerID", _customerId);
+                        }
+
+                        conn.Open();
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking NTN: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        #endregion
+
+        #region Utility Methods
+        /// <summary>
+        /// Resets all form controls to their default state
         /// </summary>
         private void ResetFormControls()
         {
@@ -575,10 +827,10 @@ namespace NEW_ERP.Forms.CustomerMaster
         }
         #endregion
 
-        #region Unused Event Handler
+        #region Unused Event Handlers
         private void label14_Click(object sender, EventArgs e)
         {
-            // This event handler appears to be unused
+            // Empty event handler - can be removed if not needed
         }
         #endregion
     }

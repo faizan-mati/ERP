@@ -10,13 +10,12 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
     public partial class BomDetailAdd : AddFormTemplate
     {
         #region Private Fields
-        private readonly int _bomDetailId;     
-        private readonly bool _isFromViewAll;     
-        private bool _isEditMode = false;        
+        private readonly int _bomDetailId;
+        private readonly bool _isFromViewAll;
+        private bool _isEditMode = false;
         #endregion
 
         #region Constructor
-
         public BomDetailAdd(int bomDetailId, bool isFromViewAll)
         {
             try
@@ -36,6 +35,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
 
         #region Form Events
 
+        //======================================= Form Load Event =======================================
         private void BomDetailAdd_Load(object sender, EventArgs e)
         {
             try
@@ -55,10 +55,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Handles the BOM ID dropdown event
-        /// - Refreshes the BOM master dropdown data when opened
-        /// </summary>
+        //======================================= BOM ID Dropdown Event =======================================
         private void BomIdBox_DropDown(object sender, EventArgs e)
         {
             try
@@ -74,20 +71,16 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
         #endregion
 
         #region Form Mode Management
-        /// <summary>
-        /// Configures the form mode based on operation type
-        /// - Insert mode for new records
-        /// - View mode for existing records
-        /// </summary>
+        //======================================= Configure Form Mode =======================================
         private void ConfigureFormMode()
         {
             try
             {
-                if (!_isFromViewAll) 
+                if (!_isFromViewAll)
                 {
                     SetInsertMode();
                 }
-                else 
+                else
                 {
                     SetViewMode();
                 }
@@ -99,11 +92,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Sets the form to insert mode for adding new records
-        /// - Enables all controls
-        /// - Configures button states
-        /// </summary>
+        //======================================= Set Insert Mode =======================================
         private void SetInsertMode()
         {
             try
@@ -122,11 +111,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Sets the form to view mode for existing records
-        /// - Disables all controls
-        /// - Configures button states
-        /// </summary>
+        //======================================= Set View Mode =======================================
         private void SetViewMode()
         {
             try
@@ -145,11 +130,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Sets the form to edit mode for modifying existing records
-        /// - Enables all controls
-        /// - Configures button states
-        /// </summary>
+        //======================================= Set Edit Mode =======================================
         private void SetEditMode()
         {
             try
@@ -169,9 +150,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Enables or disables form controls based on current mode
-        /// </summary>
+        //======================================= Enable/Disable Controls =======================================
         private void EnableFormControls(bool enabled)
         {
             try
@@ -193,9 +172,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
         #endregion
 
         #region Data Operations
-        /// <summary>
-        /// Loads active BOM Master IDs into the dropdown
-        /// </summary>
+        //======================================= Load BOM Master Dropdown =======================================
         private void LoadBomMasterDropdown()
         {
             try
@@ -233,9 +210,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Loads BOM Detail data for the specified ID
-        /// </summary>
+        //======================================= Load BOM Detail Data =======================================
         private void LoadBomDetailData()
         {
             try
@@ -285,9 +260,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Inserts a new BOM Detail record into the database
-        /// </summary>
+        //======================================= Insert BOM Detail =======================================
         private void InsertBomDetail()
         {
             SqlTransaction transaction = null;
@@ -348,9 +321,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Updates an existing BOM Detail record in the database
-        /// </summary>
+        //======================================= Update BOM Detail =======================================
         private void UpdateBomDetail()
         {
             SqlTransaction transaction = null;
@@ -410,9 +381,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Deletes a BOM Detail record from the database
-        /// </summary>
+        //======================================= Delete BOM Detail =======================================
         private void DeleteBomDetail()
         {
             SqlTransaction transaction = null;
@@ -460,11 +429,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
         #endregion
 
         #region Button Events
-        /// <summary>
-        /// Handles the Submit button click event
-        /// - Validates form inputs
-        /// - Inserts new BOM detail record
-        /// </summary>
+        //======================================= Submit Button Click =======================================
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
             try
@@ -479,12 +444,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Handles the Edit/Save button click event
-        /// - Toggles between edit and save modes
-        /// - Validates form inputs when saving
-        /// - Updates existing BOM detail record
-        /// </summary>
+        //======================================= Edit/Save Button Click =======================================
         private void EditBtn_Click(object sender, EventArgs e)
         {
             try
@@ -508,11 +468,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Handles the Delete button click event
-        /// - Confirms deletion with user
-        /// - Deletes the BOM detail record
-        /// </summary>
+        //======================================= Delete Button Click =======================================
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             try
@@ -535,6 +491,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
+        //======================================= Close Button Click =======================================
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             try
@@ -548,6 +505,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
+        //======================================= View All Button Click =======================================
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {
             try
@@ -564,9 +522,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
         #endregion
 
         #region Helper Methods
-        /// <summary>
-        /// Validates all form inputs before submission
-        /// </summary>
+        //======================================= Validate Form =======================================
         private bool ValidateForm()
         {
             try
@@ -618,9 +574,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Resets all form controls to their default state
-        /// </summary>
+        //======================================= Reset Form Controls =======================================
         private void ResetFormControls()
         {
             try
@@ -641,6 +595,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
+        //======================================= Show Validation Error =======================================
         private void ShowValidationError(string message, Control control)
         {
             MessageBox.Show(message, "Validation Error",
@@ -648,24 +603,28 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             control.Focus();
         }
 
+        //======================================= Show Success Message =======================================
         private void ShowSuccessMessage(string message)
         {
             MessageBox.Show(message, "Success",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        //======================================= Show Warning Message =======================================
         private void ShowWarningMessage(string message)
         {
             MessageBox.Show(message, "Warning",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        //======================================= Show Error Message =======================================
         private void ShowErrorMessage(string message)
         {
             MessageBox.Show(message, "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        //======================================= Log Error =======================================
         private void LogError(string context, Exception ex)
         {
             Console.WriteLine($"{context}: {ex.Message}\n{ex.StackTrace}");

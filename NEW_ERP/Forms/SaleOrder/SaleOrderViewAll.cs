@@ -6,24 +6,14 @@ using System.Windows.Forms;
 
 namespace NEW_ERP.Forms.SaleOrder
 {
-    /// <summary>
-    /// Form for viewing and searching all sale orders
-    /// </summary>
     public partial class SaleOrderViewAll : Form
     {
-        #region Constructor and Form Events
-
-        /// <summary>
-        /// Initializes a new instance of the SaleOrderViewAll form
-        /// </summary>
+        //======================================= Constructor and Form Events =======================================
         public SaleOrderViewAll()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Form load event handler
-        /// </summary>
         private void SaleOrderViewAll_Load(object sender, EventArgs e)
         {
             try
@@ -36,13 +26,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        #endregion
-
-        #region Data Loading Methods
-
-        /// <summary>
-        /// Loads all sale order data into the DataGridView
-        /// </summary>
+        //======================================= Data Loading Methods =======================================
         private void LoadAllSaleOrderData()
         {
             try
@@ -69,10 +53,6 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Loads sale order data for a specific ID into the DataGridView
-        /// </summary>
-        /// <param name="saleOrderId">The ID of the sale order to load</param>
         private void LoadSaleOrderDataById(int saleOrderId)
         {
             try
@@ -100,9 +80,6 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Configures the DataGridView appearance and behavior
-        /// </summary>
         private void ConfigureDataGridView()
         {
             if (SaleOrderDataGridView.Columns.Contains("SaleOrderID"))
@@ -111,13 +88,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        #endregion
-
-        #region Dropdown Methods
-
-        /// <summary>
-        /// Loads the sale order dropdown with active sale orders
-        /// </summary>
+        //======================================= Dropdown Methods =======================================
         private void SaleOrderBox_DropDown(object sender, EventArgs e)
         {
             try
@@ -147,13 +118,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        #endregion
-
-        #region Event Handlers
-
-        /// <summary>
-        /// Search button click event handler
-        /// </summary>
+        //======================================= Event Handlers =======================================
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             try
@@ -184,9 +149,6 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// DataGridView cell double-click event handler - opens selected sale order for editing
-        /// </summary>
         private void SaleOrderDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -217,35 +179,19 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        #endregion
-
-        #region Helper Methods
-
-        /// <summary>
-        /// Handles errors consistently throughout the form
-        /// </summary>
-        /// <param name="message">The context message for the error</param>
-        /// <param name="ex">The exception that occurred</param>
+        //======================================= Helper Methods =======================================
         private void HandleError(string message, Exception ex)
         {
             MessageBox.Show($"{message}:\n{ex.Message}",
                 "Error",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
-
         }
-
-        #endregion
     }
 
-    /// <summary>
-    /// Extension methods for common validation tasks
-    /// </summary>
+    //======================================= Extension Methods =======================================
     public static class Extensions
     {
-        /// <summary>
-        /// Checks if an object can be converted to a valid integer
-        /// </summary>
         public static bool IsValidInt(this object value, out int result)
         {
             result = 0;

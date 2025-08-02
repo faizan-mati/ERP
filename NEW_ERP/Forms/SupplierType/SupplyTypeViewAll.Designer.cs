@@ -30,22 +30,13 @@ namespace NEW_ERP.Forms.SupplierType
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplyTypeViewAll));
-            this.SupplyTypeDataGridView = new System.Windows.Forms.DataGridView();
             this.StatusCodeBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.SupplyTypeDataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.SupplyTypeDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // SupplyTypeDataGridView
-            // 
-            this.SupplyTypeDataGridView.BackgroundColor = System.Drawing.Color.AliceBlue;
-            this.SupplyTypeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SupplyTypeDataGridView.Location = new System.Drawing.Point(9, 149);
-            this.SupplyTypeDataGridView.Name = "SupplyTypeDataGridView";
-            this.SupplyTypeDataGridView.Size = new System.Drawing.Size(643, 356);
-            this.SupplyTypeDataGridView.TabIndex = 2157;
             // 
             // StatusCodeBox
             // 
@@ -75,7 +66,6 @@ namespace NEW_ERP.Forms.SupplierType
             // SearchBtn
             // 
             this.SearchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.SearchBtn.Enabled = false;
             this.SearchBtn.FlatAppearance.BorderSize = 0;
             this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -102,17 +92,35 @@ namespace NEW_ERP.Forms.SupplierType
             this.label2.TabIndex = 2160;
             this.label2.Text = "Search by Status Code :";
             // 
+            // SupplyTypeDataGridView
+            // 
+            this.SupplyTypeDataGridView.AllowUserToAddRows = false;
+            this.SupplyTypeDataGridView.AllowUserToDeleteRows = false;
+            this.SupplyTypeDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SupplyTypeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.SupplyTypeDataGridView.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.SupplyTypeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SupplyTypeDataGridView.Location = new System.Drawing.Point(12, 150);
+            this.SupplyTypeDataGridView.Name = "SupplyTypeDataGridView";
+            this.SupplyTypeDataGridView.ReadOnly = true;
+            this.SupplyTypeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.SupplyTypeDataGridView.Size = new System.Drawing.Size(739, 424);
+            this.SupplyTypeDataGridView.TabIndex = 2164;
+            this.SupplyTypeDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SupplyTypeDataGridView_CellDoubleClick_1);
+            // 
             // SupplyTypeViewAll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(659, 507);
+            this.ClientSize = new System.Drawing.Size(763, 576);
+            this.Controls.Add(this.SupplyTypeDataGridView);
             this.Controls.Add(this.StatusCodeBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.SupplyTypeDataGridView);
             this.Name = "SupplyTypeViewAll";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SupplyTypeViewAll";
@@ -124,11 +132,10 @@ namespace NEW_ERP.Forms.SupplierType
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView SupplyTypeDataGridView;
         public System.Windows.Forms.ComboBox StatusCodeBox;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView SupplyTypeDataGridView;
     }
 }

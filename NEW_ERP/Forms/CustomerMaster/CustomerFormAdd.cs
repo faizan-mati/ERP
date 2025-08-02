@@ -34,6 +34,7 @@ namespace NEW_ERP.Forms.CustomerMaster
 
         #region Form Events
 
+        //======================================= Load Form Data =======================================
         private void CustomerForm_Load(object sender, EventArgs e)
         {
             LoadCustomerTypes();
@@ -47,17 +48,13 @@ namespace NEW_ERP.Forms.CustomerMaster
             else
             {
                 SetInsertMode();
+                GenerateCustomerCode();
             }
         }
         #endregion
 
         #region Form Mode Management
-        /// <summary>
-        /// Sets the form to insert mode (new customer)
-        /// - All fields enabled
-        /// - Submit button enabled
-        /// - Edit/Delete buttons disabled
-        /// </summary>
+        //======================================= Set Form to Insert Mode =======================================
         private void SetInsertMode()
         {
             _isEditMode = false;
@@ -72,12 +69,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             ViewAllBtn.Enabled = true;
         }
 
-        /// <summary>
-        /// Sets the form to edit mode (existing customer)
-        /// - All fields readonly initially
-        /// - Submit button disabled
-        /// - Edit/Delete buttons enabled
-        /// </summary>
+        //======================================= Set Form to Edit Mode =======================================
         private void SetEditMode()
         {
             _isEditMode = true;
@@ -93,9 +85,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             ViewAllBtn.Enabled = true;
         }
 
-        /// <summary>
-        /// Enables or disables form controls based on current mode
-        /// </summary>
+        //======================================= Enable/Disable Form Controls =======================================
         private void EnableFormControls(bool enabled)
         {
             txtCustomerCode.ReadOnly = !enabled;
@@ -119,9 +109,7 @@ namespace NEW_ERP.Forms.CustomerMaster
         #endregion
 
         #region Data Loading Methods
-        /// <summary>
-        /// Loads customer types from database into CustomerTypeBox dropdown
-        /// </summary>
+        //======================================= Load Customer Types =======================================
         private void LoadCustomerTypes()
         {
             try
@@ -150,9 +138,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Loads active countries from database into CountryBox dropdown
-        /// </summary>
+        //======================================= Load Countries =======================================
         private void LoadCountries()
         {
             try
@@ -181,9 +167,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Loads active cities for the selected country into CityBox dropdown
-        /// </summary>
+        //======================================= Load Cities for Selected Country =======================================
         private void LoadCities(int countryId)
         {
             try
@@ -214,9 +198,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Loads customer data for the specified customer ID into form controls
-        /// </summary>
+        //======================================= Load Customer Data =======================================
         private void LoadCustomerData(int customerId)
         {
             try
@@ -272,12 +254,43 @@ namespace NEW_ERP.Forms.CustomerMaster
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //======================================= Generate Customer Code =======================================
+        private void GenerateCustomerCode()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+                {
+                    string query = @"SELECT ISNULL(MAX(
+                            CASE 
+                                WHEN CustomerCode LIKE 'CUST%' AND ISNUMERIC(SUBSTRING(CustomerCode, 5, LEN(CustomerCode))) = 1 
+                                THEN CAST(SUBSTRING(CustomerCode, 5, LEN(CustomerCode)) AS INT)
+                                ELSE 0
+                            END), 0) + 1 
+                        FROM CustomerMaster";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        conn.Open();
+                        int nextNumber = (int)cmd.ExecuteScalar();
+                        txtCustomerCode.Text = "CUST" + nextNumber.ToString("D3");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error generating customer code: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Fallback to simple increment if there's an error
+                txtCustomerCode.Text = "CUST001";
+            }
+        }
+
         #endregion
 
         #region Control Event Handlers
-        /// <summary>
-        /// Handles country selection change to load corresponding cities
-        /// </summary>
+        //======================================= Country Selection Changed =======================================
         private void CountryBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CountryBox.SelectedValue == null || CountryBox.SelectedIndex == -1)
@@ -289,9 +302,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Handles submit button click for new customer creation
-        /// </summary>
+        //======================================= Submit Button Click =======================================
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
             if (!IsValidationPassed())
@@ -303,9 +314,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Handles edit button click - toggles between edit and save modes
-        /// </summary>
+        //======================================= Edit Button Click =======================================
         private void EditBtn_Click(object sender, EventArgs e)
         {
             if (!_isEditing)
@@ -324,13 +333,11 @@ namespace NEW_ERP.Forms.CustomerMaster
                 }
 
                 SetEditMode();
-                LoadCustomerData(_customerId); 
+                LoadCustomerData(_customerId);
             }
         }
 
-        /// <summary>
-        /// Handles delete button click - performs soft delete of customer
-        /// </summary>
+        //======================================= Delete Button Click =======================================
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -345,9 +352,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Handles view all button click - returns to customer list view
-        /// </summary>
+        //======================================= View All Button Click =======================================
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -355,9 +360,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             viewAllForm.Show();
         }
 
-        /// <summary>
-        /// Handles close button click - closes the form
-        /// </summary>
+        //======================================= Close Button Click =======================================
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -365,9 +368,7 @@ namespace NEW_ERP.Forms.CustomerMaster
         #endregion
 
         #region Database Operations
-        /// <summary>
-        /// Inserts a new customer record into the database
-        /// </summary>
+        //======================================= Insert New Customer =======================================
         private void InsertCustomer()
         {
             try
@@ -405,6 +406,7 @@ namespace NEW_ERP.Forms.CustomerMaster
                             MessageBox.Show("Customer inserted successfully!", "Success",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ResetFormControls();
+                            GenerateCustomerCode();
                         }
                         else
                         {
@@ -421,9 +423,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Updates an existing customer record in the database
-        /// </summary>
+        //======================================= Update Customer =======================================
         private void UpdateCustomer()
         {
             try
@@ -478,9 +478,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Performs a soft delete of the customer record
-        /// </summary>
+        //======================================= Delete Customer =======================================
         private void DeleteCustomer()
         {
             try
@@ -519,9 +517,7 @@ namespace NEW_ERP.Forms.CustomerMaster
         #endregion
 
         #region Validation Methods
-        /// <summary>
-        /// Validates all form inputs before submission
-        /// </summary>
+        //======================================= Validate Form Inputs =======================================
         private bool IsValidationPassed()
         {
             if (string.IsNullOrWhiteSpace(txtCustomerCode.Text))
@@ -618,9 +614,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             return true;
         }
 
-        /// <summary>
-        /// Validates email format using regex
-        /// </summary>
+        //======================================= Validate Email Format =======================================
         private bool IsValidEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -638,9 +632,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Checks if customer code already exists in the database
-        /// </summary>
+        //======================================= Check if Customer Code Exists =======================================
         private bool IsCustomerCodeExists(string customerCode)
         {
             try
@@ -677,9 +669,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Checks if GST No already exists in the database
-        /// </summary>
+        //======================================= Check if GST No Exists =======================================
         private bool IsGSTNoExists(string gstNo)
         {
             try
@@ -716,9 +706,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Checks if NTN already exists in the database
-        /// </summary>
+        //======================================= Check if NTN Exists =======================================
         private bool IsNTNExists(string ntn)
         {
             try
@@ -757,12 +745,9 @@ namespace NEW_ERP.Forms.CustomerMaster
         #endregion
 
         #region Utility Methods
-        /// <summary>
-        /// Resets all form controls to their default state
-        /// </summary>
+        //======================================= Reset Form Controls =======================================
         private void ResetFormControls()
         {
-            txtCustomerCode.Clear();
             txtCustomerName.Clear();
             txtContactPerson.Clear();
             txtMobileNo.Clear();
@@ -781,6 +766,5 @@ namespace NEW_ERP.Forms.CustomerMaster
             isCheckedcheckbox.Checked = false;
         }
         #endregion
-
     }
 }

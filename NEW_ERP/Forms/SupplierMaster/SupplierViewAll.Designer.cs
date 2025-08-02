@@ -46,6 +46,7 @@ namespace NEW_ERP.Forms.SupplierMaster
             this.SpplierMasterDataGridView.Name = "SpplierMasterDataGridView";
             this.SpplierMasterDataGridView.Size = new System.Drawing.Size(987, 515);
             this.SpplierMasterDataGridView.TabIndex = 2166;
+            this.SpplierMasterDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SpplierMasterDataGridView_CellDoubleClick);
             // 
             // SearchBtn
             // 

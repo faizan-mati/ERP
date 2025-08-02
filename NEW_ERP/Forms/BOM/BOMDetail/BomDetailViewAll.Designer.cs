@@ -52,7 +52,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             this.BomDetailDataGridView.Name = "BomDetailDataGridView";
             this.BomDetailDataGridView.ReadOnly = true;
             this.BomDetailDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.BomDetailDataGridView.Size = new System.Drawing.Size(786, 435);
+            this.BomDetailDataGridView.Size = new System.Drawing.Size(1024, 512);
             this.BomDetailDataGridView.TabIndex = 2131;
             this.BomDetailDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BomDetailDataGridView_CellDoubleClick);
             // 
@@ -115,7 +115,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(810, 571);
+            this.ClientSize = new System.Drawing.Size(1048, 648);
             this.Controls.Add(this.BomDetailDataGridView);
             this.Controls.Add(this.BomDetailIdBox);
             this.Controls.Add(this.SearchBtn);

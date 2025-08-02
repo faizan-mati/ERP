@@ -6,20 +6,13 @@ using System.Windows.Forms;
 
 namespace NEW_ERP.Forms.BOM.BOMDetail
 {
-
     public partial class BomDetailViewAll : Form
     {
-        #region Constructor
-
         public BomDetailViewAll()
         {
             InitializeComponent();
         }
-
-        #endregion
-
-        #region Form Event Handlers
-
+        //======================================= BomDetailViewAll_Load =======================================
         private void BomDetailViewAll_Load(object sender, EventArgs e)
         {
             try
@@ -33,14 +26,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        #endregion
-
-        #region Data Loading Methods
-
-        /// <summary>
-        /// Loads all active BOM detail IDs into the combo box.
-        /// Retrieves data from the database and binds it to the control.
-        /// </summary>
+        //======================================= LoadBomDetailIds =======================================
         private void LoadBomDetailIds()
         {
             try
@@ -71,19 +57,27 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Loads all active BOM data into the DataGridView.
-        /// Retrieves comprehensive BOM details from the database and displays them.
-        /// </summary>
+        //======================================= LoadAllBomData =======================================
         private void LoadAllBomData()
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    string query = @"SELECT BOMDetailID, BOMID, ItemName, ItemType, Unit, 
-                                   ConsumptionPerPiece, WastagePercent, TotalRequirement, Remarks  
-                                   FROM BOMDetails 
+                    string query = @"
+                                    SELECT [BOMDetailID]
+                                          ,[BOMID]
+                                          ,[ItemType]
+                                          ,[ItemName]
+                                          ,[Unit]
+                                          ,[ConsumptionPerPiece]
+                                          ,[WastagePercent]
+                                          ,[TotalRequirement]
+                                          ,[Remarks]
+                                          ,[UserCode]
+                                          ,[StatusCode]
+                                          ,[SystemDate]
+                                      FROM [dbo].[BOMDetails]
                                    WHERE StatusCode='ACT' 
                                    ORDER BY BOMDetailID DESC";
 
@@ -104,14 +98,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        #endregion
-
-        #region Control Event Handlers
-
-        /// <summary>
-        /// Handles the Search button click event.
-        /// Searches for BOM details based on the selected BOM Detail ID.
-        /// </summary>
+        //======================================= SearchBtn_Click =======================================
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             try
@@ -136,11 +123,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Handles the DataGridView cell double-click event.
-        /// Opens the selected BOM detail for editing in a new form.
-        /// </summary>
-
+        //======================================= BomDetailDataGridView_CellDoubleClick =======================================
         private void BomDetailDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -165,14 +148,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        #endregion
-
-        #region Helper Methods
-
-        /// <summary>
-        /// Searches for BOM details using a stored procedure.
-        /// Displays results in the DataGridView or shows a message if no results found.
-        /// </summary>
+        //======================================= SearchBomDetails =======================================
         private void SearchBomDetails(int bomDetailId)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -199,9 +175,7 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
-        /// <summary>
-        /// Opens the BOM detail edit form for the specified BOM Detail ID.
-        /// </summary>
+        //======================================= OpenBomDetailEditForm =======================================
         private void OpenBomDetailEditForm(int bomDetailID)
         {
             using (BomDetailAdd bomDetailAddForm = new BomDetailAdd(bomDetailID, true))
@@ -210,22 +184,23 @@ namespace NEW_ERP.Forms.BOM.BOMDetail
             }
         }
 
+        //======================================= ShowErrorMessage =======================================
         private void ShowErrorMessage(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        //======================================= ShowInformationMessage =======================================
         private void ShowInformationMessage(string message)
         {
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        //======================================= HandleError =======================================
         private void HandleError(string message, Exception ex)
         {
             MessageBox.Show($"{message}:\n{ex.Message}", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        #endregion
     }
 }

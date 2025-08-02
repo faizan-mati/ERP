@@ -21,9 +21,9 @@ namespace NEW_ERP.Forms.Dashboard
             InitializeComponent();
         }
 
+        //======================================= LOAD FORM FUNCTION =======================================
         public void loadform(object form)
         {
-
             if (this.ChlidPanel.Controls.Count > 0)
                 this.ChlidPanel.Controls.RemoveAt(0);
             Form f = form as Form;
@@ -33,15 +33,15 @@ namespace NEW_ERP.Forms.Dashboard
             this.ChlidPanel.Controls.Add(f);
             this.ChlidPanel.Tag = f;
             f.Show();
-
         }
 
-
+        //======================================= PANEL PAINT EVENT =======================================
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
+        //======================================= BUTTON CLICK EVENT =======================================
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -60,6 +60,7 @@ namespace NEW_ERP.Forms.Dashboard
         int BomMaxHeight = 125;
         int BomMinHeight = 40;
 
+        //======================================= MENU TRANSITION TIMER =======================================
         private void menuTransition_Tick(object sender, EventArgs e)
         {
             if (menuExpand)
@@ -86,8 +87,7 @@ namespace NEW_ERP.Forms.Dashboard
             }
         }
 
-        //============================ SALE ORDER MENU ===========================================
-
+        //======================================= SALE ORDER MENU TRANSITION =======================================
         private void saleOrderTransition_Tick(object sender, EventArgs e)
         {
             if (saleOrderMenuExpand)
@@ -114,9 +114,7 @@ namespace NEW_ERP.Forms.Dashboard
             }
         }
 
-
-        //============================ BOM MENU ===========================================
-
+        //======================================= BOM MENU TRANSITION =======================================
         private void BomTransition_Tick(object sender, EventArgs e)
         {
             if (BomMenuExpend)
@@ -143,13 +141,11 @@ namespace NEW_ERP.Forms.Dashboard
             }
         }
 
-        //============================ YARN MENU ===========================================
-
         bool YarnMenuExpend = false;
-
         int YarnMaxHeight = 85;
         int YarnMinHeight = 40;
 
+        //======================================= YARN MENU TRANSITION =======================================
         private void YarnTransition_Tick(object sender, EventArgs e)
         {
             if (YarnMenuExpend)
@@ -176,9 +172,7 @@ namespace NEW_ERP.Forms.Dashboard
             }
         }
 
-
-        //============================ BUTTON CLICK DROP DOWN ===========================================
-
+        //======================================= BUTTON CLICK EVENTS =======================================
         private void SetUpBtn_Click_1(object sender, EventArgs e)
         {
             menuTransition.Start();
@@ -188,23 +182,21 @@ namespace NEW_ERP.Forms.Dashboard
         {
             saleOrderTransition.Start();
         }
+
         private void BomMenuBtn_Click(object sender, EventArgs e)
         {
             BomTransition.Start();
         }
+
         private void YarnMenuBtn_Click(object sender, EventArgs e)
         {
             YarnTransition.Start();
         }
 
-
-
-
-
-
+        //======================================= FORM LOAD BUTTONS =======================================
         private void AuthorityBtn_Click(object sender, EventArgs e)
         {
-            loadform(new AuthorityAdd(0, false));
+            loadform(new AuthorityAdd("", false));
         }
 
         private void CountryBtn_Click(object sender, EventArgs e)
@@ -224,12 +216,12 @@ namespace NEW_ERP.Forms.Dashboard
 
         private void SupplierMasterBtn_Click(object sender, EventArgs e)
         {
-            loadform(new SupplierMasterForm());
+            loadform(new SupplierMasterAdd("", false));
         }
 
         private void SuppliertypeBtn_Click(object sender, EventArgs e)
         {
-            loadform(new SupplierTypeForm());
+            loadform(new SupplierTypeAdd("", false));
         }
 
         private void ItemBtn_Click(object sender, EventArgs e)
@@ -257,16 +249,11 @@ namespace NEW_ERP.Forms.Dashboard
             loadform(new YarnDemandAdd());
         }
 
-
-
-
-
-
-
+        //======================================= OTHER EVENTS =======================================
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
-        }       
+        }
 
         private void MainDashboard_Load(object sender, EventArgs e)
         {
@@ -282,9 +269,5 @@ namespace NEW_ERP.Forms.Dashboard
         {
 
         }
-
-       
     }
 }
-
-

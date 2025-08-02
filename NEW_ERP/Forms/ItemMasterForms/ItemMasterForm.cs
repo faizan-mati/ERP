@@ -1,14 +1,8 @@
 ﻿using NEW_ERP.Forms.ItemMasterForms;
 using NEW_ERP.GernalClasses;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NEW_ERP.Forms.ItemMaster
@@ -22,11 +16,7 @@ namespace NEW_ERP.Forms.ItemMaster
         #endregion
 
         #region Constructor
-        /// <summary>
-        /// Initializes a new instance of the ItemMasterForm class
-        /// </summary>
-        /// <param name="productCode">The product code to load (empty for new item)</param>
-        /// <param name="isFromViewAll">Indicates if form was opened from View All screen</param>
+
         public ItemMasterForm(string productCode, bool isFromViewAll)
         {
             try
@@ -43,14 +33,17 @@ namespace NEW_ERP.Forms.ItemMaster
         #endregion
 
         #region Form Events
-        /// <summary>
-        /// Handles the form load event
-        /// </summary>
+        //======================================= Form Load Event =======================================
         private void ItemMasterForm_Load(object sender, EventArgs e)
         {
             try
             {
                 SetupFormMode();
+
+                if (!_isFromViewAll)
+                {
+                    TxtProductCode.Text = GenerateNextProductCode();
+                }
             }
             catch (Exception ex)
             {
@@ -60,9 +53,7 @@ namespace NEW_ERP.Forms.ItemMaster
         #endregion
 
         #region Form Mode Management
-        /// <summary>
-        /// Configures the form based on current mode (Insert/Edit/View)
-        /// </summary>
+        //======================================= Configure Form Mode =======================================
         private void SetupFormMode()
         {
             try
@@ -83,9 +74,7 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Sets form to insert mode for new item entry
-        /// </summary>
+        //======================================= Set Form to Insert Mode =======================================
         private void SetFormToInsertMode()
         {
             try
@@ -107,9 +96,7 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Sets form to view mode (read-only)
-        /// </summary>
+        //======================================= Set Form to View Mode =======================================
         private void SetFormToViewMode()
         {
             try
@@ -132,9 +119,7 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Sets form to edit mode for modifying existing item
-        /// </summary>
+        //======================================= Set Form to Edit Mode =======================================
         private void SetFormToEditMode()
         {
             try
@@ -155,10 +140,7 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Enables/disables all text boxes on the form
-        /// </summary>
-        /// <param name="enabled">True to enable controls, false to disable</param>
+        //======================================= Enable/Disable TextBoxes =======================================
         private void SetTextBoxesEnabled(bool enabled)
         {
             TxtProductCode.Enabled = enabled;
@@ -169,10 +151,7 @@ namespace NEW_ERP.Forms.ItemMaster
         #endregion
 
         #region Database Operations
-        /// <summary>
-        /// Loads existing product data from database
-        /// </summary>
-        /// <param name="productCode">Product code to load</param>
+        //======================================= Load Existing Product Data =======================================
         private void LoadExistingData(string productCode)
         {
             try
@@ -219,9 +198,7 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Inserts a new item into the ItemMaster table
-        /// </summary>
+        //======================================= Insert New Item =======================================
         private void InsertItemMaster()
         {
             try
@@ -246,6 +223,8 @@ namespace NEW_ERP.Forms.ItemMaster
                         {
                             ShowMessage("Item inserted successfully!", "Success", MessageBoxIcon.Information);
                             ResetFormControls();
+
+                            TxtProductCode.Text = GenerateNextProductCode();
                         }
                         else
                         {
@@ -264,9 +243,7 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Updates an existing item in the ItemMaster table
-        /// </summary>
+        //======================================= Update Existing Item =======================================
         private void UpdateItemMaster()
         {
             try
@@ -309,9 +286,7 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Performs a soft delete of an item in the ItemMaster table
-        /// </summary>
+        //======================================= Delete Item =======================================
         private void DeleteItemMaster()
         {
             try
@@ -360,18 +335,49 @@ namespace NEW_ERP.Forms.ItemMaster
                 HandleError("Error deleting item", ex);
             }
         }
+
+        //======================================= Generate Next Product Code =======================================
+        private string GenerateNextProductCode()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+                {
+                    conn.Open();
+
+                    string query = "SELECT MAX(ProductCode) FROM ItemMaster WHERE ProductCode LIKE 'PRD%'";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            string maxCode = result.ToString();
+                            if (!string.IsNullOrEmpty(maxCode) && maxCode.StartsWith("PRD"))
+                            {
+                                if (int.TryParse(maxCode.Substring(3), out int lastNumber))
+                                {
+                                    return $"PRD{(lastNumber + 1).ToString("D3")}";
+                                }
+                            }
+                        }
+                    }
+                }
+                return "PRD001";
+            }
+            catch (Exception ex)
+            {
+                HandleError("Error generating product code", ex);
+                return "PRD001"; 
+            }
+        }
         #endregion
 
         #region Validation
-        /// <summary>
-        /// Validates all form input fields
-        /// </summary>
-        /// <returns>True if validation passes, false otherwise</returns>
+        //======================================= Validate Form Input =======================================
         private bool IsValidationPassed()
         {
             try
             {
-                // Check required fields
                 if (string.IsNullOrWhiteSpace(TxtProductCode.Text) ||
                     string.IsNullOrWhiteSpace(TxtProductShortName.Text) ||
                     string.IsNullOrWhiteSpace(TxtProductDes.Text))
@@ -381,7 +387,6 @@ namespace NEW_ERP.Forms.ItemMaster
                     return false;
                 }
 
-                // Validate field lengths
                 if (TxtProductCode.Text.Trim().Length != 6)
                 {
                     ShowMessage("Product Code must be exactly 6 characters long",
@@ -425,14 +430,11 @@ namespace NEW_ERP.Forms.ItemMaster
         #endregion
 
         #region Utility Methods
-        /// <summary>
-        /// Resets all form controls to their default state
-        /// </summary>
+        //======================================= Reset Form Controls =======================================
         private void ResetFormControls()
         {
             try
             {
-                TxtProductCode.Clear();
                 TxtProductDes.Clear();
                 TxtProductShortName.Clear();
                 TxtProductRemarks.Clear();
@@ -443,25 +445,19 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Displays a message box with standardized formatting
-        /// </summary>
+        //======================================= Show Message Box =======================================
         private DialogResult ShowMessage(string message, string title, MessageBoxIcon icon)
         {
             return MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
         }
 
-        /// <summary>
-        /// Displays a message box with standardized formatting and custom buttons
-        /// </summary>
+        //======================================= Show Message Box with Buttons =======================================
         private DialogResult ShowMessage(string message, string title, MessageBoxButtons buttons, MessageBoxIcon icon)
         {
             return MessageBox.Show(message, title, buttons, icon);
         }
 
-        /// <summary>
-        /// Handles and displays error messages consistently
-        /// </summary>
+        //======================================= Handle Errors =======================================
         private void HandleError(string contextMessage, Exception ex)
         {
             string errorMessage = $"{contextMessage}:\n{ex.Message}";
@@ -472,16 +468,11 @@ namespace NEW_ERP.Forms.ItemMaster
             }
 
             ShowMessage(errorMessage, "Error", MessageBoxIcon.Error);
-
-            // Log the error to a file or database if needed
-            // ErrorLogger.LogError(errorMessage, ex);
         }
         #endregion
 
         #region Button Event Handlers
-        /// <summary>
-        /// Handles the Submit button click event
-        /// </summary>
+        //======================================= Submit Button Click =======================================
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
             try
@@ -497,9 +488,7 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Handles the Close button click event
-        /// </summary>
+        //======================================= Close Button Click =======================================
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             try
@@ -512,9 +501,7 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Handles the View All button click event
-        /// </summary>
+        //======================================= View All Button Click =======================================
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {
             try
@@ -529,9 +516,7 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Handles the Edit/Save button click event
-        /// </summary>
+        //======================================= Edit/Save Button Click =======================================
         private void EditBtn_Click(object sender, EventArgs e)
         {
             try
@@ -554,9 +539,7 @@ namespace NEW_ERP.Forms.ItemMaster
             }
         }
 
-        /// <summary>
-        /// Handles the Delete button click event
-        /// </summary>
+        //======================================= Delete Button Click =======================================
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             try

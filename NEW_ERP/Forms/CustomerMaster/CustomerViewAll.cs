@@ -14,12 +14,10 @@ namespace NEW_ERP.Forms.CustomerMaster
 {
     public partial class CustomerViewAll : Form
     {
-
         public CustomerViewAll()
         {
             InitializeComponent();
         }
-
 
         private void CustomerViewAll_Load(object sender, EventArgs e)
         {
@@ -28,6 +26,7 @@ namespace NEW_ERP.Forms.CustomerMaster
 
         #region Data Loading Functions
 
+        //======================================= Load Customer Data =======================================
         private void LoadCustomerData()
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -82,9 +81,7 @@ namespace NEW_ERP.Forms.CustomerMaster
 
         #region Event Handlers
 
-        /// <summary>
-        /// Search button click event handler - Searches customers by name
-        /// </summary>
+        //======================================= Search Button Click =======================================
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -115,9 +112,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// DataGridView cell double-click event handler - Opens selected customer for editing
-        /// </summary>
+        //======================================= Customer Data Grid View Cell Double Click =======================================
         private void CustomerDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -148,9 +143,7 @@ namespace NEW_ERP.Forms.CustomerMaster
 
         #region Helper Methods
 
-        /// <summary>
-        /// Opens the CustomerFormAdd form in edit mode for the specified customer
-        /// </summary>
+        //======================================= Open Customer For Editing =======================================
         private void OpenCustomerForEditing(int customerID)
         {
             try
@@ -168,9 +161,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             }
         }
 
-        /// <summary>
-        /// Displays an error message to the user
-        /// </summary>
+        //======================================= Show Error =======================================
         private void ShowError(string context, Exception ex)
         {
             MessageBox.Show($"{context}:\n{ex.Message}",
@@ -180,6 +171,5 @@ namespace NEW_ERP.Forms.CustomerMaster
         }
 
         #endregion
-
     }
 }

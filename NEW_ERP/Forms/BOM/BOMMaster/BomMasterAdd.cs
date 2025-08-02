@@ -27,9 +27,7 @@ namespace NEW_ERP.Forms.BOMMaster
 
         #region Event Handlers
 
-        /// <summary>
-        /// Handles the form load event. Loads initial data and sets appropriate form mode.
-        /// </summary>
+        //======================================= Form Load Event =======================================
         private void BomMasterAdd_Load(object sender, EventArgs e)
         {
             try
@@ -53,9 +51,7 @@ namespace NEW_ERP.Forms.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Handles the Sale Order dropdown selection change event. Loads products for selected order.
-        /// </summary>
+        //======================================= Sale Order Selection Changed =======================================
         private void SaleOrderBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -72,9 +68,7 @@ namespace NEW_ERP.Forms.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Handles the Sale Order dropdown opening event. Clears product selection for new entries.
-        /// </summary>
+        //======================================= Sale Order Dropdown Open =======================================
         private void SaleOrderBox_DropDown(object sender, EventArgs e)
         {
             if (!_isFromViewAll)
@@ -84,9 +78,7 @@ namespace NEW_ERP.Forms.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Handles the Submit button click event for new BOM records.
-        /// </summary>
+        //======================================= Submit Button Click =======================================
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
             try
@@ -102,9 +94,7 @@ namespace NEW_ERP.Forms.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Handles the Edit/Save button click event for existing BOM records.
-        /// </summary>
+        //======================================= Edit/Save Button Click =======================================
         private void EditBtn_Click(object sender, EventArgs e)
         {
             try
@@ -124,9 +114,7 @@ namespace NEW_ERP.Forms.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Handles the Delete button click event for existing BOM records.
-        /// </summary>
+        //======================================= Delete Button Click =======================================
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             try
@@ -142,9 +130,7 @@ namespace NEW_ERP.Forms.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Handles the View All button click event to return to the BOM master list.
-        /// </summary>
+        //======================================= View All Button Click =======================================
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {
             try
@@ -158,9 +144,7 @@ namespace NEW_ERP.Forms.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Handles the Close button click event to close the form.
-        /// </summary>
+        //======================================= Close Button Click =======================================
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             Close();
@@ -169,10 +153,7 @@ namespace NEW_ERP.Forms.BOMMaster
 
         #region Data Loading Methods
 
-        /// <summary>
-        /// Loads all active sale orders into the dropdown
-        /// </summary>
-
+        //======================================= Load Sale Orders =======================================
         private void LoadSaleOrders()
         {
             try
@@ -203,10 +184,7 @@ namespace NEW_ERP.Forms.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Loads BOM data for editing/viewing
-        /// </summary>
-
+        //======================================= Load BOM Data =======================================
         private void LoadBOMData()
         {
             if (_bomMasterId <= 0)
@@ -256,10 +234,7 @@ namespace NEW_ERP.Forms.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Loads products for the selected sale order
-        /// </summary>
-
+        //======================================= Load Products =======================================
         private void LoadProducts(int saleOrderId)
         {
             if (saleOrderId <= 0)
@@ -311,9 +286,7 @@ namespace NEW_ERP.Forms.BOMMaster
 
         #region Form Mode Methods
 
-        /// <summary>
-        /// Sets the form to Add mode (enables editing controls for new records)
-        /// </summary>
+        //======================================= Set Add Mode =======================================
         private void SetAddMode()
         {
             SaleOrderBox.Enabled = true;
@@ -328,9 +301,7 @@ namespace NEW_ERP.Forms.BOMMaster
             Text = "BOM Master - Add New";
         }
 
-        /// <summary>
-        /// Sets the form to View mode (disables editing controls for viewing records)
-        /// </summary>
+        //======================================= Set View Mode =======================================
         private void SetViewMode()
         {
             SaleOrderBox.Enabled = false;
@@ -345,9 +316,7 @@ namespace NEW_ERP.Forms.BOMMaster
             Text = "BOM Master - View";
         }
 
-        /// <summary>
-        /// Sets the form to Edit mode (enables editing controls for existing records)
-        /// </summary>
+        //======================================= Set Edit Mode =======================================
         private void SetEditMode()
         {
             SaleOrderBox.Enabled = true;
@@ -365,9 +334,7 @@ namespace NEW_ERP.Forms.BOMMaster
 
         #region Database Operations
 
-        /// <summary>
-        /// Inserts a new BOM record into the database
-        /// </summary>
+        //======================================= Insert BOM Record =======================================
         private void InsertBOMRecord()
         {
             if (SaleOrderBox.SelectedValue == null || ProductBox.SelectedValue == null)
@@ -413,10 +380,7 @@ namespace NEW_ERP.Forms.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Updates an existing BOM record in the database
-        /// </summary>
-
+        //======================================= Update BOM Record =======================================
         private void UpdateBOMRecord()
         {
             if (SaleOrderBox.SelectedValue == null || ProductBox.SelectedValue == null)
@@ -461,10 +425,7 @@ namespace NEW_ERP.Forms.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Deletes a BOM record from the database
-        /// </summary>
-
+        //======================================= Delete BOM Record =======================================
         private void DeleteBOMRecord()
         {
             try
@@ -502,9 +463,7 @@ namespace NEW_ERP.Forms.BOMMaster
 
         #region Helper Methods
 
-        /// <summary>
-        /// Validates the form input before submission
-        /// </summary>
+        //======================================= Validate Input =======================================
         private bool ValidateInput()
         {
             if (string.IsNullOrWhiteSpace(txtVersionNo.Text))
@@ -531,9 +490,7 @@ namespace NEW_ERP.Forms.BOMMaster
             return true;
         }
 
-        /// <summary>
-        /// Shows a confirmation dialog for deletion
-        /// </summary>
+        //======================================= Confirm Delete =======================================
         private bool ConfirmDelete()
         {
             return MessageBox.Show(
@@ -543,9 +500,7 @@ namespace NEW_ERP.Forms.BOMMaster
                 MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
-        /// <summary>
-        /// Clears the form inputs
-        /// </summary>
+        //======================================= Clear Form =======================================
         private void ClearForm()
         {
             txtVersionNo.Clear();
@@ -554,24 +509,28 @@ namespace NEW_ERP.Forms.BOMMaster
             ProductBox.Items.Clear();
         }
 
+        //======================================= Show Error =======================================
         private void ShowError(string message, Exception ex)
         {
             MessageBox.Show($"{message}: {ex.Message}", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        //======================================= Show Success =======================================
         private void ShowSuccess(string message)
         {
             MessageBox.Show(message, "Success",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        //======================================= Show Warning =======================================
         private void ShowWarning(string message)
         {
             MessageBox.Show(message, "Warning",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        //======================================= Show Validation Error =======================================
         private void ShowValidationError(string message)
         {
             MessageBox.Show(message, "Validation Error",

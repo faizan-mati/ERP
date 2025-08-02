@@ -203,6 +203,7 @@ namespace NEW_ERP.Forms.ItemMaster
             this.TxtProductCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtProductCode.Location = new System.Drawing.Point(212, 168);
             this.TxtProductCode.Name = "TxtProductCode";
+            this.TxtProductCode.ReadOnly = true;
             this.TxtProductCode.Size = new System.Drawing.Size(259, 26);
             this.TxtProductCode.TabIndex = 1;
             // 

@@ -26,9 +26,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Loads country and city data from database and binds it to the DataGridView
-        /// </summary>
+        //======================================= Load Country Data =======================================
         private void LoadCountryData()
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -66,9 +64,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Loads and displays country codes in the dropdown box
-        /// </summary>
+        //======================================= Show Country Codes =======================================
         protected void CountryCodeShow()
         {
             using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
@@ -104,9 +100,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Handles search button click event to filter cities by selected country
-        /// </summary>
+        //======================================= Search Button Click =======================================
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             try
@@ -127,9 +121,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Searches cities by country ID using stored procedure
-        /// </summary>
+        //======================================= Search Cities By Country =======================================
         private void SearchCitiesByCountry(int countryId)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -161,9 +153,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Handles double-click event on DataGridView to open city for editing
-        /// </summary>
+        //======================================= City Grid Double Click =======================================
         private void CityDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -188,9 +178,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Opens the CityFormAdd form in edit mode for the specified city ID
-        /// </summary>
+        //======================================= Open City For Editing =======================================
         private void OpenCityForEditing(int cityId)
         {
             try
@@ -207,11 +195,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-
-        /// <summary>
-        /// Displays an error message to the user
-        /// </summary>
-
+        //======================================= Show Error Message =======================================
         private void ShowError(string context, Exception ex)
         {
             MessageBox.Show($"{context}:\n{ex.Message}", "Error",

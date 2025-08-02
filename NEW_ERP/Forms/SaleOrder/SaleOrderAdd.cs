@@ -31,6 +31,7 @@ namespace NEW_ERP.Forms.SaleOrder
         #endregion
 
         #region Constructor and Form Events
+        //======================================= Constructor =======================================
         public SaleOrderAdd(int saleOrderId, bool isFromViewAll)
         {
             InitializeComponent();
@@ -38,9 +39,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.isFromViewAll = isFromViewAll;
         }
 
-        /// <summary>
-        /// Form load – decide whether we are in Add or Edit mode.
-        /// </summary>
+        //======================================= Form Load – Add vs Edit =======================================
         private void SaleOrderAdd_Load(object sender, EventArgs e)
         {
             AttachDropdownEvents();
@@ -50,9 +49,7 @@ namespace NEW_ERP.Forms.SaleOrder
         #endregion
 
         #region Initialization Methods
-        /// <summary>
-        /// Prepares the form for EDIT mode (read-only first, then editable after Edit click).
-        /// </summary>
+        //======================================= Initialize EDIT Mode =======================================
         private void InitializeEditMode()
         {
             delayTimer = new Timer { Interval = 500 };
@@ -64,9 +61,7 @@ namespace NEW_ERP.Forms.SaleOrder
             ColorSizeDataGridShowEdit();
         }
 
-        /// <summary>
-        /// Prepares the form for ADD mode (blank & unlocked).
-        /// </summary>
+        //======================================= Initialize ADD Mode =======================================
         private void InitializeAddMode()
         {
             EditBtn.Enabled = false;
@@ -76,9 +71,7 @@ namespace NEW_ERP.Forms.SaleOrder
             ColorSizeDataGridShow();
         }
 
-        /// <summary>
-        /// Hooks up all ComboBox DropDown events so they load data on first click only.
-        /// </summary>
+        //======================================= Attach Dropdown Events =======================================
         private void AttachDropdownEvents()
         {
             UnitNameBox.DropDown += (s, e) => LoadUnitNameDropdown();
@@ -98,9 +91,7 @@ namespace NEW_ERP.Forms.SaleOrder
         #endregion
 
         #region DataGrid Configuration Methods
-        /// <summary>
-        /// Configures FabricDataGrid for ADD mode (blank grid with Fabric combo column).
-        /// </summary>
+        //======================================= Fabric Grid – ADD Mode =======================================
         public void FabricDataGridShow()
         {
             FabricDataGrid.Columns.Clear();
@@ -126,9 +117,7 @@ namespace NEW_ERP.Forms.SaleOrder
             FabricDataGrid.CellClick += FabricDataGrid_CellClick;
         }
 
-        /// <summary>
-        /// Extends FabricDataGridShow with hidden PRE-FABRIC column for EDIT mode.
-        /// </summary>
+        //======================================= Fabric Grid – EDIT Mode =======================================
         public void FabricDataGridShowEdit()
         {
             FabricDataGridShow();
@@ -136,9 +125,7 @@ namespace NEW_ERP.Forms.SaleOrder
             FabricDataGrid.Columns["PRE FABRIC"].Visible = false;
         }
 
-        /// <summary>
-        /// Configures ColorSizeDataGrid for ADD mode.
-        /// </summary>
+        //======================================= Color/Size Grid – ADD Mode =======================================
         public void ColorSizeDataGridShow()
         {
             ColorSizeDataGrid.Columns.Clear();
@@ -167,9 +154,7 @@ namespace NEW_ERP.Forms.SaleOrder
             ColorSizeDataGrid.CellClick += ColorSizeDataGrid_CellClick;
         }
 
-        /// <summary>
-        /// Extends ColorSizeDataGridShow with hidden PRE-COLOR / PRE-SIZE columns for EDIT mode.
-        /// </summary>
+        //======================================= Color/Size Grid – EDIT Mode =======================================
         public void ColorSizeDataGridShowEdit()
         {
             ColorSizeDataGridShow();
@@ -181,9 +166,7 @@ namespace NEW_ERP.Forms.SaleOrder
         #endregion
 
         #region DataGrid Event Handlers
-        /// <summary>
-        /// Enables auto-complete inside FabricDataGrid combo cells.
-        /// </summary>
+        //======================================= Fabric Grid – Auto-Complete =======================================
         private void FabricDataGrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             if (FabricDataGrid.CurrentCell.ColumnIndex == 0 && e.Control is ComboBox comboBox)
@@ -194,9 +177,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Loads fabric list into combo cell on first click.
-        /// </summary>
+        //======================================= Fabric Grid – Load Fabric List =======================================
         private void FabricDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
@@ -211,9 +192,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Enables auto-complete inside ColorSizeDataGrid combo cells.
-        /// </summary>
+        //======================================= Color/Size Grid – Auto-Complete =======================================
         private void ColorSizeDataGrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             if ((ColorSizeDataGrid.CurrentCell.ColumnIndex == 0 || ColorSizeDataGrid.CurrentCell.ColumnIndex == 1)
@@ -225,9 +204,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Loads color or size list into combo cell on first click.
-        /// </summary>
+        //======================================= Color/Size Grid – Load Lists =======================================
         private void ColorSizeDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -254,9 +231,7 @@ namespace NEW_ERP.Forms.SaleOrder
         #endregion
 
         #region Data Loading Methods
-        /// <summary>
-        /// Generates the next unique SO-ID (AA-nnnnn) ensuring it does NOT yet exist.
-        /// </summary>
+        //======================================= Generate Next SO-ID =======================================
         private void ShowNextSaleOrderId()
         {
             const string prefix = "AA-";
@@ -268,7 +243,6 @@ namespace NEW_ERP.Forms.SaleOrder
                 {
                     con.Open();
 
-                    // keep looping until we find a free number
                     while (true)
                     {
                         using (SqlCommand cmd = new SqlCommand("SELECT ISNULL(MAX(CAST(SUBSTRING(SaleOrderNo,4,LEN(SaleOrderNo)) AS INT)),0)+1 FROM SaleOrderMaster WHERE SaleOrderNo LIKE @Prefix", con))
@@ -279,7 +253,6 @@ namespace NEW_ERP.Forms.SaleOrder
 
                         string candidate = prefix + nextId.ToString("D5");
 
-                        // double-check race condition
                         using (SqlCommand cmd = new SqlCommand("SELECT COUNT(1) FROM SaleOrderMaster WHERE SaleOrderNo = @No", con))
                         {
                             cmd.Parameters.AddWithValue("@No", candidate);
@@ -299,9 +272,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Retrieves all active fabrics from FabricMaster.
-        /// </summary>
+        //======================================= Load Fabric Names =======================================
         private DataTable GetFabricNames()
         {
             DataTable dt = new DataTable();
@@ -321,9 +292,7 @@ namespace NEW_ERP.Forms.SaleOrder
             return dt;
         }
 
-        /// <summary>
-        /// Retrieves all active colors from ColorMaster.
-        /// </summary>
+        //======================================= Load Color Names =======================================
         private DataTable GetColorNames()
         {
             DataTable dt = new DataTable();
@@ -343,9 +312,7 @@ namespace NEW_ERP.Forms.SaleOrder
             return dt;
         }
 
-        /// <summary>
-        /// Retrieves all active sizes from SizeMaster.
-        /// </summary>
+        //======================================= Load Size Names =======================================
         private DataTable GetSizeNames()
         {
             DataTable dt = new DataTable();
@@ -365,9 +332,7 @@ namespace NEW_ERP.Forms.SaleOrder
             return dt;
         }
 
-        /// <summary>
-        /// Loads master header record into controls for EDIT mode.
-        /// </summary>
+        //======================================= Load Master Record =======================================
         private void ShowSaleOrder(int saleOrderId)
         {
             try
@@ -427,9 +392,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Loads existing fabric lines into FabricDataGrid for EDIT mode.
-        /// </summary>
+        //======================================= Load Fabric Lines =======================================
         private void LoadSaleOrderFabricData(int saleOrderId)
         {
             try
@@ -479,9 +442,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Loads existing color/size detail lines into ColorSizeDataGrid for EDIT mode.
-        /// </summary>
+        //======================================= Load Color/Size Lines =======================================
         private void LoadSaleOrderDetailData(int saleOrderId)
         {
             try
@@ -538,9 +499,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Timer callback – loads master + child data after UI is fully shown.
-        /// </summary>
+        //======================================= Delay Timer Tick =======================================
         private void DelayTimer_Tick(object sender, EventArgs e)
         {
             delayTimer.Stop();
@@ -552,9 +511,7 @@ namespace NEW_ERP.Forms.SaleOrder
         #endregion
 
         #region Dropdown Loading Methods
-        /// <summary>
-        /// Generic helper to populate ComboBox from SQL only once.
-        /// </summary>
+        //======================================= Generic Load Dropdown =======================================
         private void LoadDropdown(ComboBox box, ref bool isLoaded, string query, string displayMember, string valueMember)
         {
             if (isLoaded) return;
@@ -578,9 +535,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Loads only the single selected item into a ComboBox (for EDIT mode).
-        /// </summary>
+        //======================================= Load Single Selected Item =======================================
         private void LoadSelectedItemOnly(ComboBox box, string query, string displayMember, string valueMember, object value)
         {
             try
@@ -603,34 +558,42 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /* One-line wrappers for each dropdown */
+        //======================================= Load UnitName =======================================
         private void LoadUnitNameDropdown() => LoadDropdown(UnitNameBox, ref isUnitNameLoaded, "select UnitName, UnitNameID from UnitNameMaster", "UnitName", "UnitNameID");
+        //======================================= Load CTN Type =======================================
         private void LoadCTNTypeDropdown() => LoadDropdown(CTNTypeBox, ref isCTNTypeLoaded, "select CTNTypeName, CTNTypeID from CTNTypeMaster", "CTNTypeName", "CTNTypeID");
+        //======================================= Load Range =======================================
         private void LoadRangeDropdown() => LoadDropdown(RangeBox, ref isRangeLoaded, "select RangeName, RangeID from RangeMaster", "RangeName", "RangeID");
+        //======================================= Load Customer =======================================
         private void LoadCustomerDropdown() => LoadDropdown(CustomerBox, ref isCustomerLoaded, "SELECT CustomerID, CustomerName FROM CustomerMaster", "CustomerName", "CustomerID");
+        //======================================= Load Product =======================================
         private void LoadProductDropdown() => LoadDropdown(ProductBox, ref isProductLoaded, "SELECT ProductCode, ProductShortName FROM ItemMaster", "ProductShortName", "ProductCode");
+        //======================================= Load Category =======================================
         private void LoadCategoryDropdown() => LoadDropdown(CategoryBox, ref isCategoryLoaded, "SELECT CategoryID, CategoryName FROM CategoryMaster", "CategoryName", "CategoryID");
+        //======================================= Load Embellishment =======================================
         private void LoadEmbDropdown() => LoadDropdown(EmbelishmentBox, ref isEmblishmenLoaded, "SELECT EmbellishmentID, EmbellishmentName FROM EmbellishmentMaster", "EmbellishmentName", "EmbellishmentID");
+        //======================================= Load Ship Mode =======================================
         private void LoadShipModeDropdown() => LoadDropdown(ShipModeBox, ref isShipModeLoaded, "SELECT ShipModeID, ShipModeName FROM ShipmentModeMaster", "ShipModeName", "ShipModeID");
+        //======================================= Load Packing Type =======================================
         private void LoadPackingTypeDropdown() => LoadDropdown(PackingTypeBox, ref isPackingTypeLoaded, "SELECT PackingTypeID, PackingType FROM PackingTypeMaster", "PackingType", "PackingTypeID");
+        //======================================= Load Fold Type =======================================
         private void LoadFoldTypeDropdown() => LoadDropdown(FoldTypeBox, ref isFoldTypeLoaded, "SELECT FoldTypeID, FoldTypeName FROM FoldTypeMaster", "FoldTypeName", "FoldTypeID");
+        //======================================= Load Sale Type =======================================
         private void LoadSaleTypeDropdown() => LoadDropdown(SaleTypeBox, ref isSaleTypeLoaded, "SELECT SaleTypeID, SaleType FROM SaleTypeMaster", "SaleType", "SaleTypeID");
+        //======================================= Load Agent =======================================
         private void LoadAgentDropdown() => LoadDropdown(AgentBox, ref isAgentLoaded, "SELECT AgentID, AgentName FROM AgentMaster", "AgentName", "AgentID");
+        //======================================= Load Tolerance =======================================
         private void LoadToleranceDropdown() => LoadDropdown(ToleranceBox, ref isToleranceLoaded, "SELECT ToleranceID, TolerancePercent FROM ToleranceMaster", "TolerancePercent", "ToleranceID");
         #endregion
 
         #region Utility Methods
-        /// <summary>
-        /// Returns ComboBox.SelectedValue or DBNull.Value if nothing selected.
-        /// </summary>
+        //======================================= Get Nullable Value – Combo =======================================
         private object GetNullableValue(ComboBox comboBox)
         {
             return comboBox.SelectedItem != null ? comboBox.SelectedValue : DBNull.Value;
         }
 
-        /// <summary>
-        /// Returns TextBox.Text safely converted to int/decimal or DBNull.Value.
-        /// </summary>
+        //======================================= Get Nullable Value – Text =======================================
         private object GetNullableText(TextBox textBox, bool convertToInt = false, bool convertToDecimal = false)
         {
             if (string.IsNullOrWhiteSpace(textBox.Text)) return DBNull.Value;
@@ -643,9 +606,7 @@ namespace NEW_ERP.Forms.SaleOrder
             catch { return DBNull.Value; }
         }
 
-        /// <summary>
-        /// Returns DataGrid cell value safely converted to int/decimal or DBNull.Value.
-        /// </summary>
+        //======================================= Get Nullable Value – Cell =======================================
         private object GetCellValue(DataGridViewRow row, string columnName, bool isDecimal = false)
         {
             var val = row.Cells[columnName].Value;
@@ -654,9 +615,7 @@ namespace NEW_ERP.Forms.SaleOrder
             catch { return DBNull.Value; }
         }
 
-        /// <summary>
-        /// Enables or disables all editing controls.
-        /// </summary>
+        //======================================= Toggle Form Editable =======================================
         private void SetFormEditable(bool enable)
         {
             UnitNameBox.Enabled = enable;
@@ -685,9 +644,7 @@ namespace NEW_ERP.Forms.SaleOrder
             txtCtnQty.ReadOnly = !enable;
         }
 
-        /// <summary>
-        /// Validates all mandatory fields before save / update.
-        /// </summary>
+        //======================================= Validation =======================================
         public bool Validation()
         {
             if (string.IsNullOrWhiteSpace(txtSaleOrder.Text) ||
@@ -728,9 +685,7 @@ namespace NEW_ERP.Forms.SaleOrder
             return true;
         }
 
-        /// <summary>
-        /// Clears the form back to pristine ADD mode state.
-        /// </summary>
+        //======================================= Reset Form Controls =======================================
         public void ResetFormControls()
         {
             ShowNextSaleOrderId();
@@ -780,9 +735,7 @@ namespace NEW_ERP.Forms.SaleOrder
         #endregion
 
         #region Database Operations
-        /// <summary>
-        /// Inserts master record and returns new SaleOrderID (0 = failure).
-        /// </summary>
+        //======================================= Insert Master Record =======================================
         public int InsertSaleOrderMaster()
         {
             int newSaleOrderId = 0;
@@ -829,10 +782,10 @@ namespace NEW_ERP.Forms.SaleOrder
                         newSaleOrderId = Convert.ToInt32(outputIdParam.Value);
                     }
                 }
-                catch (SqlException sqlex) when (sqlex.Number == 2627 || sqlex.Number == 2601) // unique constraint
+                catch (SqlException sqlex) when (sqlex.Number == 2627 || sqlex.Number == 2601)
                 {
                     MessageBox.Show("Sale Order No already exists. Regenerating...", "Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ShowNextSaleOrderId(); // regenerate
+                    ShowNextSaleOrderId();
                 }
                 catch (Exception ex)
                 {
@@ -842,9 +795,7 @@ namespace NEW_ERP.Forms.SaleOrder
             return newSaleOrderId;
         }
 
-        /// <summary>
-        /// Inserts Color/Size detail rows via sp_InsertSaleOrderDetail.
-        /// </summary>
+        //======================================= Insert Detail Lines =======================================
         public void InsertSaleOrderDetail(int saleOrderId)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -885,9 +836,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Inserts fabric rows via sp_InsertSaleOrderFabric.
-        /// </summary>
+        //======================================= Insert Fabric Lines =======================================
         public void InsertSaleOrderFabric(int saleOrderId)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -930,9 +879,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Updates master record via sp_UpdateSaleOrderMaster.
-        /// </summary>
+        //======================================= Update Master Record =======================================
         public void UpdateSaleOrderMaster(int saleOrderId)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -979,9 +926,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Updates color/size detail rows via sp_UpdateSaleOrderDetail.
-        /// </summary>
+        //======================================= Update Detail Lines =======================================
         public void UpdateSaleOrderDetail(int saleOrderId)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -1026,9 +971,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Updates fabric rows via sp_UpdateSaleOrderFabric.
-        /// </summary>
+        //======================================= Update Fabric Lines =======================================
         public void UpdateSaleOrderFabric(int saleOrderId)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -1073,9 +1016,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Soft-deletes master + child records.
-        /// </summary>
+        //======================================= Delete Master Record =======================================
         public void DeleteSaleOrderMaster(int saleOrderId)
         {
             try
@@ -1096,9 +1037,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Soft-deletes detail rows for given SO-ID.
-        /// </summary>
+        //======================================= Delete Detail Lines =======================================
         public void DeleteSaleOrderDetail(int saleOrderId)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -1137,9 +1076,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// Soft-deletes fabric rows for given SO-ID.
-        /// </summary>
+        //======================================= Delete Fabric Lines =======================================
         public void DeleteSaleOrderFabric(int saleOrderId)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -1178,9 +1115,7 @@ namespace NEW_ERP.Forms.SaleOrder
         #endregion
 
         #region Button Event Handlers
-        /// <summary>
-        /// SAVE / INSERT button click.
-        /// </summary>
+        //======================================= SAVE / INSERT Button =======================================
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
             try
@@ -1203,9 +1138,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// EDIT / SAVE toggle button click.
-        /// </summary>
+        //======================================= EDIT / SAVE Toggle =======================================
         private void EditBtn_Click(object sender, EventArgs e)
         {
             try
@@ -1242,9 +1175,7 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// DELETE button click.
-        /// </summary>
+        //======================================= DELETE Button =======================================
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete this sale order? This action cannot be undone.",
@@ -1266,17 +1197,13 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
-        /// <summary>
-        /// CLOSE button click.
-        /// </summary>
+        //======================================= CLOSE Button =======================================
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        /// <summary>
-        /// VIEW-ALL button click – opens list form and closes this one.
-        /// </summary>
+        //======================================= VIEW-ALL Button =======================================
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -1285,7 +1212,6 @@ namespace NEW_ERP.Forms.SaleOrder
         #endregion
 
         #region Unused Event Handlers
-        // These empty handlers are intentionally kept for future wiring.
         private void txtCustomerCode_TextChanged(object sender, EventArgs e) { }
         private void CustomerTypeBox_SelectedIndexChanged(object sender, EventArgs e) { }
         private void FormGroupBox_Enter(object sender, EventArgs e) { }
@@ -1302,7 +1228,5 @@ namespace NEW_ERP.Forms.SaleOrder
         private void AgentBox_DropDown(object sender, EventArgs e) { }
         private void ToleranceBox_DropDown(object sender, EventArgs e) { }
         #endregion
-  
-    
     }
 }

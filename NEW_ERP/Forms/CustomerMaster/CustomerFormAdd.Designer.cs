@@ -75,6 +75,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.txtCustomerCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerCode.Location = new System.Drawing.Point(160, 207);
             this.txtCustomerCode.Name = "txtCustomerCode";
+            this.txtCustomerCode.ReadOnly = true;
             this.txtCustomerCode.Size = new System.Drawing.Size(259, 26);
             this.txtCustomerCode.TabIndex = 1;
             // 
@@ -484,7 +485,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.BtnGroupBox.TabStop = false;
             this.BtnGroupBox.Text = "BUTTONS";
             // 
-            // CustomerForm
+            // CustomerFormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -527,7 +528,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.Controls.Add(this.FormGroupBox);
             this.Controls.Add(this.BtnGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "CustomerForm";
+            this.Name = "CustomerFormAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerForm";
             this.Load += new System.EventHandler(this.CustomerForm_Load);

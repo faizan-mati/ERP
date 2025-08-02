@@ -1,7 +1,7 @@
 ﻿
 namespace NEW_ERP.Forms.SupplierType
 {
-    partial class SupplierTypeForm
+    partial class SupplierTypeAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace NEW_ERP.Forms.SupplierType
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplierTypeForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplierTypeAdd));
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
             this.ViewAllBtn = new System.Windows.Forms.Button();
@@ -39,9 +39,7 @@ namespace NEW_ERP.Forms.SupplierType
             this.txtSupplierRemarks = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.SatusCodeBox = new System.Windows.Forms.ComboBox();
             this.txtSupplierCode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.BtnGroupBox = new System.Windows.Forms.GroupBox();
@@ -107,7 +105,7 @@ namespace NEW_ERP.Forms.SupplierType
             // txtSupplierDes
             // 
             this.txtSupplierDes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupplierDes.Location = new System.Drawing.Point(155, 162);
+            this.txtSupplierDes.Location = new System.Drawing.Point(154, 120);
             this.txtSupplierDes.Name = "txtSupplierDes";
             this.txtSupplierDes.Size = new System.Drawing.Size(259, 26);
             this.txtSupplierDes.TabIndex = 3;
@@ -151,7 +149,7 @@ namespace NEW_ERP.Forms.SupplierType
             // txtSupplierRemarks
             // 
             this.txtSupplierRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupplierRemarks.Location = new System.Drawing.Point(156, 204);
+            this.txtSupplierRemarks.Location = new System.Drawing.Point(155, 162);
             this.txtSupplierRemarks.Multiline = true;
             this.txtSupplierRemarks.Name = "txtSupplierRemarks";
             this.txtSupplierRemarks.Size = new System.Drawing.Size(259, 79);
@@ -162,7 +160,7 @@ namespace NEW_ERP.Forms.SupplierType
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label5.Location = new System.Drawing.Point(45, 207);
+            this.label5.Location = new System.Drawing.Point(44, 165);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 20);
             this.label5.TabIndex = 2096;
@@ -173,22 +171,11 @@ namespace NEW_ERP.Forms.SupplierType
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label2.Location = new System.Drawing.Point(30, 165);
+            this.label2.Location = new System.Drawing.Point(29, 123);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 20);
             this.label2.TabIndex = 2095;
             this.label2.Text = "Description :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label4.Location = new System.Drawing.Point(21, 119);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 20);
-            this.label4.TabIndex = 2094;
-            this.label4.Text = "Status Code :";
             // 
             // label3
             // 
@@ -202,18 +189,6 @@ namespace NEW_ERP.Forms.SupplierType
             this.label3.Size = new System.Drawing.Size(263, 25);
             this.label3.TabIndex = 2090;
             this.label3.Text = "SUPPLIER TYPE FORM";
-            // 
-            // SatusCodeBox
-            // 
-            this.SatusCodeBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.SatusCodeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.SatusCodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SatusCodeBox.FormattingEnabled = true;
-            this.SatusCodeBox.Location = new System.Drawing.Point(155, 115);
-            this.SatusCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.SatusCodeBox.Name = "SatusCodeBox";
-            this.SatusCodeBox.Size = new System.Drawing.Size(259, 24);
-            this.SatusCodeBox.TabIndex = 2;
             // 
             // txtSupplierCode
             // 
@@ -252,21 +227,19 @@ namespace NEW_ERP.Forms.SupplierType
             // 
             this.FormGroupBox.Controls.Add(this.txtSupplierCode);
             this.FormGroupBox.Controls.Add(this.label3);
-            this.FormGroupBox.Controls.Add(this.label4);
             this.FormGroupBox.Controls.Add(this.label6);
             this.FormGroupBox.Controls.Add(this.label2);
-            this.FormGroupBox.Controls.Add(this.SatusCodeBox);
             this.FormGroupBox.Controls.Add(this.label5);
             this.FormGroupBox.Controls.Add(this.txtSupplierDes);
             this.FormGroupBox.Controls.Add(this.txtSupplierRemarks);
             this.FormGroupBox.Location = new System.Drawing.Point(13, 87);
             this.FormGroupBox.Name = "FormGroupBox";
-            this.FormGroupBox.Size = new System.Drawing.Size(478, 300);
+            this.FormGroupBox.Size = new System.Drawing.Size(478, 271);
             this.FormGroupBox.TabIndex = 2184;
             this.FormGroupBox.TabStop = false;
             this.FormGroupBox.Text = "FORM INPUTS";
             // 
-            // SupplierTypeForm
+            // SupplierTypeAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -275,7 +248,7 @@ namespace NEW_ERP.Forms.SupplierType
             this.Controls.Add(this.BtnGroupBox);
             this.Controls.Add(this.FormGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SupplierTypeForm";
+            this.Name = "SupplierTypeAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SupplierTypeForm";
             this.Load += new System.EventHandler(this.SupplierTypeForm_Load);
@@ -297,9 +270,7 @@ namespace NEW_ERP.Forms.SupplierType
         private System.Windows.Forms.TextBox txtSupplierRemarks;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.ComboBox SatusCodeBox;
         private System.Windows.Forms.TextBox txtSupplierCode;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox BtnGroupBox;

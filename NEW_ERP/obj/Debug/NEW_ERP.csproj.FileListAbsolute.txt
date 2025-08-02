@@ -31,8 +31,6 @@ C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\bin\Debug\NEW_ERP.exe.config
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\bin\Debug\NEW_ERP.exe
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\bin\Debug\NEW_ERP.pdb
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.csproj.AssemblyReference.cache
-C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.ItemMasterForms.ItemMasterDelete.resources
-C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.ItemMasterForms.ItemMasterEdit.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.ItemMaster.ItemMasterForm.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.ItemMasterForms.ItemMasterViewAll.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Properties.Resources.resources
@@ -44,19 +42,11 @@ C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.CountryViewAll.re
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.CityForms.CityViewAll.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.AuthorityForm.AuthorityViewAll.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.CustomerMaster.CustomerViewAll.resources
-C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierType.SupplierTypeForm.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierType.SupplyTypeViewAll.resources
-C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierType.SupplyTypeEdit.resources
-C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierType.supplierTypeDelete.resources
-C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierMaster.SupplierMasterForm.resources
-C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierMaster.SupplierMasterDelete.resources
-C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierMaster.SupplierMasterEdit.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierMaster.SupplierViewAll.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.AuthorityForm.AuthorityAdd.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.Dashboard.MainDashboard.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Template.AddFormTemplate.resources
-C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Template.DeleteFormTemplate.resources
-C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Template.EditFormTemplate.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SaleOrder.SaleOrderAdd.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.BOMMaster.BomMasterAdd.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.BOM.BOMDetail.BomDetailAdd.resources
@@ -67,3 +57,5 @@ C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.YarnDemand.
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.CityForms.CityFormAdd.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.CountryForms.CountryFormAdd.resources
 C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.CustomerMaster.CustomerFormAdd.resources
+C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierType.SupplierTypeAdd.resources
+C:\Users\ali\Desktop\GITHUB REPO\ERP\NEW_ERP\obj\Debug\NEW_ERP.Forms.SupplierMaster.SupplierMasterAdd.resources

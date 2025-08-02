@@ -26,9 +26,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             }
         }
 
-        /// <summary>
-        /// Loads all authority codes from database and binds to AuthorityNameBox
-        /// </summary>
+        //======================================= Load Authority Codes =======================================
         private void AuthorityCodeShow()
         {
             try
@@ -43,23 +41,21 @@ namespace NEW_ERP.Forms.AuthorityForm
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        AuthorityNameBox.DataSource = dt;
-                        AuthorityNameBox.DisplayMember = "AuthorityName";
-                        AuthorityNameBox.ValueMember = "AuthorityName";
-                        AuthorityNameBox.SelectedIndex = -1;
+                        AuthorityBox.DataSource = dt;
+                        AuthorityBox.DisplayMember = "AuthorityName";
+                        AuthorityBox.ValueMember = "AuthorityName";
+                        AuthorityBox.SelectedIndex = -1;
                     }
                 }
             }
             catch (Exception ex)
             {
                 HandleError("Error loading authority codes", ex);
-                throw; 
+                throw;
             }
         }
 
-        /// <summary>
-        /// Loads all active authority data from database and binds to grid view
-        /// </summary>
+        //======================================= Load Authority Data =======================================
         private void LoadCountryData()
         {
             try
@@ -86,25 +82,23 @@ namespace NEW_ERP.Forms.AuthorityForm
             catch (Exception ex)
             {
                 HandleError("Error loading authority data", ex);
-                throw; 
+                throw;
             }
         }
 
-        /// <summary>
-        /// Searches for authority records based on selected authority name
-        /// </summary>
+        //======================================= Search Authority =======================================
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                if (AuthorityNameBox.SelectedValue == null)
+                if (AuthorityBox.SelectedValue == null)
                 {
                     MessageBox.Show("Please select an authority name first.", "Information",
                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                string authorityName = AuthorityNameBox.Text.Trim();
+                string authorityName = AuthorityBox.Text.Trim();
 
                 using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
@@ -129,9 +123,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             }
         }
 
-        /// <summary>
-        /// Handles double click event on grid view to open selected record for editing
-        /// </summary>
+        //======================================= Grid Double Click Handler =======================================
         private void AuthorityDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -139,50 +131,140 @@ namespace NEW_ERP.Forms.AuthorityForm
                 if (e.RowIndex < 0) return;
 
                 var selectedRow = AuthorityDataGridView.Rows[e.RowIndex];
-                var value = selectedRow.Cells["AuthorityCode"].Value;
 
-                if (value == null || !int.TryParse(value.ToString(), out int authorityId))
+                var supplierCodeCell = selectedRow.Cells["AuthorityCode"]?.Value ??
+                                     selectedRow.Cells["AuthorityCode"]?.Value;
+
+                if (supplierCodeCell == null || string.IsNullOrWhiteSpace(supplierCodeCell.ToString()))
                 {
-                    MessageBox.Show("Invalid Authority Code selected.", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select a valid supplier type record.",
+                                  "Selection Error",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Warning);
                     return;
                 }
 
-                OpenAuthorityForEditing(authorityId);
+                string supplierCode = supplierCodeCell.ToString().Trim();
+                OpenSupplierForEditing(supplierCode);
             }
             catch (Exception ex)
             {
-                HandleError("Error handling grid double click", ex);
+                ShowError("Error handling grid selection", ex);
             }
         }
 
-        /// <summary>
-        /// Opens the AuthorityAdd form in edit mode for the specified authority ID
-        /// </summary>
-        private void OpenAuthorityForEditing(int authorityId)
+        private void OpenSupplierForEditing(string authorityCode)
         {
             try
             {
-                this.Close();
-                using (var authorityAddForm = new AuthorityAdd(authorityId, true))
+                this.Hide();
+
+                using (var supplierTypeAddForm = new AuthorityAdd(authorityCode, true))
                 {
-                    authorityAddForm.ShowDialog();
+                    DialogResult result = supplierTypeAddForm.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        string currentFilter = AuthorityBox.SelectedValue?.ToString() ?? "ACT";
+                        LoadSupplierData(currentFilter);
+                    }
+                }
+
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+                ShowError("Error opening supplier for editing", ex);
+                this.Show();
+            }
+        }
+
+        private void LoadSupplierData(string statusFilter = "ACT")
+        {
+            using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query;
+                    SqlCommand cmd;
+
+                    if (string.IsNullOrEmpty(statusFilter) || statusFilter == "ALL")
+                    {
+                        query = @"";
+                        cmd = new SqlCommand(query, conn);
+                    }
+                    else
+                    {
+                        query = @"
+                                  WHERE StatusCode = @StatusCode
+                                  ORDER BY SystemDate DESC";
+                        cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@StatusCode", statusFilter);
+                    }
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    AuthorityDataGridView.DataSource = dt;
+
+                    FormatDataGridView();
+
+                }
+                catch (Exception ex)
+                {
+                    ShowError("Error loading supplier data", ex);
+                }
+            }
+        }
+
+        private void FormatDataGridView()
+        {
+            try
+            {
+                if (AuthorityDataGridView.Columns.Count > 0)
+                {
+                    AuthorityDataGridView.Columns["Code"].Width = 100;
+                    AuthorityDataGridView.Columns["Description"].Width = 200;
+                    AuthorityDataGridView.Columns["Created Date"].Width = 150;
+                    AuthorityDataGridView.Columns["Status"].Width = 80;
+                    AuthorityDataGridView.Columns["Remarks"].Width = 250;
+
+                    foreach (DataGridViewColumn column in AuthorityDataGridView.Columns)
+                    {
+                        column.ReadOnly = true;
+                    }
+
+                    AuthorityDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    AuthorityDataGridView.MultiSelect = false;
+
+                    //SupplyTypeDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                 }
             }
             catch (Exception ex)
             {
-                HandleError("Error opening authority for editing", ex);
+                ShowError("Error formatting grid", ex);
             }
         }
 
-        /// <summary>
-        /// Handles and displays error messages to user
-        /// </summary>
-        /// 
+        //======================================= Error Handler =======================================
         private void HandleError(string contextMessage, Exception ex)
         {
             MessageBox.Show($"{contextMessage}:\n{ex.Message}", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void ShowError(string context, Exception ex)
+        {
+            string errorMessage = $"{context}:\n\n{ex.Message}";
+
+            MessageBox.Show(errorMessage,
+                          "Error",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Error);
+        }
+
     }
 }

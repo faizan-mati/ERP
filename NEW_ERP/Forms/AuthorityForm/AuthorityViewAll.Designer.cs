@@ -32,7 +32,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorityViewAll));
             this.label3 = new System.Windows.Forms.Label();
             this.AuthorityDataGridView = new System.Windows.Forms.DataGridView();
-            this.AuthorityNameBox = new System.Windows.Forms.ComboBox();
+            this.AuthorityBox = new System.Windows.Forms.ComboBox();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AuthorityDataGridView)).BeginInit();
@@ -69,17 +69,17 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.AuthorityDataGridView.TabIndex = 2121;
             this.AuthorityDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AuthorityDataGridView_CellDoubleClick);
             // 
-            // AuthorityNameBox
+            // AuthorityBox
             // 
-            this.AuthorityNameBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.AuthorityNameBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.AuthorityNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AuthorityNameBox.FormattingEnabled = true;
-            this.AuthorityNameBox.Location = new System.Drawing.Point(239, 110);
-            this.AuthorityNameBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.AuthorityNameBox.Name = "AuthorityNameBox";
-            this.AuthorityNameBox.Size = new System.Drawing.Size(155, 24);
-            this.AuthorityNameBox.TabIndex = 1;
+            this.AuthorityBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.AuthorityBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.AuthorityBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AuthorityBox.FormattingEnabled = true;
+            this.AuthorityBox.Location = new System.Drawing.Point(239, 110);
+            this.AuthorityBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.AuthorityBox.Name = "AuthorityBox";
+            this.AuthorityBox.Size = new System.Drawing.Size(155, 24);
+            this.AuthorityBox.TabIndex = 1;
             // 
             // SearchBtn
             // 
@@ -116,7 +116,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(822, 590);
-            this.Controls.Add(this.AuthorityNameBox);
+            this.Controls.Add(this.AuthorityBox);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.AuthorityDataGridView);
@@ -134,7 +134,7 @@ namespace NEW_ERP.Forms.AuthorityForm
         #endregion
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView AuthorityDataGridView;
-        public System.Windows.Forms.ComboBox AuthorityNameBox;
+        public System.Windows.Forms.ComboBox AuthorityBox;
         public System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Label label2;
     }

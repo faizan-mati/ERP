@@ -1,7 +1,7 @@
 ﻿
 namespace NEW_ERP.Forms.SupplierMaster
 {
-    partial class SupplierMasterForm
+    partial class SupplierMasterAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace NEW_ERP.Forms.SupplierMaster
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplierMasterForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplierMasterAdd));
             this.label3 = new System.Windows.Forms.Label();
             this.SupplierTypeBox = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -63,10 +63,8 @@ namespace NEW_ERP.Forms.SupplierMaster
             this.label21 = new System.Windows.Forms.Label();
             this.txtReference = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.txtRemarks = new System.Windows.Forms.TextBox();
-            this.StatusCodeBox = new System.Windows.Forms.ComboBox();
             this.txtMobileNo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.DeleteBtn = new System.Windows.Forms.Button();
@@ -232,7 +230,7 @@ namespace NEW_ERP.Forms.SupplierMaster
             // txtShortAddress
             // 
             this.txtShortAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShortAddress.Location = new System.Drawing.Point(149, 602);
+            this.txtShortAddress.Location = new System.Drawing.Point(563, 68);
             this.txtShortAddress.Name = "txtShortAddress";
             this.txtShortAddress.Size = new System.Drawing.Size(259, 26);
             this.txtShortAddress.TabIndex = 2118;
@@ -250,7 +248,7 @@ namespace NEW_ERP.Forms.SupplierMaster
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label8.Location = new System.Drawing.Point(16, 605);
+            this.label8.Location = new System.Drawing.Point(430, 71);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(129, 20);
             this.label8.TabIndex = 2121;
@@ -400,23 +398,12 @@ namespace NEW_ERP.Forms.SupplierMaster
             this.label22.TabIndex = 2140;
             this.label22.Text = "Reference :";
             // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label23.Location = new System.Drawing.Point(453, 151);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(119, 20);
-            this.label23.TabIndex = 2142;
-            this.label23.Text = "Status Code :";
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label24.Location = new System.Drawing.Point(478, 558);
+            this.label24.Location = new System.Drawing.Point(38, 522);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(95, 20);
             this.label24.TabIndex = 2144;
@@ -425,23 +412,11 @@ namespace NEW_ERP.Forms.SupplierMaster
             // txtRemarks
             // 
             this.txtRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRemarks.Location = new System.Drawing.Point(575, 556);
+            this.txtRemarks.Location = new System.Drawing.Point(137, 522);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(259, 79);
+            this.txtRemarks.Size = new System.Drawing.Size(685, 79);
             this.txtRemarks.TabIndex = 2143;
-            // 
-            // StatusCodeBox
-            // 
-            this.StatusCodeBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.StatusCodeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.StatusCodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusCodeBox.FormattingEnabled = true;
-            this.StatusCodeBox.Location = new System.Drawing.Point(575, 150);
-            this.StatusCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.StatusCodeBox.Name = "StatusCodeBox";
-            this.StatusCodeBox.Size = new System.Drawing.Size(259, 24);
-            this.StatusCodeBox.TabIndex = 2145;
             // 
             // txtMobileNo
             // 
@@ -564,19 +539,23 @@ namespace NEW_ERP.Forms.SupplierMaster
             // FormGroupBox
             // 
             this.FormGroupBox.Controls.Add(this.label3);
+            this.FormGroupBox.Controls.Add(this.txtShortAddress);
+            this.FormGroupBox.Controls.Add(this.label8);
+            this.FormGroupBox.Controls.Add(this.label24);
+            this.FormGroupBox.Controls.Add(this.txtRemarks);
             this.FormGroupBox.Location = new System.Drawing.Point(12, 80);
             this.FormGroupBox.Name = "FormGroupBox";
-            this.FormGroupBox.Size = new System.Drawing.Size(877, 581);
+            this.FormGroupBox.Size = new System.Drawing.Size(877, 630);
             this.FormGroupBox.TabIndex = 2183;
             this.FormGroupBox.TabStop = false;
             this.FormGroupBox.Text = "FORM INPUTS";
             // 
-            // SupplierMasterForm
+            // SupplierMasterAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(999, 697);
+            this.ClientSize = new System.Drawing.Size(999, 763);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.ViewAllBtn);
@@ -584,10 +563,6 @@ namespace NEW_ERP.Forms.SupplierMaster
             this.Controls.Add(this.SubmitBtn);
             this.Controls.Add(this.txtMobileNo);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.StatusCodeBox);
-            this.Controls.Add(this.txtRemarks);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.label23);
             this.Controls.Add(this.txtReference);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.txtSaleTax);
@@ -602,9 +577,7 @@ namespace NEW_ERP.Forms.SupplierMaster
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtFaxNo);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.txtShortAddress);
             this.Controls.Add(this.txtAddress);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.SupplierTypeBox);
             this.Controls.Add(this.label17);
@@ -623,7 +596,7 @@ namespace NEW_ERP.Forms.SupplierMaster
             this.Controls.Add(this.BtnGroupBox);
             this.Controls.Add(this.FormGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SupplierMasterForm";
+            this.Name = "SupplierMasterAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SupplierMasterForm";
             this.Load += new System.EventHandler(this.SupplierMasterForm_Load);
@@ -668,10 +641,8 @@ namespace NEW_ERP.Forms.SupplierMaster
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txtReference;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox txtRemarks;
-        public System.Windows.Forms.ComboBox StatusCodeBox;
         private System.Windows.Forms.TextBox txtMobileNo;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.Button DeleteBtn;

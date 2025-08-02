@@ -53,6 +53,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.TxtAuthorityCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtAuthorityCode.Location = new System.Drawing.Point(163, 89);
             this.TxtAuthorityCode.Name = "TxtAuthorityCode";
+            this.TxtAuthorityCode.ReadOnly = true;
             this.TxtAuthorityCode.Size = new System.Drawing.Size(259, 26);
             this.TxtAuthorityCode.TabIndex = 2156;
             // 

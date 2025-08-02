@@ -125,18 +125,6 @@
     <Compile Include="Forms\Dashboard\MainDashboard.Designer.cs">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ItemMasterForms\ItemMasterDelete.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ItemMasterForms\ItemMasterDelete.Designer.cs">
-      <DependentUpon>ItemMasterDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ItemMasterForms\ItemMasterEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ItemMasterForms\ItemMasterEdit.Designer.cs">
-      <DependentUpon>ItemMasterEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\ItemMasterForms\ItemMasterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,23 +149,11 @@
     <Compile Include="Forms\SaleOrder\SaleOrderViewAll.Designer.cs">
       <DependentUpon>SaleOrderViewAll.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SupplierMaster\SupplierMasterDelete.cs">
+    <Compile Include="Forms\SupplierMaster\SupplierMasterAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SupplierMaster\SupplierMasterDelete.Designer.cs">
-      <DependentUpon>SupplierMasterDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SupplierMaster\SupplierMasterEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SupplierMaster\SupplierMasterEdit.Designer.cs">
-      <DependentUpon>SupplierMasterEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SupplierMaster\SupplierMasterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SupplierMaster\SupplierMasterForm.Designer.cs">
-      <DependentUpon>SupplierMasterForm.cs</DependentUpon>
+    <Compile Include="Forms\SupplierMaster\SupplierMasterAdd.Designer.cs">
+      <DependentUpon>SupplierMasterAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SupplierMaster\SupplierViewAll.cs">
       <SubType>Form</SubType>
@@ -185,23 +161,11 @@
     <Compile Include="Forms\SupplierMaster\SupplierViewAll.Designer.cs">
       <DependentUpon>SupplierViewAll.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SupplierType\supplierTypeDelete.cs">
+    <Compile Include="Forms\SupplierType\SupplierTypeAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SupplierType\supplierTypeDelete.Designer.cs">
-      <DependentUpon>supplierTypeDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SupplierType\SupplierTypeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SupplierType\SupplierTypeForm.Designer.cs">
-      <DependentUpon>SupplierTypeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SupplierType\SupplyTypeEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SupplierType\SupplyTypeEdit.Designer.cs">
-      <DependentUpon>SupplyTypeEdit.cs</DependentUpon>
+    <Compile Include="Forms\SupplierType\SupplierTypeAdd.Designer.cs">
+      <DependentUpon>SupplierTypeAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SupplierType\SupplyTypeViewAll.cs">
       <SubType>Form</SubType>
@@ -223,18 +187,6 @@
     </Compile>
     <Compile Include="Template\AddFormTemplate.Designer.cs">
       <DependentUpon>AddFormTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Template\DeleteFormTemplate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Template\DeleteFormTemplate.Designer.cs">
-      <DependentUpon>DeleteFormTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Template\EditFormTemplate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Template\EditFormTemplate.Designer.cs">
-      <DependentUpon>EditFormTemplate.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\AuthorityForm\AuthorityAdd.resx">
       <DependentUpon>AuthorityAdd.cs</DependentUpon>
@@ -275,12 +227,6 @@
     <EmbeddedResource Include="Forms\Dashboard\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ItemMasterForms\ItemMasterDelete.resx">
-      <DependentUpon>ItemMasterDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ItemMasterForms\ItemMasterEdit.resx">
-      <DependentUpon>ItemMasterEdit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ItemMasterForms\ItemMasterForm.resx">
       <DependentUpon>ItemMasterForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,26 +239,14 @@
     <EmbeddedResource Include="Forms\SaleOrder\SaleOrderViewAll.resx">
       <DependentUpon>SaleOrderViewAll.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SupplierMaster\SupplierMasterDelete.resx">
-      <DependentUpon>SupplierMasterDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SupplierMaster\SupplierMasterEdit.resx">
-      <DependentUpon>SupplierMasterEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SupplierMaster\SupplierMasterForm.resx">
-      <DependentUpon>SupplierMasterForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SupplierMaster\SupplierMasterAdd.resx">
+      <DependentUpon>SupplierMasterAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SupplierMaster\SupplierViewAll.resx">
       <DependentUpon>SupplierViewAll.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SupplierType\supplierTypeDelete.resx">
-      <DependentUpon>supplierTypeDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SupplierType\SupplierTypeForm.resx">
-      <DependentUpon>SupplierTypeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SupplierType\SupplyTypeEdit.resx">
-      <DependentUpon>SupplyTypeEdit.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SupplierType\SupplierTypeAdd.resx">
+      <DependentUpon>SupplierTypeAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SupplierType\SupplyTypeViewAll.resx">
       <DependentUpon>SupplyTypeViewAll.cs</DependentUpon>
@@ -332,12 +266,6 @@
     </Compile>
     <EmbeddedResource Include="Template\AddFormTemplate.resx">
       <DependentUpon>AddFormTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Template\DeleteFormTemplate.resx">
-      <DependentUpon>DeleteFormTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Template\EditFormTemplate.resx">
-      <DependentUpon>EditFormTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

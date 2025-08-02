@@ -18,7 +18,7 @@ namespace NEW_ERP.Forms.CityForms
         private readonly int _cityId;
         private readonly bool _isFromViewAll;
         private bool _isEditMode = false;
-        private bool _isFormEditable = false; 
+        private bool _isFormEditable = false;
         #endregion
 
         #region Constructor
@@ -64,9 +64,8 @@ namespace NEW_ERP.Forms.CityForms
         #endregion
 
         #region Form Mode Management
-        /// <summary>
-        /// Enum representing different form modes
-        /// </summary>
+
+        //======================================= Form Mode Enum =======================================
         private enum FormMode
         {
             Insert,
@@ -74,9 +73,7 @@ namespace NEW_ERP.Forms.CityForms
             Edit
         }
 
-        /// <summary>
-        /// Sets the form mode and controls the state of buttons and form controls
-        /// </summary>
+        //======================================= Set Form Mode =======================================
         private void SetFormMode(FormMode mode)
         {
             try
@@ -128,9 +125,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Enables or disables form input controls
-        /// </summary>
+        //======================================= Enable Form Controls =======================================
         private void EnableFormControls(bool enabled)
         {
             try
@@ -147,16 +142,15 @@ namespace NEW_ERP.Forms.CityForms
         #endregion
 
         #region Data Loading Methods
-        /// <summary>
-        /// Loads country data into dropdown
-        /// </summary>
+
+        //======================================= Load Country Dropdown =======================================
         private void LoadCountryDropdown()
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    string query = "SELECT CountryID, CountryName FROM Country WHERE StatusCode='ACT' ORDER BY CountryName";
+                    string query = "SELECT CountryID, CountryName FROM Country WHERE StatusCode = 'ACT' and IsActive = 1 ORDER BY CountryName";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -177,9 +171,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Loads existing city data for edit/view mode
-        /// </summary>
+        //======================================= Load City Data =======================================
         private void LoadCityData()
         {
             try
@@ -222,9 +214,8 @@ namespace NEW_ERP.Forms.CityForms
         #endregion
 
         #region Button Click Events
-        /// <summary>
-        /// Handles Submit button click - only works for new records (Insert mode)
-        /// </summary>
+
+        //======================================= Submit Button Click =======================================
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
             try
@@ -248,11 +239,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Handles Edit button click with dual functionality:
-        /// 1st click: Makes form editable (Edit mode)
-        /// 2nd click: Updates the record and returns to view mode
-        /// </summary>
+        //======================================= Edit Button Click =======================================
         private void EditBtn_Click(object sender, EventArgs e)
         {
             try
@@ -275,9 +262,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Handles Delete button click with confirmation
-        /// </summary>
+        //======================================= Delete Button Click =======================================
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             try
@@ -299,9 +284,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Handles View All button click - navigates to city list
-        /// </summary>
+        //======================================= View All Button Click =======================================
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {
             try
@@ -316,9 +299,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Handles Close button click - closes the form
-        /// </summary>
+        //======================================= Close Button Click =======================================
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             try
@@ -333,9 +314,8 @@ namespace NEW_ERP.Forms.CityForms
         #endregion
 
         #region Database Operations
-        /// <summary>
-        /// Inserts new city record into database
-        /// </summary>
+
+        //======================================= Insert City =======================================
         private void InsertCity()
         {
             try
@@ -380,9 +360,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Updates existing city record in database
-        /// </summary>
+        //======================================= Update City =======================================
         private void UpdateCity()
         {
             try
@@ -419,7 +397,7 @@ namespace NEW_ERP.Forms.CityForms
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 50000) 
+                if (ex.Number == 50000)
                 {
                     MessageBox.Show(ex.Message, "Validation Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -435,9 +413,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
-        /// <summary>
-        /// Soft deletes city record by updating StatusCode to 'DEL'
-        /// </summary>
+        //======================================= Delete City =======================================
         private void DeleteCity()
         {
             try
@@ -450,7 +426,6 @@ namespace NEW_ERP.Forms.CityForms
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@CityID", _cityId);
 
-                        // Execute the stored procedure
                         int rowsAffected = cmd.ExecuteNonQuery();
 
                         if (rowsAffected > 0)
@@ -478,9 +453,8 @@ namespace NEW_ERP.Forms.CityForms
         #endregion
 
         #region Validation and Utility Methods
-        /// <summary>
-        /// Validates user input before database operations
-        /// </summary>
+
+        //======================================= Validate Input =======================================
         private bool IsValidInput()
         {
             try
@@ -518,6 +492,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
+        //======================================= Clear Form =======================================
         private void ClearForm()
         {
             try
@@ -533,6 +508,7 @@ namespace NEW_ERP.Forms.CityForms
             }
         }
 
+        //======================================= Handle Error =======================================
         private void HandleError(string message, Exception ex)
         {
             MessageBox.Show($"{message}: {ex.Message}", "Error",

@@ -14,10 +14,6 @@ namespace NEW_ERP.Forms.ItemMasterForms
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Form load event handler that initializes the form by loading item data
-        /// and populating the product code dropdown
-        /// </summary>
         private void ItemMasterViewAll_Load(object sender, EventArgs e)
         {
             try
@@ -32,9 +28,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             }
         }
 
-        /// <summary>
-        /// Loads all item master records from database and binds them to the DataGridView
-        /// </summary>
+        //======================================= Load Item Data =======================================
         private void LoadItemData()
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -58,9 +52,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             }
         }
 
-        /// <summary>
-        /// Populates the product code dropdown with all available product short names
-        /// </summary>
+        //======================================= Populate Product Code Dropdown =======================================
         private void PopulateProductCodeDropdown()
         {
             using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
@@ -86,9 +78,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             }
         }
 
-        /// <summary>
-        /// Handles search button click event to filter items by selected product code
-        /// </summary>
+        //======================================= Search Button Click =======================================
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             if (ProductCodeBox.SelectedValue == null)
@@ -108,9 +98,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             }
         }
 
-        /// <summary>
-        /// Searches items in the database by product short name and updates the DataGridView
-        /// </summary>
+        //======================================= Search Items By Code =======================================
         private void SearchItemsByCode(string productShortName)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -135,9 +123,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             }
         }
 
-        /// <summary>
-        /// Handles double-click event on DataGridView to open selected item for editing
-        /// </summary>
+        //======================================= Data Grid View Cell Double Click =======================================
         private void ItemMasterDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -164,9 +150,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             }
         }
 
-        /// <summary>
-        /// Opens the item master form in edit mode for the specified product code
-        /// </summary>
+        //======================================= Open Item For Editing =======================================
         private void OpenItemForEditing(string productCode)
         {
             try
@@ -183,10 +167,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             }
         }
 
-        /// <summary>
-        /// Displays an error message to the user with context information
-        /// </summary>
-
+        //======================================= Show Error =======================================
         private void ShowError(string context, Exception ex)
         {
             MessageBox.Show($"{context}:\n{ex.Message}",

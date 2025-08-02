@@ -30,9 +30,7 @@ namespace NEW_ERP
 
         #region Data Loading Methods
 
-        /// <summary>
-        /// Loads all active country data from the database and binds it to the DataGridView
-        /// </summary>
+        //======================================= Load Country Data =======================================
         private void LoadCountryData()
         {
             try
@@ -60,9 +58,7 @@ namespace NEW_ERP
             }
         }
 
-        /// <summary>
-        /// Loads all active country codes into the CountryCode dropdown list
-        /// </summary>
+        //======================================= Load Country Codes =======================================
         private void LoadCountryCodes()
         {
             try
@@ -94,9 +90,7 @@ namespace NEW_ERP
 
         #region Event Handlers
 
-        /// <summary>
-        /// Handles the Search button click event to filter countries by selected code
-        /// </summary>
+        //======================================= Search Button Click =======================================
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             try
@@ -129,9 +123,7 @@ namespace NEW_ERP
             }
         }
 
-        /// <summary>
-        /// Handles double-click event on DataGridView rows to open country for editing
-        /// </summary>
+        //======================================= Data Grid Double Click =======================================
         private void CountryDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -160,9 +152,7 @@ namespace NEW_ERP
 
         #region Helper Methods
 
-        /// <summary>
-        /// Opens the CountryFormAdd in edit mode for the specified country ID
-        /// </summary>
+        //======================================= Open Country For Editing =======================================
         private void OpenCountryForEditing(int countryId)
         {
             try
@@ -180,9 +170,7 @@ namespace NEW_ERP
             }
         }
 
-        /// <summary>
-        /// Displays an error message to the user with context information
-        /// </summary>
+        //======================================= Show Error =======================================
         private void ShowError(string context, Exception ex)
         {
             MessageBox.Show($"{context}:\n{ex.Message}", "Error",

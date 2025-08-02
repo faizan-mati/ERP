@@ -14,20 +14,15 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
             InitializeComponent();
         }
 
-        #region Form Events
-
+        //======================================= Form Events =======================================
         private void BomMasterViewAll_Load(object sender, EventArgs e)
         {
             LoadBomMasterIds();
             LoadBomData();
         }
-        #endregion
 
-        #region Data Loading Methods
+        //======================================= Data Loading Methods =======================================
 
-        /// <summary>
-        /// Loads all active BOM Master IDs into the combo box
-        /// </summary>
         private void LoadBomMasterIds()
         {
             const string query = @"SELECT DISTINCT BOMID FROM BOMMaster WHERE StatusCode='ACT'";
@@ -53,9 +48,7 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Loads all active BOM data into the grid view
-        /// </summary>
+        // Loads all active BOM data into the grid view
         private void LoadBomData()
         {
             const string query = @"
@@ -65,6 +58,7 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
                     so.SaleOrderNo,
                     bm.VersionNo,
                     bm.CreatedBy,
+                    bm.SystemDate,
                     bm.CreatedDate
                 FROM BOMMaster bm
                 INNER JOIN ItemMaster i ON i.ProductCode = bm.ProductID
@@ -89,13 +83,9 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
                 HandleError("Error loading BOM data", ex);
             }
         }
-        #endregion
 
-        #region Button Events
+        //======================================= Button Events =======================================
 
-        /// <summary>
-        /// Handles the search button click event to filter BOM data
-        /// </summary>
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             if (BomMasterIdBox.SelectedValue == null)
@@ -107,13 +97,9 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
 
             SearchBomMaster(BomMasterIdBox.SelectedValue.ToString());
         }
-        #endregion
 
-        #region GridView Events
+        //======================================= GridView Events =======================================
 
-        /// <summary>
-        /// Handles the double-click event on a grid view row to open the BOM for editing
-        /// </summary>
         private void BomDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -130,13 +116,9 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
 
             OpenBomMasterForEditing(bomMasterId);
         }
-        #endregion
 
-        #region Helper Methods
+        //======================================= Helper Methods =======================================
 
-        /// <summary>
-        /// Searches for a specific BOM Master record using the stored procedure
-        /// </summary>
         private void SearchBomMaster(string bomMasterId)
         {
             try
@@ -168,9 +150,7 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Opens the BomMasterAdd form in edit mode for the specified BOM Master ID
-        /// </summary>
+        // Opens the BomMasterAdd form in edit mode for the specified BOM Master ID
         private void OpenBomMasterForEditing(int bomMasterId)
         {
             try
@@ -187,14 +167,11 @@ namespace NEW_ERP.Forms.BOM.BOMMaster
             }
         }
 
-        /// <summary>
-        /// Handles errors consistently throughout the application
-        /// </summary>
+        // Handles errors consistently throughout the application
         private void HandleError(string contextMessage, Exception ex)
         {
             MessageBox.Show($"{contextMessage}:\n{ex.Message}", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        #endregion
     }
 }

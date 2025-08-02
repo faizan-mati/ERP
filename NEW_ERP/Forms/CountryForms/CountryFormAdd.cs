@@ -13,13 +13,12 @@ namespace NEW_ERP.Forms.CountryForms
         #endregion
 
         #region Private Fields
-        private readonly int _countryId;        
-        private readonly bool _isFromViewAll; 
-        private bool _isEditMode;              
+        private readonly int _countryId;
+        private readonly bool _isFromViewAll;
+        private bool _isEditMode;
         #endregion
 
         #region Constructor
-
         public CountryFormAdd(int countryId, bool isFromViewAll)
         {
             InitializeComponent();
@@ -31,6 +30,7 @@ namespace NEW_ERP.Forms.CountryForms
 
         #region Form Events
 
+        //======================================= Form Load Event =======================================
         private void CountryForm_Load(object sender, EventArgs e)
         {
             try
@@ -38,12 +38,12 @@ namespace NEW_ERP.Forms.CountryForms
                 if (_isFromViewAll && _countryId > 0)
                 {
                     LoadCountryForEditing();
-                    SubmitBtn.Enabled = false; 
+                    SubmitBtn.Enabled = false;
                 }
                 else
                 {
                     SetFormForInsertMode();
-                    SubmitBtn.Enabled = true; 
+                    SubmitBtn.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -54,10 +54,8 @@ namespace NEW_ERP.Forms.CountryForms
         #endregion
 
         #region Button Events
-        /// <summary>
-        /// Handles the Submit button click event
-        /// Only enabled when adding new countries (countryId = 0)
-        /// </summary>
+
+        //======================================= Submit Button Click =======================================
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
             try
@@ -73,10 +71,7 @@ namespace NEW_ERP.Forms.CountryForms
             }
         }
 
-        /// <summary>
-        /// Handles the Edit/Save button click event
-        /// First click enables editing mode, second click saves changes
-        /// </summary>
+        //======================================= Edit/Save Button Click =======================================
         private void EditBtn_Click(object sender, EventArgs e)
         {
             try
@@ -100,10 +95,7 @@ namespace NEW_ERP.Forms.CountryForms
             }
         }
 
-        /// <summary>
-        /// Handles the Delete button click event
-        /// Performs a soft delete of the country record
-        /// </summary>
+        //======================================= Delete Button Click =======================================
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             try
@@ -116,19 +108,13 @@ namespace NEW_ERP.Forms.CountryForms
             }
         }
 
-        /// <summary>
-        /// Handles the Close button click event
-        /// Closes the current form
-        /// </summary>
+        //======================================= Close Button Click =======================================
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        /// <summary>
-        /// Handles the View All button click event
-        /// Closes current form and opens the CountryViewAll form
-        /// </summary>
+        //======================================= View All Button Click =======================================
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {
             try
@@ -143,16 +129,14 @@ namespace NEW_ERP.Forms.CountryForms
         #endregion
 
         #region Form Mode Management
-        /// <summary>
-        /// Configures the form for inserting a new country
-        /// Enables Submit button for new records only
-        /// </summary>
+
+        //======================================= Set Form For Insert Mode =======================================
         private void SetFormForInsertMode()
         {
             _isEditMode = false;
             UpdateFormControls(
                 readOnly: false,
-                submitEnabled: true, 
+                submitEnabled: true,
                 editEnabled: false,
                 deleteEnabled: false
             );
@@ -160,42 +144,33 @@ namespace NEW_ERP.Forms.CountryForms
             EditBtn.Text = "Edit";
         }
 
-        /// <summary>
-        /// Configures the form for viewing country details (read-only)
-        /// Disables Submit button for existing records
-        /// </summary>
+        //======================================= Set Form For View Mode =======================================
         private void SetFormForViewMode()
         {
             _isEditMode = false;
             UpdateFormControls(
                 readOnly: true,
-                submitEnabled: false,  
+                submitEnabled: false,
                 editEnabled: true,
                 deleteEnabled: true
             );
             EditBtn.Text = "Edit";
         }
 
-        /// <summary>
-        /// Configures the form for editing country details
-        /// Keeps Submit button disabled during edits
-        /// </summary>
+        //======================================= Set Form For Edit Mode =======================================
         private void SetFormForEditMode()
         {
             _isEditMode = true;
             UpdateFormControls(
                 readOnly: false,
-                submitEnabled: false, 
+                submitEnabled: false,
                 editEnabled: true,
                 deleteEnabled: false
             );
-            EditBtn.Text = "Save"; 
+            EditBtn.Text = "Save";
         }
 
-        /// <summary>
-        /// Updates the enabled/read-only state of form controls
-        /// </summary>
-
+        //======================================= Update Form Controls =======================================
         private void UpdateFormControls(bool readOnly, bool submitEnabled, bool editEnabled, bool deleteEnabled)
         {
             TxtCountryName.ReadOnly = readOnly;
@@ -209,9 +184,8 @@ namespace NEW_ERP.Forms.CountryForms
         #endregion
 
         #region Database Operations
-        /// <summary>
-        /// Loads country data for editing when form opened with existing country ID
-        /// </summary>
+
+        //======================================= Load Country For Editing =======================================
         private void LoadCountryForEditing()
         {
             try
@@ -252,9 +226,7 @@ namespace NEW_ERP.Forms.CountryForms
             }
         }
 
-        /// <summary>
-        /// Inserts a new country record into the database
-        /// </summary>
+        //======================================= Insert Country =======================================
         private void InsertCountry()
         {
             using (var conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -273,9 +245,7 @@ namespace NEW_ERP.Forms.CountryForms
             }
         }
 
-        /// <summary>
-        /// Updates an existing country record in the database
-        /// </summary>
+        //======================================= Update Country =======================================
         private void UpdateCountry()
         {
             using (var conn = new SqlConnection(AppConnection.GetConnectionString()))
@@ -300,9 +270,7 @@ namespace NEW_ERP.Forms.CountryForms
             }
         }
 
-        /// <summary>
-        /// Performs a soft delete of the country record
-        /// </summary>
+        //======================================= Delete Country =======================================
         private void DeleteCountry()
         {
             if (ShowConfirmationDialog(
@@ -341,9 +309,7 @@ namespace NEW_ERP.Forms.CountryForms
             }
         }
 
-        /// <summary>
-        /// Adds common parameters to SQL commands for country operations
-        /// </summary>
+        //======================================= Add Common Parameters =======================================
         private void AddCommonParameters(SqlCommand cmd)
         {
             cmd.Parameters.AddWithValue("@CountryName", TxtCountryName.Text.Trim());
@@ -353,9 +319,8 @@ namespace NEW_ERP.Forms.CountryForms
         #endregion
 
         #region Helper Methods
-        /// <summary>
-        /// Validates form inputs before database operations
-        /// </summary>
+
+        //======================================= Validate Inputs =======================================
         private bool ValidateInputs()
         {
             if (string.IsNullOrWhiteSpace(TxtCountryName.Text))
@@ -375,9 +340,7 @@ namespace NEW_ERP.Forms.CountryForms
             return true;
         }
 
-        /// <summary>
-        /// Resets form controls to their default state
-        /// </summary>
+        //======================================= Reset Form Controls =======================================
         private void ResetFormControls()
         {
             TxtCountryName.Clear();
@@ -386,9 +349,7 @@ namespace NEW_ERP.Forms.CountryForms
             TxtCountryName.Focus();
         }
 
-        /// <summary>
-        /// Shows the CountryViewAll form and closes current form
-        /// </summary>
+        //======================================= Show Country View All Form =======================================
         private void ShowCountryViewAllForm()
         {
             this.Close();
@@ -396,9 +357,7 @@ namespace NEW_ERP.Forms.CountryForms
             viewAllForm.Show();
         }
 
-        /// <summary>
-        /// Closes current form and shows ViewAll form if needed
-        /// </summary>
+        //======================================= Close And Show View All If Needed =======================================
         private void CloseAndShowViewAllIfNeeded()
         {
             this.Close();
@@ -411,23 +370,25 @@ namespace NEW_ERP.Forms.CountryForms
 
         #region Message Dialogs
 
+        //======================================= Show Success Message =======================================
         private void ShowSuccessMessage(string message)
         {
             MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        //======================================= Show Error Message =======================================
         private void ShowErrorMessage(string message, string title)
         {
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-
+        //======================================= Show Warning Message =======================================
         private void ShowWarningMessage(string message)
         {
             MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-
+        //======================================= Show Confirmation Dialog =======================================
         private DialogResult ShowConfirmationDialog(string message, string title)
         {
             return MessageBox.Show(message, title,
@@ -437,7 +398,8 @@ namespace NEW_ERP.Forms.CountryForms
         #endregion
 
         #region Error Handling
-      
+
+        //======================================= Handle Unexpected Error =======================================
         private void HandleUnexpectedError(Exception ex)
         {
             ShowErrorMessage($"An unexpected error occurred:\n{ex.Message}", "Error");

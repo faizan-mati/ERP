@@ -9,7 +9,7 @@ namespace NEW_ERP.Forms.AuthorityForm
 {
     public partial class AuthorityAdd : Form
     {
-        private readonly int _authorityId;
+        private readonly string _authorityCode;
         private readonly bool _isFromViewAll;
         private bool _isEditMode = false;
         private string _originalAuthorityCode = string.Empty;
@@ -18,22 +18,28 @@ namespace NEW_ERP.Forms.AuthorityForm
         private const string INACTIVE_STATUS = "INA";
         private const string DEFAULT_USER_CODE = "00123";
 
-        public AuthorityAdd(int authorityId, bool isFromViewAll)
+        public AuthorityAdd(string authorityCode, bool isFromViewAll)
         {
             InitializeComponent();
-            _authorityId = authorityId;
+            _authorityCode = authorityCode;
             _isFromViewAll = isFromViewAll;
         }
 
+        //======================================= Form Load Event =======================================
         private void AuthorityAdd_Load(object sender, EventArgs e)
         {
             try
             {
                 ConfigureFormMode();
 
-                if (_isFromViewAll && _authorityId > 0)
+                if (_isFromViewAll && !string.IsNullOrEmpty(_authorityCode))
                 {
                     LoadAuthorityData();
+                }
+                else if (!_isFromViewAll)
+                {
+                    // Generate auto code only in Add New mode
+                    TxtAuthorityCode.Text = GenerateAutoAuthorityCode();
                 }
             }
             catch (Exception ex)
@@ -42,14 +48,39 @@ namespace NEW_ERP.Forms.AuthorityForm
             }
         }
 
+        //======================================= Generate Auto Authority Code =======================================
+        private string GenerateAutoAuthorityCode()
+        {
+            const string query = "SELECT ISNULL(MAX(CAST(SUBSTRING(AuthorityCode, 4, LEN(AuthorityCode)) AS INT)), 0) + 1 FROM AuthorityMaster WHERE AuthorityCode LIKE 'Ath%'";
+
+            try
+            {
+                using (var connection = new SqlConnection(AppConnection.GetConnectionString()))
+                using (var command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    int nextCode = (int)command.ExecuteScalar();
+                    return $"ATH{nextCode:D3}"; 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error generating auto code: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "ATH001";
+            }
+        }
+
+
+        //======================================= Configure Form Mode =======================================
         private void ConfigureFormMode()
         {
-            if (_isFromViewAll && _authorityId > 0)
+            if (_isFromViewAll && !string.IsNullOrEmpty(_authorityCode))
                 ConfigureEditDeleteMode();
             else
                 ConfigureInsertMode();
         }
 
+        //======================================= Configure Edit/Delete Mode =======================================
         private void ConfigureEditDeleteMode()
         {
             SetFormReadOnlyMode(true);
@@ -60,6 +91,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             this.Text = "Authority - View/Edit";
         }
 
+        //======================================= Configure Insert Mode =======================================
         private void ConfigureInsertMode()
         {
             SetFormReadOnlyMode(false);
@@ -68,20 +100,24 @@ namespace NEW_ERP.Forms.AuthorityForm
             DeleteBtn.Enabled = false;
             SubmitBtn.Text = "Submit";
             this.Text = "Authority - Add New";
+            //TxtAuthorityCode.ReadOnly = true; 
+            TxtAuthorityCode.BackColor = SystemColors.Control;
         }
 
+        //======================================= Set Form ReadOnly Mode =======================================
         private void SetFormReadOnlyMode(bool readOnly)
         {
-            TxtAuthorityCode.ReadOnly = readOnly;
+            //TxtAuthorityCode.ReadOnly = readOnly || !_isEditMode;
             TxtAuthorityName.ReadOnly = readOnly;
             TxtAuthorityRemarks.ReadOnly = readOnly;
 
             Color backgroundColor = readOnly ? SystemColors.Control : SystemColors.Window;
-            TxtAuthorityCode.BackColor = backgroundColor;
+            //TxtAuthorityCode.BackColor = TxtAuthorityCode.ReadOnly ? SystemColors.Control : backgroundColor;
             TxtAuthorityName.BackColor = backgroundColor;
             TxtAuthorityRemarks.BackColor = backgroundColor;
         }
 
+        //======================================= Load Authority Data =======================================
         private void LoadAuthorityData()
         {
             const string query = @"SELECT AuthorityCode, AuthorityName, Remarks, StatusCode
@@ -93,7 +129,7 @@ namespace NEW_ERP.Forms.AuthorityForm
                 using (var connection = new SqlConnection(AppConnection.GetConnectionString()))
                 using (var command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@AuthorityCode", _authorityId.ToString());
+                    command.Parameters.AddWithValue("@AuthorityCode", _authorityCode);
                     connection.Open();
 
                     using (var reader = command.ExecuteReader())
@@ -119,6 +155,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             }
         }
 
+        //======================================= Submit Button Click =======================================
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
             if (!ValidateFormInput()) return;
@@ -129,6 +166,7 @@ namespace NEW_ERP.Forms.AuthorityForm
                 InsertAuthorityData();
         }
 
+        //======================================= Edit Button Click =======================================
         private void EditBtn_Click(object sender, EventArgs e)
         {
             if (!_isEditMode)
@@ -137,6 +175,7 @@ namespace NEW_ERP.Forms.AuthorityForm
                 UpdateAuthorityData();
         }
 
+        //======================================= Delete Button Click =======================================
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to deactivate this authority record?",
@@ -146,16 +185,17 @@ namespace NEW_ERP.Forms.AuthorityForm
             }
         }
 
+        //======================================= Enable Edit Mode =======================================
         private void EnableEditMode()
         {
             _isEditMode = true;
             SetFormReadOnlyMode(false);
             EditBtn.Text = "Save";
-            SubmitBtn.Enabled = true;
-            SubmitBtn.Text = "Save";
+            SubmitBtn.Enabled = false;
             DeleteBtn.Enabled = false;
         }
 
+        //======================================= Disable Edit Mode =======================================
         private void DisableEditMode()
         {
             _isEditMode = false;
@@ -165,6 +205,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             DeleteBtn.Enabled = true;
         }
 
+        //======================================= Validate Form Input =======================================
         private bool ValidateFormInput()
         {
             if (string.IsNullOrWhiteSpace(TxtAuthorityCode.Text))
@@ -184,6 +225,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             return true;
         }
 
+        //======================================= Check Duplicate Authority Code =======================================
         private bool CheckDuplicateAuthorityCode(string authorityCode)
         {
             const string query = "SELECT COUNT(*) FROM AuthorityMaster WHERE AuthorityCode = @AuthorityCode";
@@ -198,6 +240,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             }
         }
 
+        //======================================= Insert Authority Data =======================================
         private void InsertAuthorityData()
         {
             string newAuthorityCode = TxtAuthorityCode.Text.Trim();
@@ -228,6 +271,8 @@ namespace NEW_ERP.Forms.AuthorityForm
 
                     MessageBox.Show("Authority added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetFormControls();
+                    // Generate new auto code after successful insert
+                    TxtAuthorityCode.Text = GenerateAutoAuthorityCode();
                 }
             }
             catch (Exception ex)
@@ -236,6 +281,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             }
         }
 
+        //======================================= Update Authority Data =======================================
         private void UpdateAuthorityData()
         {
             string newAuthorityCode = TxtAuthorityCode.Text.Trim();
@@ -282,15 +328,18 @@ namespace NEW_ERP.Forms.AuthorityForm
             }
         }
 
+        //======================================= Deactivate Authority Record =======================================
         private void DeactivateAuthorityRecord()
         {
-            const string query = "UPDATE AuthorityMaster SET StatusCode = @StatusCode WHERE AuthorityCode = @AuthorityCode";
+            const string procedureName = "sp_DeleteAuthorityMaster";
 
             try
             {
                 using (var connection = new SqlConnection(AppConnection.GetConnectionString()))
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new SqlCommand(procedureName, connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
+
                     command.Parameters.AddWithValue("@AuthorityCode", _originalAuthorityCode);
                     command.Parameters.AddWithValue("@StatusCode", INACTIVE_STATUS);
 
@@ -315,20 +364,22 @@ namespace NEW_ERP.Forms.AuthorityForm
             }
         }
 
+        //======================================= Reset Form Controls =======================================
         private void ResetFormControls()
         {
-            TxtAuthorityCode.Clear();
             TxtAuthorityName.Clear();
             TxtAuthorityRemarks.Clear();
-            TxtAuthorityCode.Focus();
+            TxtAuthorityName.Focus();
         }
 
+        //======================================= View All Button Click =======================================
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {
             this.Close();
             new AuthorityViewAll().Show();
         }
 
+        //======================================= Close Button Click =======================================
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             this.Close();

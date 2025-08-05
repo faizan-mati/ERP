@@ -23,6 +23,7 @@ namespace NEW_ERP.Forms.SaleOrder
         private bool isFoldTypeLoaded = false;
         private bool isSaleTypeLoaded = false;
         private bool isAgentLoaded = false;
+        private bool isStatusCodeLoaded = false;
         private bool isToleranceLoaded = false;
 
         private int saleOrderId;
@@ -86,6 +87,7 @@ namespace NEW_ERP.Forms.SaleOrder
             FoldTypeBox.DropDown += (s, e) => LoadFoldTypeDropdown();
             SaleTypeBox.DropDown += (s, e) => LoadSaleTypeDropdown();
             AgentBox.DropDown += (s, e) => LoadAgentDropdown();
+            StatusCodeBox.DropDown += (s, e) => LoadStatusCodeDropdown();
             ToleranceBox.DropDown += (s, e) => LoadToleranceDropdown();
         }
         #endregion
@@ -339,12 +341,14 @@ namespace NEW_ERP.Forms.SaleOrder
             {
                 using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
                 using (SqlCommand cmd = new SqlCommand(@"
-                    SELECT [unitNameID], [CustomerID], [ProductID], [Style], [CategoryID], [RangeID], [SaleTypeID], [AgentID], 
-                           [ShipModeID], [OrderDate], [ExFactoryDate], [ETADate], [EmbellishmentID], 
-                           [PackingTypeID], [FoldTypeID], [FactoryPrice], [Commission], [Total], 
-                           [CustomerTolerance], [SaleOrderNo], [PoNo], [SaleOrderPlan], [CTNTypeID], [CtnQty]
-                    FROM [SaleOrderMaster]
-                    WHERE [SaleOrderID] = @SaleOrderId AND StatusCode = 'ACT'", con))
+    SELECT [unitNameID], [CustomerID], [ProductID], [Style], [CategoryID], [RangeID], [SaleTypeID], [AgentID], 
+           [ShipModeID], [OrderDate], [ExFactoryDate], [ETADate], [EmbellishmentID], 
+           [PackingTypeID], [FoldTypeID], [FactoryPrice], [Commission], [Total], [StatusCode],
+           [CustomerTolerance], [SaleOrderNo], [PoNo], [SaleOrderPlan], [CTNTypeID], [CtnQty],
+           [GrandTotal] 
+    FROM [SaleOrderMaster]
+    WHERE [SaleOrderID] = @SaleOrderId AND StatusCode IN (1, 2)", con))
+
                 {
                     cmd.Parameters.AddWithValue("@SaleOrderId", saleOrderId);
                     con.Open();
@@ -365,6 +369,7 @@ namespace NEW_ERP.Forms.SaleOrder
                             LoadSelectedItemOnly(PackingTypeBox, "SELECT PackingTypeID, PackingType FROM PackingTypeMaster WHERE PackingTypeID = @ID", "PackingType", "PackingTypeID", reader["PackingTypeID"]);
                             LoadSelectedItemOnly(FoldTypeBox, "SELECT FoldTypeID, FoldTypeName FROM FoldTypeMaster WHERE FoldTypeID = @ID", "FoldTypeName", "FoldTypeID", reader["FoldTypeID"]);
                             LoadSelectedItemOnly(ToleranceBox, "SELECT ToleranceID, TolerancePercent FROM ToleranceMaster WHERE ToleranceID = @ID", "TolerancePercent", "ToleranceID", reader["CustomerTolerance"]);
+                            LoadSelectedItemOnly(StatusCodeBox, "SELECT StatusId, StatusCode FROM Status WHERE StatusId = @ID", "StatusCode", "StatusId", reader["StatusCode"]);
 
                             txtStyle.Text = reader["Style"].ToString();
                             txtPoNo.Text = reader["PoNo"].ToString();
@@ -374,6 +379,9 @@ namespace NEW_ERP.Forms.SaleOrder
                             txtCommission.Text = reader["Commission"].ToString();
                             txtTotal.Text = reader["Total"].ToString();
                             txtSaleOrder.Text = reader["SaleOrderNo"].ToString();
+
+                            TotalSumLabel.Text = reader["GrandTotal"].ToString();
+
 
                             OrderDateTimePicker.Value = reader["OrderDate"] != DBNull.Value ? Convert.ToDateTime(reader["OrderDate"]) : DateTime.Now;
                             ExFactoryDateTimePicker.Value = reader["ExFactoryDate"] != DBNull.Value ? Convert.ToDateTime(reader["ExFactoryDate"]) : DateTime.Now;
@@ -403,7 +411,7 @@ namespace NEW_ERP.Forms.SaleOrder
                            sof.Dia, sof.Gauge, sof.ShrinkPercent, sof.StitchLength
                     FROM SaleOrderFabric sof
                     INNER JOIN FabricMaster fm ON sof.FabricID = fm.FabricID
-                    WHERE sof.SaleOrderID = @SaleOrderId AND sof.StatusCode = 'ACT'", con))
+                    WHERE sof.SaleOrderID = @SaleOrderId AND sof.StatusCode IN (1, 2)", con))
                 {
                     cmd.Parameters.AddWithValue("@SaleOrderId", saleOrderId);
                     con.Open();
@@ -449,12 +457,16 @@ namespace NEW_ERP.Forms.SaleOrder
             {
                 using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
                 using (SqlCommand cmd = new SqlCommand(@"
-                    SELECT sod.ColorID, cm.ColorName, sod.SizeID, sm.SizeName, 
-                           sod.Quantity, sod.UnitPrice, sod.TotalPrice
-                    FROM SaleOrderDetails sod
-                    INNER JOIN ColorMaster cm ON sod.ColorID = cm.ColorID
-                    INNER JOIN SizeMaster sm ON sod.SizeID = sm.SizeID
-                    WHERE sod.SaleOrderID = @SaleOrderId AND sod.StatusCode = 'ACT'", con))
+                   SELECT 
+    sod.ColorID, cm.ColorName, 
+    sod.SizeID, sm.SizeName, 
+    sod.Quantity, sod.UnitPrice, sod.TotalPrice
+FROM SaleOrderDetails sod
+INNER JOIN ColorMaster cm ON sod.ColorID = cm.ColorID
+INNER JOIN SizeMaster sm ON sod.SizeID = sm.SizeID
+WHERE sod.SaleOrderID = @SaleOrderId 
+  AND sod.StatusCode IN (1, 2)
+", con))
                 {
                     cmd.Parameters.AddWithValue("@SaleOrderId", saleOrderId);
                     con.Open();
@@ -582,6 +594,8 @@ namespace NEW_ERP.Forms.SaleOrder
         private void LoadSaleTypeDropdown() => LoadDropdown(SaleTypeBox, ref isSaleTypeLoaded, "SELECT SaleTypeID, SaleType FROM SaleTypeMaster", "SaleType", "SaleTypeID");
         //======================================= Load Agent =======================================
         private void LoadAgentDropdown() => LoadDropdown(AgentBox, ref isAgentLoaded, "SELECT AgentID, AgentName FROM AgentMaster", "AgentName", "AgentID");
+        //======================================= Status Code  =======================================
+        private void LoadStatusCodeDropdown() => LoadDropdown(StatusCodeBox, ref isStatusCodeLoaded, "SELECT StatusId, StatusCode FROM Status", "StatusCode", "StatusId");
         //======================================= Load Tolerance =======================================
         private void LoadToleranceDropdown() => LoadDropdown(ToleranceBox, ref isToleranceLoaded, "SELECT ToleranceID, TolerancePercent FROM ToleranceMaster", "TolerancePercent", "ToleranceID");
         #endregion
@@ -627,6 +641,7 @@ namespace NEW_ERP.Forms.SaleOrder
             CategoryBox.Enabled = enable;
             SaleTypeBox.Enabled = enable;
             AgentBox.Enabled = enable;
+            StatusCodeBox.Enabled = enable;
             ShipModeBox.Enabled = enable;
             OrderDateTimePicker.Enabled = enable;
             ExFactoryDateTimePicker.Enabled = enable;
@@ -659,6 +674,7 @@ namespace NEW_ERP.Forms.SaleOrder
                 CustomerBox.SelectedIndex == -1 ||
                 ShipModeBox.SelectedIndex == -1 ||
                 ProductBox.SelectedIndex == -1 ||
+                StatusCodeBox.SelectedIndex == -1 ||
                 CategoryBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select all required dropdown values", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -706,6 +722,7 @@ namespace NEW_ERP.Forms.SaleOrder
             SaleTypeBox.SelectedIndex = -1;
             ShipModeBox.SelectedIndex = -1;
             AgentBox.SelectedIndex = -1;
+            StatusCodeBox.SelectedIndex = -1;
             PackingTypeBox.SelectedIndex = -1;
             EmbelishmentBox.SelectedIndex = -1;
             FoldTypeBox.SelectedIndex = -1;
@@ -772,8 +789,9 @@ namespace NEW_ERP.Forms.SaleOrder
                         cmd.Parameters.AddWithValue("@Po", txtPoNo.Text.Trim());
                         cmd.Parameters.AddWithValue("@CtnQty", txtCtnQty.Text.Trim());
                         cmd.Parameters.AddWithValue("@UserCode", "USR");
-                        cmd.Parameters.AddWithValue("@StatusCode", "ACT");
+                        cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
                         cmd.Parameters.AddWithValue("@SystemDate", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@GrandTotal", Convert.ToDecimal(TotalSumLabel.Text));
 
                         SqlParameter outputIdParam = new SqlParameter("@SaleOrderID", SqlDbType.Int) { Direction = ParameterDirection.Output };
                         cmd.Parameters.Add(outputIdParam);
@@ -819,7 +837,7 @@ namespace NEW_ERP.Forms.SaleOrder
                                 cmd.Parameters.AddWithValue("@UnitPrice", GetCellValue(row, "UNIT PRICE", true));
                                 cmd.Parameters.AddWithValue("@TotalPrice", GetCellValue(row, "TOAL PRICE", true));
                                 cmd.Parameters.AddWithValue("@UserCode", "USR");
-                                cmd.Parameters.AddWithValue("@StatusCode", "ACT");
+                                cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
                                 cmd.Parameters.AddWithValue("@SystemDate", DateTime.Now);
                                 cmd.ExecuteNonQuery();
                             }
@@ -862,7 +880,7 @@ namespace NEW_ERP.Forms.SaleOrder
                                 cmd.Parameters.AddWithValue("@ShrinkPercent", GetCellValue(row, "SHIRNK", true));
                                 cmd.Parameters.AddWithValue("@StitchLength", row.Cells["STITCH LENGTH"].Value?.ToString() ?? "");
                                 cmd.Parameters.AddWithValue("@UserCode", "USR");
-                                cmd.Parameters.AddWithValue("@StatusCode", "ACT");
+                                cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
                                 cmd.Parameters.AddWithValue("@SystemDate", DateTime.Now);
                                 cmd.ExecuteNonQuery();
                             }
@@ -915,6 +933,8 @@ namespace NEW_ERP.Forms.SaleOrder
                         cmd.Parameters.AddWithValue("@Plan", txtPlan.Text.Trim());
                         cmd.Parameters.AddWithValue("@Po", txtPoNo.Text.Trim());
                         cmd.Parameters.AddWithValue("@CtnQty", txtCtnQty.Text.Trim());
+                        cmd.Parameters.AddWithValue("@GrandTotal", Convert.ToDecimal(TotalSumLabel.Text));
+                        cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -955,6 +975,7 @@ namespace NEW_ERP.Forms.SaleOrder
                                     cmd.Parameters.AddWithValue("@Quantity", GetCellValue(row, "QUANTITY"));
                                     cmd.Parameters.AddWithValue("@UnitPrice", GetCellValue(row, "UNIT PRICE", true));
                                     cmd.Parameters.AddWithValue("@TotalPrice", GetCellValue(row, "TOAL PRICE", true));
+                                    cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
                                     cmd.ExecuteNonQuery();
                                 }
                             }
@@ -1000,6 +1021,7 @@ namespace NEW_ERP.Forms.SaleOrder
                                     cmd.Parameters.AddWithValue("@Gauge", row.Cells["GAUGE"].Value?.ToString() ?? "");
                                     cmd.Parameters.AddWithValue("@ShrinkPercent", GetCellValue(row, "SHIRNK", true));
                                     cmd.Parameters.AddWithValue("@StitchLength", row.Cells["STITCH LENGTH"].Value?.ToString() ?? "");
+                                    cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
                                     cmd.ExecuteNonQuery();
                                 }
                             }
@@ -1159,7 +1181,7 @@ namespace NEW_ERP.Forms.SaleOrder
                         UpdateSaleOrderFabric(saleOrderId);
                         MessageBox.Show("Sale order updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         SetFormEditable(false);
-                        SubmitBtn.Enabled = false;
+                        SubmitBtn.Enabled = true;
                         EditBtn.Text = "Edit";
                         EditBtn.Enabled = true;
                         DeleteBtn.Enabled = true;
@@ -1197,6 +1219,38 @@ namespace NEW_ERP.Forms.SaleOrder
             }
         }
 
+        //======================================= COLOR SIZES TOTAL =======================================
+        private void TotalSum()
+        {
+            int grandTotal = 0;
+
+            if (!ColorSizeDataGrid.Columns.Contains("QUANTITY"))
+                return;
+
+            foreach (DataGridViewRow row in ColorSizeDataGrid.Rows)
+            {
+                if (row.Cells["QUANTITY"].Value != null)
+                {
+                    int value;
+                    if (int.TryParse(row.Cells["QUANTITY"].Value.ToString(), out value))
+                    {
+                        grandTotal += value;
+                    }
+                }
+            }
+
+            TotalSumLabel.Text = grandTotal.ToString();
+        }
+
+        private void ColorSizeDataGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex > 0 && e.ColumnIndex < ColorSizeDataGrid.Columns.Count - 1)
+            {
+                TotalSum();
+            }
+        }
+
+
         //======================================= CLOSE Button =======================================
         private void CloseBtn_Click(object sender, EventArgs e)
         {
@@ -1227,6 +1281,9 @@ namespace NEW_ERP.Forms.SaleOrder
         private void SaleTypeBox_DropDown(object sender, EventArgs e) { }
         private void AgentBox_DropDown(object sender, EventArgs e) { }
         private void ToleranceBox_DropDown(object sender, EventArgs e) { }
+        private void StatusCodeBox_DropDown(object sender, EventArgs e) { }
         #endregion
+
+     
     }
 }

@@ -82,6 +82,10 @@ namespace NEW_ERP.Forms.SaleOrder
             this.UnitNameBox = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.RangeBox = new System.Windows.Forms.ComboBox();
+            this.StatusCodeBox = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.TotalSumLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ColorSizeDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FabricDataGrid)).BeginInit();
             this.SuspendLayout();
@@ -130,7 +134,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label13.Location = new System.Drawing.Point(780, 187);
+            this.label13.Location = new System.Drawing.Point(769, 116);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(108, 20);
             this.label13.TabIndex = 2153;
@@ -141,7 +145,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label15.Location = new System.Drawing.Point(388, 155);
+            this.label15.Location = new System.Drawing.Point(391, 116);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(125, 20);
             this.label15.TabIndex = 2152;
@@ -152,7 +156,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label16.Location = new System.Drawing.Point(381, 382);
+            this.label16.Location = new System.Drawing.Point(384, 343);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(132, 20);
             this.label16.TabIndex = 2151;
@@ -174,7 +178,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label18.Location = new System.Drawing.Point(742, 226);
+            this.label18.Location = new System.Drawing.Point(731, 155);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(148, 20);
             this.label18.TabIndex = 2149;
@@ -185,7 +189,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label19.Location = new System.Drawing.Point(820, 148);
+            this.label19.Location = new System.Drawing.Point(446, 416);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(67, 20);
             this.label19.TabIndex = 2148;
@@ -196,7 +200,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label8.Location = new System.Drawing.Point(405, 346);
+            this.label8.Location = new System.Drawing.Point(408, 307);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(104, 20);
             this.label8.TabIndex = 2147;
@@ -207,7 +211,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label9.Location = new System.Drawing.Point(792, 265);
+            this.label9.Location = new System.Drawing.Point(781, 194);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 20);
             this.label9.TabIndex = 2146;
@@ -229,7 +233,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label11.Location = new System.Drawing.Point(790, 109);
+            this.label11.Location = new System.Drawing.Point(416, 382);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(98, 20);
             this.label11.TabIndex = 2144;
@@ -296,7 +300,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.label3.Location = new System.Drawing.Point(407, 72);
+            this.label3.Location = new System.Drawing.Point(407, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(338, 25);
             this.label3.TabIndex = 2154;
@@ -307,7 +311,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label1.Location = new System.Drawing.Point(775, 337);
+            this.label1.Location = new System.Drawing.Point(764, 266);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 20);
             this.label1.TabIndex = 2168;
@@ -318,7 +322,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label14.Location = new System.Drawing.Point(830, 373);
+            this.label14.Location = new System.Drawing.Point(819, 303);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(59, 20);
             this.label14.TabIndex = 2165;
@@ -329,7 +333,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label20.Location = new System.Drawing.Point(416, 193);
+            this.label20.Location = new System.Drawing.Point(419, 154);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(97, 20);
             this.label20.TabIndex = 2164;
@@ -340,7 +344,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label21.Location = new System.Drawing.Point(766, 299);
+            this.label21.Location = new System.Drawing.Point(755, 228);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(124, 20);
             this.label21.TabIndex = 2163;
@@ -351,7 +355,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label22.Location = new System.Drawing.Point(413, 307);
+            this.label22.Location = new System.Drawing.Point(416, 268);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(98, 20);
             this.label22.TabIndex = 2162;
@@ -397,7 +401,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.SaleTypeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.SaleTypeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaleTypeBox.FormattingEnabled = true;
-            this.SaleTypeBox.Location = new System.Drawing.Point(897, 109);
+            this.SaleTypeBox.Location = new System.Drawing.Point(523, 382);
             this.SaleTypeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SaleTypeBox.Name = "SaleTypeBox";
             this.SaleTypeBox.Size = new System.Drawing.Size(203, 24);
@@ -410,7 +414,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.ShipModeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ShipModeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShipModeBox.FormattingEnabled = true;
-            this.ShipModeBox.Location = new System.Drawing.Point(520, 343);
+            this.ShipModeBox.Location = new System.Drawing.Point(523, 304);
             this.ShipModeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ShipModeBox.Name = "ShipModeBox";
             this.ShipModeBox.Size = new System.Drawing.Size(203, 24);
@@ -423,7 +427,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.AgentBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.AgentBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AgentBox.FormattingEnabled = true;
-            this.AgentBox.Location = new System.Drawing.Point(897, 147);
+            this.AgentBox.Location = new System.Drawing.Point(523, 415);
             this.AgentBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.AgentBox.Name = "AgentBox";
             this.AgentBox.Size = new System.Drawing.Size(203, 24);
@@ -432,21 +436,21 @@ namespace NEW_ERP.Forms.SaleOrder
             // 
             // OrderDateTimePicker
             // 
-            this.OrderDateTimePicker.Location = new System.Drawing.Point(898, 187);
+            this.OrderDateTimePicker.Location = new System.Drawing.Point(887, 116);
             this.OrderDateTimePicker.Name = "OrderDateTimePicker";
             this.OrderDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.OrderDateTimePicker.TabIndex = 2176;
             // 
             // ExFactoryDateTimePicker
             // 
-            this.ExFactoryDateTimePicker.Location = new System.Drawing.Point(899, 226);
+            this.ExFactoryDateTimePicker.Location = new System.Drawing.Point(888, 155);
             this.ExFactoryDateTimePicker.Name = "ExFactoryDateTimePicker";
             this.ExFactoryDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.ExFactoryDateTimePicker.TabIndex = 2177;
             // 
             // ETADateTimePicker
             // 
-            this.ETADateTimePicker.Location = new System.Drawing.Point(898, 266);
+            this.ETADateTimePicker.Location = new System.Drawing.Point(887, 195);
             this.ETADateTimePicker.Name = "ETADateTimePicker";
             this.ETADateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.ETADateTimePicker.TabIndex = 2178;
@@ -457,7 +461,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.PackingTypeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PackingTypeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PackingTypeBox.FormattingEnabled = true;
-            this.PackingTypeBox.Location = new System.Drawing.Point(520, 153);
+            this.PackingTypeBox.Location = new System.Drawing.Point(523, 114);
             this.PackingTypeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.PackingTypeBox.Name = "PackingTypeBox";
             this.PackingTypeBox.Size = new System.Drawing.Size(203, 24);
@@ -471,7 +475,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.EmbelishmentBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.EmbelishmentBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmbelishmentBox.FormattingEnabled = true;
-            this.EmbelishmentBox.Location = new System.Drawing.Point(520, 379);
+            this.EmbelishmentBox.Location = new System.Drawing.Point(523, 340);
             this.EmbelishmentBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.EmbelishmentBox.Name = "EmbelishmentBox";
             this.EmbelishmentBox.Size = new System.Drawing.Size(203, 24);
@@ -484,7 +488,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.FoldTypeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.FoldTypeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FoldTypeBox.FormattingEnabled = true;
-            this.FoldTypeBox.Location = new System.Drawing.Point(520, 191);
+            this.FoldTypeBox.Location = new System.Drawing.Point(523, 152);
             this.FoldTypeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FoldTypeBox.Name = "FoldTypeBox";
             this.FoldTypeBox.Size = new System.Drawing.Size(203, 24);
@@ -494,7 +498,7 @@ namespace NEW_ERP.Forms.SaleOrder
             // txtFactoryPrice
             // 
             this.txtFactoryPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFactoryPrice.Location = new System.Drawing.Point(898, 296);
+            this.txtFactoryPrice.Location = new System.Drawing.Point(887, 225);
             this.txtFactoryPrice.Name = "txtFactoryPrice";
             this.txtFactoryPrice.Size = new System.Drawing.Size(203, 26);
             this.txtFactoryPrice.TabIndex = 2182;
@@ -502,7 +506,7 @@ namespace NEW_ERP.Forms.SaleOrder
             // txtCommission
             // 
             this.txtCommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCommission.Location = new System.Drawing.Point(898, 333);
+            this.txtCommission.Location = new System.Drawing.Point(887, 262);
             this.txtCommission.Name = "txtCommission";
             this.txtCommission.Size = new System.Drawing.Size(203, 26);
             this.txtCommission.TabIndex = 2183;
@@ -510,7 +514,7 @@ namespace NEW_ERP.Forms.SaleOrder
             // txtTotal
             // 
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(898, 370);
+            this.txtTotal.Location = new System.Drawing.Point(887, 300);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(203, 26);
             this.txtTotal.TabIndex = 2184;
@@ -521,7 +525,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.ToleranceBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ToleranceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToleranceBox.FormattingEnabled = true;
-            this.ToleranceBox.Location = new System.Drawing.Point(520, 304);
+            this.ToleranceBox.Location = new System.Drawing.Point(523, 265);
             this.ToleranceBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ToleranceBox.Name = "ToleranceBox";
             this.ToleranceBox.Size = new System.Drawing.Size(203, 24);
@@ -532,34 +536,35 @@ namespace NEW_ERP.Forms.SaleOrder
             // 
             this.ColorSizeDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ColorSizeDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ColorSizeDataGrid.Location = new System.Drawing.Point(40, 629);
+            this.ColorSizeDataGrid.Location = new System.Drawing.Point(40, 646);
             this.ColorSizeDataGrid.Name = "ColorSizeDataGrid";
-            this.ColorSizeDataGrid.Size = new System.Drawing.Size(754, 260);
+            this.ColorSizeDataGrid.Size = new System.Drawing.Size(754, 243);
             this.ColorSizeDataGrid.TabIndex = 2186;
+            this.ColorSizeDataGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ColorSizeDataGrid_CellEndEdit);
             // 
             // FabricDataGrid
             // 
             this.FabricDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.FabricDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FabricDataGrid.Location = new System.Drawing.Point(39, 437);
+            this.FabricDataGrid.Location = new System.Drawing.Point(40, 470);
             this.FabricDataGrid.Name = "FabricDataGrid";
-            this.FabricDataGrid.Size = new System.Drawing.Size(1044, 156);
+            this.FabricDataGrid.Size = new System.Drawing.Size(1044, 139);
             this.FabricDataGrid.TabIndex = 2187;
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(11, 418);
+            this.groupBox1.Location = new System.Drawing.Point(12, 451);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1115, 184);
+            this.groupBox1.Size = new System.Drawing.Size(1090, 167);
             this.groupBox1.TabIndex = 2191;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " FABRIC DETAIL ";
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(12, 608);
+            this.groupBox2.Location = new System.Drawing.Point(12, 625);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(795, 294);
+            this.groupBox2.Size = new System.Drawing.Size(795, 277);
             this.groupBox2.TabIndex = 2192;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = " COLOR, SIZE AND QUANTITY ";
@@ -586,7 +591,7 @@ namespace NEW_ERP.Forms.SaleOrder
             // txtPlan
             // 
             this.txtPlan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlan.Location = new System.Drawing.Point(520, 111);
+            this.txtPlan.Location = new System.Drawing.Point(164, 415);
             this.txtPlan.Name = "txtPlan";
             this.txtPlan.Size = new System.Drawing.Size(203, 26);
             this.txtPlan.TabIndex = 2195;
@@ -596,7 +601,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label12.Location = new System.Drawing.Point(443, 114);
+            this.label12.Location = new System.Drawing.Point(87, 418);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(69, 20);
             this.label12.TabIndex = 2196;
@@ -605,7 +610,7 @@ namespace NEW_ERP.Forms.SaleOrder
             // txtCtnQty
             // 
             this.txtCtnQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCtnQty.Location = new System.Drawing.Point(520, 263);
+            this.txtCtnQty.Location = new System.Drawing.Point(523, 224);
             this.txtCtnQty.Name = "txtCtnQty";
             this.txtCtnQty.Size = new System.Drawing.Size(203, 26);
             this.txtCtnQty.TabIndex = 2199;
@@ -615,7 +620,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label23.Location = new System.Drawing.Point(424, 266);
+            this.label23.Location = new System.Drawing.Point(427, 227);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(85, 20);
             this.label23.TabIndex = 2200;
@@ -627,7 +632,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.CTNTypeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CTNTypeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CTNTypeBox.FormattingEnabled = true;
-            this.CTNTypeBox.Location = new System.Drawing.Point(520, 229);
+            this.CTNTypeBox.Location = new System.Drawing.Point(523, 190);
             this.CTNTypeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CTNTypeBox.Name = "CTNTypeBox";
             this.CTNTypeBox.Size = new System.Drawing.Size(203, 24);
@@ -638,7 +643,7 @@ namespace NEW_ERP.Forms.SaleOrder
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label24.Location = new System.Drawing.Point(413, 229);
+            this.label24.Location = new System.Drawing.Point(416, 190);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(96, 20);
             this.label24.TabIndex = 2201;
@@ -679,12 +684,58 @@ namespace NEW_ERP.Forms.SaleOrder
             this.RangeBox.Size = new System.Drawing.Size(203, 24);
             this.RangeBox.TabIndex = 2205;
             // 
+            // StatusCodeBox
+            // 
+            this.StatusCodeBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.StatusCodeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.StatusCodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusCodeBox.FormattingEnabled = true;
+            this.StatusCodeBox.Location = new System.Drawing.Point(887, 339);
+            this.StatusCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.StatusCodeBox.Name = "StatusCodeBox";
+            this.StatusCodeBox.Size = new System.Drawing.Size(203, 24);
+            this.StatusCodeBox.TabIndex = 2207;
+            this.StatusCodeBox.DropDown += new System.EventHandler(this.StatusCodeBox_DropDown);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label26.Location = new System.Drawing.Point(758, 342);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(119, 20);
+            this.label26.TabIndex = 2206;
+            this.label26.Text = "Status Code :";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Location = new System.Drawing.Point(9, 97);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1090, 348);
+            this.groupBox3.TabIndex = 2192;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "INPUT FIELD";
+            // 
+            // TotalSumLabel
+            // 
+            this.TotalSumLabel.AutoSize = true;
+            this.TotalSumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalSumLabel.Location = new System.Drawing.Point(828, 864);
+            this.TotalSumLabel.Name = "TotalSumLabel";
+            this.TotalSumLabel.Size = new System.Drawing.Size(24, 25);
+            this.TotalSumLabel.TabIndex = 2208;
+            this.TotalSumLabel.Text = "0";
+            // 
             // SaleOrderAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1328, 920);
+            this.Controls.Add(this.TotalSumLabel);
+            this.Controls.Add(this.StatusCodeBox);
+            this.Controls.Add(this.label26);
             this.Controls.Add(this.RangeBox);
             this.Controls.Add(this.UnitNameBox);
             this.Controls.Add(this.label25);
@@ -738,9 +789,11 @@ namespace NEW_ERP.Forms.SaleOrder
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox3);
             this.Name = "SaleOrderAdd";
             this.Text = "SaleOrderAdd";
             this.Load += new System.EventHandler(this.SaleOrderAdd_Load);
+            this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.SubmitBtn, 0);
@@ -799,6 +852,9 @@ namespace NEW_ERP.Forms.SaleOrder
             this.Controls.SetChildIndex(this.label25, 0);
             this.Controls.SetChildIndex(this.UnitNameBox, 0);
             this.Controls.SetChildIndex(this.RangeBox, 0);
+            this.Controls.SetChildIndex(this.label26, 0);
+            this.Controls.SetChildIndex(this.StatusCodeBox, 0);
+            this.Controls.SetChildIndex(this.TotalSumLabel, 0);
             ((System.ComponentModel.ISupportInitialize)(this.ColorSizeDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FabricDataGrid)).EndInit();
             this.ResumeLayout(false);
@@ -860,5 +916,9 @@ namespace NEW_ERP.Forms.SaleOrder
         public System.Windows.Forms.ComboBox UnitNameBox;
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.ComboBox RangeBox;
+        public System.Windows.Forms.ComboBox StatusCodeBox;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label TotalSumLabel;
     }
 }

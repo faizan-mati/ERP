@@ -95,10 +95,8 @@ namespace NEW_ERP.Forms.SaleOrder
             {
                 using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
                 using (SqlCommand cmd = new SqlCommand(
-                    @"SELECT SaleOrderNo, SaleOrderID 
-                      FROM SaleOrderMaster 
-                      WHERE StatusCode='ACT' 
-                      ORDER BY SaleOrderID DESC", con))
+                    @"SELECT StatusId, StatusCode FROM Status
+                      ORDER BY StatusId DESC", con))
                 {
                     DataTable dt = new DataTable();
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
@@ -107,8 +105,8 @@ namespace NEW_ERP.Forms.SaleOrder
                     }
 
                     SaleOrderBox.DataSource = dt;
-                    SaleOrderBox.DisplayMember = "SaleOrderNo";
-                    SaleOrderBox.ValueMember = "SaleOrderID";
+                    SaleOrderBox.DisplayMember = "StatusCode";
+                    SaleOrderBox.ValueMember = "StatusId";
                     SaleOrderBox.SelectedIndex = -1;
                 }
             }

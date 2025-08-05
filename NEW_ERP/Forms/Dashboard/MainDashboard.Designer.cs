@@ -66,6 +66,11 @@ namespace NEW_ERP.Forms.Dashboard
             this.BOMBtn = new System.Windows.Forms.Button();
             this.panel13 = new System.Windows.Forms.Panel();
             this.BomDetailBtn = new System.Windows.Forms.Button();
+            this.YarnMenuContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.YarnMenuBtn = new System.Windows.Forms.Button();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.YarnBtn = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.ReportBtn = new System.Windows.Forms.Button();
             this.menuTransition = new System.Windows.Forms.Timer(this.components);
@@ -73,11 +78,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.MainPanel = new System.Windows.Forms.Panel();
             this.saleOrderTransition = new System.Windows.Forms.Timer(this.components);
             this.BomTransition = new System.Windows.Forms.Timer(this.components);
-            this.YarnMenuContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.YarnMenuBtn = new System.Windows.Forms.Button();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.YarnBtn = new System.Windows.Forms.Button();
             this.YarnTransition = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -98,11 +98,11 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel14.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel13.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.MainPanel.SuspendLayout();
             this.YarnMenuContainer.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel18.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -605,68 +605,6 @@ namespace NEW_ERP.Forms.Dashboard
             this.BomDetailBtn.UseVisualStyleBackColor = false;
             this.BomDetailBtn.Click += new System.EventHandler(this.BomDetailBtn_Click);
             // 
-            // panel11
-            // 
-            this.panel11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.panel11.Controls.Add(this.ReportBtn);
-            this.panel11.ForeColor = System.Drawing.Color.White;
-            this.panel11.Location = new System.Drawing.Point(7, 171);
-            this.panel11.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(250, 36);
-            this.panel11.TabIndex = 8;
-            // 
-            // ReportBtn
-            // 
-            this.ReportBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ReportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
-            this.ReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ReportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReportBtn.ForeColor = System.Drawing.Color.White;
-            this.ReportBtn.Image = ((System.Drawing.Image)(resources.GetObject("ReportBtn.Image")));
-            this.ReportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReportBtn.Location = new System.Drawing.Point(-2, 0);
-            this.ReportBtn.Name = "ReportBtn";
-            this.ReportBtn.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.ReportBtn.Size = new System.Drawing.Size(252, 36);
-            this.ReportBtn.TabIndex = 3;
-            this.ReportBtn.Text = "     Report";
-            this.ReportBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReportBtn.UseVisualStyleBackColor = false;
-            this.ReportBtn.Click += new System.EventHandler(this.ReportBtn_Click);
-            // 
-            // menuTransition
-            // 
-            this.menuTransition.Tick += new System.EventHandler(this.menuTransition_Tick);
-            // 
-            // ChlidPanel
-            // 
-            this.ChlidPanel.AutoScroll = true;
-            this.ChlidPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ChlidPanel.Location = new System.Drawing.Point(3, 0);
-            this.ChlidPanel.Name = "ChlidPanel";
-            this.ChlidPanel.Size = new System.Drawing.Size(1276, 908);
-            this.ChlidPanel.TabIndex = 16;
-            this.ChlidPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ChlidPanel_Paint);
-            // 
-            // MainPanel
-            // 
-            this.MainPanel.AutoScroll = true;
-            this.MainPanel.Controls.Add(this.ChlidPanel);
-            this.MainPanel.Location = new System.Drawing.Point(268, 45);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1301, 927);
-            this.MainPanel.TabIndex = 15;
-            // 
-            // saleOrderTransition
-            // 
-            this.saleOrderTransition.Tick += new System.EventHandler(this.saleOrderTransition_Tick);
-            // 
-            // BomTransition
-            // 
-            this.BomTransition.Tick += new System.EventHandler(this.BomTransition_Tick);
-            // 
             // YarnMenuContainer
             // 
             this.YarnMenuContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(36)))), ((int)(((byte)(48)))));
@@ -740,6 +678,68 @@ namespace NEW_ERP.Forms.Dashboard
             this.YarnBtn.UseVisualStyleBackColor = false;
             this.YarnBtn.Click += new System.EventHandler(this.YarnBtn_Click);
             // 
+            // panel11
+            // 
+            this.panel11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.panel11.Controls.Add(this.ReportBtn);
+            this.panel11.ForeColor = System.Drawing.Color.White;
+            this.panel11.Location = new System.Drawing.Point(7, 171);
+            this.panel11.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(250, 36);
+            this.panel11.TabIndex = 8;
+            // 
+            // ReportBtn
+            // 
+            this.ReportBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ReportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(134)))), ((int)(((byte)(193)))));
+            this.ReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ReportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportBtn.ForeColor = System.Drawing.Color.White;
+            this.ReportBtn.Image = ((System.Drawing.Image)(resources.GetObject("ReportBtn.Image")));
+            this.ReportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ReportBtn.Location = new System.Drawing.Point(-2, 0);
+            this.ReportBtn.Name = "ReportBtn";
+            this.ReportBtn.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.ReportBtn.Size = new System.Drawing.Size(252, 36);
+            this.ReportBtn.TabIndex = 3;
+            this.ReportBtn.Text = "     Report";
+            this.ReportBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ReportBtn.UseVisualStyleBackColor = false;
+            this.ReportBtn.Click += new System.EventHandler(this.ReportBtn_Click);
+            // 
+            // menuTransition
+            // 
+            this.menuTransition.Tick += new System.EventHandler(this.menuTransition_Tick);
+            // 
+            // ChlidPanel
+            // 
+            this.ChlidPanel.AutoScroll = true;
+            this.ChlidPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.ChlidPanel.Location = new System.Drawing.Point(3, 0);
+            this.ChlidPanel.Name = "ChlidPanel";
+            this.ChlidPanel.Size = new System.Drawing.Size(1276, 908);
+            this.ChlidPanel.TabIndex = 16;
+            this.ChlidPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ChlidPanel_Paint);
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.AutoScroll = true;
+            this.MainPanel.Controls.Add(this.ChlidPanel);
+            this.MainPanel.Location = new System.Drawing.Point(268, 45);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(1301, 927);
+            this.MainPanel.TabIndex = 15;
+            // 
+            // saleOrderTransition
+            // 
+            this.saleOrderTransition.Tick += new System.EventHandler(this.saleOrderTransition_Tick);
+            // 
+            // BomTransition
+            // 
+            this.BomTransition.Tick += new System.EventHandler(this.BomTransition_Tick);
+            // 
             // YarnTransition
             // 
             this.YarnTransition.Tick += new System.EventHandler(this.YarnTransition_Tick);
@@ -780,11 +780,11 @@ namespace NEW_ERP.Forms.Dashboard
             this.panel14.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            this.MainPanel.ResumeLayout(false);
             this.YarnMenuContainer.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.MainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

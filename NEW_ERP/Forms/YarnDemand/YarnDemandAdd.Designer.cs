@@ -31,11 +31,31 @@ namespace NEW_ERP.Forms.YarnDemand
         {
             this.SuspendLayout();
             // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.FlatAppearance.BorderSize = 0;
+            // 
+            // EditBtn
+            // 
+            this.EditBtn.FlatAppearance.BorderSize = 0;
+            // 
+            // ViewAllBtn
+            // 
+            this.ViewAllBtn.FlatAppearance.BorderSize = 0;
+            // 
+            // CloseBtn
+            // 
+            this.CloseBtn.FlatAppearance.BorderSize = 0;
+            // 
+            // SubmitBtn
+            // 
+            this.SubmitBtn.FlatAppearance.BorderSize = 0;
+            // 
             // YarnDemandAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1190, 785);
             this.Name = "YarnDemandAdd";
             this.Text = "YarnDemandAdd";
             this.Load += new System.EventHandler(this.YarnDemandAdd_Load);

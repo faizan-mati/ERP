@@ -19,7 +19,7 @@ namespace NEW_ERP
             try
             {
                 LoadCountryData();
-                LoadCountryCodes();
+                LoadStatustCodes();
                 CountryCodeBox.SelectedIndex = -1;
             }
             catch (Exception ex)
@@ -37,10 +37,19 @@ namespace NEW_ERP
             {
                 using (var connection = new SqlConnection(AppConnection.GetConnectionString()))
                 using (var command = new SqlCommand(
-                    @"SELECT CountryID, CountryCode, CountryName, IsActive, StatusCode, SystemDate 
-                      FROM Country 
-                      WHERE StatusCode='ACT' 
-                      ORDER BY SystemDate DESC", connection))
+                    @"SELECT 
+    C.CountryID, 
+    C.CountryCode, 
+    C.CountryName, 
+    C.IsActive, 
+    S.StatusCode,        
+    S.StatusDescription,  
+    C.SystemDate 
+FROM Country C
+LEFT JOIN Status S ON C.StatusCode = S.StatusId
+WHERE C.StatusCode = 2
+ORDER BY C.SystemDate DESC;
+", connection))
                 {
                     connection.Open();
 
@@ -58,31 +67,36 @@ namespace NEW_ERP
             }
         }
 
-        //======================================= Load Country Codes =======================================
-        private void LoadCountryCodes()
+        //======================================= Load Status Codes =======================================
+        private void LoadStatustCodes()
         {
             try
             {
-                using (var connection = new SqlConnection(AppConnection.GetConnectionString()))
-                using (var command = new SqlCommand(
-                    @"SELECT CountryCode 
-                      FROM Country 
-                      WHERE StatusCode='ACT'", connection))
+                using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    var adapter = new SqlDataAdapter(command);
-                    var dataTable = new DataTable();
-                    adapter.Fill(dataTable);
+                    string query = "SELECT StatusId, StatusCode FROM Status";
 
-                    CountryCodeBox.DataSource = dataTable;
-                    CountryCodeBox.DisplayMember = "CountryCode";
-                    CountryCodeBox.ValueMember = "CountryCode";
-                    CountryCodeBox.SelectedIndex = 0;
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        if (con.State != ConnectionState.Open)
+                            con.Open();
+
+                        DataTable dtRoles = new DataTable();
+                        SqlDataReader sdr = cmd.ExecuteReader();
+                        dtRoles.Load(sdr);
+
+                        CountryCodeBox.DataSource = dtRoles;
+                        CountryCodeBox.DisplayMember = "StatusCode";
+                        CountryCodeBox.ValueMember = "StatusId";
+                        CountryCodeBox.SelectedIndex = -1;
+
+
+                    }
                 }
             }
             catch (Exception ex)
             {
-                ShowError("Error loading country codes", ex);
-                throw;
+                ShowError("Error loading sale order dropdown", ex);
             }
         }
 
@@ -102,13 +116,11 @@ namespace NEW_ERP
                     return;
                 }
 
-                string selectedCountryCode = CountryCodeBox.SelectedValue.ToString();
-
                 using (var connection = new SqlConnection(AppConnection.GetConnectionString()))
                 using (var command = new SqlCommand("sp_SearchCountryByCode", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@CountryCode", selectedCountryCode);
+                    command.Parameters.AddWithValue("@StatusCode", GetNullableValue(CountryCodeBox));
 
                     var adapter = new SqlDataAdapter(command);
                     var dataTable = new DataTable();
@@ -121,6 +133,12 @@ namespace NEW_ERP
             {
                 ShowError("Error searching for country", ex);
             }
+        }
+
+        //======================================= Get Nullable Value – Combo =======================================
+        private object GetNullableValue(ComboBox comboBox)
+        {
+            return comboBox.SelectedItem != null ? comboBox.SelectedValue : DBNull.Value;
         }
 
         //======================================= Data Grid Double Click =======================================

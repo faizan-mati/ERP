@@ -67,6 +67,8 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.CityBox = new System.Windows.Forms.ComboBox();
             this.FormGroupBox = new System.Windows.Forms.GroupBox();
             this.BtnGroupBox = new System.Windows.Forms.GroupBox();
+            this.StatusCodeBox = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.FormGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -332,7 +334,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.isCheckedcheckbox.Checked = true;
             this.isCheckedcheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.isCheckedcheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isCheckedcheckbox.Location = new System.Drawing.Point(160, 548);
+            this.isCheckedcheckbox.Location = new System.Drawing.Point(147, 476);
             this.isCheckedcheckbox.Name = "isCheckedcheckbox";
             this.isCheckedcheckbox.Size = new System.Drawing.Size(107, 28);
             this.isCheckedcheckbox.TabIndex = 2111;
@@ -468,10 +470,13 @@ namespace NEW_ERP.Forms.CustomerMaster
             // 
             // FormGroupBox
             // 
+            this.FormGroupBox.Controls.Add(this.StatusCodeBox);
+            this.FormGroupBox.Controls.Add(this.label26);
             this.FormGroupBox.Controls.Add(this.label3);
+            this.FormGroupBox.Controls.Add(this.isCheckedcheckbox);
             this.FormGroupBox.Location = new System.Drawing.Point(13, 122);
             this.FormGroupBox.Name = "FormGroupBox";
-            this.FormGroupBox.Size = new System.Drawing.Size(863, 495);
+            this.FormGroupBox.Size = new System.Drawing.Size(863, 528);
             this.FormGroupBox.TabIndex = 2118;
             this.FormGroupBox.TabStop = false;
             this.FormGroupBox.Text = "FORM INPUTS";
@@ -484,6 +489,29 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.BtnGroupBox.TabIndex = 2119;
             this.BtnGroupBox.TabStop = false;
             this.BtnGroupBox.Text = "BUTTONS";
+            // 
+            // StatusCodeBox
+            // 
+            this.StatusCodeBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.StatusCodeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.StatusCodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusCodeBox.FormattingEnabled = true;
+            this.StatusCodeBox.Location = new System.Drawing.Point(147, 426);
+            this.StatusCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.StatusCodeBox.Name = "StatusCodeBox";
+            this.StatusCodeBox.Size = new System.Drawing.Size(259, 24);
+            this.StatusCodeBox.TabIndex = 2215;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label26.Location = new System.Drawing.Point(18, 429);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(119, 20);
+            this.label26.TabIndex = 2214;
+            this.label26.Text = "Status Code :";
             // 
             // CustomerFormAdd
             // 
@@ -499,7 +527,6 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.Controls.Add(this.ViewAllBtn);
             this.Controls.Add(this.CloseBtn);
             this.Controls.Add(this.SubmitBtn);
-            this.Controls.Add(this.isCheckedcheckbox);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtNTN);
             this.Controls.Add(this.txtGSTNo);
@@ -578,5 +605,7 @@ namespace NEW_ERP.Forms.CustomerMaster
         public System.Windows.Forms.ComboBox CityBox;
         private System.Windows.Forms.GroupBox FormGroupBox;
         private System.Windows.Forms.GroupBox BtnGroupBox;
+        public System.Windows.Forms.ComboBox StatusCodeBox;
+        private System.Windows.Forms.Label label26;
     }
 }

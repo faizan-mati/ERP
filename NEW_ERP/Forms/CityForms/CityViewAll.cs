@@ -17,7 +17,7 @@ namespace NEW_ERP.Forms.CityForms
         {
             try
             {
-                LoadCountryData();
+                LoadData();
                 CountryCodeShow();
             }
             catch (Exception ex)
@@ -27,7 +27,7 @@ namespace NEW_ERP.Forms.CityForms
         }
 
         //======================================= Load Country Data =======================================
-        private void LoadCountryData()
+        private void LoadData()
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
@@ -37,16 +37,18 @@ namespace NEW_ERP.Forms.CityForms
 
                     string query = @"
                         SELECT 
-                            c.CityID,
-                            c.CityName, 
-                            co.CountryName, 
-                            c.IsActive, 
-                            c.StatusCode,                    
-                            c.SystemDate
-                        FROM City c
-                        INNER JOIN Country co ON c.CountryID = co.CountryID
-                        WHERE c.StatusCode = 'ACT'
-                        ORDER BY c.SystemDate DESC;
+    c.CityID,
+    c.CityName, 
+    co.CountryName, 
+    c.IsActive, 
+    s.StatusCode,        
+    s.StatusDescription,  
+    c.SystemDate
+FROM City c
+INNER JOIN Country co ON c.CountryID = co.CountryID
+LEFT JOIN Status s ON c.StatusCode = s.StatusId   
+WHERE c.StatusCode in (2,1)
+ORDER BY c.SystemDate DESC;
                     ";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
@@ -77,7 +79,7 @@ namespace NEW_ERP.Forms.CityForms
                             co.CountryName
                         FROM City c
                         INNER JOIN Country co ON c.CountryID = co.CountryID
-                        WHERE c.StatusCode = 'ACT'
+                        WHERE c.StatusCode in (2,1)
                         ORDER BY co.CountryName ASC;
                     ";
 

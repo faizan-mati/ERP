@@ -38,8 +38,8 @@ namespace NEW_ERP.Forms.ItemMaster
         {
             try
             {
+                ShowStatusCode();
                 SetupFormMode();
-
                 if (!_isFromViewAll)
                 {
                     TxtProductCode.Text = GenerateNextProductCode();
@@ -147,6 +147,7 @@ namespace NEW_ERP.Forms.ItemMaster
             TxtProductDes.Enabled = enabled;
             TxtProductShortName.Enabled = enabled;
             TxtProductRemarks.Enabled = enabled;
+            StatusCodeBox.Enabled = enabled;
         }
         #endregion
 
@@ -160,9 +161,16 @@ namespace NEW_ERP.Forms.ItemMaster
                 {
                     conn.Open();
 
-                    string query = @"SELECT ProductCode, ProductDescription, ProductShortName, Remarks 
-                                   FROM ItemMaster 
-                                   WHERE ProductCode = @ProductCode AND StatusCode = 'ACT'";
+                    string query = @"SELECT 
+    im.ProductCode, 
+    im.ProductDescription, 
+    im.ProductShortName, 
+    im.Remarks, 
+    s.StatusCode         
+FROM ItemMaster im
+LEFT JOIN Status s ON im.StatusCode = s.StatusId 
+WHERE im.ProductCode = @ProductCode AND im.StatusCode = 1
+";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -176,6 +184,8 @@ namespace NEW_ERP.Forms.ItemMaster
                                 TxtProductDes.Text = reader["ProductDescription"].ToString();
                                 TxtProductShortName.Text = reader["ProductShortName"].ToString();
                                 TxtProductRemarks.Text = reader["Remarks"].ToString();
+
+                                StatusCodeBox.Text = reader["StatusCode"].ToString();
                             }
                             else
                             {
@@ -214,8 +224,9 @@ namespace NEW_ERP.Forms.ItemMaster
                         cmd.Parameters.AddWithValue("@ProductCode", TxtProductCode.Text.Trim());
                         cmd.Parameters.AddWithValue("@ProductDescription", TxtProductDes.Text.Trim());
                         cmd.Parameters.AddWithValue("@ProductShortName", TxtProductShortName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@UserCode", "000123");
+                        cmd.Parameters.AddWithValue("@UserCode", "Admin");
                         cmd.Parameters.AddWithValue("@Remarks", TxtProductRemarks.Text.Trim());
+                        cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
 
                         int result = cmd.ExecuteNonQuery();
 
@@ -259,8 +270,9 @@ namespace NEW_ERP.Forms.ItemMaster
                         cmd.Parameters.AddWithValue("@ProductCode", TxtProductCode.Text.Trim());
                         cmd.Parameters.AddWithValue("@ProductDescription", TxtProductDes.Text.Trim());
                         cmd.Parameters.AddWithValue("@ProductShortName", TxtProductShortName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@UserCode", "000123");
+                        cmd.Parameters.AddWithValue("@UserCode", "Admin");
                         cmd.Parameters.AddWithValue("@Remarks", TxtProductRemarks.Text.Trim());
+                        cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
 
                         int result = cmd.ExecuteNonQuery();
 
@@ -309,7 +321,7 @@ namespace NEW_ERP.Forms.ItemMaster
                             cmd.CommandType = CommandType.StoredProcedure;
 
                             cmd.Parameters.AddWithValue("@ProductCode", TxtProductCode.Text.Trim());
-                            cmd.Parameters.AddWithValue("@UserCode", "000123");
+                            cmd.Parameters.AddWithValue("@UserCode", "Admin");
 
                             int deleteResult = cmd.ExecuteNonQuery();
 
@@ -419,6 +431,13 @@ namespace NEW_ERP.Forms.ItemMaster
                     return false;
                 }
 
+                if (StatusCodeBox.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Please select a Status Code", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    StatusCodeBox.Focus();
+                    return false;
+                }
+
                 return true;
             }
             catch (Exception ex)
@@ -438,6 +457,9 @@ namespace NEW_ERP.Forms.ItemMaster
                 TxtProductDes.Clear();
                 TxtProductShortName.Clear();
                 TxtProductRemarks.Clear();
+
+                StatusCodeBox.SelectedIndex = -1;
+
             }
             catch (Exception ex)
             {
@@ -558,6 +580,42 @@ namespace NEW_ERP.Forms.ItemMaster
                 HandleError("Error in delete operation", ex);
             }
         }
+
+        protected void ShowStatusCode()
+        {
+            using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                string query = "SELECT StatusId, StatusCode FROM Status";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    if (con.State != ConnectionState.Open)
+                        con.Open();
+
+                    DataTable dtRoles = new DataTable();
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    dtRoles.Load(sdr);
+
+                    StatusCodeBox.DataSource = dtRoles;
+                    StatusCodeBox.DisplayMember = "StatusCode";
+                    StatusCodeBox.ValueMember = "StatusId";
+                    StatusCodeBox.SelectedIndex = -1;
+
+                    StatusCodeBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    StatusCodeBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+                    StatusCodeBox.DropDownStyle = ComboBoxStyle.DropDown;
+                }
+            }
+        }
+
+        //======================================= Get Nullable Value – Combo =======================================
+        private object GetNullableValue(ComboBox comboBox)
+        {
+            return comboBox.SelectedItem != null ? comboBox.SelectedValue : DBNull.Value;
+        }
+
+
+
         #endregion
     }
 }

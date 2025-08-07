@@ -9,7 +9,6 @@ namespace NEW_ERP.Forms.CountryForms
     public partial class CountryFormAdd : Form
     {
         #region Constants
-        private const string ACTIVE_STATUS = "ACT";
         #endregion
 
         #region Private Fields
@@ -35,6 +34,7 @@ namespace NEW_ERP.Forms.CountryForms
         {
             try
             {
+                ShowStatusCode();
                 if (_isFromViewAll && _countryId > 0)
                 {
                     LoadCountryForEditing();
@@ -138,7 +138,8 @@ namespace NEW_ERP.Forms.CountryForms
                 readOnly: false,
                 submitEnabled: true,
                 editEnabled: false,
-                deleteEnabled: false
+                deleteEnabled: false,
+                 StatusCodeEnabled: true
             );
             isCheckedcheckbox.Checked = true;
             EditBtn.Text = "Edit";
@@ -152,7 +153,8 @@ namespace NEW_ERP.Forms.CountryForms
                 readOnly: true,
                 submitEnabled: false,
                 editEnabled: true,
-                deleteEnabled: true
+                deleteEnabled: true,
+                  StatusCodeEnabled: false
             );
             EditBtn.Text = "Edit";
         }
@@ -165,13 +167,14 @@ namespace NEW_ERP.Forms.CountryForms
                 readOnly: false,
                 submitEnabled: false,
                 editEnabled: true,
-                deleteEnabled: false
+                deleteEnabled: false,
+                StatusCodeEnabled: true
             );
             EditBtn.Text = "Save";
         }
 
         //======================================= Update Form Controls =======================================
-        private void UpdateFormControls(bool readOnly, bool submitEnabled, bool editEnabled, bool deleteEnabled)
+        private void UpdateFormControls(bool readOnly, bool submitEnabled, bool editEnabled, bool deleteEnabled, bool StatusCodeEnabled)
         {
             TxtCountryName.ReadOnly = readOnly;
             TxtCountryCode.ReadOnly = readOnly;
@@ -180,6 +183,9 @@ namespace NEW_ERP.Forms.CountryForms
             SubmitBtn.Enabled = submitEnabled;
             EditBtn.Enabled = editEnabled;
             DeleteBtn.Enabled = deleteEnabled;
+
+
+            StatusCodeBox.Enabled = StatusCodeEnabled;
         }
         #endregion
 
@@ -192,9 +198,15 @@ namespace NEW_ERP.Forms.CountryForms
             {
                 using (var conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    const string query = @"SELECT CountryName, CountryCode, IsActive 
-                                         FROM Country 
-                                         WHERE CountryId = @CountryId";
+                    const string query = @"
+                SELECT 
+                    C.CountryName, 
+                    C.CountryCode, 
+                    C.IsActive, 
+                    S.StatusCode  -- human-readable status
+                FROM Country C
+                LEFT JOIN Status S ON C.StatusCode = S.StatusId
+                WHERE C.CountryId = @CountryId";
 
                     using (var cmd = new SqlCommand(query, conn))
                     {
@@ -208,6 +220,7 @@ namespace NEW_ERP.Forms.CountryForms
                                 TxtCountryName.Text = reader["CountryName"].ToString();
                                 TxtCountryCode.Text = reader["CountryCode"].ToString();
                                 isCheckedcheckbox.Checked = Convert.ToBoolean(reader["IsActive"]);
+                                StatusCodeBox.Text = reader["StatusCode"].ToString();  
                                 SetFormForViewMode();
                             }
                             else
@@ -235,7 +248,6 @@ namespace NEW_ERP.Forms.CountryForms
                 cmd.CommandType = CommandType.StoredProcedure;
                 AddCommonParameters(cmd);
                 cmd.Parameters.AddWithValue("@SystemDate", DateTime.Now);
-                cmd.Parameters.AddWithValue("@StatusCode", ACTIVE_STATUS);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -287,7 +299,7 @@ namespace NEW_ERP.Forms.CountryForms
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CountryId", _countryId);
-                    cmd.Parameters.AddWithValue("@StatusCode", ACTIVE_STATUS);
+                    cmd.Parameters.AddWithValue("@StatusCode", 3);
 
                     conn.Open();
                     int rowsAffected = cmd.ExecuteNonQuery();
@@ -315,6 +327,7 @@ namespace NEW_ERP.Forms.CountryForms
             cmd.Parameters.AddWithValue("@CountryName", TxtCountryName.Text.Trim());
             cmd.Parameters.AddWithValue("@CountryCode", TxtCountryCode.Text.Trim());
             cmd.Parameters.AddWithValue("@IsActive", isCheckedcheckbox.Checked);
+            cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
         }
         #endregion
 
@@ -337,6 +350,13 @@ namespace NEW_ERP.Forms.CountryForms
                 return false;
             }
 
+            if (StatusCodeBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Status Code", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StatusCodeBox.Focus();
+                return false;
+            }
+
             return true;
         }
 
@@ -347,6 +367,8 @@ namespace NEW_ERP.Forms.CountryForms
             TxtCountryCode.Clear();
             isCheckedcheckbox.Checked = true;
             TxtCountryName.Focus();
+
+            StatusCodeBox.SelectedIndex = -1;
         }
 
         //======================================= Show Country View All Form =======================================
@@ -404,6 +426,41 @@ namespace NEW_ERP.Forms.CountryForms
         {
             ShowErrorMessage($"An unexpected error occurred:\n{ex.Message}", "Error");
         }
+
+        protected void ShowStatusCode()
+        {
+            using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                string query = "SELECT StatusId, StatusCode FROM Status";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    if (con.State != ConnectionState.Open)
+                        con.Open();
+
+                    DataTable dtRoles = new DataTable();
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    dtRoles.Load(sdr);
+
+                    StatusCodeBox.DataSource = dtRoles;
+                    StatusCodeBox.DisplayMember = "StatusCode";
+                    StatusCodeBox.ValueMember = "StatusId";
+                    StatusCodeBox.SelectedIndex = -1;
+
+                    StatusCodeBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    StatusCodeBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+                    StatusCodeBox.DropDownStyle = ComboBoxStyle.DropDown;
+                }
+            }
+        }
+
+        //======================================= Get Nullable Value – Combo =======================================
+        private object GetNullableValue(ComboBox comboBox)
+        {
+            return comboBox.SelectedItem != null ? comboBox.SelectedValue : DBNull.Value;
+        }
+
+
         #endregion
     }
 }

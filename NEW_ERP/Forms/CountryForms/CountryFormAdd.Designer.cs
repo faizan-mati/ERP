@@ -30,7 +30,6 @@ namespace NEW_ERP.Forms.CountryForms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CountryFormAdd));
-            this.TxtCountryName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.TxtCountryCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,16 +42,11 @@ namespace NEW_ERP.Forms.CountryForms
             this.SubmitBtn = new System.Windows.Forms.Button();
             this.BtnGroupBox = new System.Windows.Forms.GroupBox();
             this.FormGroupBox = new System.Windows.Forms.GroupBox();
+            this.TxtCountryName = new System.Windows.Forms.TextBox();
+            this.StatusCodeBox = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.FormGroupBox.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // TxtCountryName
-            // 
-            this.TxtCountryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCountryName.Location = new System.Drawing.Point(154, 222);
-            this.TxtCountryName.Name = "TxtCountryName";
-            this.TxtCountryName.Size = new System.Drawing.Size(259, 26);
-            this.TxtCountryName.TabIndex = 2;
             // 
             // label6
             // 
@@ -103,7 +97,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.isCheckedcheckbox.Checked = true;
             this.isCheckedcheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.isCheckedcheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isCheckedcheckbox.Location = new System.Drawing.Point(154, 270);
+            this.isCheckedcheckbox.Location = new System.Drawing.Point(146, 229);
             this.isCheckedcheckbox.Name = "isCheckedcheckbox";
             this.isCheckedcheckbox.Size = new System.Drawing.Size(107, 28);
             this.isCheckedcheckbox.TabIndex = 3;
@@ -211,15 +205,49 @@ namespace NEW_ERP.Forms.CountryForms
             // 
             // FormGroupBox
             // 
+            this.FormGroupBox.Controls.Add(this.StatusCodeBox);
+            this.FormGroupBox.Controls.Add(this.label26);
             this.FormGroupBox.Controls.Add(this.label3);
+            this.FormGroupBox.Controls.Add(this.isCheckedcheckbox);
             this.FormGroupBox.Location = new System.Drawing.Point(8, 85);
             this.FormGroupBox.Name = "FormGroupBox";
-            this.FormGroupBox.Size = new System.Drawing.Size(420, 227);
+            this.FormGroupBox.Size = new System.Drawing.Size(420, 295);
             this.FormGroupBox.TabIndex = 2180;
             this.FormGroupBox.TabStop = false;
             this.FormGroupBox.Text = "FORM INPUTS";
             // 
-            // CountryForm
+            // TxtCountryName
+            // 
+            this.TxtCountryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCountryName.Location = new System.Drawing.Point(154, 222);
+            this.TxtCountryName.Name = "TxtCountryName";
+            this.TxtCountryName.Size = new System.Drawing.Size(259, 26);
+            this.TxtCountryName.TabIndex = 2;
+            // 
+            // StatusCodeBox
+            // 
+            this.StatusCodeBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.StatusCodeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.StatusCodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusCodeBox.FormattingEnabled = true;
+            this.StatusCodeBox.Location = new System.Drawing.Point(146, 184);
+            this.StatusCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.StatusCodeBox.Name = "StatusCodeBox";
+            this.StatusCodeBox.Size = new System.Drawing.Size(259, 24);
+            this.StatusCodeBox.TabIndex = 2211;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label26.Location = new System.Drawing.Point(17, 187);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(119, 20);
+            this.label26.TabIndex = 2210;
+            this.label26.Text = "Status Code :";
+            // 
+            // CountryFormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -230,7 +258,6 @@ namespace NEW_ERP.Forms.CountryForms
             this.Controls.Add(this.ViewAllBtn);
             this.Controls.Add(this.CloseBtn);
             this.Controls.Add(this.SubmitBtn);
-            this.Controls.Add(this.isCheckedcheckbox);
             this.Controls.Add(this.TxtCountryName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.TxtCountryCode);
@@ -239,7 +266,7 @@ namespace NEW_ERP.Forms.CountryForms
             this.Controls.Add(this.FormGroupBox);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "CountryForm";
+            this.Name = "CountryFormAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CountryForm";
             this.Load += new System.EventHandler(this.CountryForm_Load);
@@ -251,8 +278,6 @@ namespace NEW_ERP.Forms.CountryForms
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox TxtCountryName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TxtCountryCode;
         private System.Windows.Forms.Label label4;
@@ -265,5 +290,8 @@ namespace NEW_ERP.Forms.CountryForms
         public System.Windows.Forms.Button SubmitBtn;
         private System.Windows.Forms.GroupBox BtnGroupBox;
         private System.Windows.Forms.GroupBox FormGroupBox;
+        private System.Windows.Forms.TextBox TxtCountryName;
+        public System.Windows.Forms.ComboBox StatusCodeBox;
+        private System.Windows.Forms.Label label26;
     }
 }

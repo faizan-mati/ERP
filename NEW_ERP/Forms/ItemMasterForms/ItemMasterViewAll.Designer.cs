@@ -47,7 +47,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.SearchBtn.ForeColor = System.Drawing.Color.White;
             this.SearchBtn.Image = ((System.Drawing.Image)(resources.GetObject("SearchBtn.Image")));
             this.SearchBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SearchBtn.Location = new System.Drawing.Point(381, 108);
+            this.SearchBtn.Location = new System.Drawing.Point(337, 112);
             this.SearchBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(129, 32);
@@ -61,11 +61,11 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label2.Location = new System.Drawing.Point(12, 116);
+            this.label2.Location = new System.Drawing.Point(8, 121);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 20);
+            this.label2.Size = new System.Drawing.Size(159, 20);
             this.label2.TabIndex = 2081;
-            this.label2.Text = "Search by Short Name :";
+            this.label2.Text = "Search  By Status:";
             // 
             // label3
             // 
@@ -94,7 +94,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.ItemMasterDataGridView.Name = "ItemMasterDataGridView";
             this.ItemMasterDataGridView.ReadOnly = true;
             this.ItemMasterDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ItemMasterDataGridView.Size = new System.Drawing.Size(805, 431);
+            this.ItemMasterDataGridView.Size = new System.Drawing.Size(895, 459);
             this.ItemMasterDataGridView.TabIndex = 2089;
             this.ItemMasterDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemMasterDataGridView_CellDoubleClick);
             // 
@@ -104,7 +104,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.ProductCodeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ProductCodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProductCodeBox.FormattingEnabled = true;
-            this.ProductCodeBox.Location = new System.Drawing.Point(218, 113);
+            this.ProductCodeBox.Location = new System.Drawing.Point(174, 117);
             this.ProductCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProductCodeBox.Name = "ProductCodeBox";
             this.ProductCodeBox.Size = new System.Drawing.Size(155, 24);
@@ -115,7 +115,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(820, 603);
+            this.ClientSize = new System.Drawing.Size(909, 631);
             this.Controls.Add(this.ProductCodeBox);
             this.Controls.Add(this.ItemMasterDataGridView);
             this.Controls.Add(this.label3);

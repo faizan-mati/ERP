@@ -46,6 +46,8 @@ namespace NEW_ERP.Forms.ItemMaster
             this.label3 = new System.Windows.Forms.Label();
             this.BtnGroupBox = new System.Windows.Forms.GroupBox();
             this.FormGroupBox = new System.Windows.Forms.GroupBox();
+            this.StatusCodeBox = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.BtnGroupBox.SuspendLayout();
             this.FormGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -170,7 +172,7 @@ namespace NEW_ERP.Forms.ItemMaster
             // TxtProductRemarks
             // 
             this.TxtProductRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProductRemarks.Location = new System.Drawing.Point(212, 307);
+            this.TxtProductRemarks.Location = new System.Drawing.Point(199, 270);
             this.TxtProductRemarks.Multiline = true;
             this.TxtProductRemarks.Name = "TxtProductRemarks";
             this.TxtProductRemarks.Size = new System.Drawing.Size(259, 79);
@@ -181,7 +183,7 @@ namespace NEW_ERP.Forms.ItemMaster
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label5.Location = new System.Drawing.Point(113, 310);
+            this.label5.Location = new System.Drawing.Point(100, 273);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 20);
             this.label5.TabIndex = 2075;
@@ -247,13 +249,40 @@ namespace NEW_ERP.Forms.ItemMaster
             // 
             // FormGroupBox
             // 
+            this.FormGroupBox.Controls.Add(this.StatusCodeBox);
+            this.FormGroupBox.Controls.Add(this.label26);
             this.FormGroupBox.Controls.Add(this.label3);
+            this.FormGroupBox.Controls.Add(this.TxtProductRemarks);
+            this.FormGroupBox.Controls.Add(this.label5);
             this.FormGroupBox.Location = new System.Drawing.Point(12, 89);
             this.FormGroupBox.Name = "FormGroupBox";
-            this.FormGroupBox.Size = new System.Drawing.Size(484, 314);
+            this.FormGroupBox.Size = new System.Drawing.Size(484, 365);
             this.FormGroupBox.TabIndex = 2181;
             this.FormGroupBox.TabStop = false;
             this.FormGroupBox.Text = "FORM INPUTS";
+            // 
+            // StatusCodeBox
+            // 
+            this.StatusCodeBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.StatusCodeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.StatusCodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusCodeBox.FormattingEnabled = true;
+            this.StatusCodeBox.Location = new System.Drawing.Point(199, 225);
+            this.StatusCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.StatusCodeBox.Name = "StatusCodeBox";
+            this.StatusCodeBox.Size = new System.Drawing.Size(259, 24);
+            this.StatusCodeBox.TabIndex = 2217;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label26.Location = new System.Drawing.Point(70, 228);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(119, 20);
+            this.label26.TabIndex = 2216;
+            this.label26.Text = "Status Code :";
             // 
             // ItemMasterForm
             // 
@@ -265,8 +294,6 @@ namespace NEW_ERP.Forms.ItemMaster
             this.Controls.Add(this.TxtProductDes);
             this.Controls.Add(this.TxtProductShortName);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.TxtProductRemarks);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TxtProductCode);
             this.Controls.Add(this.label4);
@@ -302,5 +329,7 @@ namespace NEW_ERP.Forms.ItemMaster
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox BtnGroupBox;
         private System.Windows.Forms.GroupBox FormGroupBox;
+        public System.Windows.Forms.ComboBox StatusCodeBox;
+        private System.Windows.Forms.Label label26;
     }
 }

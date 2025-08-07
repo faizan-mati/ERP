@@ -43,6 +43,8 @@ namespace NEW_ERP.Forms.CityForms
             this.CountryCodeBox = new System.Windows.Forms.ComboBox();
             this.BtnGroupBox = new System.Windows.Forms.GroupBox();
             this.FormGroupBox = new System.Windows.Forms.GroupBox();
+            this.StatusCodeBox = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.FormGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,7 +144,7 @@ namespace NEW_ERP.Forms.CityForms
             this.isCheckedcheckbox.Checked = true;
             this.isCheckedcheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.isCheckedcheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isCheckedcheckbox.Location = new System.Drawing.Point(158, 281);
+            this.isCheckedcheckbox.Location = new System.Drawing.Point(146, 221);
             this.isCheckedcheckbox.Name = "isCheckedcheckbox";
             this.isCheckedcheckbox.Size = new System.Drawing.Size(86, 20);
             this.isCheckedcheckbox.TabIndex = 3;
@@ -215,13 +217,39 @@ namespace NEW_ERP.Forms.CityForms
             // 
             // FormGroupBox
             // 
+            this.FormGroupBox.Controls.Add(this.StatusCodeBox);
+            this.FormGroupBox.Controls.Add(this.label26);
             this.FormGroupBox.Controls.Add(this.label3);
+            this.FormGroupBox.Controls.Add(this.isCheckedcheckbox);
             this.FormGroupBox.Location = new System.Drawing.Point(12, 93);
             this.FormGroupBox.Name = "FormGroupBox";
-            this.FormGroupBox.Size = new System.Drawing.Size(421, 222);
+            this.FormGroupBox.Size = new System.Drawing.Size(421, 260);
             this.FormGroupBox.TabIndex = 2180;
             this.FormGroupBox.TabStop = false;
             this.FormGroupBox.Text = "FORM INPUTS";
+            // 
+            // StatusCodeBox
+            // 
+            this.StatusCodeBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.StatusCodeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.StatusCodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusCodeBox.FormattingEnabled = true;
+            this.StatusCodeBox.Location = new System.Drawing.Point(146, 170);
+            this.StatusCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.StatusCodeBox.Name = "StatusCodeBox";
+            this.StatusCodeBox.Size = new System.Drawing.Size(259, 24);
+            this.StatusCodeBox.TabIndex = 2213;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label26.Location = new System.Drawing.Point(17, 173);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(119, 20);
+            this.label26.TabIndex = 2212;
+            this.label26.Text = "Status Code :";
             // 
             // CityFormAdd
             // 
@@ -236,7 +264,6 @@ namespace NEW_ERP.Forms.CityForms
             this.Controls.Add(this.ViewAllBtn);
             this.Controls.Add(this.CloseBtn);
             this.Controls.Add(this.SubmitBtn);
-            this.Controls.Add(this.isCheckedcheckbox);
             this.Controls.Add(this.TxtCityName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.BtnGroupBox);
@@ -269,5 +296,7 @@ namespace NEW_ERP.Forms.CityForms
         public System.Windows.Forms.ComboBox CountryCodeBox;
         private System.Windows.Forms.GroupBox BtnGroupBox;
         private System.Windows.Forms.GroupBox FormGroupBox;
+        public System.Windows.Forms.ComboBox StatusCodeBox;
+        private System.Windows.Forms.Label label26;
     }
 }

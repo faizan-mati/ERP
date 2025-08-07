@@ -17,7 +17,7 @@ namespace NEW_ERP.Forms.AuthorityForm
         {
             try
             {
-                LoadCountryData();
+                LoadData();
                 AuthorityCodeShow();
             }
             catch (Exception ex)
@@ -33,30 +33,34 @@ namespace NEW_ERP.Forms.AuthorityForm
             {
                 using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    string query = @"SELECT AuthorityName FROM AuthorityMaster WHERE StatusCode='ACT'";
+                    string query = "SELECT StatusId, StatusCode FROM Status";
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
+                        if (con.State != ConnectionState.Open)
+                            con.Open();
 
-                        AuthorityBox.DataSource = dt;
-                        AuthorityBox.DisplayMember = "AuthorityName";
-                        AuthorityBox.ValueMember = "AuthorityName";
+                        DataTable dtRoles = new DataTable();
+                        SqlDataReader sdr = cmd.ExecuteReader();
+                        dtRoles.Load(sdr);
+
+                        AuthorityBox.DataSource = dtRoles;
+                        AuthorityBox.DisplayMember = "StatusCode";
+                        AuthorityBox.ValueMember = "StatusId";
                         AuthorityBox.SelectedIndex = -1;
+
+                     
                     }
                 }
             }
             catch (Exception ex)
             {
-                HandleError("Error loading authority codes", ex);
-                throw;
+                HandleError("Error loading sale order dropdown", ex);
             }
         }
 
         //======================================= Load Authority Data =======================================
-        private void LoadCountryData()
+        private void LoadData()
         {
             try
             {
@@ -64,10 +68,18 @@ namespace NEW_ERP.Forms.AuthorityForm
                 {
                     conn.Open();
 
-                    string query = @"SELECT AuthorityCode, AuthorityName, UserCode, 
-                                   SystemDate, StatusCode, Remarks FROM AuthorityMaster 
-                                   WHERE StatusCode='ACT'
-                                   ORDER BY SystemDate DESC";
+                    string query = @"SELECT 
+    AM.AuthorityCode,
+    AM.AuthorityName,
+    AM.UserCode,
+    AM.SystemDate,
+    S.StatusCode,         
+    S.StatusDescription,  
+    AM.Remarks
+FROM AuthorityMaster AM
+LEFT JOIN Status S ON AM.StatusCode = S.StatusId 
+WHERE AM.StatusCode = 2
+ORDER BY AM.SystemDate DESC;";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -96,9 +108,7 @@ namespace NEW_ERP.Forms.AuthorityForm
                     MessageBox.Show("Please select an authority name first.", "Information",
                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
-                }
-
-                string authorityName = AuthorityBox.Text.Trim();
+                };
 
                 using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
@@ -107,7 +117,7 @@ namespace NEW_ERP.Forms.AuthorityForm
                     using (SqlCommand cmd = new SqlCommand("sp_SearchAuthorityMaster", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@AuthorityName", authorityName);
+                        cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(AuthorityBox));
 
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -121,6 +131,13 @@ namespace NEW_ERP.Forms.AuthorityForm
             {
                 HandleError("Error searching authority records", ex);
             }
+        }
+
+
+        //======================================= Get Nullable Value – Combo =======================================
+        private object GetNullableValue(ComboBox comboBox)
+        {
+            return comboBox.SelectedItem != null ? comboBox.SelectedValue : DBNull.Value;
         }
 
         //======================================= Grid Double Click Handler =======================================

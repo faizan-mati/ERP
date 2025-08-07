@@ -14,8 +14,6 @@ namespace NEW_ERP.Forms.AuthorityForm
         private bool _isEditMode = false;
         private string _originalAuthorityCode = string.Empty;
 
-        private const string ACTIVE_STATUS = "ACT";
-        private const string INACTIVE_STATUS = "INA";
         private const string DEFAULT_USER_CODE = "00123";
 
         public AuthorityAdd(string authorityCode, bool isFromViewAll)
@@ -31,6 +29,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             try
             {
                 ConfigureFormMode();
+                ShowStatusCode();
 
                 if (_isFromViewAll && !string.IsNullOrEmpty(_authorityCode))
                 {
@@ -110,6 +109,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             //TxtAuthorityCode.ReadOnly = readOnly || !_isEditMode;
             TxtAuthorityName.ReadOnly = readOnly;
             TxtAuthorityRemarks.ReadOnly = readOnly;
+            StatusCodeBox.Enabled = false;
 
             Color backgroundColor = readOnly ? SystemColors.Control : SystemColors.Window;
             //TxtAuthorityCode.BackColor = TxtAuthorityCode.ReadOnly ? SystemColors.Control : backgroundColor;
@@ -120,9 +120,16 @@ namespace NEW_ERP.Forms.AuthorityForm
         //======================================= Load Authority Data =======================================
         private void LoadAuthorityData()
         {
-            const string query = @"SELECT AuthorityCode, AuthorityName, Remarks, StatusCode
-                                 FROM AuthorityMaster 
-                                 WHERE AuthorityCode = @AuthorityCode";
+            const string query = @"
+    SELECT 
+        AM.AuthorityCode, 
+        AM.AuthorityName, 
+        AM.Remarks, 
+        S.StatusCode    
+    FROM AuthorityMaster AM
+    LEFT JOIN Status S ON AM.StatusCode = S.StatusId
+    WHERE AM.AuthorityCode = @AuthorityCode";
+
 
             try
             {
@@ -140,6 +147,7 @@ namespace NEW_ERP.Forms.AuthorityForm
                             TxtAuthorityCode.Text = _originalAuthorityCode;
                             TxtAuthorityName.Text = reader["AuthorityName"].ToString();
                             TxtAuthorityRemarks.Text = reader["Remarks"]?.ToString() ?? string.Empty;
+                            StatusCodeBox.Text = reader["StatusCode"].ToString();
                         }
                         else
                         {
@@ -193,6 +201,7 @@ namespace NEW_ERP.Forms.AuthorityForm
             EditBtn.Text = "Save";
             SubmitBtn.Enabled = false;
             DeleteBtn.Enabled = false;
+            StatusCodeBox.Enabled = true;
         }
 
         //======================================= Disable Edit Mode =======================================
@@ -221,6 +230,14 @@ namespace NEW_ERP.Forms.AuthorityForm
                 TxtAuthorityName.Focus();
                 return false;
             }
+
+            if (StatusCodeBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Status Code", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StatusCodeBox.Focus();
+                return false;
+            }
+
 
             return true;
         }
@@ -264,7 +281,7 @@ namespace NEW_ERP.Forms.AuthorityForm
                     command.Parameters.AddWithValue("@Remarks", TxtAuthorityRemarks.Text.Trim());
                     command.Parameters.AddWithValue("@SystemDate", DateTime.Now);
                     command.Parameters.AddWithValue("@UserCode", DEFAULT_USER_CODE);
-                    command.Parameters.AddWithValue("@StatusCode", ACTIVE_STATUS);
+                    command.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -304,7 +321,7 @@ namespace NEW_ERP.Forms.AuthorityForm
                     command.Parameters.AddWithValue("@AuthorityCode", _originalAuthorityCode);
                     command.Parameters.AddWithValue("@AuthorityCode1", newAuthorityCode);
                     command.Parameters.AddWithValue("@AuthorityName", TxtAuthorityName.Text.Trim());
-                    command.Parameters.AddWithValue("@StatusCode", ACTIVE_STATUS);
+                    command.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
                     command.Parameters.AddWithValue("@Remarks", TxtAuthorityRemarks.Text.Trim());
 
                     connection.Open();
@@ -341,7 +358,7 @@ namespace NEW_ERP.Forms.AuthorityForm
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.AddWithValue("@AuthorityCode", _originalAuthorityCode);
-                    command.Parameters.AddWithValue("@StatusCode", INACTIVE_STATUS);
+                    command.Parameters.AddWithValue("@StatusCode", 3);
 
                     connection.Open();
                     int rowsAffected = command.ExecuteNonQuery();
@@ -370,6 +387,9 @@ namespace NEW_ERP.Forms.AuthorityForm
             TxtAuthorityName.Clear();
             TxtAuthorityRemarks.Clear();
             TxtAuthorityName.Focus();
+
+            StatusCodeBox.SelectedIndex = -1;
+
         }
 
         //======================================= View All Button Click =======================================
@@ -384,5 +404,46 @@ namespace NEW_ERP.Forms.AuthorityForm
         {
             this.Close();
         }
+
+        private void StatusCodeBox_DropDown(object sender, EventArgs e)
+        {
+            
+        }
+
+
+        protected void ShowStatusCode()
+        {
+            using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                string query = "SELECT StatusId, StatusCode FROM Status";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    if (con.State != ConnectionState.Open)
+                        con.Open();
+
+                    DataTable dtRoles = new DataTable();
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    dtRoles.Load(sdr);
+
+                    StatusCodeBox.DataSource = dtRoles;
+                    StatusCodeBox.DisplayMember = "StatusCode";
+                    StatusCodeBox.ValueMember = "StatusId";
+                    StatusCodeBox.SelectedIndex = -1;
+
+                    StatusCodeBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    StatusCodeBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+                    StatusCodeBox.DropDownStyle = ComboBoxStyle.DropDown;
+                }
+            }
+        }
+
+        //======================================= Get Nullable Value – Combo =======================================
+        private object GetNullableValue(ComboBox comboBox)
+        {
+            return comboBox.SelectedItem != null ? comboBox.SelectedValue : DBNull.Value;
+        }
+
+
     }
 }

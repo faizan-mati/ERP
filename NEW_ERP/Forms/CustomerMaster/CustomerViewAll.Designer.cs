@@ -33,8 +33,8 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.label3 = new System.Windows.Forms.Label();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.CustomerDataGridView = new System.Windows.Forms.DataGridView();
+            this.StatsuCodeBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +60,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.SearchBtn.ForeColor = System.Drawing.Color.White;
             this.SearchBtn.Image = ((System.Drawing.Image)(resources.GetObject("SearchBtn.Image")));
             this.SearchBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SearchBtn.Location = new System.Drawing.Point(436, 119);
+            this.SearchBtn.Location = new System.Drawing.Point(339, 112);
             this.SearchBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(133, 32);
@@ -74,29 +74,33 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label2.Location = new System.Drawing.Point(8, 130);
+            this.label2.Location = new System.Drawing.Point(5, 118);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 20);
+            this.label2.Size = new System.Drawing.Size(159, 20);
             this.label2.TabIndex = 2139;
-            this.label2.Text = "Search by Name :";
-            // 
-            // txtCustomerName
-            // 
-            this.txtCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerName.Location = new System.Drawing.Point(165, 124);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(259, 26);
-            this.txtCustomerName.TabIndex = 2155;
+            this.label2.Text = "Search By Status :";
             // 
             // CustomerDataGridView
             // 
             this.CustomerDataGridView.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.CustomerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CustomerDataGridView.Location = new System.Drawing.Point(6, 179);
+            this.CustomerDataGridView.Location = new System.Drawing.Point(6, 164);
             this.CustomerDataGridView.Name = "CustomerDataGridView";
-            this.CustomerDataGridView.Size = new System.Drawing.Size(923, 445);
+            this.CustomerDataGridView.Size = new System.Drawing.Size(923, 460);
             this.CustomerDataGridView.TabIndex = 2156;
             this.CustomerDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerDataGridView_CellDoubleClick);
+            // 
+            // StatsuCodeBox
+            // 
+            this.StatsuCodeBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.StatsuCodeBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.StatsuCodeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatsuCodeBox.FormattingEnabled = true;
+            this.StatsuCodeBox.Location = new System.Drawing.Point(167, 116);
+            this.StatsuCodeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.StatsuCodeBox.Name = "StatsuCodeBox";
+            this.StatsuCodeBox.Size = new System.Drawing.Size(163, 24);
+            this.StatsuCodeBox.TabIndex = 2157;
             // 
             // CustomerViewAll
             // 
@@ -104,8 +108,8 @@ namespace NEW_ERP.Forms.CustomerMaster
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(935, 626);
+            this.Controls.Add(this.StatsuCodeBox);
             this.Controls.Add(this.CustomerDataGridView);
-            this.Controls.Add(this.txtCustomerName);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -123,7 +127,7 @@ namespace NEW_ERP.Forms.CustomerMaster
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.DataGridView CustomerDataGridView;
+        public System.Windows.Forms.ComboBox StatsuCodeBox;
     }
 }

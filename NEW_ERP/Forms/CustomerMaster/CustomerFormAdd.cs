@@ -1,14 +1,8 @@
 ﻿using NEW_ERP.GernalClasses;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NEW_ERP.Forms.CustomerMaster
@@ -39,6 +33,7 @@ namespace NEW_ERP.Forms.CustomerMaster
         {
             LoadCustomerTypes();
             LoadCountries();
+            ShowStatusCode();
 
             if (_isFromViewAll && _customerId > 0)
             {
@@ -105,6 +100,8 @@ namespace NEW_ERP.Forms.CustomerMaster
             CityBox.Enabled = enabled;
 
             isCheckedcheckbox.Enabled = enabled;
+
+            StatusCodeBox.Enabled = enabled;
         }
         #endregion
 
@@ -145,7 +142,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             {
                 using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    string query = "SELECT CountryID, CountryName FROM Country WHERE StatusCode = 'ACT'";
+                    string query = "SELECT CountryID, CountryName FROM Country WHERE StatusCode = 2";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -174,7 +171,7 @@ namespace NEW_ERP.Forms.CustomerMaster
             {
                 using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    string query = "SELECT CityID, CityName FROM City WHERE CountryID = @CountryID AND StatusCode = 'ACT'";
+                    string query = "SELECT CityID, CityName FROM City WHERE CountryID = @CountryID AND StatusCode = 2";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -205,11 +202,28 @@ namespace NEW_ERP.Forms.CustomerMaster
             {
                 using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    string query = @"SELECT CustomerCode, CustomerName, ContactPerson, MobileNo, Email, 
-                                   WhatsAppNo, State, ZipCode, Address, GSTNo, NTN, IsActive, 
-                                   CustomerTypeID, Country, City, CreditLimit
-                                   FROM CustomerMaster 
-                                   WHERE CustomerID = @CustomerID AND StatusCode = 'ACT'";
+                    string query = @"SELECT 
+    cm.CustomerCode, 
+    cm.CustomerName, 
+    cm.ContactPerson, 
+    cm.MobileNo, 
+    cm.Email, 
+    cm.WhatsAppNo, 
+    cm.State, 
+    cm.ZipCode, 
+    cm.Address, 
+    cm.GSTNo, 
+    cm.NTN, 
+    cm.IsActive, 
+    cm.CustomerTypeID, 
+    cm.Country, 
+    cm.City, 
+    cm.CreditLimit, 
+    s.StatusCode     
+FROM CustomerMaster cm
+LEFT JOIN Status s ON cm.StatusCode = s.StatusId 
+WHERE cm.CustomerID = @CustomerID AND cm.StatusCode = 1
+";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -231,6 +245,7 @@ namespace NEW_ERP.Forms.CustomerMaster
                                 txtAddress.Text = reader["Address"].ToString();
                                 txtGSTNo.Text = reader["GSTNo"].ToString();
                                 txtNTN.Text = reader["NTN"].ToString();
+                                StatusCodeBox.Text = reader["StatusCode"].ToString();
 
                                 isCheckedcheckbox.Checked = Convert.ToBoolean(reader["IsActive"]);
 
@@ -396,7 +411,7 @@ namespace NEW_ERP.Forms.CustomerMaster
                         cmd.Parameters.AddWithValue("@NTN", txtNTN.Text.Trim());
                         cmd.Parameters.AddWithValue("@CreditLimit", 0);
                         cmd.Parameters.AddWithValue("@IsActive", isCheckedcheckbox.Checked);
-                        cmd.Parameters.AddWithValue("@StatusCode", "ACT");
+                        cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
                         cmd.Parameters.AddWithValue("@CreatedBy", "Admin");
 
                         int result = cmd.ExecuteNonQuery();
@@ -452,7 +467,7 @@ namespace NEW_ERP.Forms.CustomerMaster
                         cmd.Parameters.AddWithValue("@NTN", txtNTN.Text.Trim());
                         cmd.Parameters.AddWithValue("@CreditLimit", 0);
                         cmd.Parameters.AddWithValue("@IsActive", isCheckedcheckbox.Checked);
-                        cmd.Parameters.AddWithValue("@StatusCode", "ACT");
+                        cmd.Parameters.AddWithValue("@StatusCode", GetNullableValue(StatusCodeBox));
                         cmd.Parameters.AddWithValue("@Updatedby", "Admin");
 
                         int result = cmd.ExecuteNonQuery();
@@ -581,6 +596,13 @@ namespace NEW_ERP.Forms.CustomerMaster
                 MessageBox.Show("Please select a City.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 CityBox.Focus();
+                return false;
+            }
+
+            if (StatusCodeBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Status Code", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StatusCodeBox.Focus();
                 return false;
             }
 
@@ -759,12 +781,50 @@ namespace NEW_ERP.Forms.CustomerMaster
             txtGSTNo.Clear();
             txtNTN.Clear();
 
+            StatusCodeBox.SelectedIndex = -1;
             CustomerTypeBox.SelectedIndex = -1;
             CountryBox.SelectedIndex = -1;
             CityBox.DataSource = null;
 
             isCheckedcheckbox.Checked = false;
         }
+
+
+        protected void ShowStatusCode()
+        {
+            using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+            {
+                string query = "SELECT StatusId, StatusCode FROM Status";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    if (con.State != ConnectionState.Open)
+                        con.Open();
+
+                    DataTable dtRoles = new DataTable();
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    dtRoles.Load(sdr);
+
+                    StatusCodeBox.DataSource = dtRoles;
+                    StatusCodeBox.DisplayMember = "StatusCode";
+                    StatusCodeBox.ValueMember = "StatusId";
+                    StatusCodeBox.SelectedIndex = -1;
+
+                    StatusCodeBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    StatusCodeBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+                    StatusCodeBox.DropDownStyle = ComboBoxStyle.DropDown;
+                }
+            }
+        }
+
+        //======================================= Get Nullable Value – Combo =======================================
+        private object GetNullableValue(ComboBox comboBox)
+        {
+            return comboBox.SelectedItem != null ? comboBox.SelectedValue : DBNull.Value;
+        }
+
+
+
         #endregion
     }
 }

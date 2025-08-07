@@ -379,9 +379,8 @@ namespace NEW_ERP.Forms.SaleOrder
                             txtCommission.Text = reader["Commission"].ToString();
                             txtTotal.Text = reader["Total"].ToString();
                             txtSaleOrder.Text = reader["SaleOrderNo"].ToString();
-
+                             
                             TotalSumLabel.Text = reader["GrandTotal"].ToString();
-
 
                             OrderDateTimePicker.Value = reader["OrderDate"] != DBNull.Value ? Convert.ToDateTime(reader["OrderDate"]) : DateTime.Now;
                             ExFactoryDateTimePicker.Value = reader["ExFactoryDate"] != DBNull.Value ? Convert.ToDateTime(reader["ExFactoryDate"]) : DateTime.Now;
@@ -458,15 +457,15 @@ namespace NEW_ERP.Forms.SaleOrder
                 using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
                 using (SqlCommand cmd = new SqlCommand(@"
                    SELECT 
-    sod.ColorID, cm.ColorName, 
-    sod.SizeID, sm.SizeName, 
-    sod.Quantity, sod.UnitPrice, sod.TotalPrice
-FROM SaleOrderDetails sod
-INNER JOIN ColorMaster cm ON sod.ColorID = cm.ColorID
-INNER JOIN SizeMaster sm ON sod.SizeID = sm.SizeID
-WHERE sod.SaleOrderID = @SaleOrderId 
-  AND sod.StatusCode IN (1, 2)
-", con))
+                    sod.ColorID, cm.ColorName, 
+                    sod.SizeID, sm.SizeName, 
+                    sod.Quantity, sod.UnitPrice, sod.TotalPrice
+                FROM SaleOrderDetails sod
+                INNER JOIN ColorMaster cm ON sod.ColorID = cm.ColorID
+                INNER JOIN SizeMaster sm ON sod.SizeID = sm.SizeID
+                WHERE sod.SaleOrderID = @SaleOrderId 
+                  AND sod.StatusCode IN (1, 2)
+                ", con))
                 {
                     cmd.Parameters.AddWithValue("@SaleOrderId", saleOrderId);
                     con.Open();

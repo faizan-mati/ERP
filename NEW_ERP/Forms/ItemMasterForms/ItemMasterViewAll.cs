@@ -19,8 +19,8 @@ namespace NEW_ERP.Forms.ItemMasterForms
             try
             {
                 LoadItemData();
-                PopulateProductCodeDropdown();
-                ProductCodeBox.SelectedIndex = -1;
+                LoadStatustCodes();
+
             }
             catch (Exception ex)
             {
@@ -52,29 +52,36 @@ namespace NEW_ERP.Forms.ItemMasterForms
             }
         }
 
-        //======================================= Populate Product Code Dropdown =======================================
-        private void PopulateProductCodeDropdown()
+        //======================================= Load Status Codes =======================================
+        private void LoadStatustCodes()
         {
-            using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+            try
             {
-                try
+                using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
                 {
-                    string query = @"Select ProductShortName from ItemMaster WHERE StatusCode='ACT'";
-                    SqlCommand cmd = new SqlCommand(query, con);
+                    string query = "SELECT StatusId, StatusCode FROM Status";
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        if (con.State != ConnectionState.Open)
+                            con.Open();
 
-                    ProductCodeBox.DataSource = dt;
-                    ProductCodeBox.DisplayMember = "ProductShortName";
-                    ProductCodeBox.ValueMember = "ProductShortName";
-                    ProductCodeBox.SelectedIndex = 0;
+                        DataTable dtRoles = new DataTable();
+                        SqlDataReader sdr = cmd.ExecuteReader();
+                        dtRoles.Load(sdr);
+
+                        ProductCodeBox.DataSource = dtRoles;
+                        ProductCodeBox.DisplayMember = "StatusCode";
+                        ProductCodeBox.ValueMember = "StatusId";
+                        ProductCodeBox.SelectedIndex = -1;
+
+
+                    }
                 }
-                catch (Exception ex)
-                {
-                    ShowError("Error populating product codes", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                ShowError("Error loading sale order dropdown", ex);
             }
         }
 
@@ -89,8 +96,8 @@ namespace NEW_ERP.Forms.ItemMasterForms
 
             try
             {
-                string selectedCode = ProductCodeBox.SelectedValue.ToString();
-                SearchItemsByCode(selectedCode);
+                string StatusCode = ProductCodeBox.SelectedValue.ToString();
+                SearchItemsByCode(StatusCode);
             }
             catch (Exception ex)
             {
@@ -99,7 +106,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
         }
 
         //======================================= Search Items By Code =======================================
-        private void SearchItemsByCode(string productShortName)
+        private void SearchItemsByCode(string StatusCode)
         {
             using (SqlConnection conn = new SqlConnection(AppConnection.GetConnectionString()))
             {
@@ -108,7 +115,7 @@ namespace NEW_ERP.Forms.ItemMasterForms
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("sp_SearchItemMaster", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ShortName", productShortName);
+                    cmd.Parameters.AddWithValue("@StatusCode", StatusCode);
 
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
